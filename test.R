@@ -29,7 +29,7 @@ imputed_datasets$complete <- X.complete
 
 ### Load all imputomics methods
 
-# devtools::install_github("BioGenies/imputomics")
+devtools::install_github("BioGenies/imputomics")
 library(imputomics)
 
 df <- imputomics::impute_mean(missdf = X.missing)
@@ -126,14 +126,14 @@ imputed_datasets$bcv_svd <- df
 
 #### Load all DIMAR methods
 
-# devtools::install_github("kreutz-lab/DIMAR")
-devtools::install_local("~/INRIA/R_scripts/DIMAR-main")
+# devtools::install_github("kreutz-lab/DIMAR") ### => Did not work, fixed it on local fork below
+devtools::install_local("~/INRIA/R_scripts/benchmark/DIMAR-main")
 # remove.packages("DIMAR")
 library(DIMAR)
 
 mtx <- as.matrix(X.missing)
 
-df <- DIMAR::dimar(mtx = mtx, methods=NULL)
+df <- DIMAR::dimar(mtx = mtx, methods=NULL)  # First run: does not work, second time works (need one run to load packages?)
 imputed_datasets$dimar <- df[["Imputation"]]
 
 mtx <- as.matrix(X.missing)
@@ -141,7 +141,7 @@ df <- DIMAR::dimar(mtx = mtx, methods="fast")
 imputed_datasets$dimar_fast <- df[["Imputation"]]
 
 mtx <- as.matrix(X.missing)
-df <- DIMAR::dimar(mtx = mtx, methods=c("impSeqRob"))
+df <- DIMAR::dimar(mtx = mtx, methods=c("impSeqRob")) # Run it twice as well?
 imputed_datasets$dimar_impSeqRob <- df[["Imputation"]]
 
 mtx <- as.matrix(X.missing)
@@ -161,7 +161,7 @@ df <- DIMAR::dimar(mtx = mtx, methods=c("SVTImpute"))
 imputed_datasets$dimar_SVTImpute <- df[["Imputation"]]
 
 mtx <- as.matrix(X.missing)
-df <- DIMAR::dimar(mtx = mtx, methods=c("SVDImpute"))
+df <- DIMAR::dimar(mtx = mtx, methods=c("SVDImpute")) # Run it twice?
 imputed_datasets$dimar_SVDImpute <- df[["Imputation"]]
 
 mtx <- as.matrix(X.missing)
@@ -177,9 +177,59 @@ df <- DIMAR::dimar(mtx = mtx, methods=c("nlpca"))
 imputed_datasets$dimar_nlpca <- df[["Imputation"]]
 
 
-#############
+#### Load other R methods
+
+source("miceDRF.R")
+library(mice)
+
+temp <- mice(X.missing, m = 1, method = "DRF", printflag=FALSE)
+imputed_datasets$mice_drf <- mice::complete(temp,1)
+
+temp <- mice(X.missing, m = 1, method = "norm.predict", printflag=FALSE)
+imputed_datasets$mice_norm_predict <- mice::complete(temp,1)
+
+temp <- mice(X.missing, m = 1, method = "norm.nob", printflag=FALSE)
+imputed_datasets$mice_norm_nob <- mice::complete(temp,1)
+
+
+
+library("FHDI")
+
+temp <- FHDI::FHDI_Driver(X.missing, s_op_imputation = "FEFI")
+temp <- temp[["simp.data"]]
+imputed_datasets$fhdi_fefi <- temp
+
+temp <- FHDI::FHDI_Driver(X.missing, s_op_imputation = "FHDI")
+temp <- temp[["simp.data"]]
+imputed_datasets$fhdi_fhdi <- temp
+
+
+library("ImputeRobust")
+library("mice")
+temp <- mice(X.missing, m=1, method="gamlss") # VERY SLOW
+temp <- mice::complete(temp)
+imputed_datasets$mice_gamlss <- temp
+
+library("VIM")
+temp <- VIM::impPCA(X.missing, method="classical", m=1)
+imputed_datasets$vim_pca_classical <- temp
+
+temp <- VIM::impPCA(X.missing, method="mcd", m=1)
+imputed_datasets$vim_pca_robust <- temp
+
+library("pcaMethods")
+temp <- pcaMethods::llsImpute(X.missing, k=5, completeObs = TRUE)
+temp <- pcaMethods::completeObs(temp)
+imputed_datasets$pca_lls <- temp
+
+
+source("rmiMAE.R")
+temp <- rmiMAE(as.matrix(X.missing))
+imputed_datasets$rmiMAE <- temp$x
+
+################
 # Compute RMSE
-#############
+################
 
 (list_methods <- names(imputed_datasets))
 
@@ -196,6 +246,30 @@ for (i in 1:length(list_methods)){
 ## Plot RMSE values
 
 barplot(rmse_values, names.arg = list_methods, las = 2, col = "lightblue", main = "RMSE values", ylab = "RMSE", xlab = "Methods")
+
+
+
+###########
+# Compute Energy
+###########
+
+library(energy)
+
+energy <- function(X_observed, X_imputed) {
+  eqdist.e(rbind(X_observed, X_imputed), c(nrow(X_observed), nrow(X_imputed)))
+}
+
+energy_values <- c()
+
+for (i in 1:length(list_methods)){
+  energy_values <- c(energy_values, energy(X.complete, as.matrix(imputed_datasets[[i]])))
+}
+
+## Plot Energy values
+
+barplot(energy_values, names.arg = list_methods, las = 2, col = "lightblue", main = "Energy values", ylab = "Energy", xlab = "Methods")
+n <- length(energy_values)
+barplot(log(energy_values[2:n]), names.arg = list_methods[2:n], las = 2, col = "lightblue", main = "Energy values", ylab = "Log Energy", xlab = "Methods")
 
 
 
