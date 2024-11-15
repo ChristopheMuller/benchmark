@@ -226,6 +226,26 @@ source("rmiMAE.R")
 temp <- rmiMAE(as.matrix(X.missing))
 imputed_datasets$rmiMAE <- temp$x
 
+
+################
+# Load from Python
+################
+
+library(reticulate)
+use_python("C:\\Users\\Chris\\anaconda3\\envs\\hyperimpute\\python.exe", required = TRUE)
+source_python("C:\\Users\\Chris\\Documents\\INRIA\\R_scripts\\benchmark\\script_python.py")
+
+
+
+
+
+
+
+
+
+
+
+
 ################
 # Compute RMSE
 ################
