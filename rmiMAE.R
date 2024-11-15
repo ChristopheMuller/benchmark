@@ -4,7 +4,8 @@
 ###############################################################################
 
 rmiMAE<- function (x,contRate=99){ 
-  origdat<-x
+  
+  origdat<-as.matrix(x)
   RegCoef <- function(x, a) {
     keep <- (a != 0) & (!is.na(x))
     a <- a[keep]

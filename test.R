@@ -194,7 +194,6 @@ imputed_datasets$mice_norm_nob <- mice::complete(temp,1)
 
 
 library("FHDI")
-
 temp <- FHDI::FHDI_Driver(X.missing, s_op_imputation = "FEFI")
 temp <- temp[["simp.data"]]
 imputed_datasets$fhdi_fefi <- temp

@@ -4,7 +4,6 @@
 #####################
 
 
-
 # Generate synthetic data with missing values
 generate_fake_data <- function(n, d, prc_missing, seed) {
   # Set random seed for reproducibility
@@ -85,7 +84,13 @@ impute_wrapper <- function(DATA.MISSING, package_name, function_name, err.tolera
       start_time <- Sys.time()
       
       # Dynamically call the imputation function using get to locate the function within the package
-      imputation_function <- get(function_name, envir = asNamespace(package_name))
+      if (is.null(package_name)) {
+        imputation_function <- get(function_name, envir = globalenv())
+      }
+      else {
+        imputation_function <- get(function_name, envir = asNamespace(package_name))
+      }
+      
       imputation_result$Imp <- do.call(imputation_function, args = list(...))
       
       # Stop measuring the running time
@@ -120,134 +125,52 @@ impute_all <- function(data, method) {
     imputed_data <- impute_wrapper(DATA.MISSING=data, package_name="imputomics", function_name=paste0("impute_", method), missdf=data)
   }
   
-  else if (method %in% c("mice_drf", "mice_norm_predict", "mice_norm_nob")){
-    source("miceDRF.R")
+  else if (method %in% c("mice_drf", "mice_norm_predict", "mice_norm_nob", "gamlss")){
+    if (method == "mice_drf"){
+      source("miceDRF.R")
+    }
+    else if (method == "gamlss") {
+      library("ImputeRobust")
+    }
     method_name <- ifelse(method == "mice_drf", "DRF", ifelse(method == "mice_norm_predict", "norm.predict", "norm.nob"))
     temp <- impute_wrapper(DATA.MISSING=data, package_name="mice", function_name="mice", m=1, data=data, method=method_name, printflag=FALSE)
     imputed_data <- temp
     imputed_data$Imp <- mice::complete(temp$Imp)
   }
   
+  else if (method %in% c("FHDI", "FEFI")) {
+    temp <- impute_wrapper(DATA.MISSING=data, package_name="FHDI", function_name="FHDI_Driver", daty=data, s_op_imputation=method)
+    imputed_data <- temp
+    imputed_data$Imp <- temp$Imp[["simp.data"]]
+  }
+  
+  else if (method %in% c("pca_lls")){
+    library("pcaMethods")
+    temp <- impute_wrapper(DATA.MISSING=data, package_name="pcaMethods", function_name="llsImpute", Matrix=data, k=5, completeObs=TRUE)
+    imputed_data <- temp
+    imputed_data$Imp <- pcaMethods::completeObs(temp$Imp)
+  }
+  
+  else if (method %in% c("pca_classic", "pca_robust")) {
+    library("VIM")
+    method_name <- ifelse(method == "pca_classic", "classical", "mcd")
+    imputed_data <- impute_wrapper(DATA.MISSING=data, package_name="VIM", function_name="impPCA", x=data, method=method_name, m=1)
+  }
+  
+  else if (method %in% c("rmiMAE")) {
+    source("rmiMAE.R")
+    temp <- impute_wrapper(DATA.MISSING=data, package_name=NULL, function_name="rmiMAE", x=as.matrix(data))
+    imputed_data <- temp
+    imputed_data$Imp <- temp$Imp$x
+  }
+  
+  else {
+    stop("Method not found")
+  }
+  
   
   return(imputed_data)
 }
-
-
-# # Mean imputation
-# impute_mean <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_mean", missdf=data)
-# }
-# 
-# # Median imputation
-# impute_median <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_median", missdf=data)
-# }
-# 
-# # Min imputation
-# impute_min <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_min", missdf=data)
-# }
-# 
-# # Halfmin imputation
-# impute_halfmin <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_halfmin", missdf=data)
-# }
-# 
-# # Random imputation
-# impute_random <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_random", missdf=data)
-# }
-# 
-# # Zero imputation
-# impute_zero <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_zero", missdf=data)
-# }
-# 
-# # Mice cart imputation
-# impute_mice_cart <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_mice_cart", missdf=data)
-# }
-# 
-# # Mice pmm imputation
-# impute_mice_pmm <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_mice_pmm", missdf=data)
-# }
-# 
-# # Mice mixed imputation
-# impute_mice_mixed <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_mice_mixed", missdf=data)
-# }
-# 
-# # Mice rf imputation
-# impute_mice_rf <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_mice_rf", missdf=data)
-# }
-# 
-# # missforest imputation
-# impute_missforest <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_missforest", missdf=data)
-# }
-# 
-# # metabimpute_rf imputation
-# impute_metabimpute_rf <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_metabimpute_rf", missdf=data)
-# }
-# 
-# # missmda_em imputation
-# impute_missmda_em <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_missmda_em", missdf=data)
-# }
-# 
-# # amelia imputation
-# impute_amelia <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_amelia", missdf=data)
-# }
-# 
-# # areg imputation
-# impute_areg <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_areg", missdf=data)
-# }
-# 
-# # tknn imputation
-# impute_tknn <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_tknn", missdf=data)
-# }
-# 
-# # corknn imputation
-# impute_corknn <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_corknn", missdf=data)
-# }
-# 
-# # knn imputation
-# impute_knn <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_knn", missdf=data)
-# }
-# 
-# # bpca imputation
-# impute_bpca <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_bpca", missdf=data)
-# }
-# 
-# # metabimpute bpca imputation
-# impute_metabimpute_bpca <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_metabimpute_bpca", missdf=data)
-# }
-# 
-# # cm imputation
-# impute_cm <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_cm", missdf=data)
-# }
-# 
-# # softimpute imputation
-# impute_softimpute <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_softimpute", missdf=data)
-# }
-# 
-# # bayesmetab imputation
-# impute_bayesmetab <- function(data) {
-#   imputed_data <- impute_wrapper(data=data, package_name="imputomics", function_name="impute_bayesmetab", missdf=data)
-# }
-
 
 
 #####################
@@ -271,28 +194,37 @@ compute_imputation_energy <- function(complete_data, imputated_data) {
 }
 
 
-# Function to create a bar plot of RMSE scores
-plot_imputation_scores <- function(score_list, log_y = FALSE, keep_score="rmse") {
+plot_imputation_scores <- function(scores_df, log_y = FALSE, score_name="rmse") {
   library(ggplot2)
   
-  # Convert list to data frame for easy plotting
-  scores_df <- do.call(rbind, lapply(score_list, function(x) data.frame(keep_score = x[[keep_score]])))
-  scores_df$method <- rownames(scores_df)
-  
-  # Plot with ggplot2
-  p <- ggplot(scores_df, aes(x = method, y = keep_score)) +
+  # Create the plot using the column specified by score_name
+  p <- ggplot(scores_df, aes_string(x = "name", y = score_name)) +
     geom_bar(stat = "identity", fill = "skyblue") +
     theme_minimal() +
-    labs(title = paste("Imputation ", keep_score, " Scores by Method"), x = "Method", y = keep_score) +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    labs(
+      title = paste("Imputation", toupper(score_name), "by Method"), 
+      x = "Method", 
+      y = score_name
+    ) +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      plot.title = element_text(hjust = 0.5)
+    )
   
-  # Apply log scale if requested
+  # Apply appropriate scale based on log_y parameter
   if (log_y) {
     p <- p + scale_y_log10()
+  } else {
+    # Set y-axis to start at 0 and expand slightly above the maximum value
+    p <- p + scale_y_continuous(
+      expand = expansion(mult = c(0, 0.1)),  # 0 expansion at bottom, 10% at top
+      limits = c(0, NA)  # Start at 0, let ggplot determine upper limit
+    )
   }
   
   p
 }
+
 
 # Function to create a bar plot showing multiple imputation scores in two rows
 plot_imputation_several_scores <- function(score_list, log_y = FALSE) {
