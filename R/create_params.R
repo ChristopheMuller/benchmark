@@ -1,0 +1,40 @@
+
+library(dplyr)
+library(tools)
+
+create_params <- function(path_to_complete_datasets,
+                          path_to_incomplete_datasets,
+                          path_to_amputed,
+                          path_to_imputed,
+                          amputation_mechanisms,
+                          imputation_methods) {
+  # completed
+  c_datasets <- list.files(path_to_complete_datasets, full.names = TRUE)
+  
+  #incompleted
+  inc_datasets <- list.files(path_to_incomplete_datasets, full.names = TRUE)
+  
+  # create grids of amputation parameters
+  params_complete <- expand.grid(mechanism = amputation_mechanisms, 
+                                 filepath_original = c_datasets, 
+                                 case = "complete",
+                                 stringsAsFactors = FALSE)
+  params_incomplete <- expand.grid(mechanism = NA, 
+                                   filepath_original = inc_datasets, 
+                                   case = "incomplete",
+                                   stringsAsFactors = FALSE)
+  
+  rbind(params_complete, params_incomplete) %>% 
+    mutate(set_id = sub("(.*\\/)([^.]+)(\\.[[:alnum:]]+$)", "\\2", filepath_original)) %>% 
+    mutate(amputed_id = paste0(amputation_mechanisms, ".", set_id)) %>% 
+    mutate(filepath_amputed = paste0(path_to_amputed, amputed_id, ".RDS")) %>% 
+    cross_join(imputation_methods) %>% 
+    mutate(imputed_id = paste0(method, ".", amputed_id)) %>% 
+    mutate(filepath_imputed = paste0(path_to_imputed, imputed_id, ".RDS")) %>% 
+    select(set_id, mechanism, case, method, imputation_fun, amputed_id, imputed_id, everything())
+}
+
+
+
+
+
