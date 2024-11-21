@@ -164,6 +164,13 @@ impute_all <- function(data, method) {
     imputed_data$Imp <- temp$Imp$x
   }
   
+  else if (method %in% c("sinkhorn","hyperimpute","miwae","miracle","gain","EM")){
+    library(reticulate)
+    use_python("C:\\Users\\Chris\\anaconda3\\envs\\hyperimpute\\python.exe", required = TRUE)
+    source_python("hyperimpute_script.py")
+    imputed_data <- impute_wrapper(DATA.MISSING=data, package_name=NULL, function_name="hyperimpute_python", X=data, method=method)
+  }
+  
   else {
     stop("Method not found")
   }

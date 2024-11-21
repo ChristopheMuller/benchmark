@@ -26,7 +26,8 @@ methods <- list(method = c(
           "corknn", "knn", "bpca", "metabimpute_bpca", "cm", "softimpute",
           "bayesmetab", "mice_drf", "mice_norm_predict", "mice_norm_nob",
           "FEFI", "pca_lls", "pca_classic", "pca_robust",
-          "rmiMAE", "gamlss", "FHDI"))
+          "rmiMAE", "gamlss", "FHDI",
+          "sinkhorn","hyperimpute","miwae","miracle","gain","EM"))
 
 
 

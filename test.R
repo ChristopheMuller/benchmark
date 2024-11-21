@@ -126,8 +126,8 @@ imputed_datasets$bcv_svd <- df
 
 #### Load all DIMAR methods
 
-# devtools::install_github("kreutz-lab/DIMAR") ### => Did not work, fixed it on local fork below
-devtools::install_local("~/INRIA/R_scripts/benchmark/DIMAR-main")
+devtools::install_github("kreutz-lab/DIMAR") ### => Did not work, fixed it on local fork below
+# devtools::install_local("~/INRIA/R_scripts/benchmark/DIMAR-main")
 # remove.packages("DIMAR")
 library(DIMAR)
 
@@ -233,7 +233,13 @@ imputed_datasets$rmiMAE <- temp$x
 
 library(reticulate)
 use_python("C:\\Users\\Chris\\anaconda3\\envs\\hyperimpute\\python.exe", required = TRUE)
-source_python("C:\\Users\\Chris\\Documents\\INRIA\\R_scripts\\benchmark\\script_python.py")
+source_python("hyperimpute_script.py")
+
+
+
+
+
+
 
 
 
