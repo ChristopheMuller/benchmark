@@ -339,8 +339,9 @@
     },
     "IRanges": {
       "Package": "IRanges",
-      "Version": "2.36.0",
+      "Version": "2.40.0",
       "Source": "Bioconductor",
+      "Repository": "Bioconductor 3.20",
       "Requirements": [
         "BiocGenerics",
         "R",
@@ -350,7 +351,7 @@
         "stats4",
         "utils"
       ],
-      "Hash": "f98500eeb93e8a66ad65be955a848595"
+      "Hash": "ecc5317f9624d9992f36e3a900a8ec3b"
     },
     "KernSmooth": {
       "Package": "KernSmooth",
@@ -719,9 +720,9 @@
     },
     "S4Vectors": {
       "Package": "S4Vectors",
-      "Version": "0.40.2",
+      "Version": "0.44.0",
       "Source": "Bioconductor",
-      "Repository": "Bioconductor 3.18",
+      "Repository": "Bioconductor 3.20",
       "Requirements": [
         "BiocGenerics",
         "R",
@@ -730,7 +731,7 @@
         "stats4",
         "utils"
       ],
-      "Hash": "1716e201f81ced0f456dd5ec85fe20f8"
+      "Hash": "20149fcead4dd6f9da3605f98b5220fc"
     },
     "SQUAREM": {
       "Package": "SQUAREM",
