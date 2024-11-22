@@ -18,19 +18,28 @@ ampute_dataset <- function(filepath, mechanism) {
 # some dummy MCAR examples below
 
 mechanism1 <- function(dat, ...) {
-  dat[runif(nrow(dat)*ncol(dat)) < 0.2] <- NA
-  dat
+  
+  missing_cols <- sample(1:ncol(dat), 3, replace = FALSE)
+  dat <- as.matrix(dat)
+  dat[, missing_cols][runif(nrow(dat) * 3) < 0.5] <- NA
+  data.frame(dat, check.names = FALSE)
+  
 }
 
 mechanism2 <- function(dat, ...) {
-  dat[runif(nrow(dat)*ncol(dat)) < 0.3] <- NA
-  dat
+  missing_cols <- sample(1:ncol(dat), 4, replace = FALSE)
+  dat <- as.matrix(dat)
+  dat[, missing_cols][runif(nrow(dat) * 4) < 0.3] <- NA
+  data.frame(dat, check.names = FALSE)
 }
 
 mechanism3 <- function(dat, ...) {
-  dat[runif(nrow(dat)*ncol(dat)) < 0.3] <- NA
-  dat
+  missing_cols <- sample(1:ncol(dat), 5, replace = FALSE)
+  dat <- as.matrix(dat)
+  dat[, missing_cols][runif(nrow(dat) * 5) < 0.7] <- NA
+  data.frame(dat, check.names = FALSE)
 }
+
 
 # amputation summary
 

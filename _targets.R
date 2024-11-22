@@ -34,7 +34,7 @@ path_to_imputed <- "./results/imputed/"
 amputation_mechanisms <- c("mechanism1")
 
 # imputation methods
-methods <- c("mean", "minProb", "mice_norm_nob", "miracle", "dimar_fast")
+methods <- c("mean", "min", "knn")
 imputation_funs <- paste0("impute_", methods)
 
 imputation_methods <- data.frame(method = methods,
@@ -75,7 +75,8 @@ imputed_datasets <- tar_map(
   names = any_of("imputed_id"),
   tar_target(
     imputed_dat,
-    safe_impute(
+    impute(
+      dataset_id = imputed_id,
       missing_data_set = amputed_all[[paste0("amputed_dat_", amputed_id)]], 
       imputing_function = get(imputation_fun),
       timeout = 600, # time in seconds
@@ -83,7 +84,7 @@ imputed_datasets <- tar_map(
     )
   ),
   tar_target(save_imputed_dat,
-             saveRDS(imputed_dat, filepath_imputed)
+             saveRDS(imputed_dat[["imputed"]], filepath_imputed)
   )
 )
 
@@ -101,7 +102,11 @@ list(
   imputed_datasets,
   tar_combine(imputed_all,
               imputed_datasets[["imputed_dat"]],
-              command = list(!!!.x))
+              command = list(!!!.x)),
+  
+  tar_target(imputation_summary,
+             summarize_imputations(imputed_all, params))
+  
   # ANALYSIS
   # nice code here
 )

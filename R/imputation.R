@@ -22,3 +22,85 @@ safe_impute <- function(missing_data_set,
   imputed
 }
 
+
+
+impute <- function(dataset_id, missing_data_set, imputing_function, 
+                   timeout = 600, n_attempts = 3) {
+  
+  missing_data_set <- pre_process(missing_data_set)
+  
+  start_time <- Sys.time()
+  imputed <- safe_impute(missing_data_set, imputing_function, timeout, n_attempts)
+  time <- as.numeric(Sys.time() - start_time)
+  
+  if(inherits(imputed, "try-error")) {
+    error <- ifelse(grepl("reached elapsed time limit", imputed[[1]]),
+                    "timeout", "computational")
+  } else {
+    error <- validate_imputation(imputed, missing_data_set)
+    imputed <- post_process(imputed)
+  }
+  
+  res <- data.frame(imputed_id = dataset_id,
+                    time= time,
+                    error = error)
+  
+  list(imputed = imputed, 
+       res = res)
+  
+}
+
+
+validate_imputation <- function(imputed, missing_data_set) {
+  if(! all(imputed == missing_data_set, na.rm = TRUE))
+    return("modification")
+  
+  if(any(is.na(imputed)))
+    return("missings")
+  
+  return(NA)
+}
+
+
+
+pre_process <- function(missing_data_set) {
+  missing_data_set
+}
+
+
+post_process <- function(imputed) {
+  imputed
+}
+
+
+summarize_imputations <- function(imputed_all, params) {
+  
+  results <- lapply(imputed_all, function(ith_imputed) {
+    imputed_data <- ith_imputed[["imputed"]]
+    res <- ith_imputed[["res"]]
+    
+    params_one_row <- params %>% 
+      filter(imputed_id == res[["imputed_id"]])
+    
+    original_data <- readRDS(params_one_row[["filepath_original"]])
+    amputed_data <- readRDS(params_one_row[["filepath_amputed"]])
+    
+    if(params_one_row[["case"]] == "complete") {
+      scores <- scores_for_complete(original_data, amputed_data, imputed_data)
+    } else {
+      scores <- scores_for_incomplete(original_data, imputed_data)
+    }
+    res %>% 
+      cross_join(scores)
+    
+  }) %>% 
+    bind_rows()
+  
+  params %>% 
+    left_join(results, by = "imputed_id") %>% 
+    select(set_id, mechanism, case, method, imputation_fun, time, error, 
+           measure, score)
+}
+
+
+
