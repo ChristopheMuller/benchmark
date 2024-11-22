@@ -1,12 +1,21 @@
 
 ### TO USE PYTHON FUNCTIONS
 # 1. conda create --name benchmark python=3.10
-# 2. pip install -r python/requirements.txt
+# 2. conda activate benchmark
+# 2. pip install -r python/python_requirements.txt
 # 3. which python #=> Fill PATH below with the output
 
 
+### OR (IOS dependent)
+# sh python/windows_setup.sh
+# or
+# sh python/linux_setup.sh
+####
+
+
 library(reticulate)
-PATH_PYTHON <- "C:\\Users\\Chris\\anaconda3\\envs\\benchmark\\python.exe"
+PATH_PYTHON <- "./.venv/Scripts/python.exe"
+# PATH_PYTHON <- "C:\\Users\\Chris\\anaconda3\\envs\\benchmark\\python.exe"
 
 
 use_python(PATH_PYTHON, required = TRUE)
