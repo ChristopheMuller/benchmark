@@ -9,13 +9,19 @@ library(dplyr)
 library(imputomics)
 library(miceDRF)
 library(ImputeRobust)
+library(stringr)
+library(energy)
+library(reticulate)
 
 # Source custom functions
 tar_source()
 
-# Tar options
+options(clustermq.scheduler = "multiprocess")
+
 tar_option_set(
-  packages = c("imputomics", "energy"),
+  resources = list(
+    RETICULATE_PYTHON = "./.venv/Scripts/python.exe"
+  )
 )
 
 set.seed(56135)
@@ -28,14 +34,17 @@ path_to_imputed <- "./results/imputed/"
 
 # amputation setup:
 # we will define mechanisms in functions and just call them on data
-# amputation_mechanisms <- c("mechanism1") 
-amputation_mechanisms <- c("mechanism1")
+amputation_mechanisms <- c("mechanism1", "mechanism2")
 
 # imputation methods
-methods <- c("mean", "min", "knn")
-imputation_funs <- paste0("impute_", methods)
+# methods <- c("mean", "min", "knn", "mice_cart", "missforest")
+# imputation_funs <- paste0("impute_", methods)
 
-imputation_methods <- data.frame(method = methods,
+imputation_funs <- c(imputomics::list_imputations(),
+                     c("impute_hyperimpute_em", "impute_gain", "impute_miracle", 
+                       "impute_miwae", "impute_hyperimpute", "impute_sinkhorn"))
+
+imputation_methods <- data.frame(method = str_remove(imputation_funs, "impute_"),
                                  imputation_fun = imputation_funs)
 
 # parameters:
@@ -72,7 +81,7 @@ imputed_datasets <- tar_map(
   values = imputation_params,
   names = any_of("imputed_id"),
   tar_target(
-    imputed_dat,
+    imputed_dat, 
     impute(
       dataset_id = imputed_id,
       missing_data_set = amputed_all[[paste0("amputed_dat_", amputed_id)]], 
