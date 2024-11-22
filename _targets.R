@@ -8,6 +8,9 @@ library(purrr)
 library(dplyr)
 library(imputomics)
 library(miceDRF)
+library(ImputeRobust)
+source("R/imputation_functions.R")
+source("R/python_imputation_functions.R")
 
 # Source custom functions
 tar_source()
@@ -28,10 +31,10 @@ path_to_imputed <- "./results/imputed/"
 # amputation setup:
 # we will define mechanisms in functions and just call them on data
 # amputation_mechanisms <- c("mechanism1") 
-amputation_mechanisms <- c("mechanism1", "mechanism2", "mechanism3")
+amputation_mechanisms <- c("mechanism1")
 
 # imputation methods
-methods <- c("mean", "mice_mixed", "random", "min", "halfmin")
+methods <- c("mean", "minProb", "mice_norm_nob", "miracle", "dimar_fast")
 imputation_funs <- paste0("impute_", methods)
 
 imputation_methods <- data.frame(method = methods,
