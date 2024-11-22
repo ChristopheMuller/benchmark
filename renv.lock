@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.4.2",
+    "Version": "4.4.1",
     "Repositories": [
       {
         "Name": "BioCsoft",
@@ -55,11 +55,6 @@
       "Package": "Biobase",
       "Version": "2.66.0",
       "Source": "bioc_xgit",
-      "Repository": "Bioconductor 3.20",
-      "git_url": "https://git.bioconductor.org/packages/Biobase",
-      "git_branch": "RELEASE_3_20",
-      "git_last_commit": "2cd604f",
-      "git_last_commit_date": "2024-10-29",
       "RemoteType": "bioc_xgit",
       "RemoteMirror": "https://git.bioconductor.org/packages",
       "RemoteRepo": "Biobase",
@@ -269,7 +264,7 @@
         "randomForest",
         "survival"
       ],
-      "Hash": "919baa5220e834c023c7030d99b6a702"
+      "Hash": "b2c1244db8e563b3a067913783a14a6b"
     },
     "FHDI": {
       "Package": "FHDI",
@@ -593,7 +588,7 @@
         "tidyr",
         "vegan"
       ],
-      "Hash": "1ee3bc526deaf44ac17f4b8b0ae7fed0"
+      "Hash": "9ef28be177e9653d1c8bea03aa2a9914"
     },
     "ModelMetrics": {
       "Package": "ModelMetrics",
@@ -2656,17 +2651,12 @@
         "gbm",
         "locfit"
       ],
-      "Hash": "b6ce749c247c0f9fd99e54c411d727f6"
+      "Hash": "7c5360eab61a76c1d499b0278da590ed"
     },
     "impute": {
       "Package": "impute",
       "Version": "1.80.0",
       "Source": "bioc_xgit",
-      "Repository": "Bioconductor 3.20",
-      "git_url": "https://git.bioconductor.org/packages/impute",
-      "git_branch": "RELEASE_3_20",
-      "git_last_commit": "6dd5ed4",
-      "git_last_commit_date": "2024-10-29",
       "RemoteType": "bioc_xgit",
       "RemoteMirror": "https://git.bioconductor.org/packages",
       "RemoteRepo": "impute",
@@ -2739,7 +2729,7 @@
         "tidyr",
         "truncnorm"
       ],
-      "Hash": "2236f9d8b731c66fb709d616b18a1360"
+      "Hash": "7a58878482ac2b6232c2596d3bffd271"
     },
     "ipred": {
       "Package": "ipred",
@@ -3143,13 +3133,13 @@
       "RemoteHost": "api.github.com",
       "RemoteRepo": "miceDRF",
       "RemoteUsername": "KrystynaGrzesiak",
-      "RemoteSha": "947494f303c76df35526bfc22be44e92e3d26dcb",
+      "RemoteSha": "013a818ed27312d301a90e51c70a114fc4b50b30",
       "Requirements": [
         "drf",
         "energy",
         "scoringRules"
       ],
-      "Hash": "68528db42eb58aa2b315a8e6d651f21d"
+      "Hash": "b391e46c2c66e7258811a61fa91a13fa"
     },
     "microbenchmark": {
       "Package": "microbenchmark",
@@ -3536,11 +3526,6 @@
       "Package": "pcaMethods",
       "Version": "1.98.0",
       "Source": "bioc_xgit",
-      "Repository": "Bioconductor 3.20",
-      "git_url": "https://git.bioconductor.org/packages/pcaMethods",
-      "git_branch": "RELEASE_3_20",
-      "git_last_commit": "19b67d5",
-      "git_last_commit_date": "2024-10-29",
       "RemoteType": "bioc_xgit",
       "RemoteMirror": "https://git.bioconductor.org/packages",
       "RemoteRepo": "pcaMethods",
