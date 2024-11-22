@@ -84,11 +84,13 @@ summarize_imputations <- function(imputed_all, params) {
     
     original_data <- readRDS(params_one_row[["filepath_original"]])
     amputed_data <- readRDS(params_one_row[["filepath_amputed"]])
+    imputation_fun <- get(params_one_row[["imputation_fun"]])
     
     if(params_one_row[["case"]] == "complete") {
-      scores <- scores_for_complete(original_data, amputed_data, imputed_data)
+      scores <- scores_for_complete(original_data, amputed_data, imputed_data,
+                                    imputation_fun)
     } else {
-      scores <- scores_for_incomplete(original_data, imputed_data)
+      scores <- scores_for_incomplete(original_data, imputed_data, imputation_fun)
     }
     res %>% 
       cross_join(scores)
