@@ -11,8 +11,9 @@ scores_for_complete <- function(original_data, amputed_data, imputed_data,
   energy <- as.numeric(miceDRF::energy_dist(X = original_data, 
                                             X_imp = imputed_data))
   
-  ImpScore <- miceDRF::Iscore(original_data, imputed_data, 
-                              imputation_func = imputation_fun)
+  # ImpScore <- miceDRF::Iscore(X = amputed_data, X_imp = imputed_data, 
+  #                             imputation_func = imputation_fun)
+  ImpScore <- NA
   
   rbind(imputomics_measures,
         data.frame(measure = c("energy", "IScore"), 
@@ -23,8 +24,9 @@ scores_for_complete <- function(original_data, amputed_data, imputed_data,
 
 scores_for_incomplete <- function(original_data, imputed_data, imputation_fun) {
   #calculate IScore here
-  ImpScore <- miceDRF::Iscore(original_data, imputed_data, 
-                              imputation_func = imputation_fun)
+  # ImpScore <- miceDRF::Iscore(original_data, imputed_data, 
+  #                             imputation_func = imputation_fun)
+  ImpScore <- NA
   
   data.frame(measure = "IScore", score = ImpScore) 
 }
