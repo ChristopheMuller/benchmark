@@ -5,42 +5,46 @@
 # 2. pip install -r python/python_requirements.txt
 # 3. which python #=> Fill PATH below with the output
 
-
 ### OR (IOS dependent)
 # sh python/windows_setup.sh
 # or
 # sh python/linux_setup.sh
 ####
 
-
-library(reticulate)
-PATH_PYTHON <- "./.venv/Scripts/python.exe"
+# library(reticulate)
+# PATH_PYTHON <- "./.venv/Scripts/python.exe"
 # PATH_PYTHON <- "C:\\Users\\Chris\\anaconda3\\envs\\benchmark\\python.exe"
 
+reticulate::source_python("python/python_imputation_functions.py")
 
-use_python(PATH_PYTHON, required = TRUE)
-source_python("python/python_imputation_functions.py")
+call_hyperimpute_fun <- function(missdf, method, ...) {
+  column_names <- colnames(missdf)
+  imputed <- hyperimpute_imp(missdf, method = method, ...)
+  colnames(imputed) <- column_names
+  imputed
+}
+
 
 impute_sinkhorn <- function(missdf, ...){
-  hyperimpute_imp(missdf, method="sinkhorn")
+  call_hyperimpute_fun(missdf, method = "sinkhorn", ...)
 }
 
 impute_hyperimpute <- function(missdf, ...){
-  hyperimpute_imp(missdf, method="hyperimpute")
+  call_hyperimpute_fun(missdf, method = "hyperimpute", ...)
 }
 
 impute_miwae <- function(missdf, ...){
-  hyperimpute_imp(missdf, method="miwae")
+  call_hyperimpute_fun(missdf, method = "miwae", ...)
 }
 
 impute_miracle <- function(missdf, ...){
-  hyperimpute_imp(missdf, method="miracle")
+  call_hyperimpute_fun(missdf, method = "miracle", ...)
 }
 
 impute_gain <- function(missdf, ...){
-  hyperimpute_imp(missdf, method="gain")
+  call_hyperimpute_fun(missdf, method = "gain", ...)
 }
 
 impute_hyperimpute_em <- function(missdf, ...){
-  hyperimpute_imp(missdf, method="EM")
+  call_hyperimpute_fun(missdf, method = "EM", ...)
 }
