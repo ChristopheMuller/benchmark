@@ -9,11 +9,14 @@ safe_impute <- function(missing_data_set,
   
   imputed <- structure(structure(list(), class = "try-error"))
   n <- 1
+  
   while(inherits(imputed, "try-error") & n < n_attempts) {
     
     imputed <- try({ 
-      R.utils::withTimeout(imputing_function(missing_data_set), 
-                           timeout = timeout, onTimeout = "error")
+      suppressWarnings({
+        R.utils::withTimeout(imputing_function(missing_data_set), 
+                             timeout = timeout, onTimeout = "error")
+      })
     })
     
     n <- n + 1
@@ -78,6 +81,13 @@ summarize_imputations <- function(imputed_all, params) {
   results <- lapply(imputed_all, function(ith_imputed) {
     imputed_data <- ith_imputed[["imputed"]]
     res <- ith_imputed[["res"]]
+    
+    if(!is.na(res[["error"]])) {
+      return(cross_join(res, data.frame(measure = c("mae", "rmse", "nrmse", 
+                                                    "mpe", "mape", "rsq", 
+                                                    "ccc", "energy", "IScore"),
+                                        score = NA)))
+    }
     
     params_one_row <- params %>% 
       filter(imputed_id == res[["imputed_id"]])
