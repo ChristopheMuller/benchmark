@@ -110,7 +110,7 @@ summarize_imputations <- function(imputed_all, params) {
   
   params %>% 
     left_join(results, by = "imputed_id") %>% 
-    select(set_id, mechanism, case, method, imputation_fun, time, error, 
+    dplyr::select(set_id, mechanism, case, method, imputation_fun, time, error, 
            measure, score)
 }
 
