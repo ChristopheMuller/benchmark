@@ -31,6 +31,11 @@
   "Bioconductor": {
     "Version": "3.20"
   },
+  "Python": {
+    "Version": "3.11.3",
+    "Type": "virtualenv",
+    "Name": ".venv"
+  },
   "Packages": {
     "Amelia": {
       "Package": "Amelia",
