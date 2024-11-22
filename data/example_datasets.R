@@ -11,3 +11,9 @@ dataset1 <- matrix(rnorm(1000), 100, 10)
 saveRDS(data.frame(dataset1), "./data/datasets/complete/dataset2.RDS")
 dataset1[runif(1000) < 0.2] <- NA
 saveRDS(data.frame(dataset1), "./data/datasets/incomplete/incomplete_dataset2.RDS")
+
+dataset1 <- matrix(rnorm(2000), 100, 20)
+saveRDS(data.frame(dataset1), "./data/datasets/complete/dataset3.RDS")
+
+dataset1 <- matrix(rnorm(20000), 1000, 20)
+saveRDS(data.frame(dataset1), "./data/datasets/complete/dataset4.RDS")
