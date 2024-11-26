@@ -34,7 +34,7 @@
   "Python": {
     "Version": "3.11.3",
     "Type": "virtualenv",
-    "Name": ".venv"
+    "Name": "./.venv"
   },
   "Packages": {
     "Amelia": {
@@ -3138,13 +3138,13 @@
       "RemoteHost": "api.github.com",
       "RemoteRepo": "miceDRF",
       "RemoteUsername": "KrystynaGrzesiak",
-      "RemoteSha": "94d1530fdb8309c69a9dcb18e24e7f4de459a5a7",
+      "RemoteSha": "5f1da408823be7b56a779c4ce4a53994974f7402",
       "Requirements": [
         "drf",
         "energy",
         "scoringRules"
       ],
-      "Hash": "9097049b774c62edc2e9a24acc4dad63"
+      "Hash": "aadb858350168045361c0ce847785b04"
     },
     "microbenchmark": {
       "Package": "microbenchmark",
