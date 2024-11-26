@@ -12,6 +12,10 @@ library(ImputeRobust)
 library(stringr)
 library(energy)
 library(reticulate)
+library(tidyr)
+
+# for vis
+library(ggplot2)
 
 # Source custom functions
 tar_source()
@@ -42,7 +46,8 @@ amputation_mechanisms <- c("mechanism1", "mechanism2")
 
 imputation_funs <- c(imputomics::list_imputations(),
                      c("impute_hyperimpute_em", "impute_gain", "impute_miracle", 
-                       "impute_miwae", "impute_hyperimpute", "impute_sinkhorn"))
+                       "impute_miwae", "impute_hyperimpute", "impute_sinkhorn",
+                       "impute_mice_drf"))
 
 imputation_methods <- data.frame(method = str_remove(imputation_funs, "impute_"),
                                  imputation_fun = imputation_funs)
