@@ -5,7 +5,7 @@
 ###                               (RMIMAE) Function                         ###
 ###############################################################################
 
-rmiMAE<- function (x,contRate=99){ 
+rmiMAE <- function (x,contRate=99){ 
   origdat<-x
   RegCoef <- function(x, a) {
     keep <- (a != 0) & (!is.na(x))
@@ -110,4 +110,7 @@ rmiMAE<- function (x,contRate=99){
 ############################################################### 
 ###                  THE END                                ###
 ###############################################################
+
+impute_rmiMAE <- function(missdf, ...) 
+  rmiMAE(as.matrix(missdf))$x
 
