@@ -18,12 +18,7 @@ ampute_dataset <- function(filepath, mechanism) {
 # some dummy MCAR examples below
 
 mechanism1 <- function(dat, ...) {
-  
-  missing_cols <- sample(1:ncol(dat), 3, replace = FALSE)
-  dat <- as.matrix(dat)
-  dat[, missing_cols][runif(nrow(dat) * 3) < 0.5] <- NA
-  data.frame(dat, check.names = FALSE)
-  
+  ampute(dat)[["amp"]]
 }
 
 mechanism2 <- function(dat, ...) {
