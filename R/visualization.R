@@ -1,5 +1,4 @@
 
-library(ggplot2)
 
 plot_errors <- function(imputation_summary) {
   
@@ -30,7 +29,7 @@ plot_time <- function(imputation_summary) {
     group_by(method) %>% 
     reframe(time = mean(time, na.rm = TRUE)) %>% 
     ggplot() + 
-    geom_col(aes(x = method, y = time)) +
+    geom_col(aes(x = reorder(method, time), y = time)) +
     coord_flip()
   
 }
@@ -39,7 +38,6 @@ plot_time <- function(imputation_summary) {
 plot_score <- function(imputation_summary, 
                        measure_name = "energy", 
                        which_case = "complete") {
-  
   imputation_summary %>% 
     filter(measure == measure_name, case == which_case) %>% 
     select(set_id, mechanism, method, score) %>% 
@@ -50,5 +48,24 @@ plot_score <- function(imputation_summary,
     coord_flip() +
     ggtitle("energy dist")
 }
+
+
+plot_averaged <- function(imputation_summary, measure_name = "energy") {
+  imputation_summary %>% 
+    filter(measure == measure_name) %>% 
+    group_by(method, measure) %>% 
+    reframe(mean_score = mean(score, na.rm = TRUE),
+            mean_time = mean(time)) %>% 
+    filter(!is.na(mean_score)) %>% 
+    ggplot() +
+    geom_col(aes(x = reorder(method, mean_score), y = log10(mean_score))) +
+    ylab(paste0("log10", measure_name)) +
+    xlab("method") +
+    coord_flip() 
+}
+
+
+
+
 
 
