@@ -13,6 +13,7 @@ library(stringr)
 library(energy)
 library(reticulate)
 library(tidyr)
+library(mice)
 
 # for vis
 library(ggplot2)
@@ -36,21 +37,21 @@ path_to_complete_datasets <- "./data/datasets/complete/"
 path_to_incomplete_datasets <- "./data/datasets/incomplete/"
 path_to_imputed <- "./results/imputed/"
 
+path_to_methods <- "./data/functions.RDS"
+
 # amputation setup:
 # we will define mechanisms in functions and just call them on data
-amputation_mechanisms <- c("mechanism1", "mechanism2")
+amputation_mechanisms <- c("mechanism1")
 
 # imputation methods
 # methods <- c("mean", "min", "knn", "mice_cart", "missforest")
 # imputation_funs <- paste0("impute_", methods)
 
-imputation_funs <- c(imputomics::list_imputations(),
-                     c("impute_hyperimpute_em", "impute_gain", "impute_miracle", 
-                       "impute_miwae", "impute_hyperimpute", "impute_sinkhorn",
-                       "impute_mice_drf"))
+imputation_funs <- readRDS(path_to_methods)
 
 imputation_methods <- data.frame(method = str_remove(imputation_funs, "impute_"),
-                                 imputation_fun = imputation_funs)
+                                 imputation_fun = imputation_funs) %>% 
+  filter(method != "mice_gamlss")
 
 # parameters:
 params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
