@@ -58,6 +58,9 @@ impute_sklearn_iterative_post <- function(missdf, ...){
 }
 
 impute_sklearn_iterative <- function(missdf, ...){
-  iterative_impute_post(missdf, post=FALSE, ...)
+  iterative_imp(missdf, post=FALSE, ...)
 }
 
+impute_remasker <- function(missdf, ...){
+  remasker_imp(missdf, ...)
+}

@@ -147,6 +147,7 @@ tensorflow_intel==2.18.0
 termcolor==2.5.0
 terminado==0.18.1
 threadpoolctl==3.5.0
+timm==1.0.12
 tinycss2==1.4.0
 tomli==2.1.0
 torch==2.5.1
