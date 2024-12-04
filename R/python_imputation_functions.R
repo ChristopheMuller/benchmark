@@ -15,6 +15,10 @@
 # PATH_PYTHON <- "./.venv/Scripts/python.exe"
 # PATH_PYTHON <- "C:\\Users\\Chris\\anaconda3\\envs\\benchmark\\python.exe"
 
+
+# use_python(PATH_PYTHON, required = TRUE)
+
+
 reticulate::source_python("python/python_imputation_functions.py")
 
 call_hyperimpute_fun <- function(missdf, method, ...) {
@@ -48,3 +52,12 @@ impute_gain <- function(missdf, ...){
 impute_hyperimpute_em <- function(missdf, ...){
   call_hyperimpute_fun(missdf, method = "EM", ...)
 }
+
+impute_sklearn_iterative_post <- function(missdf, ...){
+  iterative_impute_post(missdf, post=TRUE, ...)
+}
+
+impute_sklearn_iterative <- function(missdf, ...){
+  iterative_impute_post(missdf, post=FALSE, ...)
+}
+
