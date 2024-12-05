@@ -95,7 +95,7 @@ summarize_imputations <- function(imputed_all, params) {
     original_data <- readRDS(params_one_row[["filepath_original"]])
     amputed_data <- readRDS(params_one_row[["filepath_amputed"]])
     imputation_fun <- get(params_one_row[["imputation_fun"]])
-    
+
     if(params_one_row[["case"]] == "complete") {
       scores <- scores_for_complete(original_data, amputed_data, imputed_data,
                                     imputation_fun)
@@ -110,8 +110,8 @@ summarize_imputations <- function(imputed_all, params) {
   
   params %>% 
     left_join(results, by = "imputed_id") %>% 
-    dplyr::select(set_id, mechanism, case, method, imputation_fun, time, error, 
-           measure, score)
+    dplyr::select(set_id, mechanism, ratio, rep, case, method, imputation_fun, 
+                  time, error, measure, score)
 }
 
 
