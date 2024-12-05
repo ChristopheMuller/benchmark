@@ -7,6 +7,8 @@ create_params <- function(path_to_complete_datasets,
                           path_to_amputed,
                           path_to_imputed,
                           amputation_mechanisms,
+                          amputation_reps,
+                          missing_ratios,
                           imputation_methods) {
   # completed
   c_datasets <- list.files(path_to_complete_datasets, full.names = TRUE)
@@ -16,17 +18,21 @@ create_params <- function(path_to_complete_datasets,
   
   # create grids of amputation parameters
   params_complete <- expand.grid(mechanism = amputation_mechanisms, 
+                                 ratio = missing_ratios,
+                                 rep = 1:amputation_reps,
                                  filepath_original = c_datasets, 
                                  case = "complete",
                                  stringsAsFactors = FALSE)
   params_incomplete <- expand.grid(mechanism = NA, 
+                                   ratio = NA,
+                                   rep = 1,
                                    filepath_original = inc_datasets, 
                                    case = "incomplete",
                                    stringsAsFactors = FALSE)
   
   rbind(params_complete, params_incomplete) %>% 
     mutate(set_id = sub("(.*\\/)([^.]+)(\\.[[:alnum:]]+$)", "\\2", filepath_original)) %>% 
-    mutate(amputed_id = paste0(amputation_mechanisms, ".", set_id)) %>% 
+    mutate(amputed_id = paste0(mechanism,".", ratio ,".", rep, ".", set_id)) %>% 
     mutate(filepath_amputed = paste0(path_to_amputed, amputed_id, ".RDS")) %>% 
     cross_join(imputation_methods) %>% 
     mutate(imputed_id = paste0(method, ".", amputed_id)) %>% 
