@@ -42,12 +42,9 @@ classic_mcar <- function(dat, ratio, ...) {
 #' dist_shift(X, p = 0.4)
 #' 
 
-dist_shift <- function(X, p = 0.4, ratio = NULL,...) {
+dist_shift <- function(X, ratio = 0.5, ...) {
   
-  p <- ratio + 0.2
-  
-  # Ensure X is a matrix or dataframe
-  X <- as.data.frame(X, check.names = FALSE)
+  X <- data.frame(X, check.names = FALSE)
   
   # Get dimensions of X
   n_rows <- nrow(X)
@@ -58,38 +55,31 @@ dist_shift <- function(X, p = 0.4, ratio = NULL,...) {
     stop("Input matrix/dataframe must have at least two columns")
   }
   
-  # Select the last two columns
+  # Select random two columns
   last_two_cols <- X[, (n_cols-1):n_cols]
-  
   random_two_cols_id <- sample(1:ncol(X), 2, replace = FALSE)
-  
   random_two_cols <- X[, random_two_cols_id]
   
   # Calculate column-wise means of the last two columns
   col_means <- colMeans(random_two_cols, na.rm = TRUE)
   
   # Create a logical matrix indicating where values exceed mean
-  exceeds_mean <- t(apply(random_two_cols, 1, function(row) row > col_means))
+  exceeds_mean <- cbind(random_two_cols[, 1] > col_means[1], random_two_cols[, 2] > col_means[2])
   
   # Determine if row meets missingness condition
-  trigger_missingness <- apply(exceeds_mean, 1, any)
+  trigger_missingness <- rowSums(exceeds_mean) > 0
   
-  # Create a matrix of missingness probabilities
-  missingness_matrix <- matrix(
-    ifelse(trigger_missingness, p, 0), 
-    nrow = n_rows, 
-    ncol = n_cols
-  )
+  n0 <- sum(trigger_missingness)
+  
+  ## Expected number of missingness: n0*(d-2)*p (Expectation of Binomial)
+  ## We would like to control r=n0*(d-2)*p/(n*d), resulting in this formula:
+  p <- (ratio * n_rows * n_cols) / (n0 * (n_cols - 2))
+  
+  trigger_missingness <- ifelse(trigger_missingness, p, 0)
   
   # Introduce missingness in remaining columns
-  if (n_cols > 2) {
-    for (i in setdiff(1:n_cols, random_two_cols_id)) {
-      X[, i] <- ifelse(
-        runif(n_rows) < missingness_matrix[, i], 
-        NA, 
-        X[, i]
-      )
-    }
+  for (i in setdiff(1:n_cols, random_two_cols_id)) {
+    X[runif(n_rows) < trigger_missingness, i] <- NA
   }
   
   return(as.data.frame(X, check.names = FALSE))
