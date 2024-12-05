@@ -41,19 +41,13 @@ path_to_imputed <- "./results/imputed/"
 path_to_methods <- "./data/functions.RDS"
 
 # amputation setup:
-# we will define mechanisms in functions and just call them on data
-amputation_mechanisms <- c("classic_mar", "dist_shift")
-# missing_ratios <- c(0.2, 0.3, 0.4) * 100
-missing_ratios <- c(0.1, 0.2, 0.3) * 100
-amputation_reps <- 5
+amputation_mechanisms <- c("classic_mar", "dist_shift", "classic_mcar")
+missing_ratios <- c(0.1, 0.3, 0.5)
+amputation_reps <- 3
 
 # imputation methods
-# methods <- c("mean", "min", "knn", "mice_cart", "missforest")
-# imputation_funs <- paste0("impute_", methods)
-
 # imputation_funs <- readRDS(path_to_methods)[c(1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 25)]
 imputation_funs <- readRDS(path_to_methods)
-
 
 imputation_methods <- data.frame(method = str_remove(imputation_funs, "impute_"),
                                  imputation_fun = imputation_funs) %>% 
@@ -69,7 +63,7 @@ params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
                         missing_ratios = missing_ratios,
                         imputation_methods = imputation_methods)
 
-# saveRDS(params, "./data/params.RDS")
+saveRDS(params, "./data/params.RDS")
 
 amputation_params <- params %>% 
   select(amputed_id, mechanism, ratio, filepath_original, filepath_amputed) %>% 
@@ -119,14 +113,14 @@ list(
               amputed_datasets[["amputed_dat"]],
               command = list(!!!.x)),
   tar_target(amputation_summary,
-             summarize_amputation(amputed_all)),
+             summarize_amputation(amputed_all, params)),
   
   # IMPUTATION
   imputed_datasets,
   tar_combine(imputed_all,
               imputed_datasets[["imputed_dat"]],
               command = list(!!!.x)),
-  
+
   tar_target(imputation_summary,
              summarize_imputations(imputed_all, params))
   

@@ -7,7 +7,12 @@ ampute_dataset <- function(filepath, mechanism, ratio) {
   dat <- readRDS(filepath)
   
   if(!is.na(mechanism)) {
-    dat <- get(mechanism)(dat, ratio)
+    dat <- try({
+      get(mechanism)(dat, ratio)
+    })
+    
+    if(inherits(dat, "try-error"))
+      dat <- NA
   }
   
   dat  
@@ -21,6 +26,11 @@ classic_mar <- function(dat, ratio, ...) {
   produce_NA(data = dat, mechanism = "MAR", perc.missing = ratio, ...)$data.incomp
 }
 
+classic_mcar <- function(dat, ratio, ...) {
+  produce_NA(data = dat, mechanism = "MCAR", perc.missing = ratio, ...)$data.incomp
+}
+
+
 #' Introduce Missingness in Variables Conditionally
 #'
 #' @param X A dataframe or matrix
@@ -32,7 +42,10 @@ classic_mar <- function(dat, ratio, ...) {
 #' dist_shift(X, p = 0.4)
 #' 
 
-dist_shift <- function(X, p = 0.4, ...) {
+dist_shift <- function(X, p = 0.4, ratio = NULL,...) {
+  
+  p <- ratio + 0.2
+  
   # Ensure X is a matrix or dataframe
   X <- as.data.frame(X, check.names = FALSE)
   
@@ -94,12 +107,27 @@ mechanism3 <- function(dat, ...) {
 
 # amputation summary
 
-summarize_amputation <- function(amputed_all) {
+summarize_amputation <- function(amputed_all, params) {
   # was the amputation successful? What would we like to know about amputed datasets?
   # did all the mechanisms work?
   
+  amputation_ids <- names(amputed_all)
   
-  return("summary here!")
+  amputation_res <- lapply(amputation_ids, function(i) {
+    ith_amputed <- amputed_all[[i]]
+    
+    data.frame(amputed_id = str_remove(i, "amputed_dat_"),
+               amputed_ratio = sum(is.na(ith_amputed))/prod(dim(ith_amputed)))
+  }) %>% 
+    bind_rows() 
+  
+  params %>% 
+    select(set_id, amputed_id, case, mechanism, rep, ratio) %>% 
+    unique() %>% 
+    left_join(amputation_res, by = "amputed_id") %>% 
+    select(-amputed_id) %>% 
+    mutate(ratio = ratio,
+           diff = round(abs(ratio - amputed_ratio), 2))
 }
 
 
