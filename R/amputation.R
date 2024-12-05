@@ -2,12 +2,12 @@
 library(dplyr)
 
 # general amputation function
-ampute_dataset <- function(filepath, mechanism) {
+ampute_dataset <- function(filepath, mechanism, ratio) {
   
   dat <- readRDS(filepath)
   
   if(!is.na(mechanism)) {
-    dat <- get(mechanism)(dat)
+    dat <- get(mechanism)(dat, ratio)
   }
   
   dat  
@@ -17,8 +17,8 @@ ampute_dataset <- function(filepath, mechanism) {
 # here we could define mechanisms
 # some dummy MCAR examples below
 
-classic_mar <- function(dat, ...) {
-  mice::ampute(dat, ...)[["amp"]]
+classic_mar <- function(dat, ratio, ...) {
+  produce_NA(data = dat, mechanism = "MAR", perc.missing = ratio, ...)$data.incomp
 }
 
 #' Introduce Missingness in Variables Conditionally

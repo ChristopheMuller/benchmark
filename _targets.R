@@ -17,6 +17,7 @@ library(mice)
 
 # for vis
 library(ggplot2)
+library(patchwork)
 
 # Source custom functions
 tar_source()
@@ -41,13 +42,18 @@ path_to_methods <- "./data/functions.RDS"
 
 # amputation setup:
 # we will define mechanisms in functions and just call them on data
-amputation_mechanisms <- c("mechanism1")
+amputation_mechanisms <- c("classic_mar", "dist_shift")
+# missing_ratios <- c(0.2, 0.3, 0.4) * 100
+missing_ratios <- c(0.1, 0.2, 0.3) * 100
+amputation_reps <- 5
 
 # imputation methods
 # methods <- c("mean", "min", "knn", "mice_cart", "missforest")
 # imputation_funs <- paste0("impute_", methods)
 
+# imputation_funs <- readRDS(path_to_methods)[c(1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 25)]
 imputation_funs <- readRDS(path_to_methods)
+
 
 imputation_methods <- data.frame(method = str_remove(imputation_funs, "impute_"),
                                  imputation_fun = imputation_funs) %>% 
@@ -59,13 +65,16 @@ params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
                         path_to_amputed = path_to_amputed,
                         path_to_imputed = path_to_imputed,
                         amputation_mechanisms = amputation_mechanisms,
+                        amputation_reps = amputation_reps,
+                        missing_ratios = missing_ratios,
                         imputation_methods = imputation_methods)
 
 # saveRDS(params, "./data/params.RDS")
 
 amputation_params <- params %>% 
-  select(amputed_id, mechanism, filepath_original, filepath_amputed) %>% 
+  select(amputed_id, mechanism, ratio, filepath_original, filepath_amputed) %>% 
   unique()
+
 
 imputation_params <- params %>% 
   select(imputed_id, amputed_id, imputation_fun, filepath_imputed) %>% 
@@ -78,7 +87,8 @@ amputed_datasets <- tar_map(
   names = any_of("amputed_id"),
   tar_target(amputed_dat, 
              ampute_dataset(filepath = filepath_original,
-                            mechanism = mechanism)),
+                            mechanism = mechanism,
+                            ratio = ratio)),
   tar_target(save_amputed_dat,
              saveRDS(amputed_dat, filepath_amputed))
 )
