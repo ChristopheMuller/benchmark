@@ -5,4 +5,5 @@
 _targets/
 low_rank_MNAR/
 *.RDS
+!functions.RDS
 .venv/
