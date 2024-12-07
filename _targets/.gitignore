@@ -4,8 +4,3 @@
 # It is good pratice to either commit nothing from _targets/,
 # or if your data is not too sensitive,
 # commit only _targets/meta/meta.
-*
-!.gitignore
-!meta
-meta/*
-!meta/meta
