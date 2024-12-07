@@ -41,7 +41,7 @@ From: ubuntu:22.04
     apt-get update
     apt-get install -y --no-install-recommends build-essential wget curl libssl-dev libcurl4-openssl-dev libxml2-dev zlib1g-dev
     apt-get install -y --no-install-recommends lsb-release gnupg
-    apt-get install -y --no-install-recommends ca-certificates git locales libgsl-dev
+    apt-get install -y --no-install-recommends ca-certificates git locales libgsl-dev python3-pip
 
     # Install Python 3.11
     echo "deb http://ppa.launchpad.net/deadsnakes/ppa/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/deadsnakes-ppa.list && \
