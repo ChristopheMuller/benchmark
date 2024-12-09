@@ -4,7 +4,7 @@ eval_dimar_call <- function(missdf, methods, ...) {
   missdf <- as.matrix(missdf)
   
   capture.output(suppressMessages(suppressWarnings(
-    imputed <- DIMAR::dimar(mtx = missdf, methods = methods, ...)
+    imputed <- DIMAR::dimar(mtx = missdf, methods = methods)
   )))
   
   imputed[["Imputation"]]
@@ -32,10 +32,5 @@ impute_norm <- function(missdf, ...)
 impute_SVTImpute <- function(missdf, ...) 
   eval_dimar_call(missdf, methods = "SVTImpute", ...)
 
-impute_irmi <- function(missdf, ...)
-  eval_dimar_call(missdf, methods = "irmi", ...)
-
-impute_regression <- function(missdf, ...) 
-  eval_dimar_call(missdf, methods = "regression", ...)
 
 
