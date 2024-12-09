@@ -38,6 +38,4 @@ impute_irmi <- function(missdf, ...)
 impute_regression <- function(missdf, ...) 
   eval_dimar_call(missdf, methods = "regression", ...)
 
-impute_nlpca <- function(missdf, ...) 
-  eval_dimar_call(missdf, methods = "nlpca", ...)
 
