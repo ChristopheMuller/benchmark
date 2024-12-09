@@ -26,7 +26,7 @@ options(clustermq.scheduler = "multiprocess")
 
 tar_option_set(
   resources = list(
-    RETICULATE_PYTHON = "./.venv/Scripts/python.exe"
+    RETICULATE_PYTHON = "./.venv/bin/python"
   )
 )
 

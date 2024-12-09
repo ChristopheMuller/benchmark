@@ -103,13 +103,6 @@ export DISPLAY=:99
 
 R =>
 
-TRY THIS:
-    locale-gen en_US.UTF-8
-    update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
-
-    echo "export LC_ALL=en_US.UTF-8" >> /etc/profile
-    echo "export LANG=en_US.UTF-8" >> /etc/profile
-
 Sys.setenv(GITHUB_PAT = "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")
 Sys.setenv(R_COMPILE_AND_INSTALL_PACKAGES = "never")# => to install NMF
 devtools::install_github("renozao/pkgmaker")
@@ -128,3 +121,9 @@ renv::restore()
 * add in pipeline: all (but python file still commented out) => WORKS, needed to add directory "results/xx"
 * install imputomics => WORKS (no python yet)
 * use renv::restore ==> DOES NOT WORK ANYMMORE ????
+
+
+TODO:
+* Add on git subfolder results/amputed results/imputed
+* Add miceDRF (uncomment it everywhere)
+* Add python (reticulate path + uncomment file)
