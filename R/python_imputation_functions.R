@@ -19,48 +19,48 @@
 # use_python(PATH_PYTHON, required = TRUE)
 
 
-reticulate::source_python("python/python_imputation_functions.py")
+# reticulate::source_python("python/python_imputation_functions.py")
 
-call_hyperimpute_fun <- function(missdf, method, ...) {
-  column_names <- colnames(missdf)
-  imputed <- hyperimpute_imp(missdf, method = method, ...)
-  colnames(imputed) <- column_names
-  imputed
-}
+# call_hyperimpute_fun <- function(missdf, method, ...) {
+#   column_names <- colnames(missdf)
+#   imputed <- hyperimpute_imp(missdf, method = method, ...)
+#   colnames(imputed) <- column_names
+#   imputed
+# }
 
 
-impute_sinkhorn <- function(missdf, ...){
-  call_hyperimpute_fun(missdf, method = "sinkhorn", ...)
-}
+# impute_sinkhorn <- function(missdf, ...){
+#   call_hyperimpute_fun(missdf, method = "sinkhorn", ...)
+# }
 
-impute_hyperimpute <- function(missdf, ...){
-  call_hyperimpute_fun(missdf, method = "hyperimpute", ...)
-}
+# impute_hyperimpute <- function(missdf, ...){
+#   call_hyperimpute_fun(missdf, method = "hyperimpute", ...)
+# }
 
-impute_miwae <- function(missdf, ...){
-  call_hyperimpute_fun(missdf, method = "miwae", ...)
-}
+# impute_miwae <- function(missdf, ...){
+#   call_hyperimpute_fun(missdf, method = "miwae", ...)
+# }
 
-impute_miracle <- function(missdf, ...){
-  call_hyperimpute_fun(missdf, method = "miracle", ...)
-}
+# impute_miracle <- function(missdf, ...){
+#   call_hyperimpute_fun(missdf, method = "miracle", ...)
+# }
 
-impute_gain <- function(missdf, ...){
-  call_hyperimpute_fun(missdf, method = "gain", ...)
-}
+# impute_gain <- function(missdf, ...){
+#   call_hyperimpute_fun(missdf, method = "gain", ...)
+# }
 
-impute_hyperimpute_em <- function(missdf, ...){
-  call_hyperimpute_fun(missdf, method = "EM", ...)
-}
+# impute_hyperimpute_em <- function(missdf, ...){
+#   call_hyperimpute_fun(missdf, method = "EM", ...)
+# }
 
-impute_sklearn_iterative_post <- function(missdf, ...){
-  iterative_impute_post(missdf, post=TRUE, ...)
-}
+# impute_sklearn_iterative_post <- function(missdf, ...){
+#   iterative_impute_post(missdf, post=TRUE, ...)
+# }
 
-impute_sklearn_iterative <- function(missdf, ...){
-  iterative_imp(missdf, post=FALSE, ...)
-}
+# impute_sklearn_iterative <- function(missdf, ...){
+#   iterative_imp(missdf, post=FALSE, ...)
+# }
 
-impute_remasker <- function(missdf, ...){
-  remasker_imp(missdf, ...)
-}
+# impute_remasker <- function(missdf, ...){
+#   remasker_imp(missdf, ...)
+# }
