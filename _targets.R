@@ -40,72 +40,70 @@ path_to_imputed <- "./results/imputed/"
 
 path_to_methods <- "./data/functions.RDS"
 
-print(path_to_methods)
-
 # amputation setup:
-# amputation_mechanisms <- c("classic_mar", "dist_shift", "classic_mcar")
-# missing_ratios <- c(0.1, 0.3, 0.5)
-# amputation_reps <- 3
+amputation_mechanisms <- c("classic_mar", "dist_shift", "classic_mcar")
+missing_ratios <- c(0.1, 0.3, 0.5)
+amputation_reps <- 3
 
-# # imputation methods
-# imputation_funs <- readRDS(path_to_methods)[c(1, 2, 3)]
-# # imputation_funs <- readRDS(path_to_methods)
+# imputation methods
+imputation_funs <- readRDS(path_to_methods)[c(1, 2, 3)]
+# imputation_funs <- readRDS(path_to_methods)
 
-# imputation_methods <- data.frame(method = str_remove(imputation_funs, "impute_"),
-#                                  imputation_fun = imputation_funs) %>% 
-#   filter(method != "mice_gamlss")
+imputation_methods <- data.frame(method = str_remove(imputation_funs, "impute_"),
+                                 imputation_fun = imputation_funs) %>% 
+  filter(method != "mice_gamlss")
 
-# # parameters:
-# params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
-#                         path_to_incomplete_datasets = path_to_incomplete_datasets,
-#                         path_to_amputed = path_to_amputed,
-#                         path_to_imputed = path_to_imputed,
-#                         amputation_mechanisms = amputation_mechanisms,
-#                         amputation_reps = amputation_reps,
-#                         missing_ratios = missing_ratios,
-#                         imputation_methods = imputation_methods)
+# parameters:
+params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
+                        path_to_incomplete_datasets = path_to_incomplete_datasets,
+                        path_to_amputed = path_to_amputed,
+                        path_to_imputed = path_to_imputed,
+                        amputation_mechanisms = amputation_mechanisms,
+                        amputation_reps = amputation_reps,
+                        missing_ratios = missing_ratios,
+                        imputation_methods = imputation_methods)
 
-# saveRDS(params, "./data/params.RDS")
+saveRDS(params, "./data/params.RDS")
 
-# amputation_params <- params %>% 
-#   select(amputed_id, mechanism, ratio, filepath_original, filepath_amputed) %>% 
-#   unique()
+amputation_params <- params %>% 
+  select(amputed_id, mechanism, ratio, filepath_original, filepath_amputed) %>% 
+  unique()
 
 
-# imputation_params <- params %>% 
-#   select(imputed_id, amputed_id, imputation_fun, filepath_imputed) %>% 
-#   unique()
+imputation_params <- params %>% 
+  select(imputed_id, amputed_id, imputation_fun, filepath_imputed) %>% 
+  unique()
 
-# # define static branches
+# define static branches
 
-# amputed_datasets <- tar_map(
-#   values = amputation_params,
-#   names = any_of("amputed_id"),
-#   tar_target(amputed_dat, 
-#              ampute_dataset(filepath = filepath_original,
-#                             mechanism = mechanism,
-#                             ratio = ratio)),
-#   tar_target(save_amputed_dat,
-#              saveRDS(amputed_dat, filepath_amputed))
-# )
+amputed_datasets <- tar_map(
+  values = amputation_params,
+  names = any_of("amputed_id"),
+  tar_target(amputed_dat, 
+             ampute_dataset(filepath = filepath_original,
+                            mechanism = mechanism,
+                            ratio = ratio)),
+  tar_target(save_amputed_dat,
+             saveRDS(amputed_dat, filepath_amputed))
+)
 
-# imputed_datasets <- tar_map(
-#   values = imputation_params,
-#   names = any_of("imputed_id"),
-#   tar_target(
-#     imputed_dat, 
-#     impute(
-#       dataset_id = imputed_id,
-#       missing_data_set = amputed_all[[paste0("amputed_dat_", amputed_id)]], 
-#       imputing_function = get(imputation_fun),
-#       timeout = 600, # time in seconds
-#       n_attempts = 3
-#     )
-#   ),
-#   tar_target(save_imputed_dat,
-#              saveRDS(imputed_dat[["imputed"]], filepath_imputed)
-#   )
-# )
+imputed_datasets <- tar_map(
+  values = imputation_params,
+  names = any_of("imputed_id"),
+  tar_target(
+    imputed_dat, 
+    impute(
+      dataset_id = imputed_id,
+      missing_data_set = amputed_all[[paste0("amputed_dat_", amputed_id)]], 
+      imputing_function = get(imputation_fun),
+      timeout = 600, # time in seconds
+      n_attempts = 3
+    )
+  ),
+  tar_target(save_imputed_dat,
+             saveRDS(imputed_dat[["imputed"]], filepath_imputed)
+  )
+)
 
 
 list(
