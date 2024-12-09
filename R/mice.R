@@ -26,8 +26,10 @@ impute_mice_norm_predict <- function(missdf, m = 1, ...)
 impute_mice_norm_nob <- function(missdf, m = 1, ...) 
   eval_mice_call(missdf = missdf, method = "norm.nob", m = m, ...)
 
-impute_mice_mixed <- function(missdf) {
-  imputed <- missCompare::impute_data(missdf, scale = FALSE, n.iter = 1, sel_method = 11)
-  data.frame(imputed[["mice_mixed_imputation"]][[1]])
-}
+impute_mice_midastouch <- function(missdf, m = 1, ...) 
+  eval_mice_call(missdf = missdf, method = "midastouch", m = m, ...)
+
+impute_mice_boot <- function(missdf, m = 1, ...) 
+  eval_mice_call(missdf = missdf, method = "norm.boot", m = m, ...)
+
 

@@ -3,6 +3,7 @@ library(foreign)
 library(readxl)
 library(readr)
 library(dplyr)
+library(stringr)
 
 # this is a supplementary script for saving data in one format
 
