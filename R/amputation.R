@@ -47,10 +47,10 @@ summarize_amputation <- function(amputed_all, params) {
     bind_rows() 
   
   params %>% 
-    select(set_id, amputed_id, case, mechanism, rep, ratio) %>% 
+    dplyr::select(set_id, amputed_id, case, mechanism, rep, ratio) %>% 
     unique() %>% 
     left_join(amputation_res, by = "amputed_id") %>% 
-    select(-amputed_id) %>% 
+    dplyr::select(-amputed_id) %>% 
     mutate(ratio = ratio,
            diff = round(abs(ratio - amputed_ratio), 2))
 }
