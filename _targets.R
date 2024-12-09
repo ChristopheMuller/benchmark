@@ -51,9 +51,8 @@ amputation_reps <- 5
 imputation_funs <- readRDS(path_to_methods)
 
 imputation_methods <- data.frame(method = str_remove(imputation_funs, "impute_"),
-                                 imputation_fun = imputation_funs) %>% 
-  filter(method != "mice_gamlss")
-
+                                 imputation_fun = imputation_funs)
+                                 
 # parameters:
 params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
                         path_to_incomplete_datasets = path_to_incomplete_datasets,
