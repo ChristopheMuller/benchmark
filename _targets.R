@@ -15,7 +15,7 @@ library(reticulate)
 library(tidyr)
 library(mice)
 
-# # for vis
+# for vis
 library(ggplot2)
 library(patchwork)
 
@@ -24,11 +24,11 @@ tar_source()
 
 options(clustermq.scheduler = "multiprocess")
 
-# tar_option_set(
-#   resources = list(
-#     RETICULATE_PYTHON = "./.venv/Scripts/python.exe"
-#   )
-# )
+tar_option_set(
+  resources = list(
+    RETICULATE_PYTHON = "./.venv/Scripts/python.exe"
+  )
+)
 
 set.seed(56135)
 
