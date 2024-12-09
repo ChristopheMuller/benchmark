@@ -2,6 +2,9 @@
 options(warn = -1)  # Turn off warnings
 # options(warn = 0)  # Re-enable warnings
 
+# print current time
+print(Sys.time())
+
 library(targets)
 library(tarchetypes)
 library(purrr)
