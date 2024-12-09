@@ -5,6 +5,7 @@
 low_rank_MNAR/
 *.RDS
 !functions.RDS
+!dataset1.RDS
 .venv/
 container
 env.sif
