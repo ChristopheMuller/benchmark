@@ -32,6 +32,8 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
   
   missing_data_set <- pre_process(missing_data_set)
   
+  col_names <- colnames(missing_data_set)
+  
   start_time <- Sys.time()
   imputed <- safe_impute(missing_data_set, imputing_function, timeout, n_attempts)
   time <- as.numeric(Sys.time() - start_time)
@@ -42,6 +44,7 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
   } else {
     error <- validate_imputation(imputed, missing_data_set)
     imputed <- post_process(imputed)
+    colnames(imputed) <- col_names
   }
   
   res <- data.frame(imputed_id = dataset_id,
