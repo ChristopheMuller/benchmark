@@ -42,6 +42,7 @@ From: ubuntu:22.04
     apt-get install -y --no-install-recommends build-essential wget curl libssl-dev libcurl4-openssl-dev libxml2-dev zlib1g-dev
     apt-get install -y --no-install-recommends lsb-release gnupg
     apt-get install -y --no-install-recommends ca-certificates git locales libgsl-dev python3-pip
+    apt-get install -y python3-tk
 
     locale-gen en_US.UTF-8
     update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
@@ -127,3 +128,12 @@ TODO:
 * Add on git subfolder results/amputed results/imputed
 * Add miceDRF (uncomment it everywhere)
 * Add python (reticulate path + uncomment file)
+
+
+
+ALTOGETHER:
+oarsub -l nodes=1/core=16 -n first_attempt_code --stdout output/targets_output.log --stderr output/targets_error.log "singularity exec env.sif Rscript run.R"
+oarstat
+oardel [job_id]
+oarhold [job_id]
+oarresume [job_id]
