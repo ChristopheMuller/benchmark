@@ -6,8 +6,8 @@ library(targets)
 library(tarchetypes)
 library(purrr)
 library(dplyr)
-# library(imputomics)
-# library(miceDRF)
+library(imputomics)
+library(miceDRF)
 library(ImputeRobust)
 library(stringr)
 library(energy)
@@ -46,8 +46,8 @@ missing_ratios <- c(0.1, 0.3, 0.5)
 amputation_reps <- 3
 
 # imputation methods
-imputation_funs <- readRDS(path_to_methods)[c(1, 2, 3)]
-# imputation_funs <- readRDS(path_to_methods)
+# imputation_funs <- readRDS(path_to_methods)[c(1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 25)]
+imputation_funs <- readRDS(path_to_methods)
 
 imputation_methods <- data.frame(method = str_remove(imputation_funs, "impute_"),
                                  imputation_fun = imputation_funs) %>% 
@@ -105,6 +105,8 @@ imputed_datasets <- tar_map(
   )
 )
 
+print(amputed_datasets)
+print(imputed_datasets)
 
 list(
   # AMPUTATION
