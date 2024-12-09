@@ -113,17 +113,17 @@ list(
               amputed_datasets[["amputed_dat"]],
               command = list(!!!.x)),
   tar_target(amputation_summary,
-             summarize_amputation(amputed_all, params))
+             summarize_amputation(amputed_all, params)),
 
-  # # IMPUTATION
-  # imputed_datasets,
-  # tar_combine(imputed_all,
-  #             imputed_datasets[["imputed_dat"]],
-  #             command = list(!!!.x)),
-  # 
-  # tar_target(imputation_summary,
-  #            summarize_imputations(imputed_all, params))
-  # 
+  # IMPUTATION
+  imputed_datasets,
+  tar_combine(imputed_all,
+              imputed_datasets[["imputed_dat"]],
+              command = list(!!!.x)),
+  
+  tar_target(imputation_summary,
+             summarize_imputations(imputed_all, params))
+  
   # ANALYSIS
   # nice code here
 )
