@@ -43,7 +43,7 @@ path_to_methods <- "./data/functions.RDS"
 
 # amputation setup:
 amputation_mechanisms <- c("mar", "mcar")
-missing_ratios <- c(0.1, 0.3, 0.4, 0.5)
+missing_ratios <- c(0.1, 0.3, 0.5)
 amputation_reps <- 5
 
 
