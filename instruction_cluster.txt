@@ -43,6 +43,12 @@ From: ubuntu:22.04
     apt-get install -y --no-install-recommends lsb-release gnupg
     apt-get install -y --no-install-recommends ca-certificates git locales libgsl-dev python3-pip
 
+    locale-gen en_US.UTF-8
+    update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+
+    echo "export LC_ALL=en_US.UTF-8" >> /etc/profile
+    echo "export LANG=en_US.UTF-8" >> /etc/profile
+
     # Install Python 3.11
     echo "deb http://ppa.launchpad.net/deadsnakes/ppa/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/deadsnakes-ppa.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA6932366A755776 && \
