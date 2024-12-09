@@ -54,7 +54,7 @@ impute_hyperimpute_em <- function(missdf, ...){
 }
 
 impute_sklearn_iterative_post <- function(missdf, ...){
-  iterative_impute_post(missdf, post=TRUE, ...)
+  iterative_imp(missdf, post=TRUE, ...)
 }
 
 impute_sklearn_iterative <- function(missdf, ...){
