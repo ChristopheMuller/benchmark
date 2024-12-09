@@ -46,8 +46,8 @@ missing_ratios <- c(0.1, 0.3, 0.5)
 amputation_reps <- 3
 
 # imputation methods
-# imputation_funs <- readRDS(path_to_methods)[c(1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 25)]
-imputation_funs <- readRDS(path_to_methods)
+imputation_funs <- readRDS(path_to_methods)[c(1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 25)]
+# imputation_funs <- readRDS(path_to_methods)
 
 imputation_methods <- data.frame(method = str_remove(imputation_funs, "impute_"),
                                  imputation_fun = imputation_funs) %>% 
