@@ -63,6 +63,7 @@ params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
                         missing_ratios = missing_ratios,
                         imputation_methods = imputation_methods)
 
+print("params")
 print(params)
 
 saveRDS(params, "./data/params.RDS")
@@ -71,6 +72,7 @@ amputation_params <- params %>%
   select(amputed_id, mechanism, ratio, filepath_original, filepath_amputed) %>% 
   unique()
 
+print("amputation_params")
 print(amputation_params)
 
 
@@ -78,6 +80,7 @@ imputation_params <- params %>%
   select(imputed_id, amputed_id, imputation_fun, filepath_imputed) %>% 
   unique()
 
+print("imputation_params")
 print(imputation_params)
 
 # define static branches
@@ -93,6 +96,7 @@ amputed_datasets <- tar_map(
              saveRDS(amputed_dat, filepath_amputed))
 )
 
+print("amputed_datasets")
 print(amputed_datasets)
 
 imputed_datasets <- tar_map(
@@ -113,6 +117,7 @@ imputed_datasets <- tar_map(
   )
 )
 
+print("imputed_datasets")
 print(imputed_datasets)
 
 list(
