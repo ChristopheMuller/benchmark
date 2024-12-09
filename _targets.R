@@ -113,8 +113,8 @@ list(
               amputed_datasets[["amputed_dat"]],
               command = list(!!!.x)),
   tar_target(amputation_summary,
-             summarize_amputation(amputed_all, params)),
-             
+             summarize_amputation(amputed_all, params))
+
   # # IMPUTATION
   # imputed_datasets,
   # tar_combine(imputed_all,
