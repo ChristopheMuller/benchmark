@@ -26,9 +26,6 @@ impute_impSeq <- function(missdf, ...)
 impute_minProb <- function(missdf, ...) 
   eval_dimar_call(missdf, methods = "MinProb", ...)
 
-impute_norm <- function(missdf, ...)
-  eval_dimar_call(missdf, methods = "norm", ...)
-
 impute_SVTImpute <- function(missdf, ...) 
   eval_dimar_call(missdf, methods = "SVTImpute", ...)
 
