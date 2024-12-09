@@ -102,3 +102,14 @@ Sys.setenv(R_COMPILE_AND_INSTALL_PACKAGES = "never")# => to install NMF
 devtools::install_github("renozao/pkgmaker")
 
 renv::restore()
+
+
+
+## step by step:
+
+(being in .venv)
+* Create apptainer, install targets, empty _targets.R, remove python import, ... => WORKS
+* import most R packages, empty pipeline => WORKS
+* Add all steps before list pipeline => WORKS
+* uncomment tar_option_set (python path) => WORKS 
+* add in pipeline: amputation
