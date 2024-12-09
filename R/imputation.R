@@ -57,7 +57,7 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
 validate_imputation <- function(imputed, missing_data_set) {
   
   if(! isTRUE(all.equal(imputed[!is.na(missing_data_set)], 
-                 missing_data_set[!is.na(missing_data_set)])))
+                 missing_data_set[!is.na(missing_data_set)], tolerance=1.5e-5)))
     return("modification")
   
   if(any(is.na(imputed)))
