@@ -26,4 +26,10 @@ impute_mice_norm_predict <- function(missdf, m = 1, ...)
 impute_mice_norm_nob <- function(missdf, m = 1, ...) 
   eval_mice_call(missdf = missdf, method = "norm.nob", m = m, ...)
 
+impute_mice_midastouch <- function(missdf, m = 1, ...) 
+  eval_mice_call(missdf = missdf, method = "midastouch", m = m, ...)
+
+impute_mice_boot <- function(missdf, m = 1, ...) 
+  eval_mice_call(missdf = missdf, method = "norm.boot", m = m, ...)
+
 
