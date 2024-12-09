@@ -6,3 +6,5 @@ low_rank_MNAR/
 *.RDS
 !functions.RDS
 .venv/
+container
+env.sif
