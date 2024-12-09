@@ -4,8 +4,11 @@
 .Ruserdata
 low_rank_MNAR/
 *.RDS
+!data/datasets/complete/*.rds
+!data/datasets/incomplete/*.rds
+!data/datasets/complete_backup/*.rds
+!data/datasets/incomplete_backup/*.rds
 !functions.RDS
-!dataset1.RDS
 .venv/
 container
 env.sif
