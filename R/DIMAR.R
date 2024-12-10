@@ -16,8 +16,5 @@ impute_dimar <- function(missdf, ...)
 impute_dimar_fast <- function(missdf, ...) 
   eval_dimar_call(missdf, methods = "fast", ...)
 
-impute_SVTImpute <- function(missdf, ...) 
-  eval_dimar_call(missdf, methods = "SVTImpute", ...)
-
 
 
