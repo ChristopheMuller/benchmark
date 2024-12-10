@@ -168,3 +168,4 @@ widgetsnbextension==4.0.13
 win32-setctime==1.1.0
 wrapt==1.16.0
 xgboost==2.1.2
+timeout-function-decorator==2.0.0
