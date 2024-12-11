@@ -12,5 +12,5 @@
 
 # print current time
 print(Sys.time())
-targets::tar_make_future(workers = 15)
+targets::tar_make_future(workers = 32)
 print(Sys.time())
