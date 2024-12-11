@@ -1,4 +1,12 @@
 
+check_time_error <- function(imputed) {
+  grepl("TimeoutError", imputed[[1]]) |
+    grepl("reached CPU time limit", imputed[[1]]) | 
+    grepl("reached elapsed time limit", imputed[[1]]) |
+    grepl("User interrupt", imputed[[1]])
+}
+
+
 
 safe_impute <- function(missing_data_set, 
                         imputing_function, 
@@ -12,17 +20,19 @@ safe_impute <- function(missing_data_set,
   
   while(inherits(imputed, "try-error") & n < n_attempts) {
     
+    start_time <- Sys.time()
     imputed <- try({ 
       suppressWarnings({
         R.utils::withTimeout(imputing_function(missing_data_set), 
                              timeout = timeout, onTimeout = "error")
       })
     })
+    time <- as.numeric(Sys.time() - start_time)
     
     n <- n + 1
   }
   
-  imputed
+  list(imputed = imputed, time = time)
 }
 
 
@@ -34,13 +44,15 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
   
   col_names <- colnames(missing_data_set)
   
-  start_time <- Sys.time()
   imputed <- safe_impute(missing_data_set, imputing_function, timeout, n_attempts)
-  time <- as.numeric(Sys.time() - start_time)
+  
+  time <- imputed[["time"]]
+  imputed <- imputed[["imputed"]]
   
   if(inherits(imputed, "try-error")) {
-    error <- ifelse(grepl("reached elapsed time limit", imputed[[1]]),
-                    "timeout", "computational")
+    
+    error <- ifelse(check_time_error(imputed), "timeout", "computational")
+    
   } else {
     error <- validate_imputation(imputed, missing_data_set)
     imputed <- post_process(imputed)
@@ -60,7 +72,7 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
 validate_imputation <- function(imputed, missing_data_set) {
   
   if(! isTRUE(all.equal(imputed[!is.na(missing_data_set)], 
-                 missing_data_set[!is.na(missing_data_set)], tolerance=1.5e-5)))
+                        missing_data_set[!is.na(missing_data_set)], tolerance=1.5e-5)))
     return("modification")
   
   if(any(is.na(imputed)))
@@ -100,7 +112,7 @@ summarize_imputations <- function(imputed_all, params) {
     original_data <- readRDS(params_one_row[["filepath_original"]])
     amputed_data <- readRDS(params_one_row[["filepath_amputed"]])
     imputation_fun <- get(params_one_row[["imputation_fun"]])
-
+    
     if(params_one_row[["case"]] == "complete") {
       scores <- scores_for_complete(original_data, amputed_data, imputed_data,
                                     imputation_fun)
