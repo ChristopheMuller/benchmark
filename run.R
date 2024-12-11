@@ -10,4 +10,7 @@
 # !!!! python is not working for this plan
 # targets::tar_make_clustermq(workers = 10) # nolintz 
 
+# print current time
+print(Sys.time())
 targets::tar_make_future(workers = 15)
+print(Sys.time())
