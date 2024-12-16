@@ -5,6 +5,7 @@ from sklearn.impute import IterativeImputer
 from remasker.remasker_impute import ReMasker
 from timeout_function_decorator import timeout
 
+
 @timeout(600)
 def hyperimpute_imp(X, method):
     filterwarnings('ignore')
