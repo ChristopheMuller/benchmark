@@ -25,6 +25,14 @@ from hyperimpute.plugins.imputers import Imputers
 eps = 1e-8
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+
+# set seed
+def set_seed(seed: int = 123456) -> None:
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+
 class ReMasker:
 
     def __init__(self):
@@ -49,6 +57,12 @@ class ReMasker:
         self.max_epochs = args.max_epochs
         self.mask_ratio = args.mask_ratio
         self.encode_func = args.encode_func
+
+    def set_seed(self, seed: int = 123456) -> None:
+        np.random.seed(seed)
+        torch.manual_seed(seed)
+        torch.cuda.manual_seed(seed)
+        torch.cuda.manual_seed_all(seed)
 
     def fit(self, X_raw: pd.DataFrame):
         X = X_raw.clone()
