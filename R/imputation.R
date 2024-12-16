@@ -14,6 +14,7 @@ safe_impute <- function(missing_data_set,
                         n_attempts = 3) {
   
   missing_data_set <- data.frame(missing_data_set)
+
   
   imputed <- structure(structure(list(), class = "try-error"))
   n <- 1
@@ -27,7 +28,7 @@ safe_impute <- function(missing_data_set,
                              timeout = timeout, onTimeout = "error")
       })
     })
-    time <- as.numeric(Sys.time() - start_time)
+    time <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
     
     n <- n + 1
   }
@@ -71,8 +72,9 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
 
 validate_imputation <- function(imputed, missing_data_set) {
   
-  if(! isTRUE(all.equal(imputed[!is.na(missing_data_set)], 
-                        missing_data_set[!is.na(missing_data_set)], tolerance=1.5e-5)))
+  if(! isTRUE(all.equal(imputed[!is.na(missing_data_set)],
+                        missing_data_set[!is.na(missing_data_set)], 
+                        tolerance = 1.5e-5)))
     return("modification")
   
   if(any(is.na(imputed)))
@@ -130,6 +132,5 @@ summarize_imputations <- function(imputed_all, params) {
     dplyr::select(set_id, mechanism, ratio, rep, case, method, imputation_fun, 
                   time, error, measure, score)
 }
-
 
 
