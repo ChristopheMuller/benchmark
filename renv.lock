@@ -1539,6 +1539,23 @@
       ],
       "Hash": "0aaa05204035dc43ea0004b9c76611dd"
     },
+    "clustermq": {
+      "Package": "clustermq",
+      "Version": "0.9.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+        "Rcpp",
+        "globals",
+        "methods",
+        "narray",
+        "progress",
+        "utils"
+      ],
+      "Hash": "0cce23ad654b718b539250d2961c5bb9"
+    },
     "coda": {
       "Package": "coda",
       "Version": "0.19-4.1",
@@ -3446,6 +3463,21 @@
         "stats"
       ],
       "Hash": "9e8405eacb262c0a939e121650247f4b"
+    },
+    "narray": {
+      "Package": "narray",
+      "Version": "0.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "Rcpp",
+        "progress",
+        "stats",
+        "stringr",
+        "utils"
+      ],
+      "Hash": "7ec5a2396d3c9ad4374495283dfcdc83"
     },
     "nlme": {
       "Package": "nlme",
