@@ -1,5 +1,4 @@
 
-options(warn = -1)  # Turn off warnings
 # options(warn = 0)  # Re-enable warnings
 
 library(targets)
@@ -15,6 +14,7 @@ library(reticulate)
 library(tidyr)
 library(mice)
 library(glmnet)
+library(clustermq)
 
 # for vis
 library(ggplot2)
@@ -25,11 +25,8 @@ tar_source()
 
 options(clustermq.scheduler = "multiprocess")
 
-tar_option_set(
-  resources = list(
-    RETICULATE_PYTHON = "./.venv/Scripts/python.exe"
-  )
-)
+reticulate::use_virtualenv("./.venv", required = TRUE)
+
 
 set.seed(56135)
 
@@ -43,9 +40,8 @@ path_to_methods <- "./data/functions.RDS"
 
 # amputation setup:
 amputation_mechanisms <- c("mar", "mcar")
-missing_ratios <- c(0.1, 0.3, 0.4, 0.5)
+missing_ratios <- c(0.2, 0.3, 0.4)
 amputation_reps <- 5
-
 
 # imputation methods
 imputation_funs <- readRDS(path_to_methods)
@@ -92,20 +88,22 @@ imputed_datasets <- tar_map(
   values = imputation_params,
   names = any_of("imputed_id"),
   tar_target(
-    imputed_dat, 
-    impute(
-      dataset_id = imputed_id,
-      missing_data_set = amputed_all[[paste0("amputed_dat_", amputed_id)]], 
-      imputing_function = get(imputation_fun),
-      timeout = 600, # time in seconds
-      n_attempts = 3
-    )
+    imputed_dat, {
+      # reticulate::source_python("python/python_imputation_functions.py")
+      source("python/python_imputation_functions.R")
+      impute(
+        dataset_id = imputed_id,
+        missing_data_set = amputed_all[[paste0("amputed_dat_", amputed_id)]], 
+        imputing_function = get(imputation_fun),
+        timeout = 600, # time in seconds
+        n_attempts = 3
+      )
+    }
   ),
   tar_target(save_imputed_dat,
              saveRDS(imputed_dat[["imputed"]], filepath_imputed)
   )
 )
-
 
 list(
   # AMPUTATION
@@ -121,10 +119,11 @@ list(
   tar_combine(imputed_all,
               imputed_datasets[["imputed_dat"]],
               command = list(!!!.x)),
-
-  tar_target(imputation_summary,
-             summarize_imputations(imputed_all, params))
   
+  tar_target(imputation_summary, {
+    source("python/python_imputation_functions.R")
+    summarize_imputations(imputed_all, params)  
+  })
   # ANALYSIS
   # nice code here
 )
