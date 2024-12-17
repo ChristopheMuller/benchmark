@@ -49,9 +49,7 @@ amputation_reps <- 5
 # imputation methods
 imputation_methods <- readRDS(path_to_methods) %>% 
   rename(imputation_fun = `Function name`) %>% 
-  mutate(method = str_remove(imputation_fun, "impute_")) %>% 
-  filter(method != "mice_gamlss") %>%
-  filter(method == "FEFI")
+  mutate(method = str_remove(imputation_fun, "impute_"))
 
 # parameters:
 params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
