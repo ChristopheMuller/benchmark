@@ -77,9 +77,14 @@ scores_for_incomplete <- function(original_data, imputed_data, imputation_fun,
   #calculate IScore here
   time_limited_fun <- function(missdf) stop_on_timeout(missdf, imputation_fun)
   
-  ImpScore <- miceDRF::Iscore(original_data, imputed_data, multiple = multiple,
-                              imputation_func = time_limited_fun)
-  data.frame(measure = "IScore", score = as.numeric(ImpScore))
+  ImpScore <- try({
+    miceDRF::Iscore(X = original_data, X_imp = imputed_data, 
+                    multiple = multiple, imputation_func = time_limited_fun)
+  })
+  
+  ImpScore <- ifelse(inherits(ImpScore, "try-error"), NA, as.numeric(ImpScore))
+  
+  data.frame(measure = "IScore", score = ImpScore)
 }
 
 
