@@ -8,7 +8,7 @@ plot_errors <- function(imputation_summary) {
     unique() %>% 
     group_by(method) %>% 
     mutate(n_attempts = n()) %>% 
-    mutate(ifelse(is.na(error), "none", error)) %>% 
+    mutate(error = ifelse(is.na(error), "none", error)) %>% 
     rename(`Type of error` = "error") %>% 
     group_by(method, `Type of error`) %>% 
     reframe(error_frac = n()/n_attempts) %>% 

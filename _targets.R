@@ -44,10 +44,9 @@ missing_ratios <- c(0.2, 0.3, 0.4)
 amputation_reps <- 5
 
 # imputation methods
-imputation_funs <- readRDS(path_to_methods)
-
-imputation_methods <- data.frame(method = str_remove(imputation_funs, "impute_"),
-                                 imputation_fun = imputation_funs) %>% 
+imputation_methods <- readRDS(path_to_methods) %>% 
+  rename(imputation_fun = `Function name`) %>% 
+  mutate(method = str_remove(imputation_fun, "impute_")) %>% 
   filter(method != "mice_gamlss")
 
 # parameters:
@@ -66,9 +65,9 @@ amputation_params <- params %>%
   select(amputed_id, mechanism, ratio, filepath_original, filepath_amputed) %>% 
   unique()
 
-
 imputation_params <- params %>% 
-  select(imputed_id, amputed_id, imputation_fun, filepath_imputed) %>% 
+  select(imputed_id, amputed_id, imputation_fun, filepath_imputed, MI, 
+         filepath_original, case) %>% 
   unique()
 
 # define static branches
@@ -89,7 +88,6 @@ imputed_datasets <- tar_map(
   names = any_of("imputed_id"),
   tar_target(
     imputed_dat, {
-      # reticulate::source_python("python/python_imputation_functions.py")
       source("python/python_imputation_functions.R")
       impute(
         dataset_id = imputed_id,
@@ -102,6 +100,18 @@ imputed_datasets <- tar_map(
   ),
   tar_target(save_imputed_dat,
              saveRDS(imputed_dat[["imputed"]], filepath_imputed)
+  ),
+  tar_target(
+    obtained_scores, {
+      calculate_scores(imputed = imputed_dat, 
+                       amputed = amputed_all[[paste0("amputed_dat_", amputed_id)]],
+                       imputation_fun = get(imputation_fun),
+                       multiple = MI,
+                       imputed_id = imputed_id, 
+                       timeout = 600,
+                       filepath_original = filepath_original,
+                       case = case)
+    }
   )
 )
 
@@ -116,13 +126,12 @@ list(
   
   # IMPUTATION
   imputed_datasets,
-  tar_combine(imputed_all,
-              imputed_datasets[["imputed_dat"]],
-              command = list(!!!.x)),
+  tar_combine(all_scores,
+              imputed_datasets[["obtained_scores"]],
+              command = bind_rows(list(!!!.x))),
   
   tar_target(imputation_summary, {
-    source("python/python_imputation_functions.R")
-    summarize_imputations(imputed_all, params)  
+    summarize_imputations(all_scores, params)
   })
   # ANALYSIS
   # nice code here
