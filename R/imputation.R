@@ -14,6 +14,7 @@ safe_impute <- function(missing_data_set,
                         n_attempts = 3) {
   
   missing_data_set <- data.frame(missing_data_set)
+
   
   imputed <- structure(structure(list(), class = "try-error"))
   n <- 1
@@ -27,7 +28,7 @@ safe_impute <- function(missing_data_set,
                              timeout = timeout, onTimeout = "error")
       })
     })
-    time <- as.numeric(Sys.time() - start_time)
+    time <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
     
     n <- n + 1
   }
@@ -71,8 +72,9 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
 
 validate_imputation <- function(imputed, missing_data_set) {
   
-  if(! isTRUE(all.equal(imputed[!is.na(missing_data_set)], 
-                        missing_data_set[!is.na(missing_data_set)], tolerance=1.5e-5)))
+  if(! isTRUE(all.equal(imputed[!is.na(missing_data_set)],
+                        missing_data_set[!is.na(missing_data_set)], 
+                        tolerance = 1.5e-5)))
     return("modification")
   
   if(any(is.na(imputed)))
@@ -91,45 +93,5 @@ pre_process <- function(missing_data_set) {
 post_process <- function(imputed) {
   imputed
 }
-
-
-summarize_imputations <- function(imputed_all, params) {
-  
-  results <- lapply(imputed_all, function(ith_imputed) {
-    imputed_data <- ith_imputed[["imputed"]]
-    res <- ith_imputed[["res"]]
-    
-    if(!is.na(res[["error"]])) {
-      return(cross_join(res, data.frame(measure = c("mae", "rmse", "nrmse", 
-                                                    "mpe", "mape", "rsq", 
-                                                    "ccc", "energy", "IScore"),
-                                        score = NA)))
-    }
-    
-    params_one_row <- params %>% 
-      filter(imputed_id == res[["imputed_id"]])
-    
-    original_data <- readRDS(params_one_row[["filepath_original"]])
-    amputed_data <- readRDS(params_one_row[["filepath_amputed"]])
-    imputation_fun <- get(params_one_row[["imputation_fun"]])
-    
-    if(params_one_row[["case"]] == "complete") {
-      scores <- scores_for_complete(original_data, amputed_data, imputed_data,
-                                    imputation_fun)
-    } else {
-      scores <- scores_for_incomplete(original_data, imputed_data, imputation_fun)
-    }
-    res %>% 
-      cross_join(scores)
-    
-  }) %>% 
-    bind_rows()
-  
-  params %>% 
-    left_join(results, by = "imputed_id") %>% 
-    dplyr::select(set_id, mechanism, ratio, rep, case, method, imputation_fun, 
-                  time, error, measure, score)
-}
-
 
 

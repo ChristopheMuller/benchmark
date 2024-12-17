@@ -22,8 +22,9 @@
 reticulate::source_python("python/python_imputation_functions.py")
 
 call_hyperimpute_fun <- function(missdf, method, ...) {
+  seed <- sample(1:100000, 1)
   column_names <- colnames(missdf)
-  imputed <- hyperimpute_imp(missdf, method = method, ...)
+  imputed <- hyperimpute_imp(missdf, method = method, seed=seed, ...)
   colnames(imputed) <- column_names
   imputed
 }
@@ -62,5 +63,6 @@ impute_sklearn_iterative <- function(missdf, ...){
 }
 
 impute_remasker <- function(missdf, ...){
-  remasker_imp(missdf, ...)
+  seed <- sample(1:100000, 1)
+  remasker_imp(missdf, seed, ...)
 }

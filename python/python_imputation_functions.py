@@ -5,10 +5,12 @@ from sklearn.impute import IterativeImputer
 from remasker.remasker_impute import ReMasker
 from timeout_function_decorator import timeout
 
+
 @timeout(600)
-def hyperimpute_imp(X, method):
+def hyperimpute_imp(X, method, seed):
     filterwarnings('ignore')
     imputer = Imputers().get(method)
+    imputer.__init__(random_state=seed)
     X_imputed = imputer.fit_transform(X.copy())
     return X_imputed
 
@@ -20,8 +22,9 @@ def iterative_imp(X, post):
     return X_imputed
 
 @timeout(600)
-def remasker_imp(X):
+def remasker_imp(X, seed):
     filterwarnings('ignore')
     imputer = ReMasker()
+    imputer.set_seed(seed)
     X_imputed = imputer.fit_transform(X.copy())
     return X_imputed
