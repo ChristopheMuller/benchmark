@@ -1,0 +1,24 @@
+Error:
+! targets::tar_make_clustermq() error
+
+── Debugging ───────────────────────────────────────────────────────────────────
+    • tar_errored()
+    • tar_meta(fields = any_of("error"), complete_only = TRUE)
+    • tar_workspace()
+    • tar_workspaces()
+
+── How to ──────────────────────────────────────────────────────────────────────
+    • Debug: https://books.ropensci.org/targets/debugging.html
+    • Help: https://books.ropensci.org/targets/help.html
+
+── Last error message ──────────────────────────────────────────────────────────
+    attempt to set 'colnames' on an object with less than two dimensions
+
+── Last error traceback ────────────────────────────────────────────────────────
+    impute(dataset_id = "impSeqRob.NA.NA.1.birth_incomplete", missing_data_s...
+    `colnames<-`(`*tmp*`, value = col_names)
+    `colnames<-`(`*tmp*`, value = col_names)
+    stop("attempt to set 'colnames' on an object with less than two dimensio...
+    .handleSimpleError(function (condition)  {     state$error <- build_mess...
+    h(simpleError(msg, call))
+Execution halted
