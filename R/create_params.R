@@ -25,13 +25,13 @@ create_params <- function(path_to_complete_datasets,
                                  stringsAsFactors = FALSE)
   params_incomplete <- expand.grid(mechanism = NA, 
                                    ratio = NA,
-                                   rep = 1,
+                                   rep = NA,
                                    filepath_original = inc_datasets, 
                                    case = "incomplete",
                                    stringsAsFactors = FALSE)
   
   rbind(params_complete, params_incomplete) %>% 
-    mutate(set_id = sub("(.*\\/)([^.]+)(\\.[[:alnum:]]+$)", "\\2", filepath_original)) %>% 
+    mutate(set_id = basename(filepath_original)) %>% 
     mutate(amputed_id = paste0(mechanism,".", ratio ,".", rep, ".", set_id)) %>% 
     mutate(filepath_amputed = paste0(path_to_amputed, amputed_id, ".RDS")) %>% 
     cross_join(imputation_methods) %>% 
