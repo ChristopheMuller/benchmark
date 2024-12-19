@@ -47,7 +47,7 @@ read_and_save <- function(files, complete = TRUE) {
 
 files <- list.files("./data/raw_datasets/Complete_chosen", full.names = TRUE)
 
-res_complete <- read_and_save(files)
+res_complete <- read_and_save(files, complete = TRUE)
 
 files <- list.files("./data/raw_datasets/Incomplete", full.names = TRUE)
 
