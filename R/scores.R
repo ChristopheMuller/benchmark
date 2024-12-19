@@ -39,7 +39,7 @@ summarize_imputations <- function(all_scores, params) {
   params %>% 
     left_join(all_scores, by = "imputed_id") %>% 
     dplyr::select(set_id, mechanism, ratio, rep, case, method, imputation_fun, 
-                  time, error, measure, score)
+                  time, attempts, error, measure, score)
 }
 
 
