@@ -103,8 +103,8 @@ imputed_datasets <- tar_map(
         dataset_id = imputed_id,
         missing_data_set = amputed_all[[paste0("amputed_dat_", amputed_id)]], 
         imputing_function = get(imputation_fun),
-        timeout = 600, # time in seconds
-        n_attempts = 3
+        timeout = 15, # time in seconds
+        n_attempts = 1
       )
     }
   ),
