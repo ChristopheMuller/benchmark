@@ -50,15 +50,24 @@ safe_impute <- function(missing_data_set, imputing_function, timeout = 600, n_at
     
     # Launch the imputation in a separate process
     impute_process <- mcparallel({
-      imputing_function(missing_data_set)
+      tryCatch(
+        imputing_function(missing_data_set),
+        error = function(e) structure(list(), class = "try-error")
+      )
     }, mc.set.seed = TRUE)
     
     # Collect the result with a timeout
     result <- tryCatch({
-      mccollect(impute_process, wait = TRUE, timeout = timeout)[[1]]
+      collected <- mccollect(impute_process, wait = TRUE, timeout = timeout)
+      if (is.null(collected) || length(collected) == 0 || inherits(collected[[1]], "try-error")) {
+        stop("Timeout or error during imputation.")
+      }
+      collected[[1]]
     }, error = function(e) {
-      parallel::mccollect(impute_process, wait = FALSE)  # Kill the process if timeout
-      parallel::mc.kill(impute_process$pid)  # Force kill
+      # Forcefully kill process if timeout/error occurs
+      if (!is.null(impute_process$pid)) {
+        system2("kill", as.character(impute_process$pid))
+      }
       structure(list(), class = "try-error")
     })
     
