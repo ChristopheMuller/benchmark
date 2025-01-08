@@ -39,6 +39,10 @@ check_time_error <- function(imputed) {
 
 library(parallel)
 
+library(future)
+library(future.apply)
+plan(multisession)  # Parallel backend using persistent workers
+
 safe_impute <- function(missing_data_set, imputing_function, timeout = 600, n_attempts = 3) {
   missing_data_set <- data.frame(missing_data_set)
   imputed <- structure(list(), class = "try-error")
@@ -48,26 +52,22 @@ safe_impute <- function(missing_data_set, imputing_function, timeout = 600, n_at
   while (inherits(imputed, "try-error") && n <= n_attempts) {
     start_time <- Sys.time()
     
-    # Launch the imputation in a separate process
-    impute_process <- mcparallel({
-      tryCatch(
-        imputing_function(missing_data_set),
-        error = function(e) structure(list(), class = "try-error")
-      )
-    }, mc.set.seed = TRUE)
-    
-    # Collect the result with a timeout
+    # Use future to run the imputation in a background process with timeout
     result <- tryCatch({
-      collected <- mccollect(impute_process, wait = TRUE, timeout = timeout)
-      if (is.null(collected) || length(collected) == 0 || inherits(collected[[1]], "try-error")) {
-        stop("Timeout or error during imputation.")
+      f <- future({
+        imputing_function(missing_data_set)
+      })
+      # Timeout handling using `resolved()` check
+      wait_time <- 0
+      while (!resolved(f) && wait_time < timeout) {
+        Sys.sleep(1)
+        wait_time <- wait_time + 1
       }
-      collected[[1]]
+      if (!resolved(f)) {
+        stop("Timeout reached")
+      }
+      value(f)
     }, error = function(e) {
-      # Forcefully kill process if timeout/error occurs
-      if (!is.null(impute_process$pid)) {
-        system2("kill", as.character(impute_process$pid))
-      }
       structure(list(), class = "try-error")
     })
     
