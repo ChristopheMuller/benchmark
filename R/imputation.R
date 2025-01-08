@@ -8,28 +8,62 @@ check_time_error <- function(imputed) {
 
 
 
-safe_impute <- function(missing_data_set, 
-                        imputing_function, 
-                        timeout = 600, 
-                        n_attempts = 3) {
+# safe_impute <- function(missing_data_set, 
+#                         imputing_function, 
+#                         timeout = 600, 
+#                         n_attempts = 3) {
   
-  missing_data_set <- data.frame(missing_data_set)
+#   missing_data_set <- data.frame(missing_data_set)
 
   
-  imputed <- structure(structure(list(), class = "try-error"))
+#   imputed <- structure(structure(list(), class = "try-error"))
+#   n <- 1
+  
+#   while(inherits(imputed, "try-error") & n <= n_attempts) {
+    
+#     start_time <- Sys.time()
+#     imputed <- try({ 
+#       suppressWarnings({
+#         R.utils::withTimeout(imputing_function(missing_data_set), 
+#                              timeout = timeout, onTimeout = "error")
+#       })
+#     })
+#     time <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
+    
+#     n <- n + 1
+#   }
+  
+#   list(imputed = imputed, time = time, attempts = n - 1)
+# }
+
+
+library(parallel)
+
+safe_impute <- function(missing_data_set, imputing_function, timeout = 600, n_attempts = 3) {
+  missing_data_set <- data.frame(missing_data_set)
+  imputed <- structure(list(), class = "try-error")
+  time <- NA
   n <- 1
   
-  while(inherits(imputed, "try-error") & n <= n_attempts) {
-    
+  while (inherits(imputed, "try-error") && n <= n_attempts) {
     start_time <- Sys.time()
-    imputed <- try({ 
-      suppressWarnings({
-        R.utils::withTimeout(imputing_function(missing_data_set), 
-                             timeout = timeout, onTimeout = "error")
-      })
-    })
-    time <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
     
+    # Launch the imputation in a separate process
+    impute_process <- mcparallel({
+      imputing_function(missing_data_set)
+    }, mc.set.seed = TRUE)
+    
+    # Collect the result with a timeout
+    result <- tryCatch({
+      mccollect(impute_process, wait = TRUE, timeout = timeout)[[1]]
+    }, error = function(e) {
+      parallel::mccollect(impute_process, wait = FALSE)  # Kill the process if timeout
+      parallel::mc.kill(impute_process$pid)  # Force kill
+      structure(list(), class = "try-error")
+    })
+    
+    time <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
+    imputed <- result
     n <- n + 1
   }
   
