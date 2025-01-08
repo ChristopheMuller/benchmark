@@ -33,10 +33,10 @@ create_params <- function(path_to_complete_datasets,
   rbind(params_complete, params_incomplete) %>% 
     mutate(set_id = basename(filepath_original)) %>% 
     mutate(amputed_id = paste0(mechanism,".", ratio ,".", rep, ".", set_id)) %>% 
-    mutate(filepath_amputed = paste0(path_to_amputed, amputed_id, ".RDS")) %>% 
+    mutate(filepath_amputed = paste0(path_to_amputed, amputed_id)) %>% 
     cross_join(imputation_methods) %>% 
     mutate(imputed_id = paste0(method, ".", amputed_id)) %>% 
-    mutate(filepath_imputed = paste0(path_to_imputed, imputed_id, ".RDS")) %>% 
+    mutate(filepath_imputed = paste0(path_to_imputed, imputed_id)) %>% 
     select(set_id, mechanism, case, method, imputation_fun, amputed_id, imputed_id, everything())
 }
 

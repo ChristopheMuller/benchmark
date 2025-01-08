@@ -19,7 +19,7 @@ safe_impute <- function(missing_data_set,
   imputed <- structure(structure(list(), class = "try-error"))
   n <- 1
   
-  while(inherits(imputed, "try-error") & n < n_attempts) {
+  while(inherits(imputed, "try-error") & n <= n_attempts) {
     
     start_time <- Sys.time()
     imputed <- try({ 
@@ -33,7 +33,7 @@ safe_impute <- function(missing_data_set,
     n <- n + 1
   }
   
-  list(imputed = imputed, time = time)
+  list(imputed = imputed, time = time, attempts = n - 1)
 }
 
 
@@ -48,6 +48,7 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
   imputed <- safe_impute(missing_data_set, imputing_function, timeout, n_attempts)
   
   time <- imputed[["time"]]
+  attempts <- imputed[["attempts"]]
   imputed <- imputed[["imputed"]]
   
   if(inherits(imputed, "try-error")) {
@@ -61,7 +62,8 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
   }
   
   res <- data.frame(imputed_id = dataset_id,
-                    time= time,
+                    time = time,
+                    attempts = attempts,
                     error = error)
   
   list(imputed = imputed, 
