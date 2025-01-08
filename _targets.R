@@ -5,6 +5,20 @@
 print(Sys.time())
 
 library(targets)
+library(future)
+
+# Set up parallel backend
+plan(multisession)  # Keep workers persistent across tasks
+
+# Set timeout and other resource limits
+tar_option_set(
+  resources = tar_resources(
+    future = tar_resources_future(
+      resources = list(timeout = 600)  # 600 seconds = 10 minutes timeout
+    )
+  )
+)
+
 library(tarchetypes)
 library(purrr)
 library(dplyr)
