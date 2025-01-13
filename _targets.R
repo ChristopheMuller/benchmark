@@ -1,24 +1,7 @@
 
 # options(warn = 0)  # Re-enable warnings
 
-# print current time
-print(Sys.time())
-
 library(targets)
-library(future)
-
-# Set up parallel backend
-plan(multisession)  # Keep workers persistent across tasks
-
-# Set timeout and other resource limits
-tar_option_set(
-  resources = tar_resources(
-    future = tar_resources_future(
-      resources = list(timeout = 600)  # 600 seconds = 10 minutes timeout
-    )
-  )
-)
-
 library(tarchetypes)
 library(purrr)
 library(dplyr)
@@ -56,20 +39,15 @@ path_to_imputed <- "./results/imputed/"
 path_to_methods <- "./data/functions.RDS"
 
 # amputation setup:
-amputation_mechanisms <- c("mar")
-missing_ratios <- c(0.3)
-amputation_reps <- 1
+amputation_mechanisms <- c("mar", "mcar")
+missing_ratios <- c(0.2, 0.3, 0.4)
+amputation_reps <- 5
 
 # imputation methods
 imputation_methods <- readRDS(path_to_methods) %>% 
   rename(imputation_fun = `Function name`) %>% 
-  mutate(method = str_remove(imputation_fun, "impute_"))
-
-imputation_methods <- imputation_methods %>% 
-  filter(method %in% c("mice_gamlss", "random", "mice_drf"))
-
-print("methods:")
-print(imputation_methods$method)
+  mutate(method = str_remove(imputation_fun, "impute_")) %>% 
+  filter(method != "mice_gamlss")
 
 # parameters:
 params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
@@ -80,7 +58,6 @@ params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
                         amputation_reps = amputation_reps,
                         missing_ratios = missing_ratios,
                         imputation_methods = imputation_methods)
-
 
 saveRDS(params, "./data/params.RDS")
 
@@ -106,7 +83,6 @@ amputed_datasets <- tar_map(
              saveRDS(amputed_dat, filepath_amputed))
 )
 
-
 imputed_datasets <- tar_map(
   values = imputation_params,
   names = any_of("imputed_id"),
@@ -117,8 +93,8 @@ imputed_datasets <- tar_map(
         dataset_id = imputed_id,
         missing_data_set = amputed_all[[paste0("amputed_dat_", amputed_id)]], 
         imputing_function = get(imputation_fun),
-        timeout = 10, # time in seconds
-        n_attempts = 1
+        timeout = 600, # time in seconds
+        n_attempts = 3
       )
     }
   ),
