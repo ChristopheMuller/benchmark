@@ -1,9 +1,23 @@
 
+load_imputations_env <- function() {
+  library(imputomics)
+  library(miceDRF)
+  library(ImputeRobust)
+  library(mice)
+  library(glmnet)
+  
+  source("python/python_imputation_functions.R")
+  
+  targets::tar_source()
+}
+
+
 check_time_error <- function(imputed) {
   grepl("TimeoutError", imputed[[1]]) |
     grepl("reached CPU time limit", imputed[[1]]) | 
     grepl("reached elapsed time limit", imputed[[1]]) |
-    grepl("User interrupt", imputed[[1]])
+    grepl("User interrupt", imputed[[1]]) | 
+    grepl("callr timed out", imputed[[1]])
 }
 
 
@@ -14,7 +28,6 @@ safe_impute <- function(missing_data_set,
                         n_attempts = 3) {
   
   missing_data_set <- data.frame(missing_data_set)
-
   
   imputed <- structure(structure(list(), class = "try-error"))
   n <- 1
@@ -22,18 +35,38 @@ safe_impute <- function(missing_data_set,
   while(inherits(imputed, "try-error") & n <= n_attempts) {
     
     start_time <- Sys.time()
+    
     imputed <- try({ 
-      suppressWarnings({
-        R.utils::withTimeout(imputing_function(missing_data_set), 
-                             timeout = timeout, onTimeout = "error")
-      })
+      callr::r(
+        function(data, func, load_imputations_env) {
+          load_imputations_env()
+          
+          start_time <- Sys.time()
+          
+          # imputation is here
+          imputed <- func(data)
+          
+          time <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
+          
+          list(imputed = imputed, time = time)
+        }, 
+        timeout = timeout, 
+        args = list(data = missing_data_set, 
+                    func = imputing_function, 
+                    load_imputations_env = load_imputations_env)
+      )
     })
-    time <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
+    
+    total_time <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
     
     n <- n + 1
   }
   
-  list(imputed = imputed, time = time, attempts = n - 1)
+  # set time to total time in case of failure
+  if(inherits(imputed, "try-error"))
+    imputed <- list(imputed = imputed, time = total_time)
+  
+  c(imputed, attempts = n - 1)
 }
 
 
