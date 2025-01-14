@@ -29,10 +29,10 @@ safe_impute <- function(missing_data_set,
   
   missing_data_set <- data.frame(missing_data_set)
   
-  imputed <- structure(structure(list(), class = "try-error"))
+  imputed <- structure(structure("error", class = "try-error"))
   n <- 1
   
-  while(inherits(imputed, "try-error") & n <= n_attempts) {
+  while((inherits(imputed, "try-error") & n <= n_attempts) && !(check_time_error(imputed))) {
     
     start_time <- Sys.time()
     
@@ -59,6 +59,9 @@ safe_impute <- function(missing_data_set,
     
     total_time <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
     
+    if(is.null(imputed))
+      imputed <- structure("Computational error!", class = "try-error")
+    
     n <- n + 1
   }
   
@@ -78,6 +81,7 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
   
   col_names <- colnames(missing_data_set)
   
+  # call safe imputation
   imputed <- safe_impute(missing_data_set, imputing_function, timeout, n_attempts)
   
   time <- imputed[["time"]]
