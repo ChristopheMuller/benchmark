@@ -98,7 +98,22 @@ show_amputation <- function(amputation_summary) {
   
 }
 
-
-
+plot_averaged_colorscale <- function(imputation_summary, measure_name = "energy") {
+  imputation_summary %>% 
+    filter(measure == measure_name) %>% 
+    group_by(method) %>% 
+    reframe(mean_score = mean(score, na.rm = TRUE),
+            mean_time = mean(time),
+            error_proportion = mean(!is.na(error))) %>% 
+    filter(!is.na(mean_score)) %>% 
+    ggplot() +
+    geom_col(aes(x = reorder(method, mean_score), y = log10(mean_score), fill = error_proportion), alpha = 0.8) +
+    scale_fill_gradient(low = "blue", high = "red", limits = c(0, 1)) +
+    ylab(paste0("log10", measure_name)) +
+    xlab("method") +
+    coord_flip() +
+    theme_light() +
+    theme(legend.position = "bottom")
+}
 
 
