@@ -1,14 +1,21 @@
 
+get_colors_errors <- function() {
+  c("computational" = "#D1603D", "modification" = "#D0E37F", 
+    "timeout" = "#235789", "none" = "#BDB4BF")
+}
+
+
 
 plot_errors <- function(imputation_summary) {
   
   imputation_summary %>% 
-    filter(case == "complete") %>% 
     select(-measure, -score) %>% 
     unique() %>% 
     group_by(method) %>% 
     mutate(n_attempts = n()) %>% 
     mutate(error = ifelse(is.na(error), "none", error)) %>% 
+    mutate(error = factor(error, levels = c("computational",  "modification", "timeout", "none"))) %>% 
+    mutate(method = factor(method, levels = sort(unique(imputation_summary$method), decreasing = TRUE))) %>% 
     rename(`Type of error` = "error") %>% 
     group_by(method, `Type of error`) %>% 
     reframe(error_frac = n()/n_attempts) %>% 
@@ -16,20 +23,25 @@ plot_errors <- function(imputation_summary) {
     ggplot() + 
     geom_col(aes(x = method, y = error_frac, fill = `Type of error`)) +
     ylim(0, 1) +
-    coord_flip()
+    coord_flip() +
+    scale_fill_manual(name = "Type of errors:", values = get_colors_errors()) 
 }
 
-plot_time <- function(imputation_summary) {
+plot_time <- function(imputation_summary, timeout = 600) {
   
   imputation_summary %>% 
     select(-measure, -score, -imputation_fun) %>% 
+    filter(case == "complete") %>% 
     unique() %>% 
     group_by(method) %>% 
-    reframe(time = mean(time, na.rm = TRUE),
-            error = error) %>% 
+    reframe(time = mean(time, na.rm = TRUE), error = error) %>% 
     ggplot() + 
     geom_col(aes(x = reorder(method, time), y = time, fill = error)) +
-    coord_flip()
+    coord_flip() +
+    xlab("methods")+
+    scale_fill_manual(name = "Type of errors:", values = get_colors_errors())  +
+    geom_hline(aes(yintercept = timeout, color = "black"), linetype = "dashed") +
+    scale_color_discrete(name = "", labels = c("A"), values = c("black"))
 }
 
 
@@ -58,7 +70,7 @@ plot_averaged <- function(imputation_summary, measure_name = "energy") {
     filter(!is.na(mean_score)) %>% 
     mutate(`success percentage` = cut(`success percentage`, c(10, 40, 90, 100))) %>% 
     ggplot() +
-    geom_col(aes(x = reorder(method, mean_score), y = log10(mean_score), fill = `success percentage`), alpha = 0.8) +
+    geom_col(aes(x = reorder(method, mean_score), y = mean_score, fill = `success percentage`), alpha = 0.8) +
     ylab(paste0("log10", measure_name)) +
     xlab("method") +
     coord_flip() +
