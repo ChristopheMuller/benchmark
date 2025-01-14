@@ -29,10 +29,10 @@ safe_impute <- function(missing_data_set,
   
   missing_data_set <- data.frame(missing_data_set)
   
-  imputed <- structure(structure(list(), class = "try-error"))
+  imputed <- structure(structure("error", class = "try-error"))
   n <- 1
   
-  while(inherits(imputed, "try-error") & n <= n_attempts) {
+  while((inherits(imputed, "try-error") & n <= n_attempts) && !(check_time_error(imputed))) {
     
     start_time <- Sys.time()
     
