@@ -90,7 +90,7 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
   
   if(inherits(imputed, "try-error")) {
     
-    error <- ifelse(check_time_error(imputed), "timeout_thresh", "computational")
+    error <- ifelse(check_time_error(imputed), "timeout", "computational")
     
   } else {
     error <- validate_imputation(imputed, missing_data_set)
