@@ -13,3 +13,19 @@ sum(ACC_2023_Chip1 > 0)
 
 # save as RDS file
 saveRDS(ACC_2023_Chip1, "data/datasets/complete_backup/allergens.RDS")
+
+
+### german
+
+german_unprocessed <- readRDS("~/INRIA/R_scripts/benchmark/data/datasets/complete_backup/german_unprocessed.RDS")
+german <- german_unprocessed
+
+# 1. Make all columns, except 2 and 5, as factor
+german[, -c(2, 5)] <- lapply(german[, -c(2, 5)], as.factor)
+
+# 2. Make categories features into binary variables
+colnames(german) <- paste0(colnames(german), "_")
+german <- model.matrix(~ . - 1, data = german)
+
+# 3. Save as RDS file
+saveRDS(german, "data/datasets/complete_backup/german.RDS")
