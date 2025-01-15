@@ -72,9 +72,12 @@ plot_energy_time <- function() {
             time = mean(time, na.rm = TRUE),
             `success [%]` = mean(is.na(error)) * 100) %>% 
     mutate(`success [%]` = cut(`success [%]`, c(0, 40, 80, 99, 100), 
-                               include.lowest = TRUE)) 
+                               include.lowest = TRUE)) %>% 
+    mutate(is_top = `success [%]` == "(99,100]") %>% 
+    arrange(-is_top, mean_score) %>% 
+    mutate(method = factor(method, levels = method))
   
-  p1 <- ggplot(dat_plt, aes(x = reorder(method, mean_score), y = log10(time * 1000), fill = `success [%]`)) +
+  p1 <- ggplot(dat_plt, aes(x = method, y = log10(time * 1000), fill = `success [%]`)) +
     geom_col() +
     scale_fill_manual(name = "success [%]", values = get_colors_fractions()) +
     labs(x = "Methods", y = "Average Time") +
@@ -86,7 +89,7 @@ plot_energy_time <- function() {
     coord_flip() +
     scale_y_continuous("log10 time [ms]", trans =  "reverse")
   
-  p2 <- ggplot(dat_plt, aes(x = reorder(method, mean_score), y = log10(mean_score), fill = `success [%]`)) +
+  p2 <- ggplot(dat_plt, aes(x = method, y = log10(mean_score), fill = `success [%]`)) +
     geom_col() +
     coord_flip() +
     scale_fill_manual(name = "success [%]", 
