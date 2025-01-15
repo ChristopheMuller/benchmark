@@ -33,7 +33,8 @@ p2 <- ggplot(dat_imp_norm, aes(x = X1, y = X2, col = missing)) +
   theme_bw() +
   ggtitle("Missing data imputed with mice norm")
 
-p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = 'bottom')
+p1 + p2 + plot_layout(guides = "collect") & 
+  guides(color = guide_legend(override.aes = list(size = 5)))
 
 
 
