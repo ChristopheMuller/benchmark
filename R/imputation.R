@@ -13,7 +13,7 @@ load_imputations_env <- function() {
 
 
 check_time_error <- function(imputed) {
-  grepl("TimeoutError", imputed[[1]]) |
+  grepl("timeout_threshError", imputed[[1]]) |
     grepl("reached CPU time limit", imputed[[1]]) | 
     grepl("reached elapsed time limit", imputed[[1]]) |
     grepl("User interrupt", imputed[[1]]) | 
@@ -24,7 +24,7 @@ check_time_error <- function(imputed) {
 
 safe_impute <- function(missing_data_set, 
                         imputing_function, 
-                        timeout = 600, 
+                        timeout_thresh = 600, 
                         n_attempts = 3) {
   
   missing_data_set <- data.frame(missing_data_set)
@@ -50,7 +50,7 @@ safe_impute <- function(missing_data_set,
           
           list(imputed = imputed, time = time)
         }, 
-        timeout = timeout, 
+        timeout = timeout_thresh, 
         args = list(data = missing_data_set, 
                     func = imputing_function, 
                     load_imputations_env = load_imputations_env)
@@ -75,14 +75,14 @@ safe_impute <- function(missing_data_set,
 
 
 impute <- function(dataset_id, missing_data_set, imputing_function, 
-                   timeout = 600, n_attempts = 3) {
+                   timeout_thresh = 600, n_attempts = 3) {
   
   missing_data_set <- pre_process(missing_data_set)
   
   col_names <- colnames(missing_data_set)
   
   # call safe imputation
-  imputed <- safe_impute(missing_data_set, imputing_function, timeout, n_attempts)
+  imputed <- safe_impute(missing_data_set, imputing_function, timeout_thresh, n_attempts)
   
   time <- imputed[["time"]]
   attempts <- imputed[["attempts"]]
@@ -90,7 +90,7 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
   
   if(inherits(imputed, "try-error")) {
     
-    error <- ifelse(check_time_error(imputed), "timeout", "computational")
+    error <- ifelse(check_time_error(imputed), "timeout_thresh", "computational")
     
   } else {
     error <- validate_imputation(imputed, missing_data_set)

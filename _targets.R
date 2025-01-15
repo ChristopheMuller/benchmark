@@ -5,16 +5,19 @@ library(targets)
 library(tarchetypes)
 library(purrr)
 library(dplyr)
-library(imputomics)
-library(miceDRF)
-library(ImputeRobust)
 library(stringr)
 library(energy)
 library(reticulate)
 library(tidyr)
+library(clustermq)
+library(parallel)
+
+#imputations
+library(imputomics)
+library(miceDRF)
+library(ImputeRobust)
 library(mice)
 library(glmnet)
-library(clustermq)
 
 # for vis
 library(ggplot2)
@@ -27,8 +30,13 @@ options(clustermq.scheduler = "multiprocess")
 
 reticulate::use_virtualenv("./.venv", required = TRUE)
 
-
 set.seed(56135)
+
+# timeout value [in seconds]
+timeout_thresh <- 600
+
+# number of attempts in a single run
+n_attempts <- 3
 
 # set paths
 path_to_amputed <- "./results/amputed/"
@@ -41,6 +49,10 @@ path_to_methods <- "./data/functions.RDS"
 # amputation setup:
 amputation_mechanisms <- c("mcar")
 missing_ratios <- c(0.3)
+amputation_reps <- 1
+
+amputation_mechanisms <- c("mcar")
+missing_ratios <- c(0.2)
 amputation_reps <- 1
 
 # imputation methods
@@ -64,8 +76,8 @@ amputation_params <- params %>%
   unique()
 
 imputation_params <- params %>% 
-  select(imputed_id, amputed_id, imputation_fun, filepath_imputed, MI, 
-         filepath_original, case) %>% 
+  select(imputed_id, amputed_id, filepath_amputed, imputation_fun, 
+         filepath_imputed, MI, filepath_original, case) %>% 
   unique()
 
 # define static branches
@@ -91,10 +103,11 @@ imputed_datasets <- tar_map(
         dataset_id = imputed_id,
         missing_data_set = amputed_all[[paste0("amputed_dat_", amputed_id)]], 
         imputing_function = get(imputation_fun),
-        timeout = 600, # time in seconds
-        n_attempts = 3
+        timeout_thresh = timeout_thresh,
+        n_attempts = n_attempts
       )
-    }
+    },
+    cue = tar_cue(depend = FALSE),
   ),
   tar_target(save_imputed_dat,
              saveRDS(imputed_dat[["imputed"]], filepath_imputed)
@@ -106,10 +119,11 @@ imputed_datasets <- tar_map(
                        imputation_fun = get(imputation_fun),
                        multiple = MI,
                        imputed_id = imputed_id, 
-                       timeout = 600,
+                       timeout_thresh = timeout_thresh,
                        filepath_original = filepath_original,
                        case = case)
-    }
+    },
+    cue = tar_cue(depend = FALSE),
   )
 )
 

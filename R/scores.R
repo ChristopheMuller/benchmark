@@ -1,6 +1,6 @@
 
 calculate_scores <- function(imputed, amputed, imputation_fun, multiple, 
-                             imputed_id, timeout, filepath_original, case) {
+                             imputed_id, timeout_thresh, filepath_original, case) {
   
   imputed_data <- imputed[["imputed"]]
   res <- imputed[["res"]]
@@ -8,7 +8,7 @@ calculate_scores <- function(imputed, amputed, imputation_fun, multiple,
   if(!is.na(res[["error"]])) {
     return(cross_join(res, data.frame(measure = c("mae", "rmse", "nrmse", 
                                                   "rsq", "ccc", "energy", 
-                                                  "IScore"),
+                                                  "energy_std", "IScore"),
                                       score = NA)))
   }
   
@@ -23,7 +23,8 @@ calculate_scores <- function(imputed, amputed, imputation_fun, multiple,
     scores <- scores_for_incomplete(original_data = original_data, 
                                     imputed_data = imputed_data, 
                                     imputation_fun = imputation_fun,
-                                    multiple = multiple)
+                                    multiple = multiple,
+                                    timeout_thresh = timeout_thresh)
   }
   res %>% 
     cross_join(scores)
@@ -57,25 +58,35 @@ scores_for_complete <- function(original_data, amputed_data, imputed_data,
     rename(score = "value")
   energy <- as.numeric(miceDRF::energy_dist(X = original_data, 
                                             X_imp = imputed_data))
+  scaled_original <- scale(original_data)
+  
+  scaled_imputed <- sapply(1:ncol(imputed_data), function(i) {
+    (imputed_data[, i] - attr(scaled_original, "scaled:center")[i])/ 
+      attr(scaled_original, "scaled:scale")[i]
+  })
+  
+  energy_std <- as.numeric(miceDRF::energy_dist(X = scaled_original, 
+                                                X_imp = scaled_imputed))
+  
   rbind(imputomics_measures,
-        data.frame(measure = c("energy"), 
-                   score = c(energy)))
+        data.frame(measure = c("energy", "energy_std"), 
+                   score = c(energy, energy_std)))
 }
 
 
 
-stop_on_timeout <- function(missing_data_set, imputing_function, timeout = 600) {
+stop_on_timeout <- function(missing_data_set, imputing_function, timeout_thresh = 600) {
   R.utils::withTimeout(imputing_function(missing_data_set), 
-                       timeout = timeout, onTimeout = "error")
+                       timeout = timeout_thresh, onTimeout = "error")
 }
 
 
 
 
 scores_for_incomplete <- function(original_data, imputed_data, imputation_fun,
-                                  multiple) {
+                                  multiple, timeout_thresh) {
   #calculate IScore here
-  time_limited_fun <- function(missdf) stop_on_timeout(missdf, imputation_fun)
+  time_limited_fun <- function(missdf) stop_on_timeout(missdf, imputation_fun, timeout_thresh)
   
   ImpScore <- try({
     miceDRF::Iscore(X = original_data, X_imp = imputed_data, 
