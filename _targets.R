@@ -33,7 +33,7 @@ reticulate::use_virtualenv("./.venv", required = TRUE)
 set.seed(56135)
 
 # timeout value [in seconds]
-timeout_thresh <- 600
+timeout_thresh <- 100
 
 # number of attempts in a single run
 n_attempts <- 3
@@ -44,6 +44,8 @@ path_to_complete_datasets <- "./data/datasets/complete/"
 path_to_incomplete_datasets <- "./data/datasets/incomplete/"
 path_to_imputed <- "./results/imputed/"
 
+path_to_results <- "./results/"
+
 path_to_methods <- "./data/functions.RDS"
 
 # amputation setup:
@@ -52,13 +54,14 @@ missing_ratios <- c(0.2, 0.3, 0.4)
 amputation_reps <- 5
 
 amputation_mechanisms <- c("mcar")
-missing_ratios <- c(0.2)
+missing_ratios <- c(0.2, 0.6)
 amputation_reps <- 1
 
 # imputation methods
 imputation_methods <- readRDS(path_to_methods) %>% 
   rename(imputation_fun = `Function name`) %>% 
-  mutate(method = str_remove(imputation_fun, "impute_"))
+  mutate(method = str_remove(imputation_fun, "impute_")) %>% 
+  filter(method == "mean")
 
 # parameters:
 params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
@@ -136,6 +139,10 @@ list(
               command = list(!!!.x)),
   tar_target(amputation_summary,
              summarize_amputation(amputed_all, params)),
+  tar_target(save_amputation_summary, {
+    saveRDS(amputation_summary, 
+            paste0(path_to_results, "amputation_summary.RDS"))
+  }),
   
   # IMPUTATION
   imputed_datasets,
@@ -145,7 +152,13 @@ list(
   
   tar_target(imputation_summary, {
     summarize_imputations(all_scores, params)
+  }),
+  
+  tar_target(save_imputation_summary, {
+    saveRDS(imputation_summary, 
+            paste0(path_to_results, "imputation_summary.RDS"))
   })
+  
   # ANALYSIS
   # nice code here
 )
