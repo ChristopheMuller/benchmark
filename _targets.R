@@ -44,6 +44,8 @@ path_to_complete_datasets <- "./data/datasets/complete/"
 path_to_incomplete_datasets <- "./data/datasets/incomplete/"
 path_to_imputed <- "./results/imputed/"
 
+path_to_results <- "./results/"
+
 path_to_methods <- "./data/functions.RDS"
 
 # amputation setup:
@@ -132,6 +134,10 @@ list(
               command = list(!!!.x)),
   tar_target(amputation_summary,
              summarize_amputation(amputed_all, params)),
+  tar_target(save_amputation_summary, {
+    saveRDS(amputation_summary, 
+            paste0(path_to_results, "amputation_summary.RDS"))
+  }),
   
   # IMPUTATION
   imputed_datasets,
@@ -141,7 +147,13 @@ list(
   
   tar_target(imputation_summary, {
     summarize_imputations(all_scores, params)
+  }),
+  
+  tar_target(save_imputation_summary, {
+    saveRDS(imputation_summary, 
+            paste0(path_to_results, "imputation_summary.RDS"))
   })
+  
   # ANALYSIS
   # nice code here
 )
