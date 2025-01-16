@@ -122,6 +122,7 @@ hayes_roth_one_hot <- lapply(hayes_roth_one_hot, as.factor)
 hayes_roth_one_hot <- as.data.frame(hayes_roth_one_hot)
 
 hayes_roth_one_hot <- model.matrix(~ . - 1, data = hayes_roth_one_hot)
+hayes_roth_one_hot <- as.data.frame(hayes_roth_one_hot)
 
 # saveRDS(hayes_roth_one_hot, "data/datasets/complete_backup/one_hot/hayes_roth.RDS")
 
@@ -188,6 +189,7 @@ yeast_one_hot$X9[yeast_one_hot$X9 == "POX"] <- "ERLPOX"
 yeast_one_hot$X9 <- as.factor(yeast_one_hot$X9)
 
 yeast_one_hot <- model.matrix(~ . - 1, data = yeast_one_hot)
+yeast_one_hot <- as.data.frame(yeast_one_hot)
 
 # saveRDS(yeast_one_hot, "data/datasets/complete_backup/one_hot/yeast.RDS")
 
