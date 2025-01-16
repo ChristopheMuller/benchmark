@@ -3243,14 +3243,14 @@
       "RemoteHost": "api.github.com",
       "RemoteRepo": "miceDRF",
       "RemoteUsername": "KrystynaGrzesiak",
-      "RemoteSha": "e8811359d04d7a76ab36b4e864941541a72c163a",
+      "RemoteSha": "884989c9871ad2529047388eaace9d6597881481",
       "Requirements": [
         "drf",
         "energy",
         "mice",
         "scoringRules"
       ],
-      "Hash": "6538bdfdd8dcaa6655b6d1a265245343"
+      "Hash": "8cefc3434ea0c187f744eb2384832c4a"
     },
     "microbenchmark": {
       "Package": "microbenchmark",
