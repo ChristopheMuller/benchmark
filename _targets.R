@@ -36,7 +36,7 @@ set.seed(56135)
 timeout_thresh <- 1200
 
 # number of attempts in a single run
-n_attempts <- 1
+n_attempts <- 3
 
 # set paths
 path_to_amputed <- "./results/amputed/"
