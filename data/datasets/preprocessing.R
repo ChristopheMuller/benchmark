@@ -55,7 +55,7 @@ rename_columns <- function(data, prefix="X"){
 airfoil_self_noise <- readRDS("~/INRIA/R_scripts/benchmark/data/datasets/complete_backup/unprocessed/airfoil_self_noise.RDS")
 airfoil_self_noise <- rename_columns(airfoil_self_noise)
 
-# saveRDS(airfoil_self_noise, "data/datasets/complete_backup/only_num/german.RDS")
+# saveRDS(airfoil_self_noise, "data/datasets/complete_backup/only_num/airfoil_self_noise.RDS")
 
 ### Allergens
 # Only num
