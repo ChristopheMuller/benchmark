@@ -33,7 +33,7 @@ reticulate::use_virtualenv("./.venv", required = TRUE)
 set.seed(56135)
 
 # timeout value [in seconds]
-timeout_thresh <- 3600
+timeout_thresh <- 600
 
 # number of attempts in a single run
 n_attempts <- 1
@@ -54,8 +54,8 @@ amputation_reps <- 1
 # imputation methods
 imputation_methods <- readRDS(path_to_methods) %>% 
   rename(imputation_fun = `Function name`) %>% 
-  mutate(method = str_remove(imputation_fun, "impute_")) %>%
-  filter(method %in% c("mice_drf", "FEFI", "tknn", "sinkhorn", "miracle"))
+  mutate(method = str_remove(imputation_fun, "impute_"))
+
 # parameters:
 params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
                         path_to_incomplete_datasets = path_to_incomplete_datasets,
