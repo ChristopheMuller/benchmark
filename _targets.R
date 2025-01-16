@@ -33,7 +33,7 @@ reticulate::use_virtualenv("./.venv", required = TRUE)
 set.seed(56135)
 
 # timeout value [in seconds]
-timeout_thresh <- 600
+timeout_thresh <- 1200
 
 # number of attempts in a single run
 n_attempts <- 1
@@ -49,9 +49,9 @@ path_to_results <- "./results/"
 path_to_methods <- "./data/functions.RDS"
 
 # amputation setup:
-amputation_mechanisms <- c("mcar")
-missing_ratios <- c(0.2)
-amputation_reps <- 1
+amputation_mechanisms <- c("mcar", "mar")
+missing_ratios <- c(0.1,0.3)
+amputation_reps <- 3
 
 # imputation methods
 imputation_methods <- readRDS(path_to_methods) %>% 
