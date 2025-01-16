@@ -2,7 +2,14 @@
 .Rhistory
 .RData
 .Ruserdata
-_targets/
 low_rank_MNAR/
 *.RDS
+!data/datasets/complete/*.rds
+!data/datasets/incomplete/*.rds
+!data/datasets/incomplete_backup/*.rds
+!data/datasets/complete_backup/*/*
+!functions.RDS
 .venv/
+container
+env.sif
+_targets
