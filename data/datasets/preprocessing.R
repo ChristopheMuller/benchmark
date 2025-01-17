@@ -62,6 +62,7 @@ airfoil_self_noise <- rename_columns(airfoil_self_noise)
 
 allergens <- read.csv("data/datasets/complete_backup/unprocessed/ACC_2023_Chip1.csv")
 allergens <- allergens[, which(colnames(allergens) == "Act.d.1"):ncol(allergens)]
+allergens <- rename_columns(allergens)
 
 dim(allergens)
 #> 2351 112
