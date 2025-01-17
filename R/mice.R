@@ -32,4 +32,12 @@ impute_mice_midastouch <- function(missdf, m = 1, ...)
 impute_mice_boot <- function(missdf, m = 1, ...) 
   eval_mice_call(missdf = missdf, method = "norm.boot", m = m, ...)
 
+impute_mice_CALIBER <- function(missdf, m=1, ...){
+  col_is_factor <- sapply(missdf, function(x) is.factor(x))
+  methods <- c("rfcont", "rfcat")
+  methods_cols <- methods[col_is_factor + 1]
+  eval_mice_call(missdf = missdf, method = methods_cols, m = m, ...)
+}
+
+
 
