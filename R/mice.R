@@ -15,7 +15,7 @@ eval_mice_call <- function(missdf, method, ...) {
 
 
 impute_mice_gamlss <- function(missdf, m = 1, ...) 
-  eval_mice_call(missdf = missdf, method = "gamlss", m = m, ...)
+  eval_mice_call(missdf = missdf, method = "gamlss", m = m, maxit=1, n.cyc=1, bf.cyc=1, cyc=1, ...)
 
 impute_mice_norm <- function(missdf, m = 1, ...)
   eval_mice_call(missdf = missdf, method = "norm", m = m, ...)
