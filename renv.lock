@@ -108,6 +108,18 @@
       ],
       "Hash": "3c70eb3b78929c0ee452350cea8432a5"
     },
+    "CALIBERrfimpute": {
+      "Package": "CALIBERrfimpute",
+      "Version": "1.0-7",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "mice",
+        "mvtnorm",
+        "randomForest"
+      ],
+      "Hash": "f31ed78072b20d211f6891eddb253122"
+    },
     "DBI": {
       "Package": "DBI",
       "Version": "1.2.3",
