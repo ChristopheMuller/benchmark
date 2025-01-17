@@ -1260,17 +1260,18 @@
     },
     "bit64": {
       "Package": "bit64",
-      "Version": "4.5.2",
+      "Version": "4.6.0-1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R",
         "bit",
+        "graphics",
         "methods",
         "stats",
         "utils"
       ],
-      "Hash": "e84984bf5f12a18628d9a02322128dfd"
+      "Hash": "4f572fbc586294afff277db583b9060f"
     },
     "bitops": {
       "Package": "bitops",
@@ -1675,14 +1676,14 @@
     },
     "data.table": {
       "Package": "data.table",
-      "Version": "1.16.2",
+      "Version": "1.16.4",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R",
         "methods"
       ],
-      "Hash": "2e00b378fc3be69c865120d9f313039a"
+      "Hash": "38bbf05fc2503143db4c734a7e5cab66"
     },
     "dbplyr": {
       "Package": "dbplyr",
@@ -2287,6 +2288,19 @@
         "vipor"
       ],
       "Hash": "899f28fe0388b7f687d7453429c2474d"
+    },
+    "ggcorrplot": {
+      "Package": "ggcorrplot",
+      "Version": "0.1.4.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "ggplot2",
+        "reshape2",
+        "stats"
+      ],
+      "Hash": "aad38d027d0dd18621e213919c20a65f"
     },
     "ggdendro": {
       "Package": "ggdendro",
@@ -3229,14 +3243,14 @@
       "RemoteHost": "api.github.com",
       "RemoteRepo": "miceDRF",
       "RemoteUsername": "KrystynaGrzesiak",
-      "RemoteSha": "b3da393f2dc37483fc3c308048cb460ebe1853db",
+      "RemoteSha": "884989c9871ad2529047388eaace9d6597881481",
       "Requirements": [
         "drf",
         "energy",
         "mice",
         "scoringRules"
       ],
-      "Hash": "a911acc8d1275b51da668cc34de02fab"
+      "Hash": "8cefc3434ea0c187f744eb2384832c4a"
     },
     "microbenchmark": {
       "Package": "microbenchmark",
