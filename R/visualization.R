@@ -13,6 +13,7 @@ get_colors_fractions <- function() {
 plot_errors <- function(imputation_summary) {
   
   imputation_summary %>% 
+    filter(!is.na(measure)) %>% 
     select(-measure, -score) %>% 
     unique() %>% 
     group_by(method) %>% 
@@ -38,9 +39,86 @@ plot_errors <- function(imputation_summary) {
   
 }
 
+
+plot_errors_datasets <- function(imputation_summary) {
+  
+  imputation_summary %>% 
+    filter(!is.na(measure)) %>% 
+    select(-measure, -score, -imputation_fun) %>% 
+    unique() %>% 
+    group_by(method) %>% 
+    mutate(overall_errors = sum(!is.na(error))) %>% 
+    ungroup() %>% 
+    group_by(method, set_id) %>% 
+    mutate(n_attempts = n()) %>% 
+    mutate(error = ifelse(is.na(error), "none", error)) %>% 
+    mutate(error = factor(error, levels = c("computational",  "modification", 
+                                            "timeout", "missings", "none"))) %>% 
+    # mutate(method = factor(method, levels = sort(unique(imputation_summary$method), decreasing = TRUE))) %>% 
+    rename(`Type of error` = "error") %>% 
+    group_by(method, `Type of error`, set_id) %>% 
+    reframe(error_frac = 100*n()/n_attempts, overall_errors = overall_errors) %>% 
+    unique() %>% 
+    ggplot() + 
+    geom_col(aes(x = reorder(method, overall_errors), y = error_frac, fill = `Type of error`, 
+                 alpha = `Type of error`)) +
+    ylim(0, 100) +
+    ylab("imputations [%]" ) +
+    coord_flip() +
+    facet_grid(~set_id) +
+    scale_fill_manual(name = "Type of error", values = get_colors_errors()) +
+    scale_alpha_manual(values = c("computational" = 1, "modification" = 1, 
+                                  "timeout" = 1, "missings" = 1, "none" = 0.8)) +
+    theme_minimal() +
+    theme(legend.position = "bottom", 
+          axis.text.x = element_blank()) +
+    xlab("method")
+  
+}
+
+
+plot_errors_mechanism <- function(imputation_summary) {
+  
+  imputation_summary %>% 
+    filter(!is.na(measure)) %>% 
+    select(-measure, -score, -imputation_fun) %>% 
+    unique() %>% 
+    group_by(method) %>% 
+    mutate(overall_errors = sum(!is.na(error))) %>% 
+    ungroup() %>% 
+    group_by(method, mechanism) %>% 
+    mutate(n_attempts = n()) %>% 
+    mutate(error = ifelse(is.na(error), "none", error)) %>% 
+    mutate(error = factor(error, levels = c("computational",  "modification", 
+                                            "timeout", "missings", "none"))) %>% 
+    # mutate(method = factor(method, levels = sort(unique(imputation_summary$method), decreasing = TRUE))) %>% 
+    rename(`Type of error` = "error") %>% 
+    group_by(method, `Type of error`, mechanism) %>% 
+    reframe(error_frac = 100*n()/n_attempts, overall_errors = overall_errors) %>% 
+    unique() %>% 
+    ggplot() + 
+    geom_col(aes(x = reorder(method, overall_errors), y = error_frac, fill = `Type of error`, 
+                 alpha = `Type of error`)) +
+    ylim(0, 100) +
+    ylab("imputations [%]" ) +
+    coord_flip() +
+    facet_grid(~mechanism) +
+    scale_fill_manual(name = "Type of error", values = get_colors_errors()) +
+    scale_alpha_manual(values = c("computational" = 1, "modification" = 1, 
+                                  "timeout" = 1, "missings" = 1, "none" = 0.8)) +
+    theme_minimal() +
+    theme(legend.position = "bottom", 
+          axis.text.x = element_blank()) +
+    xlab("method")
+  
+}
+
+
+
 plot_time <- function(imputation_summary, timeout = 600) {
   
   imputation_summary %>% 
+    filter(!is.na(measure)) %>% 
     select(-measure, -score, -imputation_fun) %>% 
     filter(case == "complete") %>% 
     unique() %>% 
@@ -61,9 +139,38 @@ plot_time <- function(imputation_summary, timeout = 600) {
 }
 
 
-plot_energy_time <- function() {
+plot_time <- function(imputation_summary, timeout = 600) {
+  
+  imputation_summary %>% 
+    filter(!is.na(measure)) %>% 
+    select(-measure, -score, -imputation_fun) %>% 
+    filter(case == "complete") %>% 
+    unique() %>% 
+    group_by(method, set_id) %>% 
+    reframe(time = mean(time, na.rm = TRUE)) %>% 
+    group_by(set_id) %>% 
+    mutate(mean_set_time = mean(time)) %>% 
+    ungroup() %>% 
+    arrange(method) %>% 
+    mutate(method = factor(method, levels = unique(method))) %>% 
+    ggplot() + 
+    geom_tile(aes(x = method, y = reorder(set_id, mean_set_time), fill = time),
+              colour = "black") +
+    coord_flip() +
+    xlab("methods") +
+    ylab("dataset") +
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 20, hjust = 0.7))
+    
+}
+
+
+
+
+plot_energy_time <- function(arrange_success = TRUE) {
   
   dat_plt <- imputation_summary %>% 
+    filter(!is.na(measure)) %>% 
     select(-imputation_fun) %>% 
     filter(case == "complete", measure == "energy") %>%
     unique() %>% 
@@ -74,8 +181,14 @@ plot_energy_time <- function() {
     mutate(`success [%]` = cut(`success [%]`, c(0, 40, 80, 99, 100), 
                                include.lowest = TRUE)) %>% 
     mutate(is_top = `success [%]` == "(99,100]") %>% 
-    arrange(-is_top, mean_score) %>% 
+    arrange(mean_score) %>% 
     mutate(method = factor(method, levels = method))
+  
+  if(arrange_success)
+    dat_plt <- dat_plt %>%  
+      arrange(-is_top, mean_score) %>% 
+      mutate(method = factor(method, levels = method))
+  
   
   p1 <- ggplot(dat_plt, aes(x = method, y = log10(time * 1000), fill = `success [%]`)) +
     geom_col() +
@@ -122,6 +235,7 @@ plot_energy_time <- function() {
 
 plot_averaged_energy <- function(imputation_summary) {
   imputation_summary %>% 
+    filter(!is.na(measure)) %>% 
     filter(measure == "energy") %>% 
     group_by(method) %>% 
     reframe(mean_score = mean(score, na.rm = TRUE),
@@ -142,6 +256,7 @@ plot_averaged_energy <- function(imputation_summary) {
 
 plot_averaged_nrmse <- function(imputation_summary) {
   imputation_summary %>% 
+    filter(!is.na(measure)) %>% 
     filter(measure == "nrmse") %>% 
     group_by(method) %>% 
     reframe(mean_score = mean(score, na.rm = TRUE),
@@ -195,6 +310,7 @@ show_amputation <- function(amputation_summary) {
 
 plot_averaged_colorscale <- function(imputation_summary, measure_name = "energy") {
   imputation_summary %>% 
+    filter(!is.na(measure)) %>% 
     filter(measure == measure_name) %>% 
     group_by(method) %>% 
     reframe(mean_score = mean(score, na.rm = TRUE),
