@@ -13,6 +13,7 @@ complete_targets <- targets_tbl %>%
   pull(name)
 
 all_scores <- lapply(complete_targets, function(ith_case) {
+  print(paste0(which(ith_case == complete_targets), " / ", length(complete_targets)))
   tar_load(!!ith_case)
   get(ith_case)
 }) %>% 
