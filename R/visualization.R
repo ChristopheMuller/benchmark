@@ -328,3 +328,22 @@ plot_averaged_colorscale <- function(imputation_summary, measure_name = "energy"
 }
 
 
+
+plot_progress <- function(imputation_summary) {
+  
+  imputation_summary %>% 
+    mutate(complete = !is.na(measure)) %>% 
+    select(method, set_id, mechanism, ratio, rep, complete) %>% 
+    unique() %>% 
+    ggplot() +
+    geom_tile(aes(x = method, y = set_id, fill = complete)) + 
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+    facet_grid(ratio + mechanism ~ rep) +
+    ylab("dataset") +
+    scale_fill_manual("Finished", values = c("snow3", "springgreen4"))
+  
+}
+
+
+
