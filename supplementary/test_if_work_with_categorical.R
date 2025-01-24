@@ -74,7 +74,7 @@ path_to_methods <- "./data/functions.RDS"
 imputation_methods <- readRDS(path_to_methods) %>% 
   rename(imputation_fun = `Function name`) %>% 
   mutate(method = str_remove(imputation_fun, "impute_")) %>% 
-  filter(!method %in% c("miracle", "sinkhorn"))
+  filter(method %in% c("eucknn", "mice_CALIBER"))
 
 
 results <- data.frame(method = imputation_methods$method,
@@ -105,11 +105,16 @@ print(head(data))
 
 # Missing data
 
-data <- mcar(data, 0.2)
+data <- mcar(data, 0.1)
 # mask dummy
 M <- 1 * is.na(data)
+
+data <- data[apply(M, 1, sum) <= 3,]
+M <- M[apply(M, 1, sum) <= 3,]
+
+# remove rows with only 
   
-  # Imputation
+# Imputation
   
   
 for (i in 1:nrow(results)) {
@@ -120,7 +125,8 @@ for (i in 1:nrow(results)) {
   print(imputation_fun)
   
   if (method %in% c("sinkhorn")){
-    data_temp <- as.data.frame(as.double(as.matrix(data)))
+    mat_data <- as.matrix(data)
+    data_temp <- matrix(as.double(mat_data), nrow = nrow(mat_data), ncol = ncol(mat_data))
     imputed_data <- do.call(imputation_fun, list(data_temp))
   } else {
     tryCatch({
@@ -143,7 +149,6 @@ for (i in 1:nrow(results)) {
   print(paste0(""))
 }
 
-x <- impute_sinkhorn(data_temp)
 
 
 
