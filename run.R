@@ -8,7 +8,7 @@
 # targets::tar_make()
 # !!!! python is not working for this plan
 print(Sys.time())
-targets::tar_make_clustermq(workers = 8) # nolintz
+targets::tar_make_clustermq(workers = 1) # nolintz
 print(Sys.time())
 
 
