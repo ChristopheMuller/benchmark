@@ -2,6 +2,7 @@
 # options(warn = 0)  # Re-enable warnings
 
 library(targets)
+options(clustermq.scheduler = "multiprocess")
 library(tarchetypes)
 library(purrr)
 library(dplyr)
@@ -26,7 +27,7 @@ library(patchwork)
 # Source custom functions
 tar_source()
 
-options(clustermq.scheduler = "multiprocess")
+# options(clustermq.scheduler = "multiprocess")
 
 reticulate::use_virtualenv("./.venv", required = TRUE)
 
