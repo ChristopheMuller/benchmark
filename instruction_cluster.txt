@@ -1,10 +1,17 @@
 ### EULER
 
 Create same apptainer container as below
-Apptainer> mkdir -p /tmp/R/renv/cache
-Apptainer> export R_USER_CACHE_DIR=/tmp/R
-Apptainer> export RENV_PATHS_CACHE=/tmp/R/renv/cache
-Apptainer> export RENV_PATHS_LIBRARY=/tmp/R/renv/library
+mkdir -p /tmp/R/renv/cache
+export R_USER_CACHE_DIR=/tmp/R
+export RENV_PATHS_CACHE=/tmp/R/renv/cache
+export RENV_PATHS_LIBRARY=/tmp/R/renv/library
+
+Xvfb :99 -screen 0 1024x768x24 &
+
+renv::...
+
+
+install.packages(pkgs="https://cran.r-project.org/src/contrib/Archive/TimeProjection/TimeProjection_0.2.0.tar.gz", type="source", repos=NULL)
 
 
 
