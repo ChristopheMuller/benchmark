@@ -6,6 +6,12 @@ export R_USER_CACHE_DIR=/tmp/R
 export RENV_PATHS_CACHE=/tmp/R/renv/cache
 export RENV_PATHS_LIBRARY=/tmp/R/renv/library
 
+apptainer shell --bind $HOME:$HOME env.sif
+export R_USER_CACHE_DIR=$HOME/.R_cache
+export RENV_PATHS_CACHE=$HOME/.R_cache/renv/cache
+export RENV_PATHS_LIBRARY=$HOME/.R_cache/renv/library
+
+
 Xvfb :99 -screen 0 1024x768x24 &
 
 renv::...
