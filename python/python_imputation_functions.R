@@ -37,6 +37,7 @@ call_hyperimpute_fun <- function(missdf, method, ...) {
   seed <- sample(1:100000, 1)
   column_names <- colnames(missdf)
   imputed <- hyperimpute_imp(missdf, method = method, seed=seed, ...)
+  if(is.null(imputed)) stop("Internal error. Function returned NULL")
   colnames(imputed) <- column_names
   imputed
 }
