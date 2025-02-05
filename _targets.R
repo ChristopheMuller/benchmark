@@ -51,7 +51,7 @@ path_to_methods <- "./data/functions.RDS"
 
 # amputation setup:
 amputation_mechanisms <- c("mar")
-missing_ratios <- c(0.1)
+missing_ratios <- c(0.2)
 amputation_reps <- 2
 
 # imputation methods
