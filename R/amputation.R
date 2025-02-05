@@ -5,17 +5,33 @@ library(dplyr)
 ampute_dataset <- function(filepath, mechanism, ratio) {
   
   dat <- readRDS(filepath)
+  missdf <- dat
+  
+  amputed_switch <- FALSE
   
   if(!is.na(mechanism)) {
-    dat <- try({
-      get(mechanism)(dat, ratio)
-    })
     
-    if(inherits(dat, "try-error"))
-      dat <- NA
-  }
+    i <- 1
+    
+    # safe amputation here
+    while(i < 4 && !amputed_switch){
+      
+      i <- i + 1
+      
+      missdf <- try({
+        get(mechanism)(dat, ratio)
+      })
+      
+      if(!(inherits(missdf, "try-error") || any(rowSums(!is.na(missdf)) == 0))) {
+        amputed_switch <- TRUE
+      }
+    }
+  } 
   
-  dat  
+  if(!amputed_switch)
+    stop("amputation error")
+  
+  missdf  
 }
 
 
