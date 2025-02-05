@@ -57,7 +57,8 @@ amputation_reps <- 2
 # imputation methods
 imputation_methods <- readRDS(path_to_methods) %>% 
   rename(imputation_fun = `Function name`) %>% 
-  mutate(method = str_remove(imputation_fun, "impute_"))
+  mutate(method = str_remove(imputation_fun, "impute_")) %>% 
+  filter(!(method %in% c("dimar", "dimar_fast", "SVTImpute", "rmiMAE")))
 
 # parameters:
 params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
