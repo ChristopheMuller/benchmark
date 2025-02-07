@@ -36,10 +36,10 @@ reticulate::use_virtualenv("./.venv", required = TRUE)
 set.seed(56135)
 
 # timeout value [in seconds]
-timeout_thresh <- 1200
+timeout_thresh <- 10800
 
 # number of attempts in a single run
-n_attempts <- 3
+n_attempts <- 2
 
 # set paths
 path_to_amputed <- "./results/amputed/"
@@ -52,14 +52,15 @@ path_to_results <- "./results/"
 path_to_methods <- "./data/functions.RDS"
 
 # amputation setup:
-amputation_mechanisms <- c("mcar", "mar")
-missing_ratios <- c(0.1, 0.2, 0.3)
-amputation_reps <- 5
+amputation_mechanisms <- c("mar")
+missing_ratios <- c(0.2)
+amputation_reps <- 2
 
 # imputation methods
 imputation_methods <- readRDS(path_to_methods) %>% 
   rename(imputation_fun = `Function name`) %>% 
-  mutate(method = str_remove(imputation_fun, "impute_"))
+  mutate(method = str_remove(imputation_fun, "impute_")) %>% 
+  filter(!(method %in% c("dimar", "dimar_fast", "SVTImpute", "rmiMAE")))
 
 # parameters:
 params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
