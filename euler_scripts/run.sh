@@ -3,10 +3,10 @@
 #SBATCH -A public
 #SBATCH -n 1
 #SBATCH --time=24:00:00
-#SBATCH --cpus-per-task=16
-#SBATCH --job-name=bench
-#SBATCH --mem-per-cpu=8G
-#SBATCH --output=./output/30bth_out.out
+#SBATCH --cpus-per-task=25
+#SBATCH --job-name=34_bench
+#SBATCH --mem-per-cpu=5G
+#SBATCH --output=./output/34th_out.out
 #SBATCH --mail-type=END,FAIL
 
 # Use full paths

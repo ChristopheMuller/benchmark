@@ -23,8 +23,6 @@ library(glmnet)
 # for vis
 library(ggplot2)
 library(patchwork)
-library(ggsci)
-library(ggnewscale)
 
 # Source custom functions
 tar_source()
@@ -52,9 +50,9 @@ path_to_results <- "./results/"
 path_to_methods <- "./data/functions.RDS"
 
 # amputation setup:
-amputation_mechanisms <- c("mar")
-missing_ratios <- c(0.2)
-amputation_reps <- 2
+amputation_mechanisms <- c("mcar")
+missing_ratios <- c(0.3)
+amputation_reps <- 1
 
 # imputation methods
 imputation_methods <- readRDS(path_to_methods) %>% 
@@ -71,6 +69,8 @@ params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
                         amputation_reps = amputation_reps,
                         missing_ratios = missing_ratios,
                         imputation_methods = imputation_methods)
+
+print(dim(params))
 
 saveRDS(params, "./data/params.RDS")
 
