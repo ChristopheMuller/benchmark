@@ -24,3 +24,5 @@ params %>%
   dplyr::select(set_id, mechanism, ratio, rep, case, method, imputation_fun, 
                 time, attempts, error, measure, score) %>% 
   saveRDS("./results/imputation_summary_partial.RDS")
+
+
