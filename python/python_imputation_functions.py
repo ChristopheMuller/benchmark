@@ -6,7 +6,7 @@ from remasker.remasker_impute import ReMasker
 from timeout_function_decorator import timeout
 
 
-@timeout(10800)
+@timeout(36000)
 def hyperimpute_imp(X, method, seed):
     filterwarnings('ignore')
     imputer = Imputers().get(method)
@@ -14,14 +14,14 @@ def hyperimpute_imp(X, method, seed):
     X_imputed = imputer.fit_transform(X.copy())
     return X_imputed
 
-@timeout(10800)
+@timeout(36000)
 def iterative_imp(X, post):
     filterwarnings('ignore')
     imputer = IterativeImputer(sample_posterior=post)
     X_imputed = imputer.fit_transform(X.copy())
     return X_imputed
 
-@timeout(10800)
+@timeout(36000)
 def remasker_imp(X, seed):
     filterwarnings('ignore')
     imputer = ReMasker()
