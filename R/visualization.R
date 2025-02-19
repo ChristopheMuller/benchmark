@@ -127,7 +127,7 @@ plot_errors_mechanism <- function(imputation_summary) {
 
 
 
-plot_time <- function(imputation_summary, timeout = 600, breaks = c(0, 1, 40, 80, 99, 100)) {
+plot_time <- function(imputation_summary, timeout = 10 * 60 * 60, breaks = c(0, 1, 40, 80, 99, 100)) {
   
   imputation_summary %>% 
     filter(!is.na(measure)) %>% 
@@ -148,6 +148,7 @@ plot_time <- function(imputation_summary, timeout = 600, breaks = c(0, 1, 40, 80
     scale_fill_manual(name = "success [%]", values = get_colors_fractions()) +
     theme_minimal() +
     guides(fill = guide_legend(order=2))
+
 }
 
 
