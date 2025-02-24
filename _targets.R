@@ -34,10 +34,10 @@ reticulate::use_virtualenv("./.venv", required = TRUE)
 set.seed(56135)
 
 # timeout value [in seconds]
-timeout_thresh <- 100
+timeout_thresh <- 10800
 
 # number of attempts in a single run
-n_attempts <- 3
+n_attempts <- 2
 
 # set paths
 path_to_amputed <- "./results/amputed/"
@@ -50,20 +50,15 @@ path_to_results <- "./results/"
 path_to_methods <- "./data/functions.RDS"
 
 # amputation setup:
-amputation_mechanisms <- c("mar", "mcar")
-missing_ratios <- c(0.2, 0.3, 0.4)
-amputation_reps <- 5
-
-amputation_mechanisms <- c("mcar")
-missing_ratios <- c(0.2, 0.6)
-amputation_reps <- 1
+amputation_mechanisms <- c("mcar", "mar")
+missing_ratios <- c(0.1, 0.2, 0.3)
+amputation_reps <- 2
 
 # imputation methods
 imputation_methods <- readRDS(path_to_methods) %>% 
   rename(imputation_fun = `Function name`) %>% 
-  mutate(method = str_remove(imputation_fun, "impute_")) %>% 
-  filter(method == "mean")
-
+  mutate(method = str_remove(imputation_fun, "impute_"))
+  
 # parameters:
 params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
                         path_to_incomplete_datasets = path_to_incomplete_datasets,
@@ -74,7 +69,15 @@ params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
                         missing_ratios = missing_ratios,
                         imputation_methods = imputation_methods)
 
-saveRDS(params, "./data/params.RDS")
+#params <- params %>%
+#  left_join(readRDS("./results/imputation_summary_timeouts.RDS")) %>%
+#  filter(!is.na(error)) %>%
+#  select(-time, -attempts, -error)
+
+
+print(dim(params))
+
+# saveRDS(params, "./data/params.RDS")
 
 amputation_params <- params %>% 
   select(amputed_id, mechanism, ratio, filepath_original, filepath_amputed) %>% 

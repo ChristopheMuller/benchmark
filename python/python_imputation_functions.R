@@ -88,3 +88,9 @@ impute_remasker <- function(missdf, ...){
   seed <- sample(1:100000, 1)
   remasker_imp(missdf, seed, ...)
 }
+
+impute_autocomplete <- function(missdf, ...){
+  #missdf <- make_integer_double(missdf)
+  seed <- sample(1:100000, 1)
+  autocomplete_imp(missdf, seed=seed, ...)
+}
