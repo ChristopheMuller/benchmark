@@ -58,7 +58,7 @@ amputation_reps <- 2
 imputation_methods <- readRDS(path_to_methods) %>% 
   rename(imputation_fun = `Function name`) %>% 
   mutate(method = str_remove(imputation_fun, "impute_"))
-
+  
 # parameters:
 params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
                         path_to_incomplete_datasets = path_to_incomplete_datasets,
@@ -69,10 +69,10 @@ params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
                         missing_ratios = missing_ratios,
                         imputation_methods = imputation_methods)
 
-params <- params %>%
-  left_join(readRDS("./results/imputation_summary_timeouts.RDS")) %>%
-  filter(!is.na(error)) %>%
-  select(-time, -attempts, -error)
+#params <- params %>%
+#  left_join(readRDS("./results/imputation_summary_timeouts.RDS")) %>%
+#  filter(!is.na(error)) %>%
+#  select(-time, -attempts, -error)
 
 
 print(dim(params))
