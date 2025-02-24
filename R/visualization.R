@@ -218,7 +218,7 @@ plot_energy_time <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99
     filter(!is.na(measure)) %>% 
     select(-imputation_fun) %>% 
     # filter(!(set_id %in% c("oes10", "scm1d", "scm20d"))) %>% 
-    filter(case == "complete", measure == "energy_std") %>%
+    filter(case == "complete", measure == "energy") %>%
     unique() %>% 
     group_by(method) %>% 
     reframe(mean_score = median(score, na.rm = TRUE),
@@ -435,7 +435,7 @@ plot_111234 <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99, 100
     filter(!is.na(measure)) %>% 
     select(-imputation_fun, -attempts) %>% 
     # filter(!(set_id %in% c("oes10", "scm1d", "scm20d"))) %>% 
-    filter(case == "complete", measure == "energy_std") %>%
+    filter(case == "complete", measure == "energy") %>%
     unique() %>% 
     group_by(method) %>% 
     mutate(`success [%]` = mean(is.na(error)) * 100) %>% 
@@ -736,7 +736,167 @@ plot_progress <- function(imputation_summary) {
 }
 
 
+plot_imputation_one_dim <- function(dim, set.id, methods, mechanism="mcar", ratio="0.1", 
+                                    rep="1") {
+  
+  # if object amputed_all does not exist:
+  if (!exists("amputed_all")){
+    targets::tar_load("amputed_all")
+    print("..loading amputed_all")
+  }
+  
+  # Get amputed data (same for all methods)
+  amputed_string <- paste0("amputed_dat_", mechanism, ".", ratio, ".", rep, ".", set.id)
+  amputed <- amputed_all[[amputed_string]]
+  
+  # Get original data (same for all methods)
+  original_data_path <- paste0("data/datasets/complete/", set.id, ".RDS")
+  original_data <- readRDS(original_data_path)
+  
+  # Convert to data.frame
+  original_data <- as.data.frame(original_data)
+  amputed <- as.data.frame(amputed)
+  
+  # Create missing mask
+  missing_mask <- is.na(amputed)
+  
+  # Create list to store plots
+  plots <- list()
+  
+  # Loop through each method and create plots
+  for(method in methods) {
+    # Get imputed data for current method
+    imputed_string <- paste0("imputed_dat_", method, ".", mechanism, ".", ratio, ".", rep, ".", set.id)
+    imputed <- targets::tar_read_raw(imputed_string)$imputed
+    imputed <- as.data.frame(imputed)
+    
+    # Create data frame for plotting
+    plot_data <- data.frame(
+      Original = original_data[,dim],
+      Imputed = imputed[,dim],
+      Status = factor(ifelse(missing_mask[,dim], "Imputed", "Original"))
+    )
+    
+    # Create plot
+    p <- ggplot(plot_data, aes(x = Original, y = Imputed, color = Status)) +
+      geom_point(alpha = 0.6) +
+      geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray50") +
+      scale_color_manual(values = c("Original" = "#0072B2", "Imputed" = "#D55E00")) +
+      labs(
+        title = method,
+        x = paste("Original Dimension", dim),
+        y = paste("Imputed Dimension", dim)
+      ) +
+      theme_minimal() +
+      theme(
+        plot.title = element_text(hjust = 0.5, face = "bold"),
+        legend.position = "bottom",
+        panel.grid.minor = element_blank()
+      )
+    
+    plots[[method]] <- p
+  }
+  
+  # Combine plots using patchwork
+  combined_plot <- wrap_plots(plots, ncol = length(methods))
+  
+  # Print dimensions for verification
+  cat("Dimensions:\n")
+  cat("Original:", dim(original_data), "\n")
+  cat("Amputed:", dim(amputed), "\n")
+  for(method in methods) {
+    imputed_string <- paste0("imputed_dat_", method, ".", mechanism, ".", ratio, ".", rep, ".", set.id)
+    imputed <- targets::tar_read_raw(imputed_string)$imputed
+    cat(method, ":", dim(imputed), "\n")
+  }
+  
+  return(combined_plot)
+}
 
+plot_imputation <- function(dims, set.id, methods, mechanism="mcar", ratio="0.1", 
+                            rep="1") {
+  
+  # if dims is a number => make it a vector of one
+  if(is.numeric(dims)) {
+    dims <- c(dims)
+  }
+
+  if ((length(dims) == 1)){
+    return(plot_imputation_one_dim(dims[1], set.id, methods, mechanism, ratio, rep))
+  }
+  
+  # if object amputed_all does not exist:
+  if (!exists("amputed_all")){
+    targets::tar_load("amputed_all")
+    print("..loading amputed_all")
+  }
+  
+  # Get amputed data (same for all methods)
+  amputed_string <- paste0("amputed_dat_", mechanism, ".", ratio, ".", rep, ".", set.id)
+  amputed <- amputed_all[[amputed_string]]
+  
+  # Get original data (same for all methods)
+  original_data_path <- paste0("data/datasets/complete/", set.id, ".RDS")
+  original_data <- readRDS(original_data_path)
+  
+  # Convert to data.frame
+  original_data <- as.data.frame(original_data)
+  amputed <- as.data.frame(amputed)
+  
+  # Create missing mask for both dimensions
+  missing_mask <- is.na(amputed[,dims[1]]) | is.na(amputed[,dims[2]])
+  
+  # Create list to store plots
+  plots <- list()
+  
+  # Loop through each method and create plots
+  for(method in methods) {
+    # Get imputed data for current method
+    imputed_string <- paste0("imputed_dat_", method, ".", mechanism, ".", ratio, ".", rep, ".", set.id)
+    imputed <- targets::tar_read_raw(imputed_string)$imputed
+    imputed <- as.data.frame(imputed)
+    
+    # Create data frame for plotting
+    plot_data <- data.frame(
+      Dim1 = imputed[,dims[1]],
+      Dim2 = imputed[,dims[2]],
+      Status = factor(ifelse(missing_mask, "Imputed", "Original"))
+    )
+    
+    # Create plot
+    p <- ggplot(plot_data, aes(x = Dim1, y = Dim2, color = Status)) +
+      geom_point(alpha = 0.6) +
+      scale_color_manual(values = c("Original" = "#0072B2", "Imputed" = "#D55E00")) +
+      labs(
+        title = method,
+        x = paste("Dimension", dims[1]),
+        y = paste("Dimension", dims[2])
+      ) +
+      theme_minimal() +
+      theme(
+        plot.title = element_text(hjust = 0.5, face = "bold"),
+        legend.position = "bottom",
+        panel.grid.minor = element_blank()
+      )
+    
+    plots[[method]] <- p
+  }
+  
+  # Combine plots using patchwork
+  combined_plot <- wrap_plots(plots, ncol = length(methods))
+  
+  # Print dimensions for verification
+  cat("Dimensions:\n")
+  cat("Original:", dim(original_data), "\n")
+  cat("Amputed:", dim(amputed), "\n")
+  for(method in methods) {
+    imputed_string <- paste0("imputed_dat_", method, ".", mechanism, ".", ratio, ".", rep, ".", set.id)
+    imputed <- targets::tar_read_raw(imputed_string)$imputed
+    cat(method, ":", dim(imputed), "\n")
+  }
+  
+  return(combined_plot)
+}
 
 
 
