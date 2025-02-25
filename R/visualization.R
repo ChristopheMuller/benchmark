@@ -178,6 +178,7 @@ plot_time <- function(imputation_summary, timeout = 600) {
 }
 
 plot_best <- function(imputation_summary ) {
+  
   imputation_summary %>%
     filter(!is.na(measure)) %>% 
     select(-imputation_fun) %>% 
@@ -207,8 +208,6 @@ plot_best <- function(imputation_summary ) {
     guides(fill = guide_colourbar(barwidth = 0.5, barheight = 40)) +
     scale_fill_gradient(low = "darkgreen", high = "white") 
   
-  
-  
 }
 
 
@@ -221,7 +220,7 @@ plot_energy_time <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99
     filter(case == "complete", measure == "energy") %>%
     unique() %>% 
     group_by(method) %>% 
-    reframe(mean_score = median(score, na.rm = TRUE),
+    reframe(mean_score = mean(score, na.rm = TRUE),
             time = mean(time, na.rm = TRUE),
             `success [%]` = mean(is.na(error)) * 100) %>% 
     mutate(`success [%]` = cut(`success [%]`, breaks, 
