@@ -411,7 +411,10 @@ plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40
           panel.grid.major.x = element_line(color = "black", linetype = "dashed"))
   
   
-  p2 <- ggplot(dat_plt, aes(x = method, y = log10(mean_score), fill = `success [%]`)) +
+  p2 <- dat_plt %>% 
+    ungroup() %>% 
+    mutate(max_score = max(log10(mean_score), na.rm = TRUE)) %>% 
+    ggplot(aes(x = method, y = log10(mean_score), fill = `success [%]`)) +
     geom_col() +
     scale_fill_manual(name = "success [%]", 
                       values = get_colors_fractions()) +
@@ -421,7 +424,7 @@ plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40
           axis.title.y = element_blank()) +
     ylab("log10energy") +
     coord_flip() +
-    geom_text(aes(x = method, y = log10(mean_score) + 0.5, label = round(mean_ranking, 1)), size = 3)
+    geom_text(aes(x = method, y = max_score + 0.5, label = round(mean_ranking, 1)), size = 3)
   
   p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = 'bottom')
   
