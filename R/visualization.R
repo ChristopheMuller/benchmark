@@ -179,6 +179,8 @@ plot_time <- function(imputation_summary, timeout = 600) {
 
 plot_best <- function(imputation_summary ) {
   
+  n_methods <- length(unique(pull(imputation_summary, method)))
+  
   imputation_summary %>%
     filter(!is.na(measure)) %>% 
     select(-imputation_fun) %>% 
@@ -187,16 +189,17 @@ plot_best <- function(imputation_summary ) {
     group_by(method, set_id, mechanism, ratio) %>% 
     reframe(score = mean(score, na.rm = TRUE)) %>% 
     mutate(case_id = paste0(set_id, mechanism, ratio)) %>% 
-    mutate(score = ifelse(is.nan(score), Inf, score)) %>% 
-    group_by(case_id) %>% 
-    # mutate(best = score == min(score, na.rm = TRUE)) %>% 
-    mutate(ranking = {
-      ranking <- order(score, decreasing = FALSE)
-      ranking[is.infinite(score)] <- 66
+    mutate(score = ifelse(is.nan(score), NA, score)) %>% 
+    group_by(set_id, mechanism, ratio) %>% 
+    mutate(ranking =  {
+      ranking <- rep(NA, length(score))
+      ranking[!is.na(score)] <- rank(score[!is.na(score)])
+      ranking[is.na(ranking)] <- n_methods
       ranking
     }) %>% 
+    ungroup() %>% 
     group_by(method) %>% 
-    mutate(mean_ranking = mean(ranking)) %>% 
+    mutate(mean_ranking = mean(ranking, na.rm = TRUE)) %>% 
     ungroup() %>% 
     arrange(mean_ranking) %>% 
     mutate(method = factor(method, levels = unique(method))) %>% 
@@ -358,13 +361,15 @@ plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40
     select(-rep, -case, -error) %>% 
     unique() %>% 
     mutate(score = ifelse(is.nan(score), NA, score)) %>% 
+    ungroup() %>% 
     group_by(set_id, mechanism, ratio) %>% 
     mutate(ranking =  {
       ranking <- rep(NA, length(score))
-      ranking[!is.na(score)] <- order(score[!is.na(score)])
+      ranking[!is.na(score)] <- rank(score[!is.na(score)])
       ranking[is.na(ranking)] <- n_methods
       ranking
     }) %>% 
+    ungroup() %>% 
     group_by(method) %>% 
     reframe(mean_score = mean(score, na.rm = TRUE),
             mean_ranking = mean(ranking, na.rm = TRUE),
