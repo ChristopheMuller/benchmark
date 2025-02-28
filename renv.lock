@@ -120,6 +120,29 @@
       ],
       "Hash": "f31ed78072b20d211f6891eddb253122"
     },
+    "CVXR": {
+      "Package": "CVXR",
+      "Version": "1.0-15",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "ECOSolveR",
+        "Matrix",
+        "R",
+        "Rcpp",
+        "RcppEigen",
+        "Rmpfr",
+        "bit64",
+        "cli",
+        "gmp",
+        "methods",
+        "osqp",
+        "scs",
+        "stats",
+        "utils"
+      ],
+      "Hash": "4cea8684e66122c8f63da25a7845ec78"
+    },
     "DBI": {
       "Package": "DBI",
       "Version": "1.2.3",
@@ -282,6 +305,16 @@
         "survival"
       ],
       "Hash": "b2c1244db8e563b3a067913783a14a6b"
+    },
+    "ECOSolveR": {
+      "Package": "ECOSolveR",
+      "Version": "0.5.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "methods"
+      ],
+      "Hash": "1cd39406d7fde7d059c12e2940ca65cc"
     },
     "FHDI": {
       "Package": "FHDI",
@@ -903,6 +936,20 @@
       ],
       "Hash": "c3c3d6c3abc276bc7849835d5d54c44d"
     },
+    "Rmpfr": {
+      "Package": "Rmpfr",
+      "Version": "1.0-0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "gmp",
+        "methods",
+        "stats",
+        "utils"
+      ],
+      "Hash": "e31a4946b49871ce9be6ee85114314b6"
+    },
     "S4Arrays": {
       "Package": "S4Arrays",
       "Version": "1.6.0",
@@ -1029,6 +1076,23 @@
         "utils"
       ],
       "Hash": "5acddb171281d0859c6610d374eacbee"
+    },
+    "T4transport": {
+      "Package": "T4transport",
+      "Version": "0.1.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "CVXR",
+        "R",
+        "Rcpp",
+        "RcppArmadillo",
+        "Rdpack",
+        "lpSolve",
+        "stats",
+        "utils"
+      ],
+      "Hash": "812b0bb6c2fc5e32bab473d52f4bf140"
     },
     "TTR": {
       "Package": "TTR",
@@ -2301,19 +2365,6 @@
       ],
       "Hash": "899f28fe0388b7f687d7453429c2474d"
     },
-    "ggcorrplot": {
-      "Package": "ggcorrplot",
-      "Version": "0.1.4.1",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Requirements": [
-        "R",
-        "ggplot2",
-        "reshape2",
-        "stats"
-      ],
-      "Hash": "aad38d027d0dd18621e213919c20a65f"
-    },
     "ggdendro": {
       "Package": "ggdendro",
       "Version": "0.2.0",
@@ -2435,6 +2486,17 @@
         "stats"
       ],
       "Hash": "3ffb863ccab67ccd2f1e8e804018ebc0"
+    },
+    "gmp": {
+      "Package": "gmp",
+      "Version": "0.7-5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "methods"
+      ],
+      "Hash": "47b774de7ee40f6134cfdeab3fc85df9"
     },
     "googledrive": {
       "Package": "googledrive",
@@ -3613,6 +3675,19 @@
       ],
       "Hash": "c54136f6b269d1e006d62f7dd8ff4c94"
     },
+    "osqp": {
+      "Package": "osqp",
+      "Version": "0.6.3.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "Matrix",
+        "R6",
+        "Rcpp",
+        "methods"
+      ],
+      "Hash": "55feb75aa83a65c19093455766aec088"
+    },
     "pROC": {
       "Package": "pROC",
       "Version": "1.18.5",
@@ -4477,6 +4552,16 @@
         "methods"
       ],
       "Hash": "5951fc1a3ebab0e2b386ae58d6a1853d"
+    },
+    "scs": {
+      "Package": "scs",
+      "Version": "3.2.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "4b6b744ee2710f3491f0c3df54cad92b"
     },
     "secretbase": {
       "Package": "secretbase",
