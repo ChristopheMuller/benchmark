@@ -49,16 +49,17 @@ summarize_imputations <- function(all_scores, params) {
 
 scores_for_complete <- function(original_data, amputed_data, imputed_data,
                                 imputation_fun) {
-  imputomics_measures <- imputomics:::calculate_measures(
-    original_data, 
-    amputed_data, 
-    imputed_data,
-    measures = c("mae", "rmse", "nrmse", "rsq", "ccc")
+  imputomics_measures <- imputomics:::calculate_measures(original_data, 
+                                                         amputed_data, 
+                                                         imputed_data,
+                                                         measures = c("mae", "rmse", "nrmse", "rsq", "ccc")
   ) %>% 
     rename(score = "value")
+  
   energy <- as.numeric(miceDRF::energy_dist(X = original_data, 
                                             X_imp = imputed_data))
   scaled_original <- scale(original_data)
+  
   
   scaled_imputed <- sapply(1:ncol(imputed_data), function(i) {
     (imputed_data[, i] - attr(scaled_original, "scaled:center")[i])/ 
@@ -68,9 +69,31 @@ scores_for_complete <- function(original_data, amputed_data, imputed_data,
   energy_std <- as.numeric(miceDRF::energy_dist(X = scaled_original, 
                                                 X_imp = scaled_imputed))
   
+  feature_wise_wasserstein <- safe_score({
+    mean(sapply(1:ncol(original_data), function(ith_col) 
+      transport::wasserstein1d(as.matrix(original_data)[, ith_col], 
+                               as.matrix(imputed_data)[, ith_col])), na.rm = TRUE)
+  }, original_data, imputed_data)
+  
+  
+  KLD  <- safe_score({ 
+    median(FNN::KL.dist(as.matrix(original_data), 
+                        as.matrix(imputed_data), 
+                        floor(sqrt(nrow(original_data)))), na.rm = TRUE)
+  }, original_data, imputed_data)
+  
+  entropic_wasserstein <- safe_score({ 
+    T4transport::sinkhorn(as.matrix(original_data), 
+                          as.matrix(imputed_data), 
+                          lambda = 1)$distance
+  }, original_data, imputed_data)
+  
+  
   rbind(imputomics_measures,
-        data.frame(measure = c("energy", "energy_std"), 
-                   score = c(energy, energy_std)))
+        data.frame(measure = c("energy", "energy_std", "feature_wise_wasserstein", 
+                               "KLD", "entropic_wasserstein"), 
+                   score = c(energy, energy_std, feature_wise_wasserstein, 
+                             KLD, entropic_wasserstein)))
 }
 
 
@@ -98,5 +121,14 @@ scores_for_incomplete <- function(original_data, imputed_data, imputation_fun,
   data.frame(measure = "IScore", score = ImpScore)
 }
 
+
+
+safe_score <- function(expr, original_data, imputed_data) {
+  score <- try({
+    expr
+  })
+  score <- ifelse(inherits(score, "try-error"), NA, as.numeric(score))
+  score
+}
 
 
