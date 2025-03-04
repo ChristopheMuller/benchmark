@@ -88,12 +88,17 @@ scores_for_complete <- function(original_data, amputed_data, imputed_data,
                           lambda = 1)$distance
   }, original_data, imputed_data)
   
+  sliced_wasserstein <- safe_score({ 
+    T4transport::swdist(as.matrix(original_data), 
+                        as.matrix(imputed_data))$distance
+  }, original_data, imputed_data)
+  
   
   rbind(imputomics_measures,
         data.frame(measure = c("energy", "energy_std", "feature_wise_wasserstein", 
-                               "KLD", "entropic_wasserstein"), 
+                               "KLD", "entropic_wasserstein", "sliced_wasserstein"), 
                    score = c(energy, energy_std, feature_wise_wasserstein, 
-                             KLD, entropic_wasserstein)))
+                             KLD, entropic_wasserstein, sliced_wasserstein)))
 }
 
 

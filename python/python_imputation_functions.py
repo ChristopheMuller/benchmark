@@ -30,7 +30,7 @@ def remasker_imp(X, seed):
     X_imputed = imputer.fit_transform(X.copy())
     return X_imputed
 
-@timeout(10800)
+@timeout(36000)
 def autocomplete_imp(X, batch_size=2048, epochs=200, 
                 lr=0.1, encoding_ratio=1, depth=1, copymask_amount=0.3, 
                 val_split=0.8, verbose=False, seed=None):
