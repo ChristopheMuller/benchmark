@@ -1,7 +1,35 @@
 
+library(targets)
+options(clustermq.scheduler = "multiprocess")
+library(tarchetypes)
+library(purrr)
+library(dplyr)
+library(stringr)
+library(energy)
+library(reticulate)
+library(tidyr)
+library(clustermq)
+library(parallel)
+
+#imputations
+library(imputomics)
+library(miceDRF)
+library(ImputeRobust)
+library(mice)
+library(glmnet)
+
+# for vis
+library(ggplot2)
+library(patchwork)
+
+
 get_colors_errors <- function() {
   c("computational" = "#7A4E7E", "modification" = "#A3A725", 
     "timeout" = "#1E9CC2", "missings" = "#3D6649", "none" = "#EDF2EF")
+}
+
+get_colors_ranks <- function() {
+  c("[1,3]" = "#443B54", "(3,10]"= "#7E7099", "(10,30]" = "#9E94B3", "(30,63]" = "#C9C3D5")
 }
 
 get_colors_fractions <- function() {
@@ -148,7 +176,7 @@ plot_time <- function(imputation_summary, timeout = 10 * 60 * 60, breaks = c(0, 
     scale_fill_manual(name = "success [%]", values = get_colors_fractions()) +
     theme_minimal() +
     guides(fill = guide_legend(order=2))
-
+  
 }
 
 
@@ -220,7 +248,7 @@ plot_energy_time <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99
     filter(!is.na(measure)) %>% 
     select(-imputation_fun) %>% 
     # filter(!(set_id %in% c("oes10", "scm1d", "scm20d"))) %>% 
-    filter(case == "complete", measure == "energy") %>%
+    filter(case == "complete", measure == "energy_std") %>%
     unique() %>% 
     group_by(method) %>% 
     reframe(mean_score = mean(score, na.rm = TRUE),
@@ -277,7 +305,8 @@ plot_energy_time <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99
 }
 
 
-plot_energy_time_segments <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99, 100)) {
+plot_energy_time_segments <- function(arrange_success = TRUE,
+                                      breaks = c(0, 1, 40, 80, 99, 100)) {
   
   dat_plt <- imputation_summary %>% 
     filter(!is.na(measure)) %>% 
@@ -827,7 +856,7 @@ plot_imputation <- function(dims, set.id, methods, mechanism="mcar", ratio="0.1"
   if(is.numeric(dims)) {
     dims <- c(dims)
   }
-
+  
   if ((length(dims) == 1)){
     return(plot_imputation_one_dim(dims[1], set.id, methods, mechanism, ratio, rep))
   }
@@ -904,6 +933,118 @@ plot_imputation <- function(dims, set.id, methods, mechanism="mcar", ratio="0.1"
   
   return(combined_plot)
 }
+
+
+
+
+
+plot_rankings <- function(imputation_summary, breaks = c(1, 3, 10, 30)) {
+  
+  breaks <- c(breaks, length(unique(imputation_summary$method)))
+  n_methods <- length(unique(pull(imputation_summary, method)))
+  
+  imputation_summary %>%
+    filter(!is.na(measure)) %>% 
+    select(-imputation_fun) %>% 
+    filter(case == "complete", measure == "energy_std") %>% 
+    unique() %>% 
+    group_by(method, set_id, mechanism, ratio) %>% 
+    reframe(score = mean(score, na.rm = TRUE)) %>% 
+    mutate(case_id = paste0(set_id, mechanism, ratio)) %>% 
+    mutate(score = ifelse(is.nan(score), NA, score)) %>% 
+    group_by(set_id, mechanism, ratio) %>% 
+    mutate(ranking =  {
+      ranking <- rep(NA, length(score))
+      ranking[!is.na(score)] <- rank(score[!is.na(score)])
+      ranking[is.na(ranking)] <- n_methods
+      ranking
+    }) %>% 
+    ungroup() %>% 
+    group_by(method) %>% 
+    mutate(mean_ranking = mean(ranking, na.rm = TRUE)) %>% 
+    mutate(ranking = cut(ranking, breaks = breaks, include.lowest = TRUE)) %>% 
+    group_by(method, ranking) %>% 
+    reframe(n = n(), mean_ranking = mean_ranking) %>% 
+    unique() %>% 
+    ggplot(aes(y = reorder(method, mean_ranking), x = n, fill = ranking)) +
+    geom_col() +
+    scale_fill_manual(name = "Ranking", values = get_colors_ranks()) +
+    xlab("simulation cases") +
+    ylab("method") +
+    theme_light()
+  
+}
+
+
+plot_all_measures <- function(imputation_summary) {
+  
+  breaks <- c(breaks, length(unique(imputation_summary$method)))
+  n_methods <- length(unique(pull(imputation_summary, method)))
+  
+  imputation_summary %>%
+    select(-imputation_fun) %>% 
+    filter(case == "complete") %>% 
+    unique() %>% 
+    mutate(score = ifelse(measure == "rsq", -score, score),
+           score = ifelse(measure == "ccc", -score, score)) %>% 
+    filter(measure != "IScore", measure != "rmse") %>% 
+    group_by(method, set_id, mechanism, ratio, measure) %>% 
+    reframe(score = mean(score, na.rm = TRUE), 
+            error = ifelse(any(is.na(error)), NA, unique(error)[1])) %>% 
+    unique() %>% 
+    mutate(case_id = paste0(set_id, mechanism, ratio)) %>% 
+    mutate(score = ifelse(is.nan(score), NA, score)) %>% 
+    group_by(set_id, mechanism, ratio, measure) %>% 
+    mutate(ranking =  {
+      ranking <- rep(NA, length(score))
+      ranking[!is.na(score)] <- rank(score[!is.na(score)])
+      ranking[is.na(ranking)] <- n_methods
+      ranking[is.na(score) & is.na(error)] <- NA
+      ranking
+    }) %>% 
+    group_by(method, measure) %>% 
+    summarise(ranking = mean(ranking, na.rm = TRUE)) %>% 
+    group_by(method) %>% 
+    mutate(mean_ranking = mean(ranking, na.rm = TRUE),
+           energy_total = ranking[measure == "energy_std"]) %>% 
+    ggplot() +
+    geom_tile(aes(x = measure, y = reorder(method, energy_total), fill = ranking))
+    
+}
+
+
+
+plot_measures_corr <- function() {
+  dat_corr <- imputation_summary %>%
+    select(-imputation_fun) %>% 
+    filter(case == "complete") %>% 
+    unique() %>% 
+    mutate(score = ifelse(measure == "rsq", -score, score),
+           score = ifelse(measure == "ccc", -score, score)) %>% 
+    filter(measure != "IScore", measure != "rmse") %>% 
+    group_by(method, set_id, mechanism, ratio, measure) %>% 
+    reframe(score = mean(score, na.rm = TRUE), 
+            error = ifelse(any(is.na(error)), NA, unique(error)[1])) %>% 
+    unique() %>% 
+    mutate(case_id = paste0(set_id, mechanism, ratio)) %>% 
+    mutate(score = ifelse(is.nan(score), NA, score)) %>% 
+    group_by(set_id, mechanism, ratio, measure) %>% 
+    mutate(ranking =  {
+      ranking <- rep(NA, length(score))
+      ranking[!is.na(score)] <- rank(score[!is.na(score)])
+      ranking[is.na(ranking)] <- n_methods
+      ranking[is.na(score) & is.na(error)] <- NA
+      ranking
+    }) %>% 
+    ungroup() %>% 
+    select(case_id, method, ranking, measure) %>% 
+    pivot_wider(names_from = measure, values_from = ranking, values_fill = NA) %>% 
+    select(ccc ,energy, energy_std,   mae, nrmse)
+
+
+    ggcorrplot::ggcorrplot(cor(dat_corr))
+}
+
 
 
 
