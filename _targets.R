@@ -43,11 +43,13 @@ n_attempts <- 2
 path_to_amputed <- "./results/amputed/"
 path_to_complete_datasets <- "./data/datasets/complete/"
 path_to_incomplete_datasets <- "./data/datasets/incomplete/"
+path_to_categorical_datasets <- "./data/datasets/categorical/"
 path_to_imputed <- "./results/imputed/"
 
 path_to_results <- "./results/"
 
 path_to_methods <- "./data/functions.RDS"
+path_to_cat_methods <- "./data/categorical_funs.RDS"
 
 # amputation setup:
 amputation_mechanisms <- c("mcar", "mar")
@@ -61,18 +63,21 @@ amputation_reps <- 1
 # imputation methods
 imputation_methods <- readRDS(path_to_methods) %>% 
   rename(imputation_fun = `Function name`) %>% 
-  mutate(method = str_remove(imputation_fun, "impute_")) %>% 
-  filter(imputation_fun == "impute_areg")
+  mutate(method = str_remove(imputation_fun, "impute_"))
+
+imputation_categorical <- readRDS(path_to_cat_methods)
   
 # parameters:
 params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
                         path_to_incomplete_datasets = path_to_incomplete_datasets,
+                        path_to_categorical_datasets = path_to_categorical_datasets,
                         path_to_amputed = path_to_amputed,
                         path_to_imputed = path_to_imputed,
                         amputation_mechanisms = amputation_mechanisms,
                         amputation_reps = amputation_reps,
                         missing_ratios = missing_ratios,
-                        imputation_methods = imputation_methods)
+                        imputation_methods = imputation_methods,
+                        imputation_categorical = imputation_categorical)
 
 #params <- params %>%
 #  left_join(readRDS("./results/imputation_summary_timeouts.RDS")) %>%
@@ -90,7 +95,7 @@ amputation_params <- params %>%
 
 imputation_params <- params %>% 
   select(imputed_id, amputed_id, filepath_amputed, imputation_fun, 
-         filepath_imputed, MI, filepath_original, case) %>% 
+         filepath_imputed, MI, filepath_original, case, var_type) %>% 
   unique()
 
 # define static branches
@@ -101,7 +106,8 @@ amputed_datasets <- tar_map(
   tar_target(amputed_dat, 
              ampute_dataset(filepath = filepath_original,
                             mechanism = mechanism,
-                            ratio = ratio)),
+                            ratio = ratio), 
+             cue = tar_cue_skip(1 > 0)),
   tar_target(save_amputed_dat,
              saveRDS(amputed_dat, filepath_amputed))
 )
@@ -115,9 +121,11 @@ imputed_datasets <- tar_map(
       impute(
         dataset_id = imputed_id,
         missing_data_set = amputed_all[[paste0("amputed_dat_", amputed_id)]], 
-        imputing_function = get(imputation_fun),
+        imputing_function = imputation_fun,
         timeout_thresh = timeout_thresh,
-        n_attempts = n_attempts
+        n_attempts = n_attempts,
+        var_type = var_type,
+        case = case
       )
     },
     cue = tar_cue(depend = FALSE),
@@ -127,6 +135,14 @@ imputed_datasets <- tar_map(
   ),
   tar_target(
     obtained_scores, {
+      saveRDS(list(imputed = imputed_dat, 
+                   amputed = amputed_all[[paste0("amputed_dat_", amputed_id)]],
+                   imputation_fun = get(imputation_fun),
+                   multiple = MI,
+                   imputed_id = imputed_id, 
+                   timeout_thresh = timeout_thresh,
+                   filepath_original = filepath_original,
+                   case = case), "dupa.RDS")
       calculate_scores(imputed = imputed_dat, 
                        amputed = amputed_all[[paste0("amputed_dat_", amputed_id)]],
                        imputation_fun = get(imputation_fun),

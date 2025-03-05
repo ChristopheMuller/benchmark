@@ -14,24 +14,22 @@ calculate_scores <- function(imputed, amputed, imputation_fun, multiple,
   
   original_data <- readRDS(filepath_original)
   
-  if(case == "complete") {
-    scores <- scores_for_complete(original_data = original_data, 
-                                  amputed_data = amputed, 
-                                  imputed_data = imputed_data,
-                                  imputation_fun = imputation_fun)
-  } else {
-    scores <- scores_for_incomplete(original_data = original_data, 
-                                    imputed_data = imputed_data, 
-                                    imputation_fun = imputation_fun,
-                                    multiple = multiple,
-                                    timeout_thresh = timeout_thresh)
-  }
+  scores <- switch(case,
+                   complete = scores_for_complete(original_data = original_data, 
+                                                  amputed_data = amputed, 
+                                                  imputed_data = imputed_data,
+                                                  imputation_fun = imputation_fun),
+                   incomplete = scores_for_incomplete(original_data = original_data, 
+                                                      imputed_data = imputed_data, 
+                                                      imputation_fun = imputation_fun,
+                                                      multiple = multiple,
+                                                      timeout_thresh = timeout_thresh),
+                   categorical = scores_for_categorical(original_data = original_data, 
+                                                        imputed_data = imputed_data))
+  
   res %>% 
     cross_join(scores)
 }
-
-
-
 
 
 
@@ -46,20 +44,52 @@ summarize_imputations <- function(all_scores, params) {
 
 
 
+scores_for_categorical <- function(original_data, imputed_data) {
+  
+  ids_categoricals <- which(sapply(original_data, is.factor))
+  imputed_data <- mutate(imputed_data, across(matches(names(ids_categoricals)), as.factor))
+  
+  original_data <- one_hot_encoding(original_data)
+  imputed_data <- one_hot_encoding(imputed_data)
+  
+  energy <- as.numeric(miceDRF::energy_dist(X = original_data, 
+                                            X_imp = imputed_data))
+  scaled_original <- scale(original_data)
+  
+  scaled_imputed <- sapply(1:ncol(imputed_data), function(i) {
+    (imputed_data[, i] - attr(scaled_original, "scaled:center")[i])/ 
+      attr(scaled_original, "scaled:scale")[i]
+  })
+  
+  energy_std <- as.numeric(miceDRF::energy_dist(X = scaled_original, 
+                                                X_imp = scaled_imputed))
+  
+  data.frame(measure = c("energy", "energy_std"), score = c(energy, energy_std))
+  
+}
 
-scores_for_complete <- function(original_data, amputed_data, imputed_data,
-                                imputation_fun) {
-  imputomics_measures <- imputomics:::calculate_measures(original_data, 
-                                                         amputed_data, 
-                                                         imputed_data,
-                                                         measures = c("mae", "rmse", "nrmse", "rsq", "ccc")
+
+one_hot_encoding <- function(dat) {
+  data.frame(mltools::one_hot(data.table::as.data.table(dat)))
+}
+
+
+
+
+scores_for_complete <- function(original_data, amputed_data, 
+                                imputed_data, imputation_fun) {
+  
+  imputomics_measures <- imputomics:::calculate_measures(
+    original_data, 
+    amputed_data, 
+    imputed_data,
+    measures = c("mae", "rmse", "nrmse", "rsq", "ccc")
   ) %>% 
     rename(score = "value")
   
   energy <- as.numeric(miceDRF::energy_dist(X = original_data, 
                                             X_imp = imputed_data))
   scaled_original <- scale(original_data)
-  
   
   scaled_imputed <- sapply(1:ncol(imputed_data), function(i) {
     (imputed_data[, i] - attr(scaled_original, "scaled:center")[i])/ 

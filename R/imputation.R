@@ -76,9 +76,15 @@ safe_impute <- function(missing_data_set,
 
 
 impute <- function(dataset_id, missing_data_set, imputing_function, 
-                   timeout_thresh = 600, n_attempts = 3) {
+                   timeout_thresh = 600, n_attempts = 3, var_type, case) {
   
-  missing_data_set <- pre_process(missing_data_set)
+  if(case == "categorical") {
+    unique_categoricals <- lapply(which(sapply(missing_data_set, is.factor)), 
+                                  function(i) as.numeric(attr(missing_data_set[, i], "levels")))
+    missing_data_set <- pre_process(missing_data_set, imputing_function, var_type)
+  }
+  
+  imputing_function <- get(imputing_function)
   
   col_names <- colnames(missing_data_set)
   
@@ -91,12 +97,21 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
   
   if(inherits(imputed, "try-error")) {
     
+    imputed <- mutate_all(imputed, as.numeric)
     error <- ifelse(check_time_error(imputed), "timeout", "computational")
     
   } else {
     error <- validate_imputation(imputed, missing_data_set)
     imputed <- post_process(imputed)
     colnames(imputed) <- col_names
+    
+    if(case == "categorical") {
+      error_categorical <- validate_categorical(imputed, unique_categoricals)
+    }
+    
+    if(is.na(error)){
+      error <- error_categorical
+    }
   }
   
   res <- data.frame(imputed_id = dataset_id,
@@ -107,6 +122,20 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
   list(imputed = imputed, 
        res = res)
   
+}
+
+validate_categorical <- function(imputed, unique_categoricals) {
+  cat_cols <- names(unique_categoricals)
+  
+  check <- all(sapply(cat_cols, function(ith_col) {
+    all(unique(imputed[[ith_col]]) %in% unique_categoricals[[ith_col]])
+  }))
+  
+  if(!check) {
+    return("wrong_levels")
+  }
+  
+  NA
 }
 
 
@@ -125,7 +154,11 @@ validate_imputation <- function(imputed, missing_data_set) {
 
 
 
-pre_process <- function(missing_data_set) {
+pre_process <- function(missing_data_set, imputing_function, var_type) {
+  
+  if(var_type == "Numeric") 
+    missing_data_set <- missing_data_set %>%  mutate_all(as.numeric)
+  
   missing_data_set
 }
 
