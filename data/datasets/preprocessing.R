@@ -140,7 +140,7 @@ yeast <- rename_columns(yeast)
 yeast_cat <- yeast
 yeast_cat$X9[yeast_cat$X9 == "ERL"] <- "ERLPOX"
 yeast_cat$X9[yeast_cat$X9 == "POX"] <- "ERLPOX"
-yeast_cat$X9 <- as.factor(yeast_cat$X9)
+yeast_cat$X9 <- factor(as.integer(factor(yeast_cat$X9)))
 
 # saveRDS(yeast_cat, "data/datasets/complete_backup/categorical_as_factor/yeast.RDS")
 
@@ -148,7 +148,7 @@ yeast_cat$X9 <- as.factor(yeast_cat$X9)
 ### Hayes_roth
 # Only cat
 
-hayes_roth <- readRDS("~/INRIA/R_scripts/benchmark/data/datasets/complete_backup/unprocessed/hayes_roth.RDS")
+hayes_roth <- readRDS("./data/datasets/complete_backup/unprocessed/hayes_roth.RDS")
 hayes_roth <- as.data.frame(hayes_roth)
 hayes_roth <- hayes_roth[, -1] # remove ID column
 hayes_roth <- rename_columns(hayes_roth)
