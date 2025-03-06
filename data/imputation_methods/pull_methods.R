@@ -7,7 +7,7 @@ imp_table <- read_sheet(url, sheet = "Kept only")
 
 imp_table %>% 
   filter(KEPT) %>% 
-  select(`Function name`, MI) %>% 
+  dplyr::select(`Function name`, MI) %>% 
   saveRDS("data/functions.RDS")
 
 
