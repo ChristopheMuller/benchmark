@@ -144,7 +144,8 @@ res_all %>%
   mutate(n = n()) %>% 
   filter(case == "Factor" & n == 1 | case == "Numeric") %>% 
   rename(var_type = "case") %>% 
-  select(method, var_type) %>% 
+  rename(imputation_fun = "method") %>% 
+  select(imputation_fun, var_type) %>% 
   saveRDS("./data/categorical_funs.RDS")
 
   
