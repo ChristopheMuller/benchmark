@@ -97,11 +97,11 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
   
   if(inherits(imputed, "try-error")) {
     
-    imputed <- mutate_all(imputed, as.numeric)
     error <- ifelse(check_time_error(imputed), "timeout", "computational")
     
   } else {
-    error <- validate_imputation(imputed, missing_data_set)
+    error <- validate_imputation(mutate_all(imputed, as.numeric), 
+                                 mutate_all(missing_data_set, as.numeric))
     imputed <- post_process(imputed)
     colnames(imputed) <- col_names
     
