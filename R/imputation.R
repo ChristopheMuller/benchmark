@@ -107,10 +107,14 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
     
     if(case == "categorical") {
       error_categorical <- validate_categorical(imputed, unique_categoricals)
-    }
-    
-    if(is.na(error)){
-      error <- error_categorical
+      
+      if(!is.na(error_categorical)) {
+        if(is.na(error)){
+          error <- error_categorical
+        } else {
+          error <- paste0(error, "+", error_categorical)
+        }
+      }
     }
   }
   
