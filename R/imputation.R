@@ -97,20 +97,24 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
   
   if(inherits(imputed, "try-error")) {
     
-    imputed <- mutate_all(imputed, as.numeric)
     error <- ifelse(check_time_error(imputed), "timeout", "computational")
     
   } else {
-    error <- validate_imputation(imputed, missing_data_set)
+    error <- validate_imputation(mutate_all(imputed, as.numeric), 
+                                 mutate_all(missing_data_set, as.numeric))
     imputed <- post_process(imputed)
     colnames(imputed) <- col_names
     
     if(case == "categorical") {
       error_categorical <- validate_categorical(imputed, unique_categoricals)
-    }
-    
-    if(is.na(error)){
-      error <- error_categorical
+      
+      if(!is.na(error_categorical)) {
+        if(is.na(error)){
+          error <- error_categorical
+        } else {
+          error <- paste0(error, "+", error_categorical)
+        }
+      }
     }
   }
   

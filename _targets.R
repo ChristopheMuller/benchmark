@@ -19,6 +19,8 @@ library(miceDRF)
 library(ImputeRobust)
 library(mice)
 library(glmnet)
+library(missForest)
+library(MetabImpute)
 
 # for vis
 library(ggplot2)
@@ -55,10 +57,6 @@ path_to_cat_methods <- "./data/categorical_funs.RDS"
 amputation_mechanisms <- c("mcar", "mar")
 missing_ratios <- c(0.1, 0.2, 0.3)
 amputation_reps <- 2
-
-amputation_mechanisms <- c("mar")
-missing_ratios <- c(0.1)
-amputation_reps <- 1
 
 # imputation methods
 imputation_methods <- readRDS(path_to_methods) %>% 

@@ -1,26 +1,12 @@
 
-library(targets)
-options(clustermq.scheduler = "multiprocess")
-library(tarchetypes)
+
 library(purrr)
 library(dplyr)
 library(stringr)
-library(energy)
-library(reticulate)
-library(tidyr)
-library(clustermq)
-library(parallel)
-
-#imputations
-library(imputomics)
-library(miceDRF)
-library(ImputeRobust)
-library(mice)
-library(glmnet)
-
 # for vis
 library(ggplot2)
 library(patchwork)
+library(fmsb)
 
 
 get_colors_errors <- function() {
@@ -154,57 +140,6 @@ plot_errors_mechanism <- function(imputation_summary) {
 }
 
 
-
-plot_time <- function(imputation_summary, timeout = 10 * 60 * 60, breaks = c(0, 1, 40, 80, 99, 100)) {
-  
-  imputation_summary %>% 
-    filter(!is.na(measure)) %>% 
-    select(-measure, -score, -imputation_fun) %>% 
-    filter(case == "complete") %>% 
-    unique() %>% 
-    group_by(method) %>% 
-    reframe(time = mean(time, na.rm = TRUE),
-            `success [%]` = mean(is.na(error)) * 100) %>% 
-    mutate(`success [%]` = cut(`success [%]`, breaks, 
-                               include.lowest = TRUE)) %>% 
-    ggplot() + 
-    geom_col(aes(x = reorder(method, time), y = time, fill = `success [%]`)) +
-    coord_flip() +
-    xlab("methods") +
-    geom_hline(aes(yintercept = timeout, color = "time threshold"), linetype = "dashed") +
-    scale_colour_manual(name = "", values = c(`time threshold` = "black")) +
-    scale_fill_manual(name = "success [%]", values = get_colors_fractions()) +
-    theme_minimal() +
-    guides(fill = guide_legend(order=2))
-  
-}
-
-
-plot_time <- function(imputation_summary, timeout = 600) {
-  
-  imputation_summary %>% 
-    filter(!is.na(measure)) %>% 
-    select(-measure, -score, -imputation_fun) %>% 
-    filter(case == "complete") %>% 
-    unique() %>% 
-    group_by(method, set_id) %>% 
-    reframe(time = mean(time, na.rm = TRUE)) %>% 
-    group_by(set_id) %>% 
-    mutate(mean_set_time = mean(time)) %>% 
-    ungroup() %>% 
-    arrange(method) %>% 
-    mutate(method = factor(method, levels = unique(method))) %>% 
-    ggplot() + 
-    geom_tile(aes(x = method, y = reorder(set_id, mean_set_time), fill = time),
-              colour = "black") +
-    coord_flip() +
-    xlab("methods") +
-    ylab("dataset") +
-    theme_bw() +
-    theme(axis.text.x = element_text(angle = 20, hjust = 0.7))
-  
-}
-
 plot_best <- function(imputation_summary ) {
   
   n_methods <- length(unique(pull(imputation_summary, method)))
@@ -240,6 +175,70 @@ plot_best <- function(imputation_summary ) {
     scale_fill_gradient(low = "darkgreen", high = "white") 
   
 }
+
+plot_cases <- function(imputation_summary ) {
+  
+  n_methods <- length(unique(pull(imputation_summary, method)))
+  
+  dat <- imputation_summary %>%
+    filter(!is.na(measure)) %>% 
+    select(-imputation_fun) %>% 
+    filter(case == "complete", measure == "energy_std") %>% 
+    unique() %>% 
+    group_by(method, set_id, mechanism) %>% 
+    reframe(score = mean(score, na.rm = TRUE)) %>% 
+    mutate(case_id = paste0(set_id, mechanism)) %>% 
+    mutate(score = ifelse(is.nan(score), NA, score)) %>% 
+    group_by(set_id, mechanism) %>% 
+    mutate(ranking =  {
+      ranking <- rep(NA, length(score))
+      ranking[!is.na(score)] <- rank(score[!is.na(score)])
+      ranking[is.na(ranking)] <- n_methods
+      ranking
+    }) %>% 
+    ungroup() %>% 
+    group_by(method) %>% 
+    mutate(mean_ranking = mean(ranking, na.rm = TRUE)) %>% 
+    ungroup() %>% 
+    arrange(mean_ranking) %>% 
+    mutate(method = factor(method, levels = unique(method)))  %>% 
+    filter(method == "mice_cart")
+  
+  
+  # plts <- lapply(unique(dat[["method"]]), function(one_method) {
+  #   dat %>% 
+  #     filter(method == one_method) %>%
+  #     select(case_id, ranking, method) %>% 
+  #     pivot_wider(names_from = case_id, values_from = ranking) %>% 
+  #     select(-method) %>% 
+  #     rbind(Min = n_methods, Max = 0, .) %>% 
+  #     radarchart(maxmin  = TRUE,
+  #                cglty = 1, cglcol = "gray",
+  #                pcol = 1, plwd = 2,
+  #                pdensity = 10,
+  #                pangle = 40,
+  #                title = one_method)
+  # })
+  
+  par(mfrow = c(1, 1))
+  
+  for(one_method in unique(dat[["method"]])) {
+    dat %>% 
+      filter(method == one_method) %>%
+      select(case_id, ranking, method) %>% 
+      pivot_wider(names_from = case_id, values_from = ranking) %>% 
+      select(-method) %>% 
+      rbind(Min = n_methods, Max = 0, .) %>% 
+      radarchart(maxmin  = TRUE,
+                 cglty = 1, cglcol = "gray",
+                 pcol = 1, plwd = 2,
+                 pfcol = rgb(0, 0.4, 1, 0.25),
+                 title = one_method)
+  }
+
+  
+}
+
 
 
 plot_energy_time <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99, 100)) {
@@ -976,7 +975,7 @@ plot_rankings <- function(imputation_summary, breaks = c(1, 3, 10, 30)) {
 }
 
 
-plot_all_measures <- function(imputation_summary) {
+plot_all_measures <- function(imputation_summary, breaks = c(1, 3, 10, 30)) {
   
   breaks <- c(breaks, length(unique(imputation_summary$method)))
   n_methods <- length(unique(pull(imputation_summary, method)))
