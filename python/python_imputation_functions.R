@@ -16,7 +16,7 @@
 # PATH_PYTHON <- "C:\\Users\\Chris\\anaconda3\\envs\\benchmark\\python.exe"
 
 
-# use_python(PATH_PYTHON, required = TRUE)
+# reticulate::use_python(PATH_PYTHON, required = TRUE)
 
 
 reticulate::source_python("python/python_imputation_functions.py")
@@ -94,3 +94,9 @@ impute_autocomplete <- function(missdf, ...){
   seed <- sample(1:100000, 1)
   autocomplete_imp(missdf, seed=seed, ...)
 }
+
+impute_engression <- function(missdf, ...){
+  missdf <- make_integer_double(missdf)
+  engression_imp(missdf, ...)
+}
+

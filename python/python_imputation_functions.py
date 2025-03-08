@@ -40,3 +40,14 @@ def autocomplete_imp(X, batch_size=2048, epochs=200,
                 lr=lr, encoding_ratio=encoding_ratio, depth=depth, copymask_amount=copymask_amount, 
                 val_split=val_split, verbose=verbose, seed=seed)
     return X_imputed
+
+
+from python.engression_module import engressimpute
+
+@timeout(36000)
+def engression_imp(X, M=1, K=5, verbose=False, X_full=None, 
+                   init_epochs=400, update_epochs=75):
+    filterwarnings('ignore')
+    X_imp = engressimpute(X, M=M, K=K, verbose=verbose, X_full=X_full,
+                          init_epochs=init_epochs, update_epochs=update_epochs)
+    return X_imp[0].cpu().numpy()
