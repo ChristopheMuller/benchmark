@@ -1,0 +1,85 @@
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+Error:
+! targets::tar_make_clustermq() error
+
+── Debugging ───────────────────────────────────────────────────────────────────
+    • tar_errored()
+    • tar_meta(fields = any_of("error"), complete_only = TRUE)
+    • tar_workspace()
+    • tar_workspaces()
+
+── How to ──────────────────────────────────────────────────────────────────────
+    • Debug: https://books.ropensci.org/targets/debugging.html
+    • Help: https://books.ropensci.org/targets/help.html
+
+── Last error message ──────────────────────────────────────────────────────────
+    Unexpected worker disconnect
+
+── Last error traceback ────────────────────────────────────────────────────────
+    base::tryCatch(base::withCallingHandlers({ NULL base::saveRDS(base::do.c...
+    tryCatchList(expr, classes, parentenv, handlers)
+    tryCatchOne(tryCatchList(expr, names[-nh], parentenv, handlers[-nh]), na...
+    doTryCatch(return(expr), name, parentenv, handler)
+    tryCatchList(expr, names[-nh], parentenv, handlers[-nh])
+    tryCatchOne(expr, names, parentenv, handlers[[1L]])
+    doTryCatch(return(expr), name, parentenv, handler)
+    base::withCallingHandlers({ NULL base::saveRDS(base::do.call(base::do.ca...
+    base::saveRDS(base::do.call(base::do.call, base::c(base::readRDS("/tmp/R...
+    base::do.call(base::do.call, base::c(base::readRDS("/tmp/RtmpcTkY7C/call...
+    (function (what, args, quote = FALSE, envir = parent.frame()) { if (!is....
+    (function (targets_function, targets_arguments, options, envir = NULL, s...
+    tryCatch(out <- withCallingHandlers(targets::tar_callr_inner_try(targets...
+    tryCatchList(expr, classes, parentenv, handlers)
+    tryCatchOne(expr, names, parentenv, handlers[[1L]])
+    doTryCatch(return(expr), name, parentenv, handler)
+    withCallingHandlers(targets::tar_callr_inner_try(targets_function = targ...
+    targets::tar_callr_inner_try(targets_function = targets_function, target...
+    do.call(targets_function, targets_arguments)
+    (function (pipeline, path_store, names_quosure, shortcut, reporter, seco...
+    clustermq_init(pipeline = pipeline, meta = meta_init(path_store = path_s...
+    self$run_clustermq()
+    self$iterate()
+    self$conclude_worker_target(self$worker_list$recv())
+    self$worker_list$recv()
+    private$master$recv(timeout)
+    .External(list(name = "CppMethod__invoke_notvoid", address = <pointer: 0...
+Execution halted
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+Error:
+! targets::tar_make_clustermq() error
+
+── Debugging ───────────────────────────────────────────────────────────────────
+    • tar_errored()
+    • tar_meta(fields = any_of("error"), complete_only = TRUE)
+    • tar_workspace()
+    • tar_workspaces()
+
+── How to ──────────────────────────────────────────────────────────────────────
+    • Debug: https://books.ropensci.org/targets/debugging.html
+    • Help: https://books.ropensci.org/targets/help.html
+
+── Last error message ──────────────────────────────────────────────────────────
+    numbers of columns of arguments do not match
+
+── Last error traceback ────────────────────────────────────────────────────────
+    calculate_scores(imputed = imputed_dat_areg.mcar.0.1.2.german,      ampu...
+    scores_for_categorical(original_data = original_data, imputed_data = imp...
+    miceDRF::energy_dist(X = original_data, X_imp = imputed_data)
+    energy::eqdist.e(rbind(X, X_imp), c(nrow(X), nrow(X_imp)))
+    eqdist.etest(x, sizes, distance = distance, R = 0, method = method)
+    rbind(X, X_imp)
+    rbind(deparse.level, ...)
+    stop("numbers of columns of arguments do not match")
+    .handleSimpleError(function (condition)  {     state$error <- build_mess...
+    h(simpleError(msg, call))
+Execution halted
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+## OAR [2025-03-08 11:27:14] Job 1009142 KILLED ##
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+## OAR [2025-03-08 12:47:09] Job 1010189 KILLED ##
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found

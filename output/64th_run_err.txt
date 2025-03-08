@@ -1,0 +1,6 @@
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+FATAL:   could not open image /home/cmuller/benchmark/env.sif2: failed to retrieve path for /home/cmuller/benchmark/env.sif2: lstat /home/cmuller/benchmark/env.sif2: no such file or directory
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+FATAL:   could not open image /home/cmuller/benchmark/env.sif2: failed to retrieve path for /home/cmuller/benchmark/env.sif2: lstat /home/cmuller/benchmark/env.sif2: no such file or directory
