@@ -1,0 +1,123 @@
+- The project is out-of-sync -- use `renv::status()` for details.
+[1] "2025-03-07 11:35:16 CET"
+- The project is out-of-sync -- use `renv::status()` for details.
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Registered S3 methods overwritten by 'registry':
+  method               from 
+  print.registry_field proxy
+  print.registry_entry proxy
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+Loading required package: mice
+
+Attaching package: ‘mice’
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    cbind, rbind
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-8
+
+Attaching package: ‘MetabImpute’
+
+The following object is masked from ‘package:stats’:
+
+    simulate
+
+Registered S3 methods overwritten by 'fmsb':
+  method    from
+  print.roc pROC
+  plot.roc  pROC
+[1] 1260   14
+✔ skipping targets (1 so far)...
+Superclass QSys has cloneable=FALSE, but subclass MULTIPROCESS has cloneable=TRUE. A subclass cannot be cloneable when its superclass is not cloneable, so cloning will be disabled for MULTIPROCESS.
+▶ dispatched target imputed_dat_hyperimpute.mcar.0.3.1.diamond
+✔ skipping targets (83 so far)...
+▶ dispatched target imputed_dat_mice_midastouch.mar.0.1.2.diamond
+✔ skipping targets (85 so far)...
+▶ dispatched target imputed_dat_areg_regression.mar.0.2.2.hayes_roth
+▶ dispatched target imputed_dat_mice_cart.mar.0.3.2.electricity
+▶ dispatched target imputed_dat_mice_midastouch.mcar.0.1.1.electricity
+▶ dispatched target imputed_dat_mice_CALIBER.mcar.0.3.2.electricity
+▶ dispatched target imputed_dat_mice_midastouch.mcar.0.2.2.electricity
+▶ dispatched target imputed_dat_vim_knn.mar.0.3.2.electricity
+✔ skipping targets (87 so far)...
+▶ dispatched target obtained_scores_random.mar.0.2.1.diamond
+▶ dispatched target imputed_dat_metabimpute_rf.mar.0.1.1.diamond
+▶ dispatched target imputed_dat_mice_CALIBER.mar.0.3.1.eye_movement
+✔ skipping targets (90 so far)...
+▶ dispatched target imputed_dat_areg_normpmm.mcar.0.1.1.diamond
+✔ skipping targets (92 so far)...
+▶ dispatched target imputed_dat_hyperimpute.mcar.0.3.2.diamond
+▶ dispatched target imputed_dat_mice_CALIBER.mcar.0.3.1.diamond
+✔ skipping targets (94 so far)...
+▶ dispatched target imputed_dat_random.mar.0.1.2.hayes_roth
+▶ dispatched target imputed_dat_mice_default.mar.0.2.1.electricity
+● completed target imputed_dat_random.mar.0.1.2.hayes_roth [1.456 minutes, 683 bytes]
+▶ dispatched target save_imputed_dat_random.mar.0.1.2.hayes_roth
+● completed target save_imputed_dat_random.mar.0.1.2.hayes_roth [0.007 seconds, 44 bytes]
+▶ dispatched target imputed_dat_irmi.mcar.0.2.1.electricity
+● completed target imputed_dat_mice_default.mar.0.2.1.electricity [1.518 minutes, 755.322 kilobytes]
+▶ dispatched target obtained_scores_mice_default.mar.0.2.1.electricity
+● completed target imputed_dat_areg_regression.mar.0.2.2.hayes_roth [2.364 minutes, 1.943 kilobytes]
+▶ dispatched target imputed_dat_random.mcar.0.2.2.german
+● completed target imputed_dat_hyperimpute.mcar.0.3.1.diamond [2.521 minutes, 1.671 megabytes]
+▶ dispatched target imputed_dat_mice_rf.mcar.0.2.2.eye_movement
+● completed target imputed_dat_hyperimpute.mcar.0.3.2.diamond [2.27 minutes, 1.21 megabytes]
+▶ dispatched target save_imputed_dat_hyperimpute.mcar.0.3.2.diamond
+● completed target save_imputed_dat_hyperimpute.mcar.0.3.2.diamond [0.435 seconds, 44 bytes]
+▶ dispatched target imputed_dat_median.mcar.0.1.2.eye_movement
+Master: [5.2 mins 12.4% CPU]; Worker: [avg 29.2% CPU, max 1.1 Gb]
+▶ ended pipeline [6.005 minutes]
+Warning messages:
+1: replacing previous import ‘S4Arrays::makeNindexFromArrayViewport’ by ‘DelayedArray::makeNindexFromArrayViewport’ when loading ‘SummarizedExperiment’ 
+2: 5 targets produced warnings. Run targets::tar_meta(fields = warnings, complete_only = TRUE) for the messages. 
+Warning in .subset2(e, ".__enclos_env__")$private$finalize() :
+  Unclean shutdown for PIDs: 6550, 6558, 6566, 6574, 6586, 6598, 6612, 6632, 6650, 6675, 6685, 6713, 6731, 6743
