@@ -12,6 +12,7 @@ low_rank_MNAR/
 .venv/
 container
 env.sif
+env.sif2
 _targets
 .R_cache
 cache

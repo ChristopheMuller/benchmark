@@ -36,7 +36,7 @@ reticulate::use_virtualenv("./.venv", required = TRUE)
 set.seed(56135)
 
 # timeout value [in seconds]
-timeout_thresh <- 10800
+timeout_thresh <- 36000
 
 # number of attempts in a single run
 n_attempts <- 2
