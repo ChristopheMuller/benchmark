@@ -158,4 +158,44 @@ hayes_roth <- as.data.frame(lapply(hayes_roth, as.factor))
 # saveRDS(hayes_roth, "data/datasets/complete_backup/categorical_as_factor/hayes_roth.RDS")
 
 
+### Electricity
+# Mixed
 
+electricity <- readRDS("./data/datasets/complete_backup/unprocessed/electricity.RDS")
+electricity <- rename_columns(electricity)
+
+# => Cat as factor
+electricity_cat <- electricity
+num_features <- c(1,3,4,5,6,7,8)
+electricity_cat[, -num_features] <- as.data.frame(lapply(electricity_cat[, -num_features], function(x) factor(as.integer(factor(x)))))
+
+# saveRDS(electricity_cat, "data/datasets/complete_backup/categorical_as_factor/electricity.RDS")
+
+
+### Eye_movement
+# Mixed
+
+eye_movement <- readRDS("./data/datasets/complete_backup/unprocessed/eye_movement.RDS")
+eye_movement <- rename_columns(eye_movement)
+
+# => Cat as factor
+eye_movement_cat <- eye_movement
+cat_features <- c(3, 4, 17, 22, 23, 24)
+eye_movement_cat$X23[eye_movement_cat$X23 == "10"] <- "9"
+eye_movement_cat[, cat_features] <- as.data.frame(lapply(eye_movement_cat[, cat_features], function(x) factor(as.integer(factor(x)))))
+
+# saveRDS(eye_movement_cat, "data/datasets/complete_backup/categorical_as_factor/eye_movement.RDS")
+
+
+### Diamond
+# Mixed
+
+diamond <- readRDS("./data/datasets/complete_backup/unprocessed/diamond.RDS")
+diamond <- rename_columns(diamond)
+
+# => Cat as factor
+diamond_cat <- diamond
+cat_features <- c(2, 3, 4)
+diamond_cat[, cat_features] <- as.data.frame(lapply(diamond_cat[, cat_features], function(x) factor(as.integer(factor(x)))))
+
+# saveRDS(diamond_cat, "data/datasets/complete_backup/categorical_as_factor/diamond.RDS")
