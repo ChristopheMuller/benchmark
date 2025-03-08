@@ -48,9 +48,20 @@ scores_for_categorical <- function(original_data, imputed_data) {
   
   ids_categoricals <- which(sapply(original_data, is.factor))
   imputed_data <- mutate(imputed_data, across(matches(names(ids_categoricals)), as.factor))
+
+  dim_imputed <- dim(imputed_data)
+  dim_original <- dim(original_data)
+
+  # first rbind
+  binded_data <- rbind(original_data, imputed_data)
+  # then one hot encode
+  binded_data <- one_hot_encoding(binded_data)
+  # then split
+  original_data <- binded_data[1:dim_original[1], ]
+  imputed_data <- binded_data[(dim_original[1] + 1):dim_imputed[1], ]
   
-  original_data <- one_hot_encoding(original_data)
-  imputed_data <- one_hot_encoding(imputed_data)
+  # original_data <- one_hot_encoding(original_data)
+  # imputed_data <- one_hot_encoding(imputed_data)
   
   energy <- as.numeric(miceDRF::energy_dist(X = original_data, 
                                             X_imp = imputed_data))
