@@ -30,7 +30,7 @@ def compute_energy_loss(X_pred, X_true):
     Loss = SamplesLoss("energy")
     return Loss(X_pred, X_true).item()
 
-def engressimpute(X, M=5, K=5, verbose=True, X_full=None, init_epochs=400, update_epochs=75):
+def engressimpute(X, M=5, K=15, verbose=True, X_full=None, init_epochs=400, update_epochs=75):
     """
     Tensor-based MICE implementation using engression for imputation
     

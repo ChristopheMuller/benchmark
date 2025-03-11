@@ -96,7 +96,11 @@ impute_autocomplete <- function(missdf, ...){
 }
 
 impute_engression <- function(missdf, ...){
+  column_names <- colnames(missdf)
   missdf <- make_integer_double(missdf)
-  engression_imp(missdf, ...)
+  imputed <- engression_imp(missdf, ...)
+  imputed <- as.data.frame(imputed)
+  colnames(imputed) <- column_names
+  imputed
 }
 

@@ -51,7 +51,7 @@ create_params <- function(path_to_complete_datasets,
     select(set_id, mechanism, case, method, imputation_fun, amputed_id, imputed_id, everything()) %>% 
     filter(case == "categorical" & imputation_fun %in% pull(imputation_categorical, imputation_fun) |
              case != "categorical") %>% 
-    merge(imputation_categorical)
+    merge(imputation_categorical, all.x=TRUE)
 }
 
 
