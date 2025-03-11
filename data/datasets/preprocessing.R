@@ -176,12 +176,13 @@ electricity_cat[, -num_features] <- as.data.frame(lapply(electricity_cat[, -num_
 # Mixed
 
 eye_movement <- readRDS("./data/datasets/complete_backup/unprocessed/eye_movement.RDS")
+eye_movement <- eye_movement[, 3:ncol(eye_movement)] # remove ID columns
 eye_movement <- rename_columns(eye_movement)
 
 # => Cat as factor
 eye_movement_cat <- eye_movement
-cat_features <- c(3, 4, 17, 22, 23, 24)
-eye_movement_cat$X23[eye_movement_cat$X23 == "10"] <- "9"
+cat_features <- c(1, 2, 15, 20, 21, 22)
+eye_movement_cat$X21[eye_movement_cat$X21 == "10"] <- "9"
 eye_movement_cat[, cat_features] <- as.data.frame(lapply(eye_movement_cat[, cat_features], function(x) factor(as.integer(factor(x)))))
 
 # saveRDS(eye_movement_cat, "data/datasets/complete_backup/categorical_as_factor/eye_movement.RDS")
