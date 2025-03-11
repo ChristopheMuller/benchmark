@@ -8,10 +8,10 @@ from auto_complete.fit import impute_data as AutoCompleteImpute
 
 
 @timeout(36000)
-def hyperimpute_imp(X, method, seed):
+def hyperimpute_imp(X, method, seed, **kwargs):
     filterwarnings('ignore')
     imputer = Imputers().get(method)
-    imputer.__init__(random_state=seed)
+    imputer.__init__(random_state=seed, **kwargs)
     X_imputed = imputer.fit_transform(X.copy())
     return X_imputed
 

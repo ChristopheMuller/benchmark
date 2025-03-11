@@ -49,8 +49,18 @@ impute_sinkhorn <- function(missdf, ...){
 }
 
 impute_hyperimpute <- function(missdf, ...){
-  missdf <- make_integer_double(missdf)
-  call_hyperimpute_fun(missdf, method = "hyperimpute", ...)
+  
+  cols_factor <- which(sapply(missdf, is.factor))
+
+  if (length(cols_factor) > 0){
+    max_categories <- max(sapply(missdf[cols_factor], function(x) length(unique(x)))) + 2
+    # +2 because in hyperimpute checks if n_unique < max_categories (stricly and "nan" is added to the categories)
+  } else {
+    max_categories <- 5 # default from hyperimpute
+  }
+  missdf <- make_integer_double(dplyr::mutate_all(missdf, as.numeric))
+  print(max_categories)
+  call_hyperimpute_fun(missdf, method = "hyperimpute", class_threshold=max_categories)
 }
 
 impute_miwae <- function(missdf, ...){
