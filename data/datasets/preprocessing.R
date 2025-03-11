@@ -117,14 +117,14 @@ german <- readRDS("./data/datasets/complete_backup/unprocessed/german.RDS")
 german <- rename_columns(german)
 
 # 1. Keep num only
-num_feat <- c(2,5)
+num_feat <- c(2,5, 13)
 german_only_num <- german[, num_feat]
 
 # saveRDS(german_only_num, "data/datasets/complete_backup/only_num/german.RDS")
 
 # 2. Cat as factor
 german_cat <- german
-german_cat[, -c(2, 5)] <- as.data.frame(lapply(german_cat[, -c(2, 5)], function(x) factor(as.integer(factor(x)))))
+german_cat[, -num_feat] <- as.data.frame(lapply(german_cat[, -num_feat], function(x) factor(as.integer(factor(x)))))
 
 # saveRDS(german_cat, "data/datasets/complete_backup/categorical_as_factor/german.RDS")
 
