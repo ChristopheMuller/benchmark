@@ -1,0 +1,35 @@
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+Error:
+! targets::tar_make_clustermq() error
+
+── Debugging ───────────────────────────────────────────────────────────────────
+    • tar_errored()
+    • tar_meta(fields = any_of("error"), complete_only = TRUE)
+    • tar_workspace()
+    • tar_workspaces()
+
+── How to ──────────────────────────────────────────────────────────────────────
+    • Debug: https://books.ropensci.org/targets/debugging.html
+    • Help: https://books.ropensci.org/targets/help.html
+
+── Last error message ──────────────────────────────────────────────────────────
+    ModuleNotFoundError: No module named 'engression'
+Run `reticulate::py_last_error()` for details.
+
+── Last error traceback ────────────────────────────────────────────────────────
+    source("python/python_imputation_functions.R")
+    withVisible(eval(ei, envir))
+    eval(ei, envir)
+    eval(ei, envir)
+    reticulate::source_python("python/python_imputation_functions.py")
+    py_run_file(file, local = FALSE, convert = convert)
+    py_run_file_impl(file, local, convert)
+    stop(structure(list(message = "ModuleNotFoundError: No module named 'eng...
+    (function (condition)  {     state$error <- build_message(condition)    ...
+Execution halted
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+## OAR [2025-03-12 16:16:20] Job 2864943 KILLED ##
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
