@@ -28,7 +28,7 @@ ampute_dataset <- function(filepath, mechanism, ratio) {
     }
   } 
   
-  if(!amputed_switch)
+  if(!amputed_switch & !is.na(mechanism))
     stop("amputation error")
   
   missdf  
