@@ -8222,3 +8222,72 @@ Superclass QSys has cloneable=FALSE, but subclass MULTIPROCESS has cloneable=TRU
 ▶ dispatched target save_imputed_dat_missforest.mcar.0.2.2.electricity
 ● completed target save_imputed_dat_missforest.mcar.0.2.2.electricity [0.067 seconds, 44 bytes]
 ● completed target obtained_scores_missforest.mcar.0.2.2.electricity [28.704 seconds, 272 bytes]
+● completed target imputed_dat_missforest.mcar.0.3.1.electricity [2.463 hours, 1.157 megabytes]
+▶ dispatched target obtained_scores_missforest.mcar.0.3.1.electricity
+▶ dispatched target save_imputed_dat_missforest.mcar.0.3.1.electricity
+● completed target save_imputed_dat_missforest.mcar.0.3.1.electricity [0.073 seconds, 44 bytes]
+● completed target obtained_scores_missforest.mcar.0.3.1.electricity [29.611 seconds, 274 bytes]
+● completed target imputed_dat_missforest.mcar.0.3.2.diamond [5.629 hours, 1.261 megabytes]
+▶ dispatched target obtained_scores_missforest.mcar.0.3.2.diamond
+▶ dispatched target save_imputed_dat_missforest.mcar.0.3.2.diamond
+● completed target save_imputed_dat_missforest.mcar.0.3.2.diamond [0.164 seconds, 44 bytes]
+● completed target obtained_scores_missforest.mcar.0.3.2.diamond [1.132 minutes, 268 bytes]
+● completed target imputed_dat_missforest.mcar.0.1.2.diamond [6.147 hours, 940.602 kilobytes]
+▶ dispatched target obtained_scores_missforest.mcar.0.1.2.diamond
+▶ dispatched target save_imputed_dat_missforest.mcar.0.1.2.diamond
+● completed target save_imputed_dat_missforest.mcar.0.1.2.diamond [0.138 seconds, 44 bytes]
+● completed target imputed_dat_missforest.mar.0.3.1.diamond [6.155 hours, 1.214 megabytes]
+▶ dispatched target obtained_scores_missforest.mar.0.3.1.diamond
+▶ dispatched target save_imputed_dat_missforest.mar.0.3.1.diamond
+● completed target save_imputed_dat_missforest.mar.0.3.1.diamond [0.158 seconds, 44 bytes]
+● completed target obtained_scores_missforest.mcar.0.1.2.diamond [1.152 minutes, 269 bytes]
+● completed target obtained_scores_missforest.mar.0.3.1.diamond [1.375 minutes, 268 bytes]
+● completed target imputed_dat_missforest.mcar.0.1.1.diamond [7.177 hours, 941.987 kilobytes]
+▶ dispatched target obtained_scores_missforest.mcar.0.1.1.diamond
+▶ dispatched target save_imputed_dat_missforest.mcar.0.1.1.diamond
+● completed target save_imputed_dat_missforest.mcar.0.1.1.diamond [0.139 seconds, 44 bytes]
+● completed target obtained_scores_missforest.mcar.0.1.1.diamond [1.258 minutes, 268 bytes]
+● completed target imputed_dat_mice_drf.mar.0.2.1.electricity [7.987 hours, 754.32 kilobytes]
+▶ dispatched target obtained_scores_mice_drf.mar.0.2.1.electricity
+▶ dispatched target save_imputed_dat_mice_drf.mar.0.2.1.electricity
+● completed target save_imputed_dat_mice_drf.mar.0.2.1.electricity [0.06 seconds, 44 bytes]
+● completed target obtained_scores_mice_drf.mar.0.2.1.electricity [26.857 seconds, 271 bytes]
+● completed target imputed_dat_missforest.mar.0.2.1.diamond [8.016 hours, 1.081 megabytes]
+▶ dispatched target obtained_scores_missforest.mar.0.2.1.diamond
+▶ dispatched target save_imputed_dat_missforest.mar.0.2.1.diamond
+● completed target save_imputed_dat_missforest.mar.0.2.1.diamond [0.149 seconds, 44 bytes]
+● completed target obtained_scores_missforest.mar.0.2.1.diamond [1.128 minutes, 268 bytes]
+● completed target imputed_dat_mice_drf.mar.0.2.2.electricity [8.15 hours, 754.618 kilobytes]
+▶ dispatched target obtained_scores_mice_drf.mar.0.2.2.electricity
+▶ dispatched target save_imputed_dat_mice_drf.mar.0.2.2.electricity
+● completed target save_imputed_dat_mice_drf.mar.0.2.2.electricity [0.059 seconds, 44 bytes]
+● completed target obtained_scores_mice_drf.mar.0.2.2.electricity [29.724 seconds, 267 bytes]
+● completed target imputed_dat_missforest.mar.0.1.1.diamond [9.168 hours, 929.264 kilobytes]
+▶ dispatched target obtained_scores_missforest.mar.0.1.1.diamond
+▶ dispatched target save_imputed_dat_missforest.mar.0.1.1.diamond
+● completed target save_imputed_dat_missforest.mar.0.1.1.diamond [0.137 seconds, 44 bytes]
+● completed target obtained_scores_missforest.mar.0.1.1.diamond [1.3 minutes, 267 bytes]
+● completed target imputed_dat_mice_drf.mar.0.3.1.electricity [10.015 hours, 1.22 kilobytes]
+▶ dispatched target obtained_scores_mice_drf.mar.0.3.1.electricity
+▶ dispatched target save_imputed_dat_mice_drf.mar.0.3.1.electricity
+● completed target save_imputed_dat_mice_drf.mar.0.3.1.electricity [0.002 seconds, 44 bytes]
+● completed target obtained_scores_mice_drf.mar.0.3.1.electricity [0.085 seconds, 288 bytes]
+● completed target imputed_dat_mice_drf.mar.0.3.2.electricity [10.012 hours, 1.221 kilobytes]
+▶ dispatched target obtained_scores_mice_drf.mar.0.3.2.electricity
+▶ dispatched target save_imputed_dat_mice_drf.mar.0.3.2.electricity
+● completed target save_imputed_dat_mice_drf.mar.0.3.2.electricity [0.002 seconds, 44 bytes]
+● completed target obtained_scores_mice_drf.mar.0.3.2.electricity [0.071 seconds, 290 bytes]
+▶ dispatched target all_scores
+● completed target all_scores [0.009 seconds, 27.764 kilobytes]
+▶ dispatched target imputation_summary
+● completed target imputation_summary [0.004 seconds, 24.599 kilobytes]
+▶ dispatched target save_imputation_summary
+● completed target save_imputation_summary [0.007 seconds, 44 bytes]
+Master: [12.8 hours 1.2% CPU]; Worker: [avg 31.3% CPU, max 1.1 Gb]
+▶ ended pipeline [12.846 hours]
+Warning messages:
+1: replacing previous import ‘S4Arrays::makeNindexFromArrayViewport’ by ‘DelayedArray::makeNindexFromArrayViewport’ when loading ‘SummarizedExperiment’ 
+2: 16 targets produced warnings. Run targets::tar_meta(fields = warnings, complete_only = TRUE) for the messages. 
+Warning in .subset2(e, ".__enclos_env__")$private$finalize() :
+  Unclean shutdown for PIDs: 3709006, 3709014, 3709037, 3709049, 3709067, 3709088, 3709120, 3709137, 3709154, 3709205, 3709238, 3709254
+[1] "2025-03-09 01:38:27 CET"
