@@ -15,7 +15,7 @@ get_colors_errors <- function() {
 }
 
 get_colors_ranks <- function() {
-  c("[1,3]" = "#443B54", "(3,10]"= "#7E7099", "(10,30]" = "#9E94B3", "(30,63]" = "#C9C3D5")
+  c("[1,3]" = "#443B54", "(3,10]"= "#7E7099", "(10,30]" = "#9E94B3", "(30,65]" = "#C9C3D5")
 }
 
 get_colors_fractions <- function() {
@@ -201,8 +201,7 @@ plot_cases <- function(imputation_summary ) {
     mutate(mean_ranking = mean(ranking, na.rm = TRUE)) %>% 
     ungroup() %>% 
     arrange(mean_ranking) %>% 
-    mutate(method = factor(method, levels = unique(method)))  %>% 
-    filter(method == "mice_cart")
+    mutate(method = factor(method, levels = unique(method))) 
   
   
   # plts <- lapply(unique(dat[["method"]]), function(one_method) {
@@ -235,6 +234,25 @@ plot_cases <- function(imputation_summary ) {
                  pfcol = rgb(0, 0.4, 1, 0.25),
                  title = one_method)
   }
+  
+  areas <- c(rgb(1, 0, 0, 0.25),
+             rgb(0, 1, 0, 0.25),
+             rgb(0, 0, 1, 0.25))
+  
+  dat %>% 
+    filter(method %in% c("mice_cart", "hyperimpute", "areg")) %>%
+    select(case_id, ranking, method) %>% 
+    pivot_wider(names_from = case_id, values_from = ranking) %>% 
+    select(-method) %>% 
+    rbind(Min = n_methods, Max = 0, .) %>% 
+    radarchart(maxmin  = TRUE,
+               cglty = 1, cglcol = "gray",
+               pcol = 1, plwd = 2,
+               pfcol = areas)
+  
+  legend("topright",
+         legend = c("mice_cart", "hyperimpute", "areg"),
+         bty = "n", text.col = "grey25", pch = 20, col = areas)
 
   
 }
@@ -970,7 +988,9 @@ plot_rankings <- function(imputation_summary, breaks = c(1, 3, 10, 30)) {
     scale_fill_manual(name = "Ranking", values = get_colors_ranks()) +
     xlab("simulation cases") +
     ylab("method") +
-    theme_light()
+    theme_light() +
+    coord_flip() +
+    theme(axis.text.x = element_text(angle = 90))
   
 }
 
@@ -1013,7 +1033,7 @@ plot_all_measures <- function(imputation_summary, breaks = c(1, 3, 10, 30)) {
 
 
 
-plot_measures_corr <- function() {
+plot_measures_corr <- function(imputation_summary) {
   dat_corr <- imputation_summary %>%
     select(-imputation_fun) %>% 
     filter(case == "complete") %>% 
@@ -1043,6 +1063,66 @@ plot_measures_corr <- function() {
 
     ggcorrplot::ggcorrplot(cor(dat_corr))
 }
+
+
+plot_var <- function(imputation_summary) {
+  plt_dat <- imputation_summary %>% 
+    filter(!is.na(measure)) %>% 
+    dplyr::select(-imputation_fun, -attempts) %>% 
+    filter(case == "complete", measure == "energy_std") %>%
+    unique() %>% 
+    group_by(method) %>% 
+    group_by(method, set_id, mechanism, ratio) %>% 
+    mutate(score = log10(mean(score, na.rm = TRUE))) %>% 
+    dplyr::select(-rep, -case, -error, -time, -measure) %>% 
+    unique()
+  
+  ggplot(plt_dat, aes(x = score, y = set_id, fill = set_id)) +
+    geom_density_ridges(alpha = 0.7) +
+    theme_ridges() + 
+    theme(legend.position = "none")
+  
+  
+}
+
+
+
+########################
+
+
+shreks_plot_size <- function(imputation_summary) {
+  imputation_summary %>%
+    filter(!is.na(measure)) %>% 
+    select(-imputation_fun) %>% 
+    filter(case == "complete", measure == "energy_std") %>% 
+    unique() %>% 
+    group_by(method, set_id, mechanism, ratio) %>% 
+    reframe(score = mean(score, na.rm = TRUE)) %>% 
+    mutate(case_id = paste(set_id, mechanism, ratio)) %>% 
+    mutate(score = ifelse(is.nan(score), NA, score)) %>% 
+    group_by(set_id, mechanism, ratio) %>% 
+    mutate(ranking =  {
+      ranking <- rep(NA, length(score))
+      ranking[!is.na(score)] <- rank(score[!is.na(score)])
+      ranking[is.na(ranking)] <- n_methods
+      ranking
+    }) %>% 
+    mutate(large_data = set_id %in% c("oes10", "scm1d")) %>% 
+    ungroup() %>% 
+    group_by(method, large_data) %>% 
+    mutate(mean_ranking = mean(ranking)) %>% 
+    group_by(method) %>% 
+    mutate(mean_total = mean(ranking)) %>% 
+    ggplot() +
+    geom_tile(aes(x = large_data, y = reorder(method, mean_total), fill = mean_ranking), colour = "black") +
+    geom_text(aes(x = large_data, y = reorder(method, mean_total), label = round(mean_ranking, 3))) +
+    scale_fill_continuous() +
+    guides(fill = guide_colourbar(barwidth = 0.5, barheight = 40)) +
+    scale_fill_gradient(low = "darkgreen", high = "white") 
+    
+    
+}
+
 
 
 
