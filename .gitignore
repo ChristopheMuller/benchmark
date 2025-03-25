@@ -17,3 +17,4 @@ _targets
 .R_cache
 cache
 *.pyc
+figures/
