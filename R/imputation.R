@@ -69,7 +69,9 @@ safe_impute <- function(missing_data_set,
   # set time to total time in case of failure
   if(inherits(imputed, "try-error"))
     imputed <- list(imputed = imputed, time = total_time)
-  
+  else {
+    imputed[["imputed"]] <- as.data.frame(imputed[["imputed"]], check.names = FALSE)
+  }
   c(imputed, attempts = n - 1)
 }
 
@@ -100,7 +102,7 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
     error <- ifelse(check_time_error(imputed), "timeout", "computational")
     
   } else {
-    error <- validate_imputation(mutate_all(imputed, as.numeric), 
+      error <- validate_imputation(mutate_all(imputed, as.numeric), 
                                  mutate_all(missing_data_set, as.numeric))
     imputed <- post_process(imputed)
     colnames(imputed) <- col_names
