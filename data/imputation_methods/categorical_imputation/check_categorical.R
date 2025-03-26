@@ -1,5 +1,6 @@
 
 library(dplyr)
+library(tidyr)
 
 source("./R/imputation.R")
 
@@ -145,7 +146,7 @@ res_all %>%
   filter(case == "Factor" & n == 1 | case == "Numeric") %>% 
   rename(var_type = "case") %>% 
   rename(imputation_fun = "method") %>% 
-  select(imputation_fun, var_type) %>% 
+  dplyr::select(imputation_fun, var_type) %>% View()
   saveRDS("./data/categorical_funs.RDS")
 
   
