@@ -1,6 +1,5 @@
 
 
-
 impute_SVTImpute <- function(missdf, ...) {
   missdf <- as.matrix(missdf)
   imputed <- imputation::SVTImpute(missdf, 3)[["x"]]
@@ -10,3 +9,6 @@ impute_SVTImpute <- function(missdf, ...) {
 
 impute_SVDImpute <- function(missdf, ...) 
   imputation::SVDImpute(missdf, 3)[["x"]]
+
+impute_gbmImpute <- function(missdf, ...)
+  imputation::gbmImpute(missdf, ...)
