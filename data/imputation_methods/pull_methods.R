@@ -6,7 +6,7 @@ url <- "https://docs.google.com/spreadsheets/d/1rFnJkfpF-YfK04uGa-IzjzZYy-czLQZE
 imp_table <- read_sheet(url, sheet = "Kept only")
 
 imp_table %>% 
-  filter(KEPT) %>% 
+  filter(KEPT, IMPLEMENTED) %>% 
   dplyr::select(`Function name`, MI) %>% 
   saveRDS("data/functions.RDS")
 
