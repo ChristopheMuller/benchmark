@@ -46,14 +46,14 @@ impute_mice_CALIBER <- function(missdf, m = 1, ...){
 # impute_mice_lda <- function(missdf, m = 1, ...) 
 #   eval_mice_call(missdf = missdf, method = "lda", m = m, ...)
 
-impute_mice_pmm <- function(missdf, ...)
-  imputomics::impute_mice_pmm(missdf = missdf, m = 1, ...)
+impute_mice_pmm <- function(missdf, m = 1, ...)
+  eval_mice_call(missdf = missdf, method = "pmm", m = m, ...)
 
-impute_mice_cart <- function(missdf, ...)
-  imputomics::impute_mice_cart(missdf = missdf, m = 1, ...)
+impute_mice_cart <- function(missdf, m = 1, ...)
+  eval_mice_call(missdf = missdf, method = "cart", m = m, ...)
 
-impute_mice_rf <- function(missdf, ...)
-  imputomics::impute_mice_rf(missdf = missdf, m = 1, ...)
+impute_mice_rf <- function(missdf, m = 1, ...)
+  eval_mice_call(missdf = missdf, method = "rf", m = m, ...)
 
 impute_mice_default <- function(missdf, m = 1) 
   eval_mice_call(missdf = missdf, method = NULL, m = m)
