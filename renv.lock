@@ -901,7 +901,7 @@
     },
     "RcppArmadillo": {
       "Package": "RcppArmadillo",
-      "Version": "14.2.3-1",
+      "Version": "14.4.0-1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -911,7 +911,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "2f7cc7eceee4174dea52264aae41144b"
+      "Hash": "2cea30715a703abf41bce31a20030644"
     },
     "RcppEigen": {
       "Package": "RcppEigen",
@@ -976,7 +976,7 @@
     },
     "Rdpack": {
       "Package": "Rdpack",
-      "Version": "2.6.2",
+      "Version": "2.6.3",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -986,7 +986,7 @@
         "tools",
         "utils"
       ],
-      "Hash": "a9e2118c664c2cd694f03de074e8d4b3"
+      "Hash": "bf6104ba9f100ca37aee79bbed40b978"
     },
     "Rfast": {
       "Package": "Rfast",
@@ -1410,13 +1410,13 @@
     },
     "bit": {
       "Package": "bit",
-      "Version": "4.5.0.1",
+      "Version": "4.6.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
-      "Hash": "f89f074e0e49bf1dbe3eba0a15a91476"
+      "Hash": "ebe86ffd194564abdc895d87742d5a29"
     },
     "bit64": {
       "Package": "bit64",
@@ -2218,7 +2218,7 @@
     },
     "fastDummies": {
       "Package": "fastDummies",
-      "Version": "1.7.4",
+      "Version": "1.7.5",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -2227,7 +2227,7 @@
         "stringr",
         "tibble"
       ],
-      "Hash": "dc256683a45e31f9dc553440b909f198"
+      "Hash": "cf5006965714fead6732d50eebbf2cde"
     },
     "fastmap": {
       "Package": "fastmap",
@@ -3316,7 +3316,7 @@
     },
     "knitr": {
       "Package": "knitr",
-      "Version": "1.49",
+      "Version": "1.50",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -3328,7 +3328,7 @@
         "xfun",
         "yaml"
       ],
-      "Hash": "9fcb189926d93c636dea94fbe4f44480"
+      "Hash": "5a07d8ec459d7b80bd4acca5f4a6e062"
     },
     "ks": {
       "Package": "ks",
@@ -3653,14 +3653,15 @@
       "RemoteHost": "api.github.com",
       "RemoteRepo": "miceDRF",
       "RemoteUsername": "KrystynaGrzesiak",
-      "RemoteSha": "884989c9871ad2529047388eaace9d6597881481",
+      "RemoteSha": "47d675a73070fc5761c117ae1d584589cc5c51a0",
       "Requirements": [
         "drf",
         "energy",
         "mice",
+        "pbapply",
         "scoringRules"
       ],
-      "Hash": "8cefc3434ea0c187f744eb2384832c4a"
+      "Hash": "dc115772ab6890d45e4a42474a61054f"
     },
     "microbenchmark": {
       "Package": "microbenchmark",
@@ -5515,14 +5516,14 @@
     },
     "tzdb": {
       "Package": "tzdb",
-      "Version": "0.4.0",
+      "Version": "0.5.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R",
         "cpp11"
       ],
-      "Hash": "f561504ec2897f4d46f0c7657e488ae1"
+      "Hash": "09e3961e87b7bafa4a9340bbb34aeda8"
     },
     "ucminf": {
       "Package": "ucminf",
@@ -5690,7 +5691,7 @@
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.50",
+      "Version": "0.51",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -5699,7 +5700,7 @@
         "stats",
         "tools"
       ],
-      "Hash": "44ab88837d3f8dfc66a837299b887fa6"
+      "Hash": "e1a3c06389a46d065c18bd4bbc27c64c"
     },
     "xgboost": {
       "Package": "xgboost",
