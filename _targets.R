@@ -21,6 +21,7 @@ library(mice)
 library(glmnet)
 library(missForest)
 library(MetabImpute)
+library(SuperImputer)
 
 # for vis
 library(ggplot2)
@@ -35,6 +36,8 @@ reticulate::use_virtualenv("./.venv", required = TRUE)
 
 set.seed(56135)
 
+#################################################  PARAMETERS  #################
+
 # timeout value [in seconds]
 timeout_thresh <- 36000
 
@@ -46,6 +49,7 @@ path_to_amputed <- "./results/amputed/"
 path_to_complete_datasets <- "./data/datasets/complete/"
 path_to_incomplete_datasets <- "./data/datasets/incomplete/"
 path_to_categorical_datasets <- "./data/datasets/categorical/"
+path_to_incomplete_categorical_datasets <- "./data/datasets/incomplete_categorical/"
 path_to_imputed <- "./results/imputed/"
 
 path_to_results <- "./results/"
@@ -61,27 +65,24 @@ amputation_reps <- 2
 # imputation methods
 imputation_methods <- readRDS(path_to_methods) %>% 
   rename(imputation_fun = `Function name`) %>% 
-  mutate(method = str_remove(imputation_fun, "impute_"))
+  mutate(method = str_remove(imputation_fun, "impute_")) 
 
 imputation_categorical <- readRDS(path_to_cat_methods)
-  
+
 # parameters:
-params <- create_params(path_to_complete_datasets = path_to_complete_datasets,
-                        path_to_incomplete_datasets = path_to_incomplete_datasets,
-                        path_to_categorical_datasets = path_to_categorical_datasets,
-                        path_to_amputed = path_to_amputed,
-                        path_to_imputed = path_to_imputed,
-                        amputation_mechanisms = amputation_mechanisms,
-                        amputation_reps = amputation_reps,
-                        missing_ratios = missing_ratios,
-                        imputation_methods = imputation_methods,
-                        imputation_categorical = imputation_categorical)
-
-#params <- params %>%
-#  left_join(readRDS("./results/imputation_summary_timeouts.RDS")) %>%
-#  filter(!is.na(error)) %>%
-#  select(-time, -attempts, -error)
-
+params <- create_params(
+  path_to_complete_datasets = path_to_complete_datasets,
+  path_to_incomplete_datasets = path_to_incomplete_datasets,
+  path_to_categorical_datasets = path_to_categorical_datasets,
+  path_to_incomplete_categorical_datasets = path_to_incomplete_categorical_datasets,
+  path_to_amputed = path_to_amputed,
+  path_to_imputed = path_to_imputed,
+  amputation_mechanisms = amputation_mechanisms,
+  amputation_reps = amputation_reps,
+  missing_ratios = missing_ratios,
+  imputation_methods = imputation_methods,
+  imputation_categorical = imputation_categorical
+)
 
 print(dim(params))
 
@@ -96,7 +97,7 @@ imputation_params <- params %>%
          filepath_imputed, MI, filepath_original, case, var_type) %>% 
   unique()
 
-# define static branches
+#################################################  AMPUTATION  #################
 
 amputed_datasets <- tar_map(
   values = amputation_params,
@@ -110,12 +111,13 @@ amputed_datasets <- tar_map(
              saveRDS(amputed_dat, filepath_amputed))
 )
 
+#################################################  IMPUTATION  #################
+
 imputed_datasets <- tar_map(
   values = imputation_params,
   names = any_of("imputed_id"),
   tar_target(
     imputed_dat, {
-      source("python/python_imputation_functions.R")
       impute(
         dataset_id = imputed_id,
         missing_data_set = amputed_all[[paste0("amputed_dat_", amputed_id)]], 
@@ -133,14 +135,6 @@ imputed_datasets <- tar_map(
   ),
   tar_target(
     obtained_scores, {
-      saveRDS(list(imputed = imputed_dat, 
-                   amputed = amputed_all[[paste0("amputed_dat_", amputed_id)]],
-                   imputation_fun = get(imputation_fun),
-                   multiple = MI,
-                   imputed_id = imputed_id, 
-                   timeout_thresh = timeout_thresh,
-                   filepath_original = filepath_original,
-                   case = case), "dupa.RDS")
       calculate_scores(imputed = imputed_dat, 
                        amputed = amputed_all[[paste0("amputed_dat_", amputed_id)]],
                        imputation_fun = get(imputation_fun),
@@ -153,6 +147,9 @@ imputed_datasets <- tar_map(
     cue = tar_cue(depend = FALSE),
   )
 )
+
+#################################################  TARGETS  ####################
+
 
 list(
   # AMPUTATION

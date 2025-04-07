@@ -58,3 +58,9 @@ impute_mice_rf <- function(missdf, m = 1, ...)
 impute_mice_default <- function(missdf, m = 1) 
   eval_mice_call(missdf = missdf, method = NULL, m = m)
 
+impute_mice_cart50 <- function(missdf, m = 1, ...)
+  impute_mice_cart(missdf, m = 1, maxit = 50)
+
+impute_mice_cart100 <- function(missdf, m = 1, ...)
+  impute_mice_cart(missdf, m = 1, maxit = 100)
+

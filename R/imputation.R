@@ -80,9 +80,13 @@ safe_impute <- function(missing_data_set,
 impute <- function(dataset_id, missing_data_set, imputing_function, 
                    timeout_thresh = 600, n_attempts = 3, var_type, case) {
   
-  if(case == "categorical") {
-    unique_categoricals <- lapply(which(sapply(missing_data_set, is.factor)), 
-                                  function(i) as.numeric(attr(missing_data_set[, i], "levels")))
+  load_imputations_env()
+  
+  if(case %in% c("categorical", "incomplete_categorical")) {
+    cat_columns <- which(sapply(missing_data_set, is.factor))
+    unique_categoricals <- lapply(cat_columns, function(i) {
+      as.numeric(attr(missing_data_set[, i], "levels"))
+    })
     missing_data_set <- pre_process(missing_data_set, imputing_function, var_type)
   }
   
@@ -102,13 +106,13 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
     error <- ifelse(check_time_error(imputed), "timeout", "computational")
     
   } else {
-      error <- validate_imputation(mutate_all(imputed, as.numeric), 
+    error <- validate_imputation(mutate_all(imputed, as.numeric), 
                                  mutate_all(missing_data_set, as.numeric))
     imputed <- post_process(imputed)
     colnames(imputed) <- col_names
     
-    if(case == "categorical") {
-      error_categorical <- validate_categorical(imputed, unique_categoricals)
+    if(case %in% c("categorical", "incomplete_categorical")) {
+        error_categorical <- validate_categorical(imputed, unique_categoricals)
       
       if(!is.na(error_categorical)) {
         if(is.na(error)){
@@ -163,7 +167,7 @@ validate_imputation <- function(imputed, missing_data_set) {
 pre_process <- function(missing_data_set, imputing_function, var_type) {
   
   if(var_type == "Numeric") 
-    missing_data_set <- missing_data_set %>%  mutate_all(as.numeric)
+    missing_data_set <- missing_data_set %>%  mutate_all(factor_to_numeric)
   
   missing_data_set
 }
@@ -171,6 +175,11 @@ pre_process <- function(missing_data_set, imputing_function, var_type) {
 
 post_process <- function(imputed) {
   imputed
+}
+
+
+factor_to_numeric <- function(x) {
+  as.numeric(as.character(x))
 }
 
 

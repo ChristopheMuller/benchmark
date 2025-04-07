@@ -901,7 +901,7 @@
     },
     "RcppArmadillo": {
       "Package": "RcppArmadillo",
-      "Version": "14.4.0-1",
+      "Version": "14.4.1-1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -911,7 +911,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "2cea30715a703abf41bce31a20030644"
+      "Hash": "d2db71ca6fcb649bdc599391d0687b48"
     },
     "RcppEigen": {
       "Package": "RcppEigen",
@@ -1154,6 +1154,21 @@
       ],
       "Hash": "5acddb171281d0859c6610d374eacbee"
     },
+    "SuperImputer": {
+      "Package": "SuperImputer",
+      "Version": "0.0.0.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "SuperImputer",
+      "RemoteUsername": "KrystynaGrzesiak",
+      "RemoteSha": "22aba19213e0f510ec03ed60696d9b2f1118585f",
+      "Requirements": [
+        "R",
+        "miceDRF"
+      ],
+      "Hash": "400ecd969ad0425cbedfd7bc525af8bd"
+    },
     "T4transport": {
       "Package": "T4transport",
       "Version": "0.1.2",
@@ -1210,6 +1225,24 @@
         "stats"
       ],
       "Hash": "499f71d1787a61fe69c8805798650777"
+    },
+    "UpSetR": {
+      "Package": "UpSetR",
+      "Version": "1.4.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "ggplot2",
+        "grDevices",
+        "gridExtra",
+        "methods",
+        "plyr",
+        "scales",
+        "stats",
+        "utils"
+      ],
+      "Hash": "f6ef89503aaff474873f8bc1823894e1"
     },
     "VIM": {
       "Package": "VIM",
@@ -1476,12 +1509,13 @@
     },
     "broom": {
       "Package": "broom",
-      "Version": "1.0.7",
+      "Version": "1.0.8",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R",
         "backports",
+        "cli",
         "dplyr",
         "generics",
         "glue",
@@ -1492,7 +1526,7 @@
         "tibble",
         "tidyr"
       ],
-      "Hash": "8fcc818f3b9887aebaf206f141437cc9"
+      "Hash": "f6ceb00b6c485a472516d8d6a884b84d"
     },
     "bslib": {
       "Package": "bslib",
@@ -2208,6 +2242,19 @@
         "utils"
       ],
       "Hash": "962174cf2aeb5b9eea581522286a911f"
+    },
+    "faraway": {
+      "Package": "faraway",
+      "Version": "1.0.9",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "lme4",
+        "methods",
+        "nlme"
+      ],
+      "Hash": "2ee2569acd20c725ae394f7cf78afcd2"
     },
     "farver": {
       "Package": "farver",
@@ -3653,7 +3700,7 @@
       "RemoteHost": "api.github.com",
       "RemoteRepo": "miceDRF",
       "RemoteUsername": "KrystynaGrzesiak",
-      "RemoteSha": "47d675a73070fc5761c117ae1d584589cc5c51a0",
+      "RemoteSha": "0ff887dc1c8b331365a4b2b1a9b8ee413399089e",
       "Requirements": [
         "drf",
         "energy",
@@ -3661,7 +3708,7 @@
         "pbapply",
         "scoringRules"
       ],
-      "Hash": "dc115772ab6890d45e4a42474a61054f"
+      "Hash": "f579c49e6fdc646dea835bcf9deb2588"
     },
     "microbenchmark": {
       "Package": "microbenchmark",
@@ -3812,6 +3859,16 @@
       ],
       "Hash": "7bb0875ef6709946cfda46fba030b05c"
     },
+    "mlbench": {
+      "Package": "mlbench",
+      "Version": "2.1-6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "438eb751e9e5a8f5782b816913a056f9"
+    },
     "mltools": {
       "Package": "mltools",
       "Version": "0.3.5",
@@ -3911,6 +3968,33 @@
         "stats"
       ],
       "Hash": "c7241e6be9d6df551a2e539a50f5c875"
+    },
+    "naniar": {
+      "Package": "naniar",
+      "Version": "1.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "UpSetR",
+        "cli",
+        "dplyr",
+        "forcats",
+        "ggplot2",
+        "glue",
+        "lifecycle",
+        "magrittr",
+        "norm",
+        "purrr",
+        "rlang",
+        "stats",
+        "tibble",
+        "tidyr",
+        "vctrs",
+        "viridis",
+        "visdat"
+      ],
+      "Hash": "74d1b68ee4d1e076dee034a9ef3acd41"
     },
     "narray": {
       "Package": "narray",
@@ -5183,7 +5267,7 @@
     },
     "stringi": {
       "Package": "stringi",
-      "Version": "1.8.4",
+      "Version": "1.8.7",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -5192,7 +5276,7 @@
         "tools",
         "utils"
       ],
-      "Hash": "39e1144fd75428983dc3f63aa53dfa91"
+      "Hash": "2b56088e23bdd58f89aebf43a0913457"
     },
     "stringr": {
       "Package": "stringr",
@@ -5636,6 +5720,28 @@
       ],
       "Hash": "c826c7c4241b6fc89ff55aaea3fa7491"
     },
+    "visdat": {
+      "Package": "visdat",
+      "Version": "0.6.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cli",
+        "dplyr",
+        "forcats",
+        "ggplot2",
+        "glue",
+        "magrittr",
+        "purrr",
+        "readr",
+        "scales",
+        "stats",
+        "tibble",
+        "tidyr"
+      ],
+      "Hash": "aa0c558f21cab0196eea9b51433f2c0e"
+    },
     "vroom": {
       "Package": "vroom",
       "Version": "1.6.5",
@@ -5691,7 +5797,7 @@
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.51",
+      "Version": "0.52",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -5700,7 +5806,7 @@
         "stats",
         "tools"
       ],
-      "Hash": "e1a3c06389a46d065c18bd4bbc27c64c"
+      "Hash": "652ce36fe7d57688e6786819b09d9190"
     },
     "xgboost": {
       "Package": "xgboost",

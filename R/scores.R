@@ -8,24 +8,33 @@ calculate_scores <- function(imputed, amputed, imputation_fun, multiple,
   if(!is.na(res[["error"]])) {
     return(cross_join(res, data.frame(measure = c("mae", "rmse", "nrmse", 
                                                   "rsq", "ccc", "energy", 
-                                                  "energy_std", "IScore"),
+                                                  "energy_std", "IScore", 
+                                                  "IScore_cat"),
                                       score = NA)))
   }
   
   original_data <- readRDS(filepath_original)
   
-  scores <- switch(case,
-                   complete = scores_for_complete(original_data = original_data, 
-                                                  amputed_data = amputed, 
-                                                  imputed_data = imputed_data,
-                                                  imputation_fun = imputation_fun),
-                   incomplete = scores_for_incomplete(original_data = original_data, 
-                                                      imputed_data = imputed_data, 
-                                                      imputation_fun = imputation_fun,
-                                                      multiple = multiple,
-                                                      timeout_thresh = timeout_thresh),
-                   categorical = scores_for_categorical(original_data = original_data, 
-                                                        imputed_data = imputed_data))
+  scores <- switch(
+    case,
+    complete = scores_for_complete(original_data = original_data, 
+                                   amputed_data = amputed, 
+                                   imputed_data = imputed_data,
+                                   imputation_fun = imputation_fun),
+    incomplete = scores_for_incomplete(original_data = original_data, 
+                                       imputed_data = imputed_data, 
+                                       imputation_fun = imputation_fun,
+                                       multiple = multiple,
+                                       timeout_thresh = timeout_thresh),
+    categorical = scores_for_categorical(original_data = original_data, 
+                                         imputed_data = imputed_data),
+    incomplete_categorical = scores_for_incomplete(original_data = original_data, 
+                                                   imputed_data = imputed_data, 
+                                                   imputation_fun = imputation_fun,
+                                                   multiple = multiple,
+                                                   timeout_thresh = timeout_thresh,
+                                                   case)
+  )
   
   res %>% 
     cross_join(scores)
@@ -47,11 +56,12 @@ summarize_imputations <- function(all_scores, params) {
 scores_for_categorical <- function(original_data, imputed_data) {
   
   ids_categoricals <- which(sapply(original_data, is.factor))
-  imputed_data <- mutate(imputed_data, across(matches(names(ids_categoricals)), as.factor))
-
+  imputed_data <- mutate(imputed_data, across(matches(names(ids_categoricals)), 
+                                              as.factor))
+  
   dim_imputed <- dim(imputed_data)
   dim_original <- dim(original_data)
-
+  
   # first rbind
   binded_data <- rbind(original_data, imputed_data)
   # then one hot encode
@@ -153,28 +163,37 @@ stop_on_timeout <- function(missing_data_set, imputing_function, timeout_thresh 
 
 
 scores_for_incomplete <- function(original_data, imputed_data, imputation_fun,
-                                  multiple, timeout_thresh) {
+                                  multiple, timeout_thresh, case) {
+  
+  saveRDS(list(original_data = original_data, imputed_data = imputed_data, imputation_fun = imputation_fun,
+               multiple = multiple, timeout_thresh = timeout_thresh), "dupa.RDS")
+  
   #calculate IScore here
-  time_limited_fun <- function(missdf) stop_on_timeout(missdf, imputation_fun, timeout_thresh)
   
-  ImpScore <- try({
-    miceDRF::Iscore(X = original_data, X_imp = imputed_data, 
-                    multiple = multiple, imputation_func = time_limited_fun)
-  })
+  if(case == "incomplete_categorical") {
+    
+    ids_categoricals <- which(sapply(original_data, is.factor))
+    imputed_data <- mutate(imputed_data, across(matches(names(ids_categoricals)), as.factor))
+    
+    ImpScore <- try({
+      miceDRF::Iscore_cat(X = original_data, X_imp = imputed_data, 
+                          imputation_func = imputation_fun, onehot = FALSE, 
+                          multiple = multiple)
+    })
+    score_name <- "IScore_cat"
+  } else {
+    ImpScore <- try({
+      miceDRF::Iscore(X = original_data, X_imp = imputed_data, 
+                      multiple = multiple, imputation_func = imputation_fun)
+    })
+    score_name <- "IScore"
+  }
   
-  ImpScore <- ifelse(inherits(ImpScore, "try-error"), NA, as.numeric(ImpScore))
+  if(inherits(ImpScore, "try-error")) {
+    ImpScore <- NA
+  } else {
+    ImpScore <- as.numeric(ImpScore)
+  }
   
-  data.frame(measure = "IScore", score = ImpScore)
+  data.frame(measure = score_name, score = ImpScore)
 }
-
-
-
-safe_score <- function(expr, original_data, imputed_data) {
-  score <- try({
-    expr
-  })
-  score <- ifelse(inherits(score, "try-error"), NA, as.numeric(score))
-  score
-}
-
-
