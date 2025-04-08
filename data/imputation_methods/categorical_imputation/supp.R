@@ -1,8 +1,11 @@
 
 
-check_levels <- function(imp_dat, levels = 1:3) {
+check_levels <- function(imp_dat, lev = 1:3, case) {
   
-  if(all(unique(unlist(imp_dat[["category"]])) %in% levels))
+  if(case == "base_dat5")
+    lev <- paste0("category", 1:3)
+  
+  if(all(unique(unlist(imp_dat[["category"]])) %in% lev))
     return(TRUE)
   
   FALSE

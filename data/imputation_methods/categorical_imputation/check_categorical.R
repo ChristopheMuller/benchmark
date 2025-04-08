@@ -41,12 +41,19 @@ base_dat4 <- mutate(base_dat2,
                     category3 = ifelse(category == 3, 1, 0)) %>% 
   dplyr::select(-category)
 
+### case 5 factor character category
+
+base_dat5 <- mutate(base_dat, category = factor(paste0("category", categorical_col), 
+                                                levels = paste0("category", 1:3)))
+base_dat5[M] <- NA
+
+
 
 ###########################################################################
 
 imp_methods <- pull(readRDS("./data/functions.RDS"), `Function name`)
 
-case <- c("base_dat2", "base_dat3", "base_dat4")
+case <- c("base_dat2", "base_dat3", "base_dat4", "base_dat5")
 
 
 res_all <- lapply(case, function(ith_set) {
@@ -86,7 +93,7 @@ res_all <- lapply(case, function(ith_set) {
                         res = c(check_binary_levels(imp_dat), 
                                 check_binary_sum(imp_dat)))
     } else {
-      res <- data.frame(check = c("levels"), res = c(check_levels(imp_dat)))
+      res <- data.frame(check = c("levels"), res = c(check_levels(imp_dat, case = ith_set)))
     }
     cbind(res, method = ith_method, case = ith_set)
   }) %>%  bind_rows()
@@ -104,7 +111,8 @@ res_all %>%
   # filter(!is.na(check)) %>% 
   mutate(case = ifelse(case == "base_dat2", "Numeric", case),
          case = ifelse(case == "base_dat3", "Factor", case),
-         case = ifelse(case == "base_dat4", "One-hot", case)) %>% 
+         case = ifelse(case == "base_dat4", "One-hot", case),
+         case = ifelse(case == "base_dat5", "Factor-Character", case)) %>% 
   mutate(check = ifelse(case != "One-hot", "levels", check)) %>% 
   pivot_wider(names_from = check, values_from = res) %>% 
   pivot_wider(names_from = case, values_from = levels, names_repair = "unique") %>% 
