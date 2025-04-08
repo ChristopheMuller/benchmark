@@ -18,3 +18,4 @@ _targets
 cache
 *.pyc
 figures/
+data/datasets/complete/*
