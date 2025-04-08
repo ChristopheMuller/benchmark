@@ -75,7 +75,7 @@ res_5_cols <- run_methods(imp_methods, missdf)
 res <- rbind(res_2_cols, res_3_cols, res_4_cols, res_5_cols)
 
 res %>% 
-  filter(!(method %in% c("impute_engression", "impute_missmda_MIFAMD_reg",
+  dplyr::filter(!(method %in% c("impute_engression", "impute_missmda_MIFAMD_reg",
                          "impute_missmda_famd_reg", "impute_missmda_famd_em",
                          "impute_missmda_MIFAMD_em"))) %>% 
   group_by(method) %>% 

@@ -146,7 +146,7 @@ res_all %>%
   filter(case == "Factor" & n == 1 | case == "Numeric") %>% 
   rename(var_type = "case") %>% 
   rename(imputation_fun = "method") %>% 
-  dplyr::select(imputation_fun, var_type) %>% View()
+  dplyr::select(imputation_fun, var_type) %>%
   saveRDS("./data/categorical_funs.RDS")
 
   
