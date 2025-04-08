@@ -57,8 +57,8 @@ summarize_imputations <- function(all_scores, params) {
 scores_for_categorical <- function(original_data, imputed_data) {
   
   ids_categoricals <- which(sapply(original_data, is.factor))
-  imputed_data <- mutate(imputed_data, across(matches(names(ids_categoricals)), 
-                                              as.factor))
+  # imputed_data <- mutate(imputed_data, across(matches(names(ids_categoricals)), as.factor))
+  imputed_data[ids_categoricals] <- mutate_all(imputed_data[ids_categoricals], as.factor)
   
   dim_imputed <- dim(imputed_data)
   dim_original <- dim(original_data)
@@ -69,7 +69,7 @@ scores_for_categorical <- function(original_data, imputed_data) {
   binded_data <- one_hot_encoding(binded_data)
   # then split
   original_data <- binded_data[1:dim_original[1], ]
-  imputed_data <- binded_data[(dim_original[1] + 1):dim_imputed[1], ]
+  imputed_data <- binded_data[dim_original[1]+1:dim_imputed[1], ]
   
   # original_data <- one_hot_encoding(original_data)
   # imputed_data <- one_hot_encoding(imputed_data)
