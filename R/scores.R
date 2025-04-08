@@ -1,6 +1,7 @@
 
 calculate_scores <- function(imputed, amputed, imputation_fun, multiple, 
-                             imputed_id, timeout_thresh, filepath_original, case) {
+                             imputed_id, timeout_thresh, filepath_original, 
+                             case, var_type = NULL) {
   
   imputed_data <- imputed[["imputed"]]
   res <- imputed[["res"]]
@@ -33,7 +34,7 @@ calculate_scores <- function(imputed, amputed, imputation_fun, multiple,
                                                    imputation_fun = imputation_fun,
                                                    multiple = multiple,
                                                    timeout_thresh = timeout_thresh,
-                                                   case)
+                                                   case = case, var_type = var_type)
   )
   
   res %>% 
@@ -163,10 +164,7 @@ stop_on_timeout <- function(missing_data_set, imputing_function, timeout_thresh 
 
 
 scores_for_incomplete <- function(original_data, imputed_data, imputation_fun,
-                                  multiple, timeout_thresh, case) {
-  
-  saveRDS(list(original_data = original_data, imputed_data = imputed_data, imputation_fun = imputation_fun,
-               multiple = multiple, timeout_thresh = timeout_thresh), "dupa.RDS")
+                                  multiple, timeout_thresh, case, var_type) {
   
   #calculate IScore here
   
@@ -177,7 +175,7 @@ scores_for_incomplete <- function(original_data, imputed_data, imputation_fun,
     
     ImpScore <- try({
       miceDRF::Iscore_cat(X = original_data, X_imp = imputed_data, 
-                          imputation_func = imputation_fun, onehot = FALSE, 
+                          imputation_func = imputation_fun, var_type == "Factor", 
                           multiple = multiple)
     })
     score_name <- "IScore_cat"

@@ -27,6 +27,9 @@ library(SuperImputer)
 library(ggplot2)
 library(patchwork)
 
+#dummy solution
+select <- dplyr::select
+
 # Source custom functions
 tar_source()
 
@@ -142,7 +145,7 @@ imputed_datasets <- tar_map(
                        imputed_id = imputed_id, 
                        timeout_thresh = timeout_thresh,
                        filepath_original = filepath_original,
-                       case = case)
+                       case = case, var_type = var_type)
     },
     cue = tar_cue(depend = FALSE),
   )

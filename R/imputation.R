@@ -179,7 +179,7 @@ post_process <- function(imputed) {
 
 
 factor_to_numeric <- function(x) {
-  as.numeric(as.character(x))
+  as.numeric(levels(x))[x]
 }
 
 
