@@ -142,7 +142,7 @@ res_all %>%
   mutate(check = ifelse(case != "One-hot", "levels", check)) %>% 
   pivot_wider(names_from = check, values_from = res) %>% 
   pivot_wider(names_from = case, values_from = levels, names_repair = "unique") %>% 
-  dplyr::select(-`One-hot`) %>% 
+  dplyr::select(-`One-hot`, -base_dat5 ) %>% 
   mutate(`One-hot` = binary_levels & binary_sum) %>% 
   dplyr::select(-binary_levels, -binary_sum) %>% 
   gather("case", "res", -method) %>% 
@@ -151,7 +151,7 @@ res_all %>%
   filter(case != "One-hot", res) %>% 
   group_by(method) %>% 
   mutate(n = n()) %>% 
-  filter(case == "Factor" & n == 1 | case == "Numeric") %>% 
+  filter(case == "Numeric" & n == 1 | case == "Factor") %>% 
   rename(var_type = "case") %>% 
   rename(imputation_fun = "method") %>% 
   dplyr::select(imputation_fun, var_type) %>%
