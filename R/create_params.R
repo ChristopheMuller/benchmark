@@ -14,9 +14,6 @@ create_params <- function(path_to_complete_datasets,
                           imputation_methods,
                           imputation_categorical) {
 
-
-  imputation_categorical <- imputation_categorical %>% filter(imputation_fun %in% imputation_methods$imputation_fun)
-                          
   # completed
   c_datasets <- list.files(path_to_complete_datasets, full.names = TRUE)
   
@@ -68,7 +65,7 @@ create_params <- function(path_to_complete_datasets,
     filter(case == "categorical" & imputation_fun %in% pull(imputation_categorical, imputation_fun) |
              case == "incomplete_categorical" & imputation_fun %in% pull(imputation_categorical, imputation_fun) |
              !(case %in% c("categorical", "incomplete_categorical"))) %>% 
-    left_join(imputation_categorical) 
+    left_join(imputation_categorical, by="imputation_fun") 
 }
 
 
