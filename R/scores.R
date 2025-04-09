@@ -195,3 +195,12 @@ scores_for_incomplete <- function(original_data, imputed_data, imputation_fun,
   
   data.frame(measure = score_name, score = ImpScore)
 }
+
+
+safe_score <- function(expr, original_data, imputed_data) {
+  score <- try({
+    expr
+  })
+  score <- ifelse(inherits(score, "try-error"), NA, as.numeric(score))
+  score
+}
