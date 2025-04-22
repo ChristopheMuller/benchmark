@@ -19,3 +19,4 @@ cache
 *.pyc
 figures/
 data/datasets/complete/*
+*.tex
