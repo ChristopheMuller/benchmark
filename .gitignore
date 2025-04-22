@@ -4,10 +4,7 @@
 .Ruserdata
 low_rank_MNAR/
 *.RDS
-!data/datasets/complete/*.rds
-!data/datasets/incomplete/*.rds
 !data/datasets/incomplete_backup/*.rds
-!data/datasets/complete_backup/*/*
 !functions.RDS
 .venv/
 container
@@ -18,5 +15,4 @@ _targets
 cache
 *.pyc
 figures/
-data/datasets/complete/*
 *.tex
