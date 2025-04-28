@@ -990,7 +990,7 @@ plot_ranking_boxplots <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 8
     scale_fill_manual(name = "success [%]", 
                       values = get_colors_fractions()) +
     labs(x = "Methods", y = "Mean Energy") +
-    theme_bw()
+    theme_bw() +
     theme(axis.text.y = element_text(hjust = 0.5),
           axis.title.y = element_blank()) +
     ylab("Ranking") +
