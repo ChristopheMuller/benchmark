@@ -7,6 +7,7 @@ library(stringr)
 library(ggplot2)
 library(patchwork)
 library(fmsb)
+library(ggridges)
 
 
 get_colors_errors <- function() {
@@ -15,7 +16,7 @@ get_colors_errors <- function() {
 }
 
 get_colors_ranks <- function() {
-  c("[1,3]" = "#443B54", "(3,10]"= "#7E7099", "(10,30]" = "#9E94B3", "(30,65]" = "#C9C3D5")
+  c("[1,3]" = "#443B54", "(3,10]"= "#7E7099", "(10,30]" = "#9E94B3", "(30,78]" = "#C9C3D5")
 }
 
 get_colors_fractions <- function() {
@@ -140,7 +141,7 @@ plot_errors_mechanism <- function(imputation_summary) {
 }
 
 
-plot_best <- function(imputation_summary ) {
+shreks_plot <- function(imputation_summary ) {
   
   n_methods <- length(unique(pull(imputation_summary, method)))
   
@@ -259,133 +260,6 @@ plot_cases <- function(imputation_summary ) {
 
 
 
-plot_energy_time <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99, 100)) {
-  
-  dat_plt <- imputation_summary %>% 
-    filter(!is.na(measure)) %>% 
-    select(-imputation_fun) %>% 
-    # filter(!(set_id %in% c("oes10", "scm1d", "scm20d"))) %>% 
-    filter(case == "complete", measure == "energy_std") %>%
-    unique() %>% 
-    group_by(method) %>% 
-    reframe(mean_score = mean(score, na.rm = TRUE),
-            time = mean(time, na.rm = TRUE),
-            `success [%]` = mean(is.na(error)) * 100) %>% 
-    mutate(`success [%]` = cut(`success [%]`, breaks, 
-                               include.lowest = TRUE)) %>% 
-    mutate(is_top = `success [%]` == "(99,100]") %>% 
-    arrange(mean_score) %>% 
-    mutate(method = factor(method, levels = method))
-  
-  if(arrange_success)
-    dat_plt <- dat_plt %>%  
-      arrange(-is_top, mean_score) %>% 
-      mutate(method = factor(method, levels = method))
-  
-  min_time <- min(dat_plt$time) * 1000
-  
-  p1 <- dat_plt %>% 
-    ggplot(aes(x = method, y = time * 1000, fill = `success [%]`)) +
-    geom_rect(aes(xmin = as.numeric(method) - 0.4, 
-                  xmax = as.numeric(method) + 0.4,
-                  ymin = min_time - 10, 
-                  ymax = time * 1000, 
-                  fill = `success [%]`)) +
-    scale_fill_manual(name = "success [%]", values = get_colors_fractions()) +
-    labs(x = "Methods", y = "Average Time") +
-    theme_bw() +
-    theme(axis.text.y = element_blank(),
-          axis.title.y = element_blank(),
-          legend.position = "none") +
-    scale_x_discrete(position = "top") +
-    coord_flip() +
-    scale_y_continuous("Time", trans = c("log10", "reverse"),
-                       breaks = c(min_time/1000, 1, 60, 600, 1800, 1800*2, 1800*4, 1800*6) * 1000, 
-                       labels = c("116ms", "1s", "1min", "10min", "30min", "1h", "2h", "3h")) +
-    theme(panel.grid.minor.x = element_blank(),
-          panel.grid.major.x = element_line(color = "black", linetype = "dashed"))
-  
-  
-  p2 <- ggplot(dat_plt, aes(x = method, y = log10(mean_score), fill = `success [%]`)) +
-    geom_col() +
-    scale_fill_manual(name = "success [%]", 
-                      values = get_colors_fractions()) +
-    labs(x = "Methods", y = "Mean Energy") +
-    theme_bw() +
-    theme(axis.text.y = element_text(hjust = 0.5),
-          axis.title.y = element_blank()) +
-    ylab("log10 energy") +
-    coord_flip()
-  
-  p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = 'bottom')
-  
-}
-
-
-plot_energy_time_segments <- function(arrange_success = TRUE,
-                                      breaks = c(0, 1, 40, 80, 99, 100)) {
-  
-  dat_plt <- imputation_summary %>% 
-    filter(!is.na(measure)) %>% 
-    select(-imputation_fun) %>% 
-    # filter(!(set_id %in% c("oes10", "scm1d", "scm20d"))) %>% 
-    filter(case == "complete", measure == "energy_std") %>%
-    unique() %>% 
-    group_by(method) %>% 
-    reframe(mean_score = median(score, na.rm = TRUE),
-            time = mean(time, na.rm = TRUE),
-            `success [%]` = mean(is.na(error)) * 100) %>% 
-    mutate(`success [%]` = cut(`success [%]`, breaks, 
-                               include.lowest = TRUE)) %>% 
-    mutate(is_top = `success [%]` == "(99,100]") %>% 
-    arrange(mean_score) %>% 
-    mutate(method = factor(method, levels = method))
-  
-  if(arrange_success)
-    dat_plt <- dat_plt %>%  
-      arrange(-is_top, mean_score) %>% 
-      mutate(method = factor(method, levels = method))
-  
-  min_time <- min(dat_plt$time) * 1000
-  
-  n_methods <- length(unique(pull(imputation_summary, method)))
-  
-  imputation_summary %>% 
-    filter(!is.na(measure)) %>% 
-    select(-imputation_fun) %>% 
-    filter(case == "complete", measure == "energy_std") %>%
-    unique() %>% 
-    mutate(score = ifelse(is.na(score), Inf, score)) %>% 
-    group_by(method, set_id, mechanism, ratio) %>% 
-    reframe(score = mean(score), error = error, set_id = set_id) %>% 
-    unique() %>% 
-    group_by(set_id, mechanism, ratio) %>% 
-    mutate(ranking = order(score, decreasing = FALSE)) %>% 
-    mutate(ranking = ifelse(is.infinite(score), n_methods, ranking)) %>% 
-    group_by(method, set_id) %>% 
-    reframe(median_ranking = median(ranking),
-            mean_ranking = mean(ranking),
-            lwr = quantile(ranking, 0.25),
-            upr = quantile(ranking, 0.75),
-            `success [%]` = mean(is.na(error)) * 100) %>% 
-    mutate(`success [%]` = cut(`success [%]`, breaks, include.lowest = TRUE)) %>% 
-    ggplot() +
-    # geom_col(mapping = aes(x = reorder(method, median_ranking), y = median_ranking, fill = `success [%]`)) +
-    geom_point(mapping = aes(x = reorder(method, median_ranking), y = median_ranking), col = "black") +
-    geom_point(mapping = aes(x = reorder(method, median_ranking), y = mean_ranking), col = "blue") +
-    geom_segment(mapping = aes(x = reorder(method, median_ranking), y = lwr, yend = upr)) +
-    labs(x = "Methods", y = "Mean Energy") +
-    theme_bw() +
-    theme(axis.text.y = element_text(hjust = 0.5),
-          axis.title.y = element_blank()) +
-    ylab("Ranking") +
-    coord_flip() +
-    facet_grid(~ set_id)
-  
-  p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = 'bottom')
-  
-}
-
 
 
 plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99, 100)) {
@@ -479,7 +353,9 @@ plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40
 
 
 
-plot_111234 <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99, 100)) {
+
+
+plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99, 100)) {
   
   
   n_methods <- length(unique(pull(imputation_summary, method)))
@@ -488,7 +364,7 @@ plot_111234 <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99, 100
     filter(!is.na(measure)) %>% 
     select(-imputation_fun, -attempts) %>% 
     # filter(!(set_id %in% c("oes10", "scm1d", "scm20d"))) %>% 
-    filter(case == "complete", measure == "energy") %>%
+    filter(case == "complete", measure == "energy_std") %>%
     unique() %>% 
     group_by(method) %>% 
     mutate(`success [%]` = mean(is.na(error)) * 100) %>% 
@@ -498,41 +374,42 @@ plot_111234 <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99, 100
     select(-rep, -case, -error) %>% 
     unique() %>% 
     mutate(score = ifelse(is.nan(score), NA, score)) %>% 
+    ungroup() %>% 
     group_by(set_id, mechanism, ratio) %>% 
     mutate(ranking =  {
       ranking <- rep(NA, length(score))
-      ranking[!is.na(score)] <- order(score[!is.na(score)])
+      ranking[!is.na(score)] <- rank(score[!is.na(score)])
       ranking[is.na(ranking)] <- n_methods
       ranking
     }) %>% 
+    ungroup() %>% 
     group_by(method) %>% 
-    mutate(mean_score_total = mean(score, na.rm = TRUE)) %>% 
-    group_by(method, set_id) %>% 
     reframe(mean_score = mean(score, na.rm = TRUE),
             mean_ranking = mean(ranking, na.rm = TRUE),
             median_ranking = median(ranking, na.rm = TRUE),
             time = mean(time, na.rm = TRUE), 
-            `success [%]` = `success [%]`,
-            set_id = set_id,
-            mean_score_total = mean_score_total) %>% 
+            `success [%]` = `success [%]`) %>% 
     mutate(`success [%]` = cut(`success [%]`, breaks, 
                                include.lowest = TRUE)) %>% 
     unique() %>% 
     arrange(mean_score) %>% 
-    mutate(method = factor(method, levels = unique(method)))
+    mutate(method = factor(method, levels = method))
   
   if(arrange_success)
     dat_plt <- dat_plt %>%
-    arrange(mean_score_total) %>%
-    mutate(method = factor(method, levels = unique(method)))
+    arrange(mean_ranking) %>%
+    mutate(method = factor(method, levels = method))
   
   min_time <- min(dat_plt$time) * 1000
   
   p1 <- dat_plt %>% 
-    mutate(time = time * 1000) %>% 
-    ggplot() +
-    geom_col(aes(x = method, y = log10(time), fill = set_id)) +
-    scale_fill_manual(name = "dataset", values = get_colors_datasets()) +
+    ggplot(aes(x = method, y = time * 1000, fill = `success [%]`)) +
+    geom_rect(aes(xmin = as.numeric(method) - 0.4, 
+                  xmax = as.numeric(method) + 0.4,
+                  ymin = min_time - 10, 
+                  ymax = time * 1000, 
+                  fill = `success [%]`)) +
+    scale_fill_manual(name = "success [%]", values = get_colors_fractions()) +
     labs(x = "Methods", y = "Average Time") +
     theme_bw() +
     theme(axis.text.y = element_blank(),
@@ -540,193 +417,207 @@ plot_111234 <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99, 100
           legend.position = "none") +
     scale_x_discrete(position = "top") +
     coord_flip() +
-    scale_y_continuous("log10 time", trans = c("reverse"))
+    scale_y_continuous("Time", trans = c("log10", "reverse"),
+                       breaks = c(min_time/1000, 1, 60, 600, 1800, 1800*2, 1800*4, 1800*6) * 1000, 
+                       labels = c("116ms", "1s", "1min", "10min", "30min", "1h", "2h", "3h")) +
+    theme(panel.grid.minor.x = element_blank(),
+          panel.grid.major.x = element_line(color = "black", linetype = "dashed"))
   
   
-  p2 <- ggplot(dat_plt, aes(x = method, y = log10(mean_score), fill = set_id)) +
+  p2 <- dat_plt %>% 
+    ungroup() %>% 
+    mutate(max_score = max(log10(mean_score), na.rm = TRUE)) %>% 
+    ggplot(aes(x = method, y = log10(mean_score), fill = `success [%]`)) +
     geom_col() +
-    scale_fill_manual(name = "dataset", values = get_colors_datasets()) +
+    scale_fill_manual(name = "success [%]", 
+                      values = get_colors_fractions()) +
     labs(x = "Methods", y = "Mean Energy") +
     theme_bw() +
     theme(axis.text.y = element_text(hjust = 0.5),
           axis.title.y = element_blank()) +
     ylab("log10energy") +
-    coord_flip()
+    coord_flip() +
+    geom_text(aes(x = method, y = max_score + 0.5, label = round(mean_ranking, 1)), size = 3)
   
-  p1 + p2 + plot_layout(guides = "collect")  & theme(legend.position = 'bottom')
+  p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = 'bottom')
   
 }
 
 
 
+# 
+# plot_111234 <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99, 100)) {
+#   
+#   
+#   n_methods <- length(unique(pull(imputation_summary, method)))
+#   
+#   dat_plt <- imputation_summary %>% 
+#     filter(!is.na(measure)) %>% 
+#     select(-imputation_fun, -attempts) %>% 
+#     # filter(!(set_id %in% c("oes10", "scm1d", "scm20d"))) %>% 
+#     filter(case == "complete", measure == "energy") %>%
+#     unique() %>% 
+#     group_by(method) %>% 
+#     mutate(`success [%]` = mean(is.na(error)) * 100) %>% 
+#     group_by(method, set_id, mechanism, ratio) %>% 
+#     mutate(score = mean(score, na.rm = TRUE),
+#            time = mean(time, na.rm = TRUE)) %>% 
+#     select(-rep, -case, -error) %>% 
+#     unique() %>% 
+#     mutate(score = ifelse(is.nan(score), NA, score)) %>% 
+#     group_by(set_id, mechanism, ratio) %>% 
+#     mutate(ranking =  {
+#       ranking <- rep(NA, length(score))
+#       ranking[!is.na(score)] <- order(score[!is.na(score)])
+#       ranking[is.na(ranking)] <- n_methods
+#       ranking
+#     }) %>% 
+#     group_by(method) %>% 
+#     mutate(mean_score_total = mean(score, na.rm = TRUE)) %>% 
+#     group_by(method, set_id) %>% 
+#     reframe(mean_score = mean(score, na.rm = TRUE),
+#             mean_ranking = mean(ranking, na.rm = TRUE),
+#             median_ranking = median(ranking, na.rm = TRUE),
+#             time = mean(time, na.rm = TRUE), 
+#             `success [%]` = `success [%]`,
+#             set_id = set_id,
+#             mean_score_total = mean_score_total) %>% 
+#     mutate(`success [%]` = cut(`success [%]`, breaks, 
+#                                include.lowest = TRUE)) %>% 
+#     unique() %>% 
+#     arrange(mean_score) %>% 
+#     mutate(method = factor(method, levels = unique(method)))
+#   
+#   if(arrange_success)
+#     dat_plt <- dat_plt %>%
+#     arrange(mean_score_total) %>%
+#     mutate(method = factor(method, levels = unique(method)))
+#   
+#   min_time <- min(dat_plt$time) * 1000
+#   
+#   p1 <- dat_plt %>% 
+#     mutate(time = time * 1000) %>% 
+#     ggplot() +
+#     geom_col(aes(x = method, y = log10(time), fill = set_id)) +
+#     scale_fill_manual(name = "dataset", values = get_colors_datasets()) +
+#     labs(x = "Methods", y = "Average Time") +
+#     theme_bw() +
+#     theme(axis.text.y = element_blank(),
+#           axis.title.y = element_blank(),
+#           legend.position = "none") +
+#     scale_x_discrete(position = "top") +
+#     coord_flip() +
+#     scale_y_continuous("log10 time", trans = c("reverse"))
+#   
+#   
+#   p2 <- ggplot(dat_plt, aes(x = method, y = log10(mean_score), fill = set_id)) +
+#     geom_col() +
+#     scale_fill_manual(name = "dataset", values = get_colors_datasets()) +
+#     labs(x = "Methods", y = "Mean Energy") +
+#     theme_bw() +
+#     theme(axis.text.y = element_text(hjust = 0.5),
+#           axis.title.y = element_blank()) +
+#     ylab("log10energy") +
+#     coord_flip()
+#   
+#   p1 + p2 + plot_layout(guides = "collect")  & theme(legend.position = 'bottom')
+#   
+# }
 
 
 
 
 
-plot_score_tile_dataset <- function(imputation_summary) {
-  
-  datasets <- unique(imputation_summary[["set_id"]])
-  
-  imputation_summary_tmp <- imputation_summary %>%
-    filter(measure == "energy_std", case == "complete") %>%
-    select(set_id, method, score) %>%
-    group_by(set_id, method) %>%
-    reframe(score = mean(score, na.rm = TRUE)) %>% 
-    mutate(score = log10(score))
-  
-  p <- list()
-  
-  p1 <- imputation_summary_tmp %>%
-    filter(set_id == datasets[1]) %>% 
-    ggplot() +
-    geom_tile(aes(x = method, y = 1, fill = score), color = "white", linetype = 1) +
-    scale_fill_gradient(low = "darkolivegreen2", high = "firebrick4", na.value = "darkgrey") +
-    coord_flip() +
-    ggtitle("energy dist") +
-    theme_minimal() +
-    theme(legend.position = "bottom", 
-          axis.title.x = element_blank(),
-          axis.ticks.x = element_blank(),
-          axis.text.x = element_blank(),
-          legend.text = element_text(angle = 90),
-          legend.title=element_blank()) +
-    ggtitle(datasets[1])
-  
-  
-  
-  for(i in datasets[-1]) {
-    p[[i]] <- imputation_summary_tmp %>%
-      filter(set_id == i) %>% 
-      ggplot() +
-      geom_tile(aes(x = method, y = 1, fill = score), color = "white", linetype = 1) +
-      scale_fill_gradient(low = "darkolivegreen2", high = "firebrick4", na.value = "darkgrey") +
-      coord_flip() +
-      ggtitle("energy dist") +
-      theme_minimal() +
-      theme(legend.position = "bottom", 
-            axis.title.x = element_blank(),
-            axis.ticks.x = element_blank(),
-            axis.text.x = element_blank(),
-            axis.title.y = element_blank(),
-            axis.ticks.y = element_blank(),
-            axis.text.y = element_blank(),
-            legend.title = element_blank(),
-            legend.text = element_text(angle = 90)) +
-      ggtitle(i)
-  }
-  
-  p <- c(list(p1), p)
-  
-  patchwork::wrap_plots(p, nrow = 1) + plot_annotation('log10 energy std')
-  
-  
-}
-
-
-plot_score_tile_pattern <- function(imputation_summary) {
-  
-  patterns <- unique(imputation_summary$mechanism)
-  
-  imputation_summary_tmp <- imputation_summary %>%
-    filter(measure == "energy_std", case == "complete") %>%
-    select(mechanism, method, score) %>%
-    group_by(mechanism, method) %>%
-    reframe(score = mean(score, na.rm = TRUE)) %>% 
-    mutate(score = log10(score))
-  
-  p <- list()
-  
-  p1 <- imputation_summary_tmp %>%
-    filter(mechanism == "mcar") %>% 
-    ggplot() +
-    geom_tile(aes(x = method, y = 1, fill = score), color = "white", linetype = 1) +
-    scale_fill_gradient(low = "darkolivegreen2", high = "firebrick4", na.value = "darkgrey") +
-    coord_flip() +
-    ggtitle("energy dist") +
-    theme_minimal() +
-    theme(legend.position = "bottom", 
-          axis.title.x = element_blank(),
-          axis.ticks.x = element_blank(),
-          axis.text.x = element_blank(),
-          legend.text = element_text(angle = 90),
-          legend.title=element_blank()) +
-    ggtitle("mcar")
-  
-  p2 <- imputation_summary_tmp %>%
-    filter(mechanism == "mar") %>% 
-    ggplot() +
-    geom_tile(aes(x = method, y = 1, fill = score), color = "white", linetype = 1) +
-    scale_fill_gradient(low = "darkolivegreen2", high = "firebrick4", na.value = "darkgrey") +
-    coord_flip() +
-    ggtitle("energy dist") +
-    theme_minimal() +
-    theme(legend.position = "bottom", 
-          axis.title.x = element_blank(),
-          axis.ticks.x = element_blank(),
-          axis.text.x = element_blank(),
-          axis.title.y = element_blank(),
-          axis.ticks.y = element_blank(),
-          axis.text.y = element_blank(),
-          legend.title = element_blank(),
-          legend.text = element_text(angle = 90)) +
-    ggtitle("mar")
-  
-  
-  p1 + p2 + plot_annotation('log10 energy std')
-  
-  
-}
 
 
 
-plot_averaged_energy <- function(imputation_summary) {
-  imputation_summary %>% 
-    filter(!is.na(measure)) %>% 
-    filter(measure == "energy_std") %>% 
-    group_by(method, set_id) %>% 
-    reframe(mean_score = mean(score, na.rm = TRUE)) %>% 
-    filter(!is.na(mean_score)) %>% 
-    ggplot() +
-    geom_col(aes(x = reorder(method, mean_score), y = log10(mean_score), fill = set_id)) +
-    ylab("log10 energy") +
-    xlab("method") +
-    coord_flip() +
-    theme_light() +
-    theme(legend.position = "bottom")
-}
+# plot_score_tile_dataset <- function(imputation_summary) {
+#   
+#   datasets <- unique(imputation_summary[["set_id"]])
+#   
+#   imputation_summary_tmp <- imputation_summary %>%
+#     filter(measure == "energy_std", case == "complete", method != "pemm") %>%
+#     select(set_id, method, score) %>%
+#     group_by(set_id, method) %>%
+#     reframe(score = mean(score, na.rm = TRUE)) %>% 
+#     mutate(score = log10(score))
+#   
+#   p <- list()
+#   
+#   p1 <- imputation_summary_tmp %>%
+#     filter(set_id == datasets[1]) %>% 
+#     ggplot() +
+#     geom_tile(aes(x = method, y = 1, fill = score), color = "white", linetype = 1) +
+#     scale_fill_gradient(low = "darkolivegreen2", high = "firebrick4", na.value = "darkgrey") +
+#     coord_flip() +
+#     ggtitle("energy dist") +
+#     theme_minimal() +
+#     theme(legend.position = "bottom", 
+#           axis.title.x = element_blank(),
+#           axis.ticks.x = element_blank(),
+#           axis.text.x = element_blank(),
+#           legend.text = element_text(angle = 90),
+#           legend.title=element_blank()) +
+#     ggtitle(datasets[1])
+#   
+#   
+#   
+#   for(i in datasets[-1]) {
+#     p[[i]] <- imputation_summary_tmp %>%
+#       filter(set_id == i) %>% 
+#       ggplot() +
+#       geom_tile(aes(x = method, y = 1, fill = score), color = "white", linetype = 1) +
+#       scale_fill_gradient(low = "darkolivegreen2", high = "firebrick4", na.value = "darkgrey") +
+#       coord_flip() +
+#       ggtitle("energy dist") +
+#       theme_minimal() +
+#       theme(legend.position = "bottom", 
+#             axis.title.x = element_blank(),
+#             axis.ticks.x = element_blank(),
+#             axis.text.x = element_blank(),
+#             axis.title.y = element_blank(),
+#             axis.ticks.y = element_blank(),
+#             axis.text.y = element_blank(),
+#             legend.title = element_blank(),
+#             legend.text = element_text(angle = 90)) +
+#       ggtitle(i)
+#   }
+#   
+#   p <- c(list(p1), p)
+#   
+#   patchwork::wrap_plots(p, nrow = 1) + plot_annotation('log10 energy std')
+#   
+#   
+# }
 
 
-plot_averaged_nrmse <- function(imputation_summary) {
-  imputation_summary %>% 
-    filter(!is.na(measure)) %>% 
-    filter(measure == "nrmse") %>% 
-    group_by(method) %>% 
-    reframe(mean_score = mean(score, na.rm = TRUE),
-            mean_time = mean(time),
-            `success percentage` = mean(is.na(error)) * 100) %>% 
-    filter(!is.na(mean_score)) %>% 
-    mutate(`success percentage` = cut(`success percentage`, c(0, 40, 90, 100))) %>% 
-    ggplot() +
-    geom_col(aes(x = reorder(method, mean_score), y = mean_score, fill = `success percentage`)) +
-    scale_fill_manual(name = "successful imputation [%]", values = get_colors_fractions()) +
-    ylab("NRMSE") +
-    xlab("method") +
-    coord_flip() +
-    theme_light() +
-    theme(legend.position = "bottom")
-}
+
+# plot_averaged_energy <- function(imputation_summary) {
+#   imputation_summary %>% 
+#     filter(!is.na(measure)) %>% 
+#     filter(measure == "energy_std") %>% 
+#     group_by(method, set_id) %>% 
+#     reframe(mean_score = mean(score, na.rm = TRUE)) %>% 
+#     filter(!is.na(mean_score)) %>% 
+#     ggplot() +
+#     geom_col(aes(x = reorder(method, mean_score), y = log10(mean_score), fill = set_id)) +
+#     ylab("log10 energy") +
+#     xlab("method") +
+#     coord_flip() +
+#     theme_light() +
+#     theme(legend.position = "bottom")
+# }
 
 
 
 # plot_violins <- function(imputation_summary) {
-#   imputation_summary %>% 
-#     filter(measure == "energy") %>% 
-#     group_by(method) %>% 
-#     mutate(`success percentage` = cut(mean(is.na(error)) * 100, c(10, 40, 90, 100))) %>% 
-#     group_by(method, ratio, mechanism) %>% 
-#     mutate(mean_score = mean(log10(score[!is.na(score)]), na.rm = TRUE)) %>% 
-#     filter(!is.na(score)) %>% 
+#   imputation_summary %>%
+#     filter(measure == "energy") %>%
+#     group_by(method) %>%
+#     mutate(`success percentage` = cut(mean(is.na(error)) * 100, c(10, 40, 90, 100))) %>%
+#     group_by(method, ratio, mechanism) %>%
+#     mutate(mean_score = mean(log10(score[!is.na(score)]), na.rm = TRUE)) %>%
+#     filter(!is.na(score)) %>%
 #     ggplot(aes(x = reorder(method, log10(mean_score)), y = log10(score), fill = `success percentage`)) +
 #     geom_violin(alpha = 0.6) +
 #     geom_point(mapping = aes(x = reorder(method, (mean_score)), y = mean_score), size = 3, shape = 8) +
@@ -751,24 +642,6 @@ show_amputation <- function(amputation_summary) {
   
 }
 
-plot_averaged_colorscale <- function(imputation_summary, measure_name = "energy") {
-  imputation_summary %>% 
-    filter(!is.na(measure)) %>% 
-    filter(measure == measure_name) %>% 
-    group_by(method) %>% 
-    reframe(mean_score = mean(score, na.rm = TRUE),
-            mean_time = mean(time),
-            error_proportion = mean(!is.na(error))) %>% 
-    filter(!is.na(mean_score)) %>% 
-    ggplot() +
-    geom_col(aes(x = reorder(method, mean_score), y = log10(mean_score), fill = error_proportion), alpha = 0.8) +
-    scale_fill_gradient(low = "blue", high = "red", limits = c(0, 1)) +
-    ylab(paste0("log10", measure_name)) +
-    xlab("method") +
-    coord_flip() +
-    theme_light() +
-    theme(legend.position = "bottom")
-}
 
 
 
@@ -788,168 +661,6 @@ plot_progress <- function(imputation_summary) {
   
 }
 
-
-plot_imputation_one_dim <- function(dim, set.id, methods, mechanism="mcar", ratio="0.1", 
-                                    rep="1") {
-  
-  # if object amputed_all does not exist:
-  if (!exists("amputed_all")){
-    targets::tar_load("amputed_all")
-    print("..loading amputed_all")
-  }
-  
-  # Get amputed data (same for all methods)
-  amputed_string <- paste0("amputed_dat_", mechanism, ".", ratio, ".", rep, ".", set.id)
-  amputed <- amputed_all[[amputed_string]]
-  
-  # Get original data (same for all methods)
-  original_data_path <- paste0("data/datasets/complete/", set.id, ".RDS")
-  original_data <- readRDS(original_data_path)
-  
-  # Convert to data.frame
-  original_data <- as.data.frame(original_data)
-  amputed <- as.data.frame(amputed)
-  
-  # Create missing mask
-  missing_mask <- is.na(amputed)
-  
-  # Create list to store plots
-  plots <- list()
-  
-  # Loop through each method and create plots
-  for(method in methods) {
-    # Get imputed data for current method
-    imputed_string <- paste0("imputed_dat_", method, ".", mechanism, ".", ratio, ".", rep, ".", set.id)
-    imputed <- targets::tar_read_raw(imputed_string)$imputed
-    imputed <- as.data.frame(imputed)
-    
-    # Create data frame for plotting
-    plot_data <- data.frame(
-      Original = original_data[,dim],
-      Imputed = imputed[,dim],
-      Status = factor(ifelse(missing_mask[,dim], "Imputed", "Original"))
-    )
-    
-    # Create plot
-    p <- ggplot(plot_data, aes(x = Original, y = Imputed, color = Status)) +
-      geom_point(alpha = 0.6) +
-      geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray50") +
-      scale_color_manual(values = c("Original" = "#0072B2", "Imputed" = "#D55E00")) +
-      labs(
-        title = method,
-        x = paste("Original Dimension", dim),
-        y = paste("Imputed Dimension", dim)
-      ) +
-      theme_minimal() +
-      theme(
-        plot.title = element_text(hjust = 0.5, face = "bold"),
-        legend.position = "bottom",
-        panel.grid.minor = element_blank()
-      )
-    
-    plots[[method]] <- p
-  }
-  
-  # Combine plots using patchwork
-  combined_plot <- wrap_plots(plots, ncol = length(methods))
-  
-  # Print dimensions for verification
-  cat("Dimensions:\n")
-  cat("Original:", dim(original_data), "\n")
-  cat("Amputed:", dim(amputed), "\n")
-  for(method in methods) {
-    imputed_string <- paste0("imputed_dat_", method, ".", mechanism, ".", ratio, ".", rep, ".", set.id)
-    imputed <- targets::tar_read_raw(imputed_string)$imputed
-    cat(method, ":", dim(imputed), "\n")
-  }
-  
-  return(combined_plot)
-}
-
-plot_imputation <- function(dims, set.id, methods, mechanism="mcar", ratio="0.1", 
-                            rep="1") {
-  
-  # if dims is a number => make it a vector of one
-  if(is.numeric(dims)) {
-    dims <- c(dims)
-  }
-  
-  if ((length(dims) == 1)){
-    return(plot_imputation_one_dim(dims[1], set.id, methods, mechanism, ratio, rep))
-  }
-  
-  # if object amputed_all does not exist:
-  if (!exists("amputed_all")){
-    targets::tar_load("amputed_all")
-    print("..loading amputed_all")
-  }
-  
-  # Get amputed data (same for all methods)
-  amputed_string <- paste0("amputed_dat_", mechanism, ".", ratio, ".", rep, ".", set.id)
-  amputed <- amputed_all[[amputed_string]]
-  
-  # Get original data (same for all methods)
-  original_data_path <- paste0("data/datasets/complete/", set.id, ".RDS")
-  original_data <- readRDS(original_data_path)
-  
-  # Convert to data.frame
-  original_data <- as.data.frame(original_data)
-  amputed <- as.data.frame(amputed)
-  
-  # Create missing mask for both dimensions
-  missing_mask <- is.na(amputed[,dims[1]]) | is.na(amputed[,dims[2]])
-  
-  # Create list to store plots
-  plots <- list()
-  
-  # Loop through each method and create plots
-  for(method in methods) {
-    # Get imputed data for current method
-    imputed_string <- paste0("imputed_dat_", method, ".", mechanism, ".", ratio, ".", rep, ".", set.id)
-    imputed <- targets::tar_read_raw(imputed_string)$imputed
-    imputed <- as.data.frame(imputed)
-    
-    # Create data frame for plotting
-    plot_data <- data.frame(
-      Dim1 = imputed[,dims[1]],
-      Dim2 = imputed[,dims[2]],
-      Status = factor(ifelse(missing_mask, "Imputed", "Original"))
-    )
-    
-    # Create plot
-    p <- ggplot(plot_data, aes(x = Dim1, y = Dim2, color = Status)) +
-      geom_point(alpha = 0.6) +
-      scale_color_manual(values = c("Original" = "#0072B2", "Imputed" = "#D55E00")) +
-      labs(
-        title = method,
-        x = paste("Dimension", dims[1]),
-        y = paste("Dimension", dims[2])
-      ) +
-      theme_minimal() +
-      theme(
-        plot.title = element_text(hjust = 0.5, face = "bold"),
-        legend.position = "bottom",
-        panel.grid.minor = element_blank()
-      )
-    
-    plots[[method]] <- p
-  }
-  
-  # Combine plots using patchwork
-  combined_plot <- wrap_plots(plots, ncol = length(methods))
-  
-  # Print dimensions for verification
-  cat("Dimensions:\n")
-  cat("Original:", dim(original_data), "\n")
-  cat("Amputed:", dim(amputed), "\n")
-  for(method in methods) {
-    imputed_string <- paste0("imputed_dat_", method, ".", mechanism, ".", ratio, ".", rep, ".", set.id)
-    imputed <- targets::tar_read_raw(imputed_string)$imputed
-    cat(method, ":", dim(imputed), "\n")
-  }
-  
-  return(combined_plot)
-}
 
 
 
@@ -1033,73 +744,29 @@ plot_all_measures <- function(imputation_summary, breaks = c(1, 3, 10, 30)) {
 
 
 
-plot_measures_corr <- function(imputation_summary) {
-  dat_corr <- imputation_summary %>%
-    select(-imputation_fun) %>% 
-    filter(case == "complete") %>% 
-    unique() %>% 
-    mutate(score = ifelse(measure == "rsq", -score, score),
-           score = ifelse(measure == "ccc", -score, score)) %>% 
-    filter(measure != "IScore", measure != "rmse") %>% 
-    group_by(method, set_id, mechanism, ratio, measure) %>% 
-    reframe(score = mean(score, na.rm = TRUE), 
-            error = ifelse(any(is.na(error)), NA, unique(error)[1])) %>% 
-    unique() %>% 
-    mutate(case_id = paste0(set_id, mechanism, ratio)) %>% 
-    mutate(score = ifelse(is.nan(score), NA, score)) %>% 
-    group_by(set_id, mechanism, ratio, measure) %>% 
-    mutate(ranking =  {
-      ranking <- rep(NA, length(score))
-      ranking[!is.na(score)] <- rank(score[!is.na(score)])
-      ranking[is.na(ranking)] <- n_methods
-      ranking[is.na(score) & is.na(error)] <- NA
-      ranking
-    }) %>% 
-    ungroup() %>% 
-    select(case_id, method, ranking, measure) %>% 
-    pivot_wider(names_from = measure, values_from = ranking, values_fill = NA) %>% 
-    select(ccc ,energy, energy_std,   mae, nrmse)
 
 
-    ggcorrplot::ggcorrplot(cor(dat_corr))
-}
 
-
-plot_var <- function(imputation_summary) {
-  plt_dat <- imputation_summary %>% 
+plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99, 100)) {
+  
+  
+  n_methods <- length(unique(pull(imputation_summary, method)))
+  
+  dat_plt <- imputation_summary %>% 
     filter(!is.na(measure)) %>% 
-    dplyr::select(-imputation_fun, -attempts) %>% 
+    select(-imputation_fun, -attempts) %>% 
+    # filter(!(set_id %in% c("oes10", "scm1d", "scm20d"))) %>% 
     filter(case == "complete", measure == "energy_std") %>%
     unique() %>% 
     group_by(method) %>% 
+    mutate(`success [%]` = mean(is.na(error)) * 100) %>% 
     group_by(method, set_id, mechanism, ratio) %>% 
-    mutate(score = log10(mean(score, na.rm = TRUE))) %>% 
-    dplyr::select(-rep, -case, -error, -time, -measure) %>% 
-    unique()
-  
-  ggplot(plt_dat, aes(x = score, y = set_id, fill = set_id)) +
-    geom_density_ridges(alpha = 0.7) +
-    theme_ridges() + 
-    theme(legend.position = "none")
-  
-  
-}
-
-
-
-########################
-
-
-shreks_plot_size <- function(imputation_summary) {
-  imputation_summary %>%
-    filter(!is.na(measure)) %>% 
-    select(-imputation_fun) %>% 
-    filter(case == "complete", measure == "energy_std") %>% 
+    mutate(score = mean(score, na.rm = TRUE),
+           time = mean(time, na.rm = TRUE)) %>% 
+    select(-rep, -case, -error) %>% 
     unique() %>% 
-    group_by(method, set_id, mechanism, ratio) %>% 
-    reframe(score = mean(score, na.rm = TRUE)) %>% 
-    mutate(case_id = paste(set_id, mechanism, ratio)) %>% 
     mutate(score = ifelse(is.nan(score), NA, score)) %>% 
+    ungroup() %>% 
     group_by(set_id, mechanism, ratio) %>% 
     mutate(ranking =  {
       ranking <- rep(NA, length(score))
@@ -1107,22 +774,196 @@ shreks_plot_size <- function(imputation_summary) {
       ranking[is.na(ranking)] <- n_methods
       ranking
     }) %>% 
-    mutate(large_data = set_id %in% c("oes10", "scm1d")) %>% 
     ungroup() %>% 
-    group_by(method, large_data) %>% 
-    mutate(mean_ranking = mean(ranking)) %>% 
     group_by(method) %>% 
-    mutate(mean_total = mean(ranking)) %>% 
+    reframe(mean_score = mean(score, na.rm = TRUE),
+            mean_ranking = mean(ranking, na.rm = TRUE),
+            median_ranking = median(ranking, na.rm = TRUE),
+            time = mean(time, na.rm = TRUE), 
+            `success [%]` = `success [%]`,
+            upr_ranking = quantile(ranking, 0.75),
+            lwr_ranking = quantile(ranking, 0.25)) %>% 
+    mutate(`success [%]` = cut(`success [%]`, breaks, 
+                               include.lowest = TRUE)) %>% 
+    unique() %>% 
+    arrange(mean_score) %>% 
+    mutate(method = factor(method, levels = method))
+  
+  if(arrange_success)
+    dat_plt <- dat_plt %>%
+    arrange(mean_ranking) %>%
+    mutate(method = factor(method, levels = method))
+  
+  min_time <- min(dat_plt$time) * 1000
+  
+  p1 <- dat_plt %>% 
+    ggplot(aes(x = method, y = time * 1000, fill = `success [%]`)) +
+    geom_rect(aes(xmin = as.numeric(method) - 0.4, 
+                  xmax = as.numeric(method) + 0.4,
+                  ymin = min_time - 10, 
+                  ymax = time * 1000, 
+                  fill = `success [%]`)) +
+    scale_fill_manual(name = "success [%]", values = get_colors_fractions()) +
+    labs(x = "Methods", y = "Average Time") +
+    theme_bw() +
+    theme(axis.text.y = element_blank(),
+          axis.title.y = element_blank(),
+          legend.position = "none") +
+    scale_x_discrete(position = "top") +
+    coord_flip() +
+    scale_y_continuous("Time", trans = c("log10", "reverse"),
+                       breaks = c(min_time/1000, 1, 60, 600, 1800, 1800*2, 1800*4, 1800*6) * 1000, 
+                       labels = c("116ms", "1s", "1min", "10min", "30min", "1h", "2h", "3h")) +
+    theme(panel.grid.minor.x = element_blank(),
+          panel.grid.major.x = element_line(color = "black", linetype = "dashed"))
+  
+  
+  p2 <- dat_plt %>% 
+    ungroup() %>% 
+    mutate(max_score = max(log10(mean_score), na.rm = TRUE)) %>% 
+    ggplot(aes(x = method, y = ranking, fill = `success [%]`)) +
+    geom_boxplot() +
+    geom_segment(mapping = aes(x = method, xend = method, y = lwr_ranking, yend = upr_ranking)) +
+    scale_fill_manual(name = "success [%]", 
+                      values = get_colors_fractions()) +
+    labs(x = "Methods", y = "Mean Energy") +
+    theme_bw() +
+    theme(axis.text.y = element_text(hjust = 0.5),
+          axis.title.y = element_blank()) +
+    ylab("log10energy") +
+    coord_flip() +
+    geom_text(aes(x = method, y = max_score + 0.5, label = round(mean_ranking, 1)), size = 3)
+  
+  p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = 'bottom')
+  
+}
+
+
+
+
+
+
+plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99, 100)) {
+  
+  
+  n_methods <- length(unique(pull(imputation_summary, method)))
+  
+  dat_plt <- imputation_summary %>% 
+    filter(!is.na(measure)) %>% 
+    select(-imputation_fun, -attempts) %>% 
+    # filter(!(set_id %in% c("oes10", "scm1d", "scm20d"))) %>% 
+    filter(case == "complete", measure == "energy_std") %>%
+    unique() %>% 
+    group_by(method) %>% 
+    mutate(`success [%]` = mean(is.na(error)) * 100) %>% 
+    group_by(method, set_id, mechanism, ratio) %>% 
+    mutate(score = mean(score, na.rm = TRUE),
+           time = mean(time, na.rm = TRUE)) %>% 
+    select(-rep, -case, -error) %>% 
+    unique() %>% 
+    mutate(score = ifelse(is.nan(score), NA, score)) %>% 
+    ungroup() %>% 
+    group_by(set_id, mechanism, ratio) %>% 
+    mutate(ranking =  {
+      ranking <- rep(NA, length(score))
+      ranking[!is.na(score)] <- rank(score[!is.na(score)])
+      ranking[is.na(ranking)] <- n_methods
+      ranking
+    }) %>% 
+    ungroup() %>% 
+    group_by(method) %>% 
+    reframe(mean_score = mean(score, na.rm = TRUE),
+            mean_ranking = mean(ranking, na.rm = TRUE),
+            median_ranking = median(ranking, na.rm = TRUE),
+            time = mean(time, na.rm = TRUE), 
+            `success [%]` = `success [%]`,
+            ranking = ranking) %>% 
+    mutate(`success [%]` = cut(`success [%]`, breaks, 
+                               include.lowest = TRUE)) %>% 
+    unique() %>% 
+    arrange(mean_score) %>% 
+    mutate(method = factor(method, levels = unique(method)))
+  
+  min_time <- min(dat_plt$time) * 1000
+  
+  p1 <- dat_plt %>% 
+    ggplot(aes(x = method, y = time * 1000, fill = `success [%]`)) +
+    geom_rect(aes(xmin = as.numeric(method) - 0.4, 
+                  xmax = as.numeric(method) + 0.4,
+                  ymin = min_time - 10, 
+                  ymax = time * 1000, 
+                  fill = `success [%]`)) +
+    scale_fill_manual(name = "success [%]", values = get_colors_fractions()) +
+    labs(x = "Methods", y = "Average Time") +
+    theme_bw() +
+    theme(axis.text.y = element_blank(),
+          axis.title.y = element_blank(),
+          legend.position = "none") +
+    scale_x_discrete(position = "top") +
+    coord_flip() +
+    scale_y_continuous("Time", trans = c("log10", "reverse"),
+                       breaks = c(min_time/1000, 1, 60, 600, 1800, 1800*2, 1800*4, 1800*6) * 1000, 
+                       labels = c("116ms", "1s", "1min", "10min", "30min", "1h", "2h", "3h")) +
+    theme(panel.grid.minor.x = element_blank(),
+          panel.grid.major.x = element_line(color = "black", linetype = "dashed"))
+  
+  
+  p2 <- dat_plt %>% 
+    ungroup() %>% 
+    ggplot(aes(x = reorder(method, mean_ranking), y = ranking)) +
+    geom_boxplot(fill = "gray") +
+    geom_point(aes(x = reorder(method, mean_ranking), y = mean_ranking), col = "darkblue", size = 2) +
+    scale_fill_manual(name = "success [%]", 
+                      values = get_colors_fractions()) +
+    labs(x = "Methods", y = "Mean Energy") +
+    theme_bw() +
+    theme(axis.text.y = element_text(hjust = 0.5),
+          axis.title.y = element_blank()) +
+    ylab("log10energy") +
+    coord_flip() 
+  
+  p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = 'bottom')
+  
+}
+
+
+
+
+shreks_plot <- function(imputation_summary ) {
+  
+  n_methods <- length(unique(pull(imputation_summary, method)))
+  
+  imputation_summary %>%
+    filter(!is.na(measure)) %>% 
+    select(-imputation_fun) %>% 
+    filter(case == "complete", measure == "energy_std") %>% 
+    unique() %>% 
+    group_by(method, set_id, mechanism, ratio) %>% 
+    reframe(score = mean(score, na.rm = TRUE)) %>% 
+    mutate(case_id = paste0(set_id, mechanism, ratio)) %>% 
+    mutate(score = ifelse(is.nan(score), NA, score)) %>% 
+    group_by(set_id, mechanism, ratio) %>% 
+    mutate(ranking =  {
+      ranking <- rep(NA, length(score))
+      ranking[!is.na(score)] <- rank(score[!is.na(score)])
+      ranking[is.na(ranking)] <- max(ranking, na.rm = TRUE)
+      ranking
+    }) %>% 
+    ungroup() %>% 
+    group_by(method) %>% 
+    mutate(mean_ranking = mean(ranking, na.rm = TRUE)) %>% 
+    ungroup() %>% 
+    arrange(mean_ranking) %>% 
+    mutate(method = factor(method, levels = unique(method))) %>% 
     ggplot() +
-    geom_tile(aes(x = large_data, y = reorder(method, mean_total), fill = mean_ranking), colour = "black") +
-    geom_text(aes(x = large_data, y = reorder(method, mean_total), label = round(mean_ranking, 3))) +
+    geom_tile(aes(x = case_id, y = method, fill = ranking), colour = "black") +
+    theme(axis.text.x = element_text(angle = 90)) +
+    geom_text(aes(x = case_id, y = method, label = ranking)) +
     scale_fill_continuous() +
     guides(fill = guide_colourbar(barwidth = 0.5, barheight = 40)) +
     scale_fill_gradient(low = "darkgreen", high = "white") 
-    
-    
+  
 }
-
 
 
 
