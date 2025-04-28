@@ -16,3 +16,4 @@ cache
 *.pyc
 figures/
 *.tex
+*.pdf

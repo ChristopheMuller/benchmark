@@ -43,6 +43,8 @@ plt_dat %>%
   ylab("methods") +
   theme(axis.text.x = element_text(angle = 90),
         legend.position = "top") +
-  coord_flip()
+  coord_flip() +
+  ggsave("~/INRIA/R_scripts/benchmark/results/analysis/benchmark_papers/benchmarks.pdf", width = 15, height = 6, units = "in")
+
 
 

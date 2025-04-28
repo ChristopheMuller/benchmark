@@ -177,6 +177,94 @@ shreks_plot <- function(imputation_summary ) {
   
 }
 
+
+shrkes_plot_with_rep <- function(imputation_summary) {
+  
+  n_methods <- length(unique(pull(imputation_summary, method)))
+  
+  imputation_summary %>%
+    filter(!is.na(measure)) %>% 
+    select(-imputation_fun) %>% 
+    filter(measure == "energy_std", case=="complete") %>%
+    unique() %>%
+    mutate(score = ifelse(is.nan(score), NA, score)) %>%
+    mutate(case_id = paste0(set_id, "_", mechanism, "_", ratio, "_rep", rep)) %>%
+    group_by(set_id, mechanism, ratio, rep) %>% 
+    mutate(ranking = {
+      ranking <- rep(NA, length(score))
+      ranking[!is.na(score)] <- rank(score[!is.na(score)])
+      ranking[is.na(ranking)] <- n_methods
+      ranking
+    }) %>%
+    ungroup() %>%
+    group_by(method) %>%
+    mutate(mean_ranking = mean(ranking, na.rm = TRUE)) %>%
+    ungroup() %>%
+    arrange(mean_ranking) %>%
+    mutate(method = factor(method, levels = unique(method))) %>%
+    ggplot() +
+    geom_tile(aes(x = case_id, y = method, fill = ranking), colour = "black") +
+    theme(
+            axis.text.x = element_text(angle = 90, size = 4),
+            axis.text.y = element_text(size = 4)
+          ) +
+    geom_text(aes(x = case_id, y = method, label = ranking), size = 2) +
+    scale_fill_gradient(low = "darkgreen", high = "white") +
+    guides(fill = guide_colourbar(barwidth = 0.5, barheight = 40))
+}
+
+shreks_plot_agg <- function(imputation_summary, case_sim = "complete") {
+  
+  imputation_summary_temp <- imputation_summary %>% 
+    filter(case == case_sim)
+  
+  n_methods <- length(unique(pull(imputation_summary_temp, method)))
+  
+  imputation_summary_temp %>%
+    select(-c(time,attempts,error)) %>% 
+    filter(!is.na(measure)) %>%
+    filter(measure == "energy_std") %>%
+    select(-imputation_fun) %>%
+    unique() %>%
+    mutate(score = ifelse(is.nan(score), NA, score)) %>%
+    mutate(case_id_fine = paste0(set_id, "_", mechanism, "_", ratio, "_rep", rep)) %>%
+    
+    group_by(set_id, mechanism, ratio, rep) %>%
+    mutate(ranking = {
+      ranking <- rep(NA, length(score))
+      ranking[!is.na(score)] <- rank(score[!is.na(score)])
+      ranking[is.na(ranking)] <- n_methods
+      ranking
+    }) %>%
+    ungroup() %>%
+    
+    ## Now aggregate ranking by set_id + mechanism (averaging across ratios and reps)
+    group_by(method, set_id, mechanism) %>%
+    summarise(avg_ranking = mean(ranking, na.rm = TRUE), .groups = "drop") %>%
+    
+    ## Create a *plot case_id* (no more ratio or rep here)
+    mutate(case_id = paste0(set_id, "_", mechanism)) %>%
+    
+    ## Order methods by mean ranking overall
+    group_by(method) %>%
+    mutate(mean_ranking = mean(avg_ranking, na.rm = TRUE)) %>%
+    ungroup() %>%
+    arrange(mean_ranking) %>%
+    mutate(method = factor(method, levels = unique(method))) %>%
+    
+    ## Plot
+    ggplot() +
+    geom_tile(aes(x = case_id, y = method, fill = avg_ranking), colour = "black") +
+    geom_text(aes(x = case_id, y = method, label = round(avg_ranking, 1)), size = 3) +
+    scale_fill_gradient(low = "darkgreen", high = "white") +
+    theme(
+      axis.text.x = element_text(angle = 90, size = 8),
+      axis.text.y = element_text(size = 8)
+    ) +
+    guides(fill = guide_colourbar(barwidth = 0.5, barheight = 40))
+}
+
+
 plot_cases <- function(imputation_summary ) {
   
   n_methods <- length(unique(pull(imputation_summary, method)))
@@ -701,8 +789,11 @@ plot_rankings <- function(imputation_summary, breaks = c(1, 3, 10, 30)) {
     ylab("method") +
     theme_light() +
     coord_flip() +
-    theme(axis.text.x = element_text(angle = 90))
+    theme(axis.text.x = element_text(angle = 90, size = 6))
   
+    # ggsave("~/INRIA/R_scripts/benchmark/latex/ranking_top.pdf", width = 20, height = 8,
+    #         units = "cm")
+    
 }
 
 
@@ -852,7 +943,7 @@ plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40
     filter(!is.na(measure)) %>% 
     select(-imputation_fun, -attempts) %>% 
     # filter(!(set_id %in% c("oes10", "scm1d", "scm20d"))) %>% 
-    filter(case == "complete", measure == "energy_std") %>%
+    filter(measure == "energy_std") %>%
     unique() %>% 
     group_by(method) %>% 
     mutate(`success [%]` = mean(is.na(error)) * 100) %>% 
@@ -883,6 +974,11 @@ plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40
     unique() %>% 
     arrange(mean_score) %>% 
     mutate(method = factor(method, levels = unique(method)))
+  
+  dat_plt <- dat_plt %>% 
+    arrange(mean_ranking) %>% 
+    mutate(method = factor(method, levels = unique(method)))
+  
   
   min_time <- min(dat_plt$time) * 1000
   
@@ -919,10 +1015,12 @@ plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40
     theme_bw() +
     theme(axis.text.y = element_text(hjust = 0.5),
           axis.title.y = element_blank()) +
-    ylab("log10energy") +
+    ylab("Ranking") +
     coord_flip() 
   
   p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = 'bottom')
+  # save as pdf
+  # ggsave("~/INRIA/R_scripts/benchmark/latex/energy_time_ranking_cat_num.pdf", width = 20, height = 10, units="cm")
   
 }
 
