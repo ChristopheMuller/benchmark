@@ -26,7 +26,8 @@ calculate_scores <- function(imputed, amputed, imputation_fun, multiple,
                                        imputed_data = imputed_data, 
                                        imputation_fun = imputation_fun,
                                        multiple = multiple,
-                                       timeout_thresh = timeout_thresh),
+                                       timeout_thresh = timeout_thresh,
+                                       case=case, var_type = var_type),
     categorical = scores_for_categorical(original_data = original_data, 
                                          imputed_data = imputed_data),
     incomplete_categorical = scores_for_incomplete(original_data = original_data, 
@@ -57,8 +58,8 @@ summarize_imputations <- function(all_scores, params) {
 scores_for_categorical <- function(original_data, imputed_data) {
   
   ids_categoricals <- which(sapply(original_data, is.factor))
-  imputed_data <- mutate(imputed_data, across(matches(names(ids_categoricals)), 
-                                              as.factor))
+  # imputed_data <- mutate(imputed_data, across(matches(names(ids_categoricals)), as.factor))
+  imputed_data[ids_categoricals] <- mutate_all(imputed_data[ids_categoricals], as.factor)
   
   dim_imputed <- dim(imputed_data)
   dim_original <- dim(original_data)
@@ -69,7 +70,7 @@ scores_for_categorical <- function(original_data, imputed_data) {
   binded_data <- one_hot_encoding(binded_data)
   # then split
   original_data <- binded_data[1:dim_original[1], ]
-  imputed_data <- binded_data[(dim_original[1] + 1):dim_imputed[1], ]
+  imputed_data <- binded_data[dim_original[1]+1:dim_imputed[1], ]
   
   # original_data <- one_hot_encoding(original_data)
   # imputed_data <- one_hot_encoding(imputed_data)
@@ -109,17 +110,22 @@ scores_for_complete <- function(original_data, amputed_data,
   ) %>% 
     rename(score = "value")
   
-  energy <- as.numeric(miceDRF::energy_dist(X = original_data, 
-                                            X_imp = imputed_data))
-  scaled_original <- scale(original_data)
-  
-  scaled_imputed <- sapply(1:ncol(imputed_data), function(i) {
+  energy <- safe_score(
+    miceDRF::energy_dist(X = original_data, X_imp = imputed_data),
+    original_data,
+    imputed_data
+  )  
+    
+  energy_std <- safe_score({
+    scaled_original <- scale(original_data)
+    
+    scaled_imputed <- sapply(1:ncol(imputed_data), function(i) {
     (imputed_data[, i] - attr(scaled_original, "scaled:center")[i])/ 
-      attr(scaled_original, "scaled:scale")[i]
-  })
-  
-  energy_std <- as.numeric(miceDRF::energy_dist(X = scaled_original, 
-                                                X_imp = scaled_imputed))
+        attr(scaled_original, "scaled:scale")[i]
+    })
+    
+    miceDRF::energy_dist(X = scaled_original, X_imp = scaled_imputed)
+  }, original_data, imputed_data)
   
   feature_wise_wasserstein <- safe_score({
     mean(sapply(1:ncol(original_data), function(ith_col) 
@@ -194,4 +200,13 @@ scores_for_incomplete <- function(original_data, imputed_data, imputation_fun,
   }
   
   data.frame(measure = score_name, score = ImpScore)
+}
+
+
+safe_score <- function(expr, original_data, imputed_data) {
+  score <- try({
+    expr
+  })
+  score <- ifelse(inherits(score, "try-error"), NA, as.numeric(score))
+  score
 }
