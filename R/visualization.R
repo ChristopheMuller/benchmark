@@ -843,7 +843,7 @@ plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40
 
 
 
-plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99, 100)) {
+plot_ranking_boxplots <- function(arrange_success = TRUE, breaks = c(0, 1, 40, 80, 99, 100)) {
   
   
   n_methods <- length(unique(pull(imputation_summary, method)))
@@ -886,28 +886,6 @@ plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40
   
   min_time <- min(dat_plt$time) * 1000
   
-  p1 <- dat_plt %>% 
-    ggplot(aes(x = method, y = time * 1000, fill = `success [%]`)) +
-    geom_rect(aes(xmin = as.numeric(method) - 0.4, 
-                  xmax = as.numeric(method) + 0.4,
-                  ymin = min_time - 10, 
-                  ymax = time * 1000, 
-                  fill = `success [%]`)) +
-    scale_fill_manual(name = "success [%]", values = get_colors_fractions()) +
-    labs(x = "Methods", y = "Average Time") +
-    theme_bw() +
-    theme(axis.text.y = element_blank(),
-          axis.title.y = element_blank(),
-          legend.position = "none") +
-    scale_x_discrete(position = "top") +
-    coord_flip() +
-    scale_y_continuous("Time", trans = c("log10", "reverse"),
-                       breaks = c(min_time/1000, 1, 60, 600, 1800, 1800*2, 1800*4, 1800*6) * 1000, 
-                       labels = c("116ms", "1s", "1min", "10min", "30min", "1h", "2h", "3h")) +
-    theme(panel.grid.minor.x = element_blank(),
-          panel.grid.major.x = element_line(color = "black", linetype = "dashed"))
-  
-  
   p2 <- dat_plt %>% 
     ungroup() %>% 
     ggplot(aes(x = reorder(method, mean_ranking), y = ranking)) +
@@ -917,12 +895,11 @@ plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40
                       values = get_colors_fractions()) +
     labs(x = "Methods", y = "Mean Energy") +
     theme_bw() +
-    theme(axis.text.y = element_text(hjust = 0.5),
-          axis.title.y = element_blank()) +
+    theme(axis.title.y = element_blank()) +
     ylab("log10energy") +
-    coord_flip() 
+    theme(axis.text.x = element_text(angle = 90))
   
-  p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = 'bottom')
+  p2
   
 }
 
