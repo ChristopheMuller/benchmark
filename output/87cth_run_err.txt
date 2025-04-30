@@ -1,0 +1,42 @@
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+Error:
+! targets::tar_make_clustermq() error
+
+── Debugging ───────────────────────────────────────────────────────────────────
+    • tar_errored()
+    • tar_meta(fields = any_of("error"), complete_only = TRUE)
+    • tar_workspace()
+    • tar_workspaces()
+
+── How to ──────────────────────────────────────────────────────────────────────
+    • Debug: https://books.ropensci.org/targets/debugging.html
+    • Help: https://books.ropensci.org/targets/help.html
+
+── Last error message ──────────────────────────────────────────────────────────
+    ℹ In argument: `Shots = (function (x) ...`.
+Caused by error:
+! `Shots` must be size 595 or 1, not 440.
+
+── Last error traceback ────────────────────────────────────────────────────────
+    impute(dataset_id = "cm.mar.0.3.1.worldcup", missing_data_set = amputed_...
+    pre_process(missing_data_set, imputing_function, var_type)
+    missing_data_set %>% mutate_all(factor_to_numeric)
+    mutate_all(., factor_to_numeric)
+    mutate(.tbl, !!!funs)
+    mutate.data.frame(.tbl, !!!funs)
+    mutate_cols(.data, dplyr_quosures(...), by)
+    withCallingHandlers(for (i in seq_along(dots)) {     poke_error_context(...
+    mutate_col(dots[[i]], data, mask, new_columns)
+    mask$eval_all_mutate(quo)
+    eval()
+    dplyr_internal_error("dplyr:::mutate_incompatible_size", list(     resul...
+    abort(class = c(class, "dplyr:::internal_error"), dplyr_error_data = data)
+    signal_abort(cnd, .file)
+    signalCondition(cnd)
+    (function (cnd)  {     local_error_context(dots, i = frame[[i_sym]], mas...
+    abort(message, class = error_class, parent = parent, call = error_call)
+    signal_abort(cnd, .file)
+    signalCondition(cnd)
+    (function (condition)  {     state$error <- build_message(condition)    ...
+Execution halted

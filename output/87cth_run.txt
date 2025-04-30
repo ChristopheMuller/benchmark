@@ -1,0 +1,166 @@
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+[1] "2025-04-27 20:42:45 CEST"
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Registered S3 methods overwritten by 'registry':
+  method               from 
+  print.registry_field proxy
+  print.registry_entry proxy
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+Loading required package: mice
+
+Attaching package: ‘mice’
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    cbind, rbind
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-8
+
+Attaching package: ‘MetabImpute’
+
+The following object is masked from ‘package:stats’:
+
+    simulate
+
+Registered S3 methods overwritten by 'fmsb':
+  method    from
+  print.roc pROC
+  plot.roc  pROC
+[1] "total dim params: 1800" "total dim params: 14"  
+
+choccake chredlin     hips   nels88   solder worldcup 
+     300      300      300      300      300      300 
+
+ mar mcar 
+ 900  900 
+
+  1   2 
+900 900 
+
+0.1 0.2 0.3 
+600 600 600 
+
+              areg       areg_normpmm    areg_regression                 cm 
+                72                 72                 72                 72 
+       hyperimpute               irmi             median     metabimpute_rf 
+                72                 72                 72                 72 
+      mice_CALIBER          mice_cart       mice_default           mice_drf 
+                72                 72                 72                 72 
+   mice_midastouch         mice_mixed           mice_pmm            mice_rf 
+                72                 72                 72                 72 
+               min         missforest    missmda_famd_em   missmda_famd_reg 
+                72                 72                 72                 72 
+ missmda_MIFAMD_em missmda_MIFAMD_reg              mixgb             random 
+                72                 72                 72                 72 
+           vim_knn 
+                72 
+✔ skipping targets (1 so far)...
+Superclass QSys has cloneable=FALSE, but subclass MULTIPROCESS has cloneable=TRUE. A subclass cannot be cloneable when its superclass is not cloneable, so cloning will be disabled for MULTIPROCESS.
+▶ dispatched target amputed_all
+✔ skipping targets (77 so far)...
+▶ dispatched target save_amputed_dat_mar.0.1.1.nels88
+▶ dispatched target save_amputed_dat_mar.0.1.2.nels88
+✔ skipping targets (82 so far)...
+✔ skipping targets (89 so far)...
+▶ dispatched target save_amputed_dat_mcar.0.3.2.solder
+✔ skipping targets (98 so far)...
+✔ skipping targets (107 so far)...
+✔ skipping targets (116 so far)...
+▶ dispatched target save_amputed_dat_mar.0.2.2.choccake
+✔ skipping targets (125 so far)...
+▶ dispatched target save_amputed_dat_mar.0.2.2.hips
+▶ dispatched target save_amputed_dat_mar.0.1.2.hips
+✔ skipping targets (135 so far)...
+▶ dispatched target save_amputed_dat_mar.0.1.2.worldcup
+● completed target amputed_all [8.654 seconds, 137.685 kilobytes]
+▶ dispatched target imputed_dat_random.mar.0.2.1.chredlin
+● completed target save_amputed_dat_mar.0.1.1.nels88 [8.476 seconds, 44 bytes]
+▶ dispatched target imputed_dat_missmda_MIFAMD_em.mcar.0.2.2.hips
+▶ dispatched target imputed_dat_irmi.mcar.0.2.1.nels88
+▶ dispatched target imputed_dat_min.mar.0.1.1.nels88
+▶ dispatched target imputed_dat_mice_drf.mar.0.1.2.solder
+▶ dispatched target imputed_dat_cm.mar.0.1.2.worldcup
+▶ dispatched target imputed_dat_mice_cart.mar.0.2.1.choccake
+▶ dispatched target imputed_dat_missmda_famd_em.mar.0.2.2.nels88
+▶ dispatched target imputed_dat_random.mar.0.2.2.worldcup
+▶ dispatched target imputed_dat_random.mar.0.2.1.choccake
+▶ dispatched target imputed_dat_areg_normpmm.mar.0.2.2.choccake
+▶ dispatched target imputed_dat_mice_drf.mar.0.2.1.choccake
+▶ dispatched target imputed_dat_missmda_famd_reg.mar.0.3.1.chredlin
+▶ dispatched target imputed_dat_min.mcar.0.3.2.hips
+▶ dispatched target imputed_dat_mice_mixed.mar.0.3.1.chredlin
+▶ dispatched target imputed_dat_cm.mcar.0.1.1.solder
+▶ dispatched target imputed_dat_hyperimpute.mcar.0.3.2.worldcup
+▶ dispatched target imputed_dat_missmda_MIFAMD_em.mcar.0.1.2.chredlin
+● completed target save_amputed_dat_mar.0.1.2.nels88 [9.759 seconds, 44 bytes]
+▶ dispatched target imputed_dat_min.mar.0.1.2.hips
+● completed target save_amputed_dat_mcar.0.3.2.solder [8.889 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_default.mcar.0.2.1.hips
+● completed target save_amputed_dat_mar.0.2.2.choccake [8.619 seconds, 44 bytes]
+▶ dispatched target imputed_dat_missmda_famd_em.mcar.0.1.2.worldcup
+● completed target save_amputed_dat_mar.0.1.2.hips [8.884 seconds, 44 bytes]
+▶ dispatched target imputed_dat_missmda_famd_em.mcar.0.2.2.choccake
+● completed target save_amputed_dat_mar.0.2.2.hips [9.376 seconds, 44 bytes]
+▶ dispatched target imputed_dat_metabimpute_rf.mcar.0.1.1.chredlin
+● completed target save_amputed_dat_mar.0.1.2.worldcup [9.252 seconds, 44 bytes]
+▶ dispatched target imputed_dat_cm.mar.0.3.1.worldcup
+▶ recorded workspace imputed_dat_cm.mar.0.3.1.worldcup
+✖ errored target imputed_dat_cm.mar.0.3.1.worldcup
+Master: [30.7 secs 25.0% CPU]; Worker: [avg 45.2% CPU, max 980.8 Mb]
+✖ errored pipeline [35.926 seconds]
+Warning messages:
+1: replacing previous import ‘S4Arrays::makeNindexFromArrayViewport’ by ‘DelayedArray::makeNindexFromArrayViewport’ when loading ‘SummarizedExperiment’ 
+2: 8 targets produced warnings. Run targets::tar_meta(fields = warnings, complete_only = TRUE) for the messages. 
+Warning in .subset2(e, ".__enclos_env__")$private$finalize() :
+  Unclean shutdown for PIDs: 3160800, 3160808, 3160818, 3160830, 3160846, 3160869, 3160887, 3160903, 3160919, 3160935, 3160962, 3160985, 3161005, 3161021, 3161037, 3161080, 3161094, 3161125, 3161149, 3161171, 3161190, 3161215, 3161238
