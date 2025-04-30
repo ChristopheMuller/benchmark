@@ -166,8 +166,10 @@ validate_imputation <- function(imputed, missing_data_set) {
 
 pre_process <- function(missing_data_set, imputing_function, var_type) {
   
-  if(var_type == "Numeric") 
-    missing_data_set <- missing_data_set %>%  mutate_all(factor_to_numeric)
+  if (var_type == "Numeric") {
+    factor_cols <- sapply(missing_data_set, is.factor)
+    missing_data_set[factor_cols] <- lapply(missing_data_set[factor_cols], factor_to_numeric)
+  }
   
   missing_data_set
 }
