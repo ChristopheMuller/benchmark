@@ -180,14 +180,14 @@ scores_for_incomplete <- function(original_data, imputed_data, imputation_fun,
     imputed_data <- mutate(imputed_data, across(matches(names(ids_categoricals)), as.factor))
     
     ImpScore <- try({
-      miceDRF::Iscore_cat(X = original_data, X_imp = imputed_data, 
+      miceDRF::Iscore_cat(X = original_data, X_imp = imputed_data, N = 20,
                           imputation_func = imputation_fun, var_type == "Factor", 
                           multiple = multiple)
     })
     score_name <- "IScore_cat"
   } else {
     ImpScore <- try({
-      miceDRF::Iscore(X = original_data, X_imp = imputed_data, 
+      miceDRF::Iscore(X = original_data, X_imp = imputed_data, N = 20,
                       multiple = multiple, imputation_func = imputation_fun)
     })
     score_name <- "IScore"
