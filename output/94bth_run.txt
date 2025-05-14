@@ -1,0 +1,160 @@
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+[1] "2025-05-13 11:59:00 CEST"
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Registered S3 methods overwritten by 'registry':
+  method               from 
+  print.registry_field proxy
+  print.registry_entry proxy
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+Loading required package: mice
+
+Attaching package: ‘mice’
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    cbind, rbind
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-8
+
+Attaching package: ‘MetabImpute’
+
+The following object is masked from ‘package:stats’:
+
+    simulate
+
+Registered S3 methods overwritten by 'fmsb':
+  method    from
+  print.roc pROC
+  plot.roc  pROC
+[1] "total dim params: 8"  "total dim params: 14"
+
+   diabetes    employee    globwarm mammalsleep  oceanbuoys      popmis 
+          1           1           1           1           1           1 
+ pulplignin         tao 
+          1           1 
+< table of extent 0 >
+< table of extent 0 >
+< table of extent 0 >
+
+remasker 
+       8 
+✔ skipping targets (1 so far)...
+Superclass QSys has cloneable=FALSE, but subclass MULTIPROCESS has cloneable=TRUE. A subclass cannot be cloneable when its superclass is not cloneable, so cloning will be disabled for MULTIPROCESS.
+▶ dispatched target amputed_all
+✔ skipping targets (13 so far)...
+● completed target amputed_all [9.168 seconds, 71.875 kilobytes]
+▶ dispatched target imputed_dat_remasker.NA.NA.NA.mammalsleep
+▶ dispatched target amputation_summary
+▶ dispatched target imputed_dat_remasker.NA.NA.NA.popmis
+▶ dispatched target imputed_dat_remasker.NA.NA.NA.globwarm
+▶ dispatched target imputed_dat_remasker.NA.NA.NA.oceanbuoys
+▶ dispatched target imputed_dat_remasker.NA.NA.NA.employee
+▶ dispatched target imputed_dat_remasker.NA.NA.NA.pulplignin
+▶ dispatched target imputed_dat_remasker.NA.NA.NA.diabetes
+▶ dispatched target imputed_dat_remasker.NA.NA.NA.tao
+● completed target amputation_summary [9.685 seconds, 547 bytes]
+▶ dispatched target save_amputation_summary
+● completed target save_amputation_summary [0.001 seconds, 44 bytes]
+● completed target imputed_dat_remasker.NA.NA.NA.employee [50.898 seconds, 440 bytes]
+▶ dispatched target save_imputed_dat_remasker.NA.NA.NA.employee
+▶ dispatched target obtained_scores_remasker.NA.NA.NA.employee
+● completed target save_imputed_dat_remasker.NA.NA.NA.employee [0.002 seconds, 44 bytes]
+● completed target obtained_scores_remasker.NA.NA.NA.employee [8.985 seconds, 218 bytes]
+● completed target imputed_dat_remasker.NA.NA.NA.mammalsleep [1.529 minutes, 1.735 kilobytes]
+▶ dispatched target save_imputed_dat_remasker.NA.NA.NA.mammalsleep
+▶ dispatched target obtained_scores_remasker.NA.NA.NA.mammalsleep
+● completed target save_imputed_dat_remasker.NA.NA.NA.mammalsleep [0.021 seconds, 44 bytes]
+● completed target obtained_scores_remasker.NA.NA.NA.mammalsleep [8.589 seconds, 218 bytes]
+● completed target imputed_dat_remasker.NA.NA.NA.pulplignin [9.491 minutes, 23.381 kilobytes]
+▶ dispatched target save_imputed_dat_remasker.NA.NA.NA.pulplignin
+▶ dispatched target obtained_scores_remasker.NA.NA.NA.pulplignin
+● completed target save_imputed_dat_remasker.NA.NA.NA.pulplignin [0.005 seconds, 44 bytes]
+● completed target obtained_scores_remasker.NA.NA.NA.pulplignin [8.778 seconds, 223 bytes]
+● completed target imputed_dat_remasker.NA.NA.NA.oceanbuoys [9.771 minutes, 7.817 kilobytes]
+▶ dispatched target obtained_scores_remasker.NA.NA.NA.oceanbuoys
+▶ dispatched target save_imputed_dat_remasker.NA.NA.NA.oceanbuoys
+● completed target save_imputed_dat_remasker.NA.NA.NA.oceanbuoys [8.35 seconds, 44 bytes]
+● completed target imputed_dat_remasker.NA.NA.NA.tao [9.98 minutes, 7.833 kilobytes]
+▶ dispatched target obtained_scores_remasker.NA.NA.NA.tao
+▶ dispatched target save_imputed_dat_remasker.NA.NA.NA.tao
+● completed target save_imputed_dat_remasker.NA.NA.NA.tao [8.588 seconds, 44 bytes]
+● completed target imputed_dat_remasker.NA.NA.NA.diabetes [10.773 minutes, 13.935 kilobytes]
+▶ dispatched target obtained_scores_remasker.NA.NA.NA.diabetes
+▶ dispatched target save_imputed_dat_remasker.NA.NA.NA.diabetes
+● completed target save_imputed_dat_remasker.NA.NA.NA.diabetes [0.004 seconds, 44 bytes]
+● completed target imputed_dat_remasker.NA.NA.NA.globwarm [16.191 minutes, 20.207 kilobytes]
+▶ dispatched target save_imputed_dat_remasker.NA.NA.NA.globwarm
+▶ dispatched target obtained_scores_remasker.NA.NA.NA.globwarm
+● completed target save_imputed_dat_remasker.NA.NA.NA.globwarm [0.006 seconds, 44 bytes]
+● completed target imputed_dat_remasker.NA.NA.NA.popmis [20.867 minutes, 8.111 kilobytes]
+▶ dispatched target obtained_scores_remasker.NA.NA.NA.popmis
+▶ dispatched target save_imputed_dat_remasker.NA.NA.NA.popmis
+● completed target save_imputed_dat_remasker.NA.NA.NA.popmis [8.712 seconds, 44 bytes]
+● completed target obtained_scores_remasker.NA.NA.NA.globwarm [4.989 hours, 231 bytes]
+● completed target obtained_scores_remasker.NA.NA.NA.oceanbuoys [5.141 hours, 233 bytes]
+● completed target obtained_scores_remasker.NA.NA.NA.tao [5.163 hours, 226 bytes]
+● completed target obtained_scores_remasker.NA.NA.NA.popmis [6.782 hours, 227 bytes]
+● completed target obtained_scores_remasker.NA.NA.NA.diabetes [9.232 hours, 232 bytes]
+▶ dispatched target all_scores
+● completed target all_scores [0.002 seconds, 416 bytes]
+▶ dispatched target imputation_summary
+● completed target imputation_summary [0.012 seconds, 661 bytes]
+▶ dispatched target save_imputation_summary
+● completed target save_imputation_summary [0.002 seconds, 44 bytes]
+Master: [9.4 hours 0.9% CPU]; Worker: [avg 34.8% CPU, max 1 Gb]
+▶ ended pipeline [9.421 hours]
+Warning messages:
+1: replacing previous import ‘S4Arrays::makeNindexFromArrayViewport’ by ‘DelayedArray::makeNindexFromArrayViewport’ when loading ‘SummarizedExperiment’ 
+2: 18 targets produced warnings. Run targets::tar_meta(fields = warnings, complete_only = TRUE) for the messages. 
+[1] "2025-05-13 21:24:45 CEST"
