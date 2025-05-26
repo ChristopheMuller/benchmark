@@ -188,9 +188,19 @@ scores_for_incomplete <- function(original_data, imputed_data, imputation_fun,
   } else {
     ImpScore <- try({
       miceDRF::Iscore(X = original_data, X_imp = imputed_data, N = 20,
-                      multiple = multiple, imputation_func = imputation_fun)
+                      multiple = multiple, imputation_func = imputation_fun,
+                      scale = FALSE)
     })
-    score_name <- "IScore"
+    score_name <- c("IScore", "IScore_scaled")
+    
+    ImpScore_scaled <- try({
+      miceDRF::Iscore(X = original_data, X_imp = imputed_data, N = 20,
+                      multiple = multiple, imputation_func = imputation_fun,
+                      scale = TRUE)
+    })
+    
+    ImpScore <- c(ImpScore, ImpScore_scaled)
+    
   }
   
   if(inherits(ImpScore, "try-error")) {
