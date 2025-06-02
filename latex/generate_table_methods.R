@@ -107,7 +107,7 @@ xtable::xtable(
     sanitize.text.function = identity,
     tabular.environment = 'longtable', 
     floating = FALSE,
-    size = "small"
+    size = "tiny"
   )
 
 
