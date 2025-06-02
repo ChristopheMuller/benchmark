@@ -5,6 +5,7 @@
 low_rank_MNAR/
 *.RDS
 !data/datasets/incomplete_backup/*.rds
+!data/datasets/incomplete_backup/*/*.rds
 !functions.RDS
 .venv/
 container
