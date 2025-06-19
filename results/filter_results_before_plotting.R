@@ -11,6 +11,7 @@ imputation_summary <- imputation_summary %>%
   filter(set_id != "solder") %>%   # always error
   filter(set_id != "Ozone") %>%  # always error (in score)
   filter(set_id != "colic") %>%  # always error 
+  filter(set_id != "tao") %>%  # exact same as oceanbuoys
   filter(!(method %in% c("min", "cm", "halfmin",
                          "minProb")))
 
