@@ -21,7 +21,7 @@ pca_dat <- imputation_summary %>%
   mutate(ranking =  {
     ranking <- rep(NA, length(score))
     ranking[!is.na(score)] <- rank(score[!is.na(score)])
-    ranking[is.na(ranking)] <- n_methods
+    ranking[is.na(ranking)] <- length(is.na(ranking)) + 1
     ranking
   }) %>% 
   ungroup() %>% 
@@ -55,13 +55,14 @@ df %>%
   mutate(var = rownames(.)) %>%
   mutate(dataset = sapply(var, function(ith) strsplit(ith, " ")[[1]][1])) %>% 
   ggplot(aes(x = get(colnames(df)[1]), y = get(colnames(df)[2]), col = dataset)) +
+  xlim(0, 1.2) +
   geom_segment(aes(x = 0,
                    y = 0,
                    xend = get(colnames(df)[1]),
                    yend = get(colnames(df)[2])),
                arrow = arrow(), size = 1, alpha = 0.4) +
   geom_text(aes(x = get(colnames(df)[1]), y = get(colnames(df)[2]),
-                label = var), hjust = "right") +
+                label = var), hjust = -0.2, size = 3) +
   geom_point(aes(x = get(colnames(df)[1]), y = get(colnames(df)[2]))) +
   theme_minimal() +
   xlab("Dim 1 (58.2 %)") +
@@ -95,7 +96,7 @@ performance <- imputation_summary %>%
   mutate(ranking =  {
     ranking <- rep(NA, length(score))
     ranking[!is.na(score)] <- rank(score[!is.na(score)])
-    ranking[is.na(ranking)] <- n_methods
+    ranking[is.na(ranking)] <- length(is.na(ranking)) + 1
     ranking
   }) %>% 
   ungroup() %>% 
@@ -132,7 +133,7 @@ performance_on_large <- imputation_summary %>%
   mutate(ranking =  {
     ranking <- rep(NA, length(score))
     ranking[!is.na(score)] <- rank(score[!is.na(score)])
-    ranking[is.na(ranking)] <- n_methods
+    ranking[is.na(ranking)] <- length(is.na(ranking)) + 1
     ranking
   }) %>% 
   ungroup() %>% 
@@ -175,7 +176,7 @@ performance_on_large <- imputation_summary %>%
   mutate(ranking =  {
     ranking <- rep(NA, length(score))
     ranking[!is.na(score)] <- rank(score[!is.na(score)])
-    ranking[is.na(ranking)] <- n_methods
+    ranking[is.na(ranking)] <- length(is.na(ranking)) + 1
     ranking
   }) %>% 
   ungroup() %>% 
@@ -206,6 +207,7 @@ pc2_correlations_sorted <- sort(pc2_correlations, decreasing = TRUE)
 
 head(pc2_correlations_sorted, 10)
 
+source("./data/get_datasets_dim.R")
 
 sets_dim <- readRDS("./data/datasets/sets_dim.RDS")
 
