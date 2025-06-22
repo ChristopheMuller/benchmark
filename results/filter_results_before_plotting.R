@@ -1,6 +1,6 @@
 
 
-imputation_summary <- readRDS("~/INRIA/R_scripts/benchmark/results/imputation_summary_M13.RDS")
+imputation_summary <- readRDS("./results/imputation_summary_M13.RDS")
 
 imputation_summary <- imputation_summary %>% 
   filter(!(method %in% c("mice_cart50", "mice_cart100", "superimputer", 
