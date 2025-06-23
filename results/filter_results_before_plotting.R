@@ -12,6 +12,8 @@ imputation_summary <- imputation_summary %>%
   filter(set_id != "Ozone") %>%  # always error (in score)
   filter(set_id != "colic") %>%  # always error 
   filter(set_id != "tao") %>%  # exact same as oceanbuoys
+  filter(set_id != "meatspec") %>%  # high correlations
+  filter(set_id != "exa") %>%  # weird
   filter(!(method %in% c("min", "cm", "halfmin",
                          "minProb")))
 
