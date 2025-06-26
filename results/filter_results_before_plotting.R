@@ -17,7 +17,7 @@ imputation_summary <- imputation_summary %>%
 
 small_sets <- c("star", "tvdoctor", "cheddar", "eco", "leafburn", "stat500", "savings",
                 "chicago", "sat", "seatpos", "fpe", "pyrimidines", "Animals_na", 
-                "employee", "mammalsleep")
+                "employee", "mammalsleep", "chredlin")
 
 
 ### Case 1 : NUM + COMPLETE
