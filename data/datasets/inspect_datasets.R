@@ -1,17 +1,33 @@
+library(dplyr)
+library(tibble)
+library(corrplot)
+
+
 #####
 # Evaluate the datasets
 #####
 
 
-data <- scm20d
+# data <- scpf
+data <- OpenML::getOMLDataSet(46610)
+data <- data$data
+
+# incomp
+## birth : c(1,3,4,5,6,9,15,19,20,22) are numerical
+## breast:
+# rem.col <- c(1,2,3,4)
+# are.cat <- c(5,6,8,9,10,12,13,15)
+# are.num <- c(7,11)
+# num.to.be <- c(14) To be continued ..
 
 dim(data)
 str(data)
-head(data[,1:10])
+head(data[])
+tail(data)
 sum(is.na(data))
 
 # distribution of values of feature x
-feature <- 10
+feature <- 37
 hist(data[,feature], breaks = 20, main = colnames(data)[feature], xlab = colnames(data)[feature])
 (how_many_distinct_values <- length(unique(data[,feature])))
 table(data[,feature])
@@ -26,10 +42,16 @@ for (i in 1:ncol(data)) {
   }
 }
 
-corr_matrix <- cor(data)
-colnames(corr_matrix) <- (1:ncol(data))
-rownames(corr_matrix) <- (1:ncol(data))
-library(corrplot)
+for (i in are.num) {
+  # hist
+  hist(data[,i], breaks = 20, main = colnames(data)[i], xlab = colnames(data)[i])
+}
+
+data_filled <- data[,num.features]
+data_filled[is.na(data_filled)] <- 0
+corr_matrix <- cor(data_filled)
+colnames(corr_matrix) <- num.features
+rownames(corr_matrix) <- num.features
 corrplot(corr_matrix, method = "color")
 
 
