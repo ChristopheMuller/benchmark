@@ -36,14 +36,14 @@ methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>%
     Methods = paste0("\\textbf{", Method, "}"),
     Citations = ifelse(is.na(Citation) | Citation == "", "\\xmark", 
                        paste0("\\cite{", Citation, "}")),
-    Language = paste0("\\texttt{", Language, "}"),
+    Languages = paste0("\\texttt{", Language, "}"),
     
     wrapper_superscript = paste0(
       ifelse(!is.na(Wrapper_imputomics) & Wrapper_imputomics == 1, "$^{\\ast}$", ""),
       ifelse(!is.na(Wrapper_hyperimpute) & Wrapper_hyperimpute == 1, "$^{\\dagger}$", "")
     ),
     
-    Implementation = paste0(
+    Implementations = paste0(
       "\\texttt{", Implementation, "}", 
       ifelse(Citation_imp != "", paste0("\\citep{", Citation_imp, "}"), ""),
       wrapper_superscript
@@ -51,7 +51,7 @@ methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>%
     
     Methods = gsub("_", "-", Methods)
   ) %>%
-  select(Methods, Citations, Language, Implementation)
+  select(Methods, Citations, Languages, Implementations)
 
 table_caption <- paste0(
   "Some caption. ",
