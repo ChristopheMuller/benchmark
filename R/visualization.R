@@ -1116,6 +1116,36 @@ plot_ranking_boxplots_over_rep <- function(breaks = c(0, 1, 40, 80, 99, 100)) {
 }
 
 
+plot_error_proportion <- function(imputation_summary) {
+  
+  dat_plt_error <- imputation_summary %>%
+    group_by(method) %>%
+    summarise(
+      total_runs = n(),
+      errors = sum(!is.na(error)),
+      error_proportion = errors / total_runs
+    ) %>%
+    ungroup() %>%
+    arrange(desc(error_proportion)) %>%
+    mutate(method = factor(method, levels = unique(method)))
+  
+  p_error <- dat_plt_error %>%
+    ggplot(aes(x = method, y = error_proportion, fill = method)) +
+    geom_bar(stat = "identity", position = "dodge") +
+    geom_text(aes(label = sprintf("%.2f", error_proportion)),
+              vjust = -0.5, size = 3) +
+    labs(x = "Method", y = "Proportion of Errors") +
+    scale_y_continuous(labels = scales::percent_format()) +
+    theme_bw() +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      legend.position = "none"
+    )
+  
+  p_error
+}
+
+
 
 shreks_plot <- function(imputation_summary ) {
   
