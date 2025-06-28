@@ -9,9 +9,7 @@ url <- "https://docs.google.com/spreadsheets/d/1rFnJkfpF-YfK04uGa-IzjzZYy-czLQZE
 # INCLUDED
 ########################
 
-methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>% 
-  select(benchmark, Citation_imp, Citation, Method, Language, Implementation, Repo,
-         Wrapper_imputomics, Wrapper_hyperimpute) %>%
+methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>%
   filter(benchmark == 1) %>%
   mutate(
     Citation_imp = ifelse(is.na(Citation_imp), "", Citation_imp),
@@ -24,18 +22,19 @@ methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>%
     
     Implementation = case_when(
       isgit ~ paste0(
-        "\\href{https://github.com/", 
-        sub("^Git:", "", Implementation), 
-        "}{Git:", 
-        sub("^Git:", "", Implementation), 
+        "\\href{https://github.com/",
+        sub("^Git:", "", Implementation),
+        "}{Git:",
+        sub("^Git:", "", Implementation),
         "}"
       ),
       TRUE ~ Implementation
     ),
     
-    Methods = paste0("\\textbf{", Method, "}"),
-    Citations = ifelse(is.na(Citation) | Citation == "", "\\xmark", 
-                       paste0("\\cite{", Citation, "}")),
+    Methods = paste0(
+      "\\textbf{", Method, "}",
+      ifelse(is.na(Citation) | Citation == "", "", paste0(" \\citep{", Citation, "}"))
+    ),
     Languages = paste0("\\texttt{", Language, "}"),
     
     wrapper_superscript = paste0(
@@ -44,14 +43,14 @@ methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>%
     ),
     
     Implementations = paste0(
-      "\\texttt{", Implementation, "}", 
-      ifelse(Citation_imp != "", paste0("\\citep{", Citation_imp, "}"), ""),
+      "\\texttt{", Implementation, "}",
+      ifelse(Citation_imp != "", paste0(" \\citep{", Citation_imp, "}"), ""),
       wrapper_superscript
     ),
     
     Methods = gsub("_", "-", Methods)
   ) %>%
-  select(Methods, Citations, Languages, Implementations)
+  select(Methods, Languages, Implementations)
 
 table_caption <- paste0(
   "Some caption. ",
@@ -67,11 +66,10 @@ xtable::xtable(
   print(
     file = "latex/methods.tex",
     sanitize.text.function = identity,
-    tabular.environment = 'longtable', 
+    tabular.environment = 'longtable',
     floating = FALSE,
-    size = "small"
+    size = "tiny"
   )
-
 
 
 #############################
