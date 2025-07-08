@@ -53,7 +53,7 @@ methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>%
   select(Methods, Languages, Implementations)
 
 table_caption <- paste0(
-  "Some caption. ",
+  "List of imputation methods included in our work. ",
   "$^{\\ast}$Implemented via imputomics wrapper. ",
   "$^{\\dagger}$Implemented via hyperimpute wrapper. "
 )
@@ -68,7 +68,7 @@ xtable::xtable(
     sanitize.text.function = identity,
     tabular.environment = 'longtable',
     floating = FALSE,
-    size = "tiny"
+    size = "scriptsize"
   )
 
 

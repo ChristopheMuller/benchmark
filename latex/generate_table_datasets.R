@@ -14,12 +14,18 @@ methods <- read_sheet(url, sheet = "table_datasets") %>%
     Rows = as.integer(n),
     `Col. (Num./Cat.)` = paste0(as.integer(d_num), " / ", as.integer(d_cat)),
     `Mean/Max Missing.` = paste0(round(propNA_mean * 100, 2), " / ", round(propNA_max * 100, 2)),
-    citation = ifelse(is.na(citation), "", paste0(" \\citet{", citation, "}"))
+    citation = ifelse(github, 
+                      paste0(
+                        "\\href{https://github.com/",
+                        citation,
+                        "}{", citation, "}"
+                      ),
+                      ifelse(is.na(citation), "", paste0(" \\citet{", citation, "}")))
   ) %>%
   select(Name, Rows, `Col. (Num./Cat.)`, `Mean/Max Missing.`, Source = citation)
 
 table_caption <- paste0(
-  "Some caption."
+  "Datasets used in our work."
 )
 
 xtable::xtable(
