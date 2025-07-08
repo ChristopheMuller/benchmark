@@ -4,7 +4,8 @@ library(googlesheets4)
 methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>% 
   filter(benchmark) %>% 
   select(Method, imputation_function) %>% 
-  rename("elegant_name" = "Method")
+  rename("elegant_name" = "Method",
+         "imputation_fun" = "imputation_function")
 
 imputation_summary <- readRDS("./results/imputation_summary_M13.RDS") %>% 
   merge(methods)
