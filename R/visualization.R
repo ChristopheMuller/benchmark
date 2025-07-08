@@ -1004,20 +1004,27 @@ plot_ranking_boxplots <- function(breaks = c(0, 1, 40, 80, 99, 100)) {
                        breaks = c(min_time/1000, 1, 60, 600, 1800, 1800*2, 1800*4, 1800*6) * 1000, 
                        labels = c("116ms", "1s", "1min", "10min", "30min", "1h", "2h", "3h")) +
     theme(panel.grid.minor.x = element_blank(),
-          panel.grid.major.x = element_line(color = "black", linetype = "dashed"))
+          panel.grid.major.x = element_line(color = "black", linetype = "dashed"),
+          axis.text.x = element_text(angle = 90))
   
   
   p2 <- dat_plt %>% 
     ungroup() %>% 
     ggplot(aes(x = reorder(method, mean_ranking), y = ranking)) +
     geom_boxplot(fill = "gray") +
-    geom_point(aes(x = reorder(method, mean_ranking), y = mean_ranking), col = "darkblue", size = 2) +
+    geom_point(aes(x = reorder(method, mean_ranking), y = mean_ranking, col = "a"), size = 2) +
     scale_fill_manual(name = "success [%]", 
                       values = get_colors_fractions()) +
+    scale_color_manual(
+      name = "", 
+      values = c("a" = "darkblue"),
+      labels = c("a" = "Averaged rank")
+    ) +
     labs(x = "Methods", y = "Mean Energy") +
     theme_bw() +
     theme(axis.text.y = element_text(hjust = 0.5),
-          axis.title.y = element_blank()) +
+          axis.title.y = element_blank(),
+          legend.position = "bottom") +
     ylab("Ranking") +
     coord_flip() 
   
