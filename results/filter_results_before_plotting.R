@@ -22,7 +22,7 @@ imputation_summary <- imputation_summary %>%
   filter(set_id != "meatspec") %>%  # high correlations
   filter(set_id != "exa") %>%  # weird
   filter(!(method %in% c("min", "cm", "halfmin",
-                         "minProb"))) %>% 
+                         "minProb")))
 
 small_sets <- c("star", "tvdoctor", "cheddar", "eco", "leafburn", "stat500", "savings",
                 "chicago", "sat", "seatpos", "fpe", "pyrimidines", "Animals_na", 
