@@ -1,6 +1,13 @@
 library(dplyr)
+library(googlesheets4)
 
-imputation_summary <- readRDS("./results/imputation_summary_M13.RDS")
+methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>% 
+  filter(benchmark) %>% 
+  select(Method, imputation_function) %>% 
+  rename("elegant_name" = "Method")
+
+imputation_summary <- readRDS("./results/imputation_summary_M13.RDS") %>% 
+  merge(methods)
 
 imputation_summary <- imputation_summary %>% 
   filter(!(method %in% c("mice_cart50", "mice_cart100", "superimputer", 
@@ -15,7 +22,7 @@ imputation_summary <- imputation_summary %>%
   filter(set_id != "meatspec") %>%  # high correlations
   filter(set_id != "exa") %>%  # weird
   filter(!(method %in% c("min", "cm", "halfmin",
-                         "minProb")))
+                         "minProb"))) %>% 
 
 small_sets <- c("star", "tvdoctor", "cheddar", "eco", "leafburn", "stat500", "savings",
                 "chicago", "sat", "seatpos", "fpe", "pyrimidines", "Animals_na", 
