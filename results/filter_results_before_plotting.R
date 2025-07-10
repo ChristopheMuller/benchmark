@@ -8,7 +8,8 @@ methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>%
          "imputation_fun" = "imputation_function")
 
 imputation_summary <- readRDS("./results/imputation_summary_M13.RDS") %>% 
-  merge(methods)
+  merge(methods) %>% 
+  mutate(method = elegant_name)
 
 imputation_summary <- imputation_summary %>% 
   filter(!(method %in% c("mice_cart50", "mice_cart100", "superimputer", 
