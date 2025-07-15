@@ -1,6 +1,15 @@
+library(dplyr)
+library(googlesheets4)
 
+methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>% 
+  filter(benchmark) %>% 
+  select(Method, imputation_function) %>% 
+  rename("elegant_name" = "Method",
+         "imputation_fun" = "imputation_function")
 
-imputation_summary <- readRDS("~/INRIA/R_scripts/benchmark/results/imputation_summary_M13.RDS")
+imputation_summary <- readRDS("./results/imputation_summary_M13.RDS") %>% 
+  merge(methods) %>% 
+  mutate(method = elegant_name)
 
 imputation_summary <- imputation_summary %>% 
   filter(!(method %in% c("mice_cart50", "mice_cart100", "superimputer", 
@@ -11,12 +20,15 @@ imputation_summary <- imputation_summary %>%
   filter(set_id != "solder") %>%   # always error
   filter(set_id != "Ozone") %>%  # always error (in score)
   filter(set_id != "colic") %>%  # always error 
+  filter(set_id != "tao") %>%  # exact same as oceanbuoys
+  filter(set_id != "meatspec") %>%  # high correlations
+  filter(set_id != "exa") %>%  # weird
   filter(!(method %in% c("min", "cm", "halfmin",
                          "minProb")))
 
 small_sets <- c("star", "tvdoctor", "cheddar", "eco", "leafburn", "stat500", "savings",
                 "chicago", "sat", "seatpos", "fpe", "pyrimidines", "Animals_na", 
-                "employee", "mammalsleep")
+                "employee", "mammalsleep", "chredlin")
 
 
 ### Case 1 : NUM + COMPLETE

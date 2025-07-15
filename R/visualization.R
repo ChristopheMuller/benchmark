@@ -1004,20 +1004,27 @@ plot_ranking_boxplots <- function(breaks = c(0, 1, 40, 80, 99, 100)) {
                        breaks = c(min_time/1000, 1, 60, 600, 1800, 1800*2, 1800*4, 1800*6) * 1000, 
                        labels = c("116ms", "1s", "1min", "10min", "30min", "1h", "2h", "3h")) +
     theme(panel.grid.minor.x = element_blank(),
-          panel.grid.major.x = element_line(color = "black", linetype = "dashed"))
+          panel.grid.major.x = element_line(color = "black", linetype = "dashed"),
+          axis.text.x = element_text(angle = 90))
   
   
   p2 <- dat_plt %>% 
     ungroup() %>% 
     ggplot(aes(x = reorder(method, mean_ranking), y = ranking)) +
     geom_boxplot(fill = "gray") +
-    geom_point(aes(x = reorder(method, mean_ranking), y = mean_ranking), col = "darkblue", size = 2) +
+    geom_point(aes(x = reorder(method, mean_ranking), y = mean_ranking, col = "a"), size = 2) +
     scale_fill_manual(name = "success [%]", 
                       values = get_colors_fractions()) +
+    scale_color_manual(
+      name = "", 
+      values = c("a" = "darkblue"),
+      labels = c("a" = "Averaged rank")
+    ) +
     labs(x = "Methods", y = "Mean Energy") +
     theme_bw() +
     theme(axis.text.y = element_text(hjust = 0.5),
-          axis.title.y = element_blank()) +
+          axis.title.y = element_blank(),
+          legend.position = "bottom") +
     ylab("Ranking") +
     coord_flip() 
   
@@ -1113,6 +1120,36 @@ plot_ranking_boxplots_over_rep <- function(breaks = c(0, 1, 40, 80, 99, 100)) {
   p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = 'bottom')
   # save as pdf
   # ggsave("~/INRIA/R_scripts/benchmark/latex/energy_time_ranking_incomp_all.pdf", width = 20, height = 15, units="cm") # comp + num= 70 metho => 20 x 25; cat: 15
+}
+
+
+plot_error_proportion <- function(imputation_summary) {
+  
+  dat_plt_error <- imputation_summary %>%
+    group_by(method) %>%
+    summarise(
+      total_runs = n(),
+      errors = sum(!is.na(error)),
+      error_proportion = errors / total_runs
+    ) %>%
+    ungroup() %>%
+    arrange(desc(error_proportion)) %>%
+    mutate(method = factor(method, levels = unique(method)))
+  
+  p_error <- dat_plt_error %>%
+    ggplot(aes(x = method, y = error_proportion, fill = method)) +
+    geom_bar(stat = "identity", position = "dodge") +
+    geom_text(aes(label = sprintf("%.2f", error_proportion)),
+              vjust = -0.5, size = 3) +
+    labs(x = "Method", y = "Proportion of Errors") +
+    scale_y_continuous(labels = scales::percent_format()) +
+    theme_bw() +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      legend.position = "none"
+    )
+  
+  p_error
 }
 
 

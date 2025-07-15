@@ -110,43 +110,27 @@ saveRDS(res_all, "./data/imputation_methods/categorical_imputation/res_check.RDS
 
 ######################################
 
+library(dplyr)
+library(googlesheets4)
 library(ggplot2)
+library(stringr)
+
+
+methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>% 
+  filter(benchmark) %>% 
+  select(Method, imputation_function) %>% 
+  rename("elegant_name" = "Method",
+         "imputation_fun" = "imputation_function")
+
 
 res_all <- readRDS("./data/imputation_methods/categorical_imputation/res_check.RDS") %>% 
   filter(!(method %in% c("mice_cart50", "mice_cart100", "superimputer", 
                        "supersuperimputer", "engression", "missmda_em")))
 
-res_all %>% 
+final_setup <- res_all %>% 
   # filter(!is.na(check)) %>% 
   mutate(case = ifelse(case == "base_dat2", "Numeric", case),
-         case = ifelse(case == "base_dat3", "Factor", case),
-         case = ifelse(case == "base_dat4", "One-hot", case),
-         case = ifelse(case == "base_dat5", "Factor-Character", case)) %>% 
-  mutate(check = ifelse(case != "One-hot", "levels", check)) %>% 
-  pivot_wider(names_from = check, values_from = res) %>% 
-  pivot_wider(names_from = case, values_from = levels, names_repair = "unique") %>% 
-  dplyr::select(-`One-hot`) %>% 
-  mutate(`One-hot` = binary_levels & binary_sum) %>% 
-  dplyr::select(-binary_levels, -binary_sum) %>% 
-  gather("case", "res", -method) %>% 
-  filter(!is.na(res)) %>% 
-  tidyr::complete(method, case) %>% 
-  group_by(method) %>% 
-  mutate(impute_cat = sum(res, na.rm = TRUE)) %>% 
-  ungroup() %>% 
-  mutate(res = ifelse(is.na(res), "didn't work", res)) %>% 
-  ggplot(aes(x = reorder(method, -impute_cat), y = case, fill = res)) +
-  geom_tile(color = "black") +
-  theme(axis.text.x = element_text(angle = 90)) +
-  scale_fill_manual("Successful", values = c("FALSE" = "white", "TRUE" = "forestgreen", "didn't work" = "gray70")) +
-  xlab("method")
-
-
-
-res_all %>% 
-  # filter(!is.na(check)) %>% 
-  mutate(case = ifelse(case == "base_dat2", "Numeric", case),
-         case = ifelse(case == "base_dat3", "Factor", case),
+         case = ifelse(case == "base_dat3", "Factor-\nNumeric", case),
          case = ifelse(case == "base_dat4", "One-hot", case)) %>% 
   mutate(check = ifelse(case != "One-hot", "levels", check)) %>% 
   pivot_wider(names_from = check, values_from = res) %>% 
@@ -160,15 +144,60 @@ res_all %>%
   filter(case != "One-hot", res) %>% 
   group_by(method) %>% 
   mutate(n = n()) %>% 
-  filter(case == "Numeric" & n == 1 | case == "Factor") %>% 
+  filter(case == "Numeric" & n == 1 | case == "Factor-\nNumeric") %>% 
   rename(var_type = "case") %>% 
   rename(imputation_fun = "method") %>% 
-  dplyr::select(imputation_fun, var_type) %>%
-  saveRDS("./data/categorical_funs.RDS")
+  dplyr::select(imputation_fun, var_type)
 
-  
-  
+saveRDS(final_setup, "./data/categorical_funs.RDS")
 
+#### vis
+
+res_all <- res_all %>% 
+  # filter(!is.na(check)) %>% 
+  mutate(case = ifelse(case == "base_dat2", "Numeric", case),
+         case = ifelse(case == "base_dat3", "Factor-\nNumeric", case),
+         case = ifelse(case == "base_dat4", "One-hot", case),
+         case = ifelse(case == "base_dat5", "Factor-\nCharacter", case),
+         method = str_remove(method, "impute_")) %>% 
+  mutate(check = ifelse(case != "One-hot", "levels", check)) %>% 
+  pivot_wider(names_from = check, values_from = res) %>% 
+  pivot_wider(names_from = case, values_from = levels, names_repair = "unique") %>% 
+  dplyr::select(-`One-hot`) %>% 
+  mutate(`One-hot` = binary_levels & binary_sum) %>% 
+  dplyr::select(-binary_levels, -binary_sum) %>% 
+  gather("case", "res", -method) %>% 
+  filter(!is.na(res)) %>% 
+  tidyr::complete(method, case) %>% 
+  group_by(method) %>% 
+  mutate(impute_cat = sum(res, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  mutate(res = ifelse(is.na(res), "error", res)) 
+
+
+
+
+final_setup %>% 
+  rename(method = "imputation_fun", final = "var_type") %>% 
+  mutate(method = str_remove(method, "impute_")) %>% 
+  right_join(res_all) %>%  
+  mutate(label = ifelse(is.na(final), "", "X"),
+         final = ifelse(is.na(final), "One-hot", final)) %>% 
+  ggplot(aes(x = reorder(method, -impute_cat), y = case, fill = res)) +
+  theme_minimal(base_size = 16) +
+  geom_tile(color = "black") +
+  theme(axis.text.x = element_text(angle = 90),
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        legend.position = "top") +
+  scale_fill_manual("Proper categories imputed", 
+                    values = c("FALSE" = "white", "TRUE" = "forestgreen", "error" = "gray70"),
+                    labels = c("FALSE" = "No", "TRUE" = "Yes", "error" = "Error"),
+                    breaks = c("TRUE", "FALSE", "error")) +
+  geom_text(aes(x = reorder(method, -impute_cat), y = final, label = label, col = "text")) +
+  scale_color_manual("", values = c("text" = "black"), labels = c("text" = "Used setup")) +
+  guides(color = guide_legend(override.aes = list(label = "X", size = 6, order = 2)),
+         fill  = guide_legend(order = 1))
 
 
 

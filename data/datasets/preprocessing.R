@@ -200,3 +200,96 @@ cat_features <- c(2, 3, 4)
 diamond_cat[, cat_features] <- as.data.frame(lapply(diamond_cat[, cat_features], function(x) factor(as.integer(factor(x)))))
 
 # saveRDS(diamond_cat, "data/datasets/complete_backup/categorical_as_factor/diamond.RDS")
+
+
+
+
+###############################
+## INCOMPLETE
+###############################
+
+###
+# Climate Change
+###
+
+data <- OpenML::getOMLDataSet(46728)
+data <- data$data
+
+data <- data %>% mutate_all(as.numeric)
+data[data == 99999] <- NA
+data$Month <- as.factor(data$Month)
+data$Latitude <- NULL
+data$Longitude <- NULL
+data$Altitude_m <- NULL
+data$Proximity_to_Water_km <- NULL
+
+data <- rename_columns(data)
+
+# saveRDS(data, "data/datasets/incomplete_backup/climate_change.RDS")
+
+
+###
+# Bone Marrow Transplant
+###
+
+data <- OpenML::getOMLDataSet(46610)
+data <- data$data
+
+cat.features <- c(1,2,5,6,7,8,9,11,12,13,14,15,16,17,18,20,21,22,26,27,28,37)
+num.features <- c(3,23,29,30,31,32,33,34,35,36)
+drop.features <- c(4,10,19,24,25)
+
+data$ANCrecovery[data$ANCrecovery == 1000000] <- NA
+data$PLTrecovery[data$PLTrecovery == 1000000] <- NA
+data$time_to_aGvHD_III_IV[data$time_to_aGvHD_III_IV == 1000000] <- NA
+
+data[, cat.features] <- as.data.frame(lapply(data[, cat.features], function(x) factor(as.integer(factor(x)))))
+data[, num.features] <- as.data.frame(lapply(data[, num.features], as.numeric))
+data[, drop.features] <- NULL
+
+data <- rename_columns(data)
+
+# saveRDS(data, "data/datasets/incomplete_backup/bone_marrow_transplant.RDS")
+
+
+###
+# RF1
+###
+
+data <- readRDS("./data/datasets/incomplete_backup/rf1.RDS")
+data <- rename_columns(data)
+
+# saveRDS(data, "data/datasets/incomplete_backup/pre_processed/rf1.RDS")
+
+
+###
+# NHANES
+###
+
+library(NHANES)
+data("NHANES")
+
+
+data <- NHANES
+
+# str(data)
+
+names(data)
+
+data <- data %>% 
+  mutate(nPregnancies = ifelse(Gender == "male" & is.na(nPregnancies), 0, nPregnancies)) %>% 
+  mutate(nBabies = ifelse(nPregnancies == 0 & is.na(nBabies), 0, nBabies)) %>% 
+  mutate(SexNumPartYear = ifelse(SexEver == "No", 0, SexNumPartYear)) %>%
+  mutate(PregnantNow = ifelse(Gender == "male" & is.na(PregnantNow), "No", as.character(PregnantNow)),
+         PregnantNow = factor(PregnantNow, levels = levels(data$PregnantNow))) %>% 
+  select(-ID,-Race3, -HHIncome, -BMI_WHO, -Smoke100n) %>% 
+  select(-DiabetesAge, -Age1stBaby, -Smoke100, -AgeFirstMarij, -AgeRegMarij, -SexAge)
+
+# make factor columns integer factors
+cols.factors <- names(data)[sapply(data, is.factor)]
+data[cols.factors] <- lapply(data[cols.factors], function(x) as.factor(as.integer(x)))
+
+# saveRDS(data, "data/datasets/incomplete_backup/nhanes.RDS")
+# saveRDS(data, "data/datasets/incomplete_backup/pre_processed/nhanes.RDS")
+
+

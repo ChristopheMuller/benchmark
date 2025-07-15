@@ -16,7 +16,16 @@ dimensions <- lapply(files, function(ith_file) {
 saveRDS(dimensions, "./data/datasets/sets_dim.RDS")
 
 
-
+dimensions %>% 
+  filter(set_id != "oes10") %>% # Had Missing Data in it!
+  filter(set_id != "pyrimidines") %>%  # weird error for collinearity
+  filter(set_id != "solder") %>%   # always error
+  filter(set_id != "Ozone") %>%  # always error (in score)
+  filter(set_id != "colic") %>%  # always error 
+  filter(set_id != "tao") %>%  # exact same as oceanbuoys
+  filter(set_id != "meatspec") %>%  # collinearity
+  ggplot() +
+  geom_label(aes(x = n_col, y = n_row, label = set_id))
 
 
 
