@@ -115,17 +115,22 @@ library(googlesheets4)
 library(ggplot2)
 library(stringr)
 
+url <- "https://docs.google.com/spreadsheets/d/1rFnJkfpF-YfK04uGa-IzjzZYy-czLQZEiiLOF4hr3_w/edit?usp=sharing"
 
 methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>% 
   filter(benchmark) %>% 
-  select(Method, imputation_function) %>% 
+  dplyr::select(Method, imputation_function) %>% 
   rename("elegant_name" = "Method",
-         "imputation_fun" = "imputation_function")
+         "method" = "imputation_function")
 
 
 res_all <- readRDS("./data/imputation_methods/categorical_imputation/res_check.RDS") %>% 
-  filter(!(method %in% c("mice_cart50", "mice_cart100", "superimputer", 
-                       "supersuperimputer", "engression", "missmda_em")))
+  filter(!(method %in% unique(c(paste0("impute_", c("mice_cart50", "mice_cart100", "superimputer", 
+                         "supersuperimputer", "engression", "missmda_em",
+                         "halfmin", "minProb", "gbmImpute", "cm", "min")), 
+                         c("impute_gbmImpute", "impute_halfmin", "impute_minProb", 
+                           "impute_min", "impute_missmda_em", "impute_cm", 
+                           "impute_supersuperimputer")))))
 
 final_setup <- res_all %>% 
   # filter(!is.na(check)) %>% 
@@ -153,7 +158,10 @@ saveRDS(final_setup, "./data/categorical_funs.RDS")
 
 #### vis
 
-res_all <- res_all %>% 
+res_all <- res_all %>%
+  left_join(methods, by = "method") %>% 
+  mutate(method = elegant_name) %>% 
+  dplyr::select(-elegant_name) %>% 
   # filter(!is.na(check)) %>% 
   mutate(case = ifelse(case == "base_dat2", "Numeric", case),
          case = ifelse(case == "base_dat3", "Factor-\nNumeric", case),
