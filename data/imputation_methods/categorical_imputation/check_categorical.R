@@ -53,6 +53,11 @@ base_dat5[M] <- NA
 
 imp_methods <- pull(readRDS("./data/functions.RDS"), `Function name`)
 
+imp_methods <- imp_methods[!(imp_methods %in% c("impute_mice_cart100",
+                                                "impute_superimputer",
+                                                "impute_mice_cart50",
+                                                "impute_engression"))]
+
 case <- c("base_dat2", "base_dat3", "base_dat4", "base_dat5")
 
 
@@ -106,6 +111,10 @@ saveRDS(res_all, "./data/imputation_methods/categorical_imputation/res_check.RDS
 ######################################
 
 library(ggplot2)
+
+res_all <- readRDS("./data/imputation_methods/categorical_imputation/res_check.RDS") %>% 
+  filter(!(method %in% c("mice_cart50", "mice_cart100", "superimputer", 
+                       "supersuperimputer", "engression", "missmda_em")))
 
 res_all %>% 
   # filter(!is.na(check)) %>% 

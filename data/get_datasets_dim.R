@@ -1,6 +1,6 @@
 
 
-path_to_complete_datasets <- "./data/datasets/complete/"
+path_to_complete_datasets <- "./data/datasets/complete_backup/only_num/"
 
 
 files <- list.files(path_to_complete_datasets, full.names = TRUE)
