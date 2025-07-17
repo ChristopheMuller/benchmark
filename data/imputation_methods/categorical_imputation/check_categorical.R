@@ -53,6 +53,12 @@ base_dat5[M] <- NA
 
 imp_methods <- pull(readRDS("./data/functions.RDS"), `Function name`)
 
+imp_methods <- imp_methods[!(imp_methods %in% c("impute_mice_cart100",
+                                                "impute_superimputer",
+                                                "impute_mice_cart50",
+                                                "impute_engression",
+                                                "impute_supersuperimputer"))]
+
 case <- c("base_dat2", "base_dat3", "base_dat4", "base_dat5")
 
 
@@ -105,13 +111,23 @@ saveRDS(res_all, "./data/imputation_methods/categorical_imputation/res_check.RDS
 
 ######################################
 
-res_all <- readRDS("./data/imputation_methods/categorical_imputation/res_check.RDS") %>% 
-  filter(!(method %in% paste0("impute_", c("mice_cart50", "mice_cart100", "superimputer", 
-                         "supersuperimputer", "engression", "missmda_em", "cm",
-                         "min"))))
-
+library(dplyr)
+library(googlesheets4)
 library(ggplot2)
 library(stringr)
+
+url <- "https://docs.google.com/spreadsheets/d/1rFnJkfpF-YfK04uGa-IzjzZYy-czLQZEiiLOF4hr3_w/edit?usp=sharing"
+
+methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>% 
+  filter(benchmark) %>% 
+  dplyr::select(Method, imputation_function) %>% 
+  rename("elegant_name" = "Method",
+         "method" = "imputation_function")
+
+
+res_all <- readRDS("./data/imputation_methods/categorical_imputation/res_check.RDS") %>% 
+  filter(!(method %in% c("impute_gbmImpute", "impute_halfmin", "impute_minProb", "impute_min", 
+                         "impute_missmda_em", "impute_cm")))
 
 final_setup <- res_all %>% 
   # filter(!is.na(check)) %>% 
@@ -139,21 +155,25 @@ saveRDS(final_setup, "./data/categorical_funs.RDS")
 
 #### vis
 
-res_all <- res_all %>% 
+res_all_plt <- res_all %>%
+  left_join(methods, by = "method") %>% 
+  mutate(method = elegant_name) %>% 
+  dplyr::select(-elegant_name) %>% 
   # filter(!is.na(check)) %>% 
+  # filter(method == "nlpca") %>%
   mutate(case = ifelse(case == "base_dat2", "Numeric", case),
          case = ifelse(case == "base_dat3", "Factor-\nNumeric", case),
          case = ifelse(case == "base_dat4", "One-hot", case),
-         case = ifelse(case == "base_dat5", "Factor-\nCharacter", case),
-         method = str_remove(method, "impute_")) %>% 
+         case = ifelse(case == "base_dat5", "Factor-\nCharacter", case)) %>% 
   mutate(check = ifelse(case != "One-hot", "levels", check)) %>% 
   pivot_wider(names_from = check, values_from = res) %>% 
   pivot_wider(names_from = case, values_from = levels, names_repair = "unique") %>% 
-  dplyr::select(-`One-hot`) %>% 
   mutate(`One-hot` = binary_levels & binary_sum) %>% 
   dplyr::select(-binary_levels, -binary_sum) %>% 
   gather("case", "res", -method) %>% 
-  filter(!is.na(res)) %>% 
+  group_by(case, method) %>% 
+  filter(!is.na(res) | all(is.na(res))) %>%
+  ungroup() %>% 
   tidyr::complete(method, case) %>% 
   group_by(method) %>% 
   mutate(impute_cat = sum(res, na.rm = TRUE)) %>% 
@@ -161,15 +181,17 @@ res_all <- res_all %>%
   mutate(res = ifelse(is.na(res), "error", res)) 
 
 
+final_plot_tmp <- final_setup %>% 
+  rename(method = "imputation_fun") %>% 
+  left_join(methods, by = "method") %>% 
+  mutate(method = elegant_name) %>% 
+  dplyr::select(-elegant_name) %>% 
+  rename(final = "var_type")
 
 
 
-
-
-final_setup %>% 
-  rename(method = "imputation_fun", final = "var_type") %>% 
-  mutate(method = str_remove(method, "impute_")) %>% 
-  right_join(res_all) %>%  
+res_all_plt  %>%  
+  left_join(final_plot_tmp) %>% 
   mutate(label = ifelse(is.na(final), "", "X"),
          final = ifelse(is.na(final), "One-hot", final)) %>% 
   ggplot(aes(x = reorder(method, -impute_cat), y = case, fill = res)) +
