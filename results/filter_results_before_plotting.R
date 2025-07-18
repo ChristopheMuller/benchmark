@@ -36,7 +36,7 @@ small_sets <- c("star", "tvdoctor", "cheddar", "eco", "leafburn", "stat500", "sa
 imputation_summary <- imputation_summary %>% 
   filter(case == "complete") %>% 
   filter(!(method %in% c("mice_default", "gbmImpute", 
-                         "missmda_MIFAMD_reg", "missmda_MIFAMD_em",
+                         "missmda_mifamd_reg", "missmda_mifamd_em",
                          "SVTImpute"))) %>% 
   filter(!(set_id %in% small_sets))
 
@@ -44,7 +44,7 @@ imputation_summary <- imputation_summary %>%
 imputation_summary <-imputation_summary %>% 
   filter(case == "incomplete") %>% 
   filter(!(method %in% c("mice_default", "mixgb", "gbmImpute", 
-                         "missmda_MIFAMD_reg", "missmda_MIFAMD_em",
+                         "missmda_mifamd_reg", "missmda_mifamd_em",
                          "rmiMAE", "SVTImpute"))) %>% 
   filter(!(set_id %in% small_sets))
 
