@@ -1,7 +1,6 @@
 
 
 library(dplyr)
-imputation_summary <- readRDS("~/INRIA/R_scripts/benchmark/results/imputation_summary_M2.RDS")
 
 n_methods <- length(unique(imputation_summary$method))
 
@@ -99,4 +98,29 @@ for (k in k_values) {
 
 # Combine results and save
 final_results <- do.call(rbind, results)
+
+
+
+
+library(ggplot2)
+library(dplyr)
+
+ggplot(final_results, aes(x = group_size, y = 1 - metric, color = factor(k))) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1),
+                     breaks = 1:10*0.1) +
+  scale_x_continuous(breaks = 1:max(final_results$group_size)) +
+  labs(
+    title = "",
+    x = "Number of different methods",
+    y = "Proportion of cases in top k ranks",
+    color = "k"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5)
+  )
+
+
 

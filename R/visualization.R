@@ -12,7 +12,17 @@ library(ggridges)
 
 get_colors_errors <- function() {
   c("computational" = "#7A4E7E", "modification" = "#A3A725", 
-    "timeout" = "#1E9CC2", "missings" = "#3D6649", "none" = "#EDF2EF")
+    "timeout" = "#1E9CC2", "missings" = "#3D6649", 
+    "modification+wrong_levels" = "orangered3", "wrong_levels" = "gold",
+    "none" = "#EDF2EF"
+    )
+}
+
+get_labels_errors <- function() {
+  c("computational" = "computational", "modification" = "modification", 
+    "timeout" = "timeout", "missings" = "missings",     
+    "modification+wrong_levels" = "wrong levels & modification", 
+    "wrong_levels" = "wrong levels", "none" = "none" )
 }
 
 get_colors_ranks <- function() {
@@ -36,6 +46,29 @@ get_colors_datasets <- function() {
 }
 
 
+plot_small_errors <- function(imputation_summary) {
+  
+  imputation_summary %>% 
+    filter(!is.na(measure)) %>% 
+    select(-measure, -score) %>% 
+    unique() %>% 
+    group_by(method) %>% 
+    mutate(n_attempts = n()) %>% 
+    mutate(error = ifelse(is.na(error), "none", error)) %>% 
+    group_by(set_id, error) %>% 
+    reframe(n = (n() / nrow(.) )* 100) %>% 
+    filter(error != "none") %>% 
+    group_by(set_id) %>%
+    mutate(n_total = sum(n) * 100) %>%
+    ggplot() +
+    geom_col(aes(x = reorder(set_id, n_total), y = n, fill = error), width = 0.7) +
+    xlab("Dataset") +
+    ylab("Errors [%]") +
+    scale_fill_manual(name = "Type of error", values = get_colors_errors()) +
+    coord_flip() +
+    theme_minimal()
+}
+
 
 plot_errors <- function(imputation_summary) {
   
@@ -53,16 +86,20 @@ plot_errors <- function(imputation_summary) {
     group_by(method, `Type of error`) %>% 
     reframe(error_frac = 100*n()/n_attempts) %>% 
     unique() %>% 
+    group_by(method) %>% 
+    mutate(joint_error = sum(error_frac[`Type of error` != "none"])) %>%
     ggplot() + 
-    geom_col(aes(x = method, y = error_frac, fill = `Type of error`, 
+    geom_col(aes(x = reorder(method, joint_error), y = error_frac, fill = `Type of error`, 
                  alpha = `Type of error`)) +
-    ylim(0, 100) +
-    ylab("imputations [%]" ) +
-    coord_flip() +
+    ylim(0, 100.5) +
+    ylab("Imputations [%]" ) +
+    xlab("Method") +
     scale_fill_manual(name = "Type of error", values = get_colors_errors()) +
     scale_alpha_manual(values = c("computational" = 1, "modification" = 1, 
                                   "timeout" = 1, "missings" = 1, "none" = 0.8)) +
-    theme_minimal() 
+    theme_minimal(base_size = 13)  +
+    theme(axis.text.x = element_text(angle = 90),
+          legend.position = "top")
   
 }
 
@@ -228,7 +265,6 @@ shreks_plot_agg <- function(imputation_summary, case_sim = "complete") {
     unique() %>%
     mutate(score = ifelse(is.nan(score), NA, score)) %>%
     mutate(case_id_fine = paste0(set_id, "_", mechanism, "_", ratio, "_rep", rep)) %>%
-    
     group_by(set_id, mechanism, ratio, rep) %>%
     mutate(ranking = {
       ranking <- rep(NA, length(score))
@@ -934,9 +970,9 @@ plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40
 
 
 
-plot_ranking_boxplots <- function(breaks = c(0, 1, 40, 80, 99, 100)) {
+plot_ranking_boxplots <- function(imputation_summary, breaks = c(0, 1, 40, 80, 99, 100)) {
   
-  score_name = "energy_std"
+  score_name = "IScore_cat"
   
   n_methods <- length(unique(pull(imputation_summary, method)))
   
@@ -994,7 +1030,7 @@ plot_ranking_boxplots <- function(breaks = c(0, 1, 40, 80, 99, 100)) {
                   fill = `success [%]`)) +
     scale_fill_manual(name = "success [%]", values = get_colors_fractions()) +
     labs(x = "Methods", y = "Average Time") +
-    theme_bw() +
+    theme_bw(base_size = 15) +
     theme(axis.text.y = element_blank(),
           axis.title.y = element_blank(),
           legend.position = "none") +
@@ -1005,23 +1041,23 @@ plot_ranking_boxplots <- function(breaks = c(0, 1, 40, 80, 99, 100)) {
                        labels = c("116ms", "1s", "1min", "10min", "30min", "1h", "2h", "3h")) +
     theme(panel.grid.minor.x = element_blank(),
           panel.grid.major.x = element_line(color = "black", linetype = "dashed"),
-          axis.text.x = element_text(angle = 90))
+          axis.text.x = element_text(angle = 0))
   
   
   p2 <- dat_plt %>% 
     ungroup() %>% 
     ggplot(aes(x = reorder(method, mean_ranking), y = ranking)) +
-    geom_boxplot(fill = "gray") +
+    geom_boxplot(fill = "gray90") +
     geom_point(aes(x = reorder(method, mean_ranking), y = mean_ranking, col = "a"), size = 2) +
     scale_fill_manual(name = "success [%]", 
                       values = get_colors_fractions()) +
     scale_color_manual(
       name = "", 
-      values = c("a" = "darkblue"),
+      values = c("a" = "royalblue4"),
       labels = c("a" = "Averaged rank")
     ) +
     labs(x = "Methods", y = "Mean Energy") +
-    theme_bw() +
+    theme_bw(base_size = 15) +
     theme(axis.text.y = element_text(hjust = 0.5),
           axis.title.y = element_blank(),
           legend.position = "bottom") +
@@ -1030,7 +1066,7 @@ plot_ranking_boxplots <- function(breaks = c(0, 1, 40, 80, 99, 100)) {
   
   p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = 'bottom')
   # save as pdf
-  # ggsave("~/INRIA/R_scripts/benchmark/latex/energy_time_ranking_cat_num.pdf", width = 20, height = 10, units="cm")
+  # ggsave("~/INRIA/R_scripts/benchmark/latex/energy_time_ranking_cat_num.pdf", width = 12, height = 15, units="cm")
   
 }
 
