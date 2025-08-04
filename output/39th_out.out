@@ -1,0 +1,215 @@
+- The project is out-of-sync -- use `renv::status()` for details.
+[1] "2025-02-11 11:15:44 CET"
+- The project is out-of-sync -- use `renv::status()` for details.
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Registered S3 methods overwritten by 'registry':
+  method               from 
+  print.registry_field proxy
+  print.registry_entry proxy
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+Loading required package: mice
+
+Attaching package: ‘mice’
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    cbind, rbind
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-8
+Joining with `by = join_by(set_id, mechanism, case, method, imputation_fun,
+ratio, rep)`
+[1] 323  13
+✔ skipping targets (1 so far)...
+▶ dispatched target imputed_dat_missforest.mar.0.3.2.scm20d
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.1.2.oes10
+▶ dispatched target imputed_dat_remasker.mcar.0.1.1.oes10
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.1.1.oes10
+▶ dispatched target imputed_dat_mnmf.mar.0.1.1.scm1d
+▶ dispatched target imputed_dat_mice_CALIBER.mcar.0.3.1.scm1d
+▶ dispatched target imputed_dat_remasker.mar.0.1.2.allergens
+▶ dispatched target imputed_dat_nlpca.mar.0.3.2.scm20d
+▶ dispatched target imputed_dat_mice_gamlss.mcar.0.2.1.scm20d
+▶ dispatched target imputed_dat_irmi.mcar.0.2.1.scm1d
+▶ dispatched target imputed_dat_FHDI.mar.0.1.2.allergens
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.3.2.oes10
+▶ dispatched target imputed_dat_remasker.mcar.0.3.1.oes10
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.3.1.oes10
+▶ dispatched target imputed_dat_nlpca.mar.0.3.2.scm1d
+▶ dispatched target imputed_dat_nlpca.mar.0.1.2.oes10
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.3.1.scm1d
+▶ dispatched target imputed_dat_remasker.mcar.0.3.2.allergens
+▶ dispatched target imputed_dat_nlpca.mar.0.1.2.scm1d
+▶ dispatched target imputed_dat_mice_rf.mcar.0.3.1.oes10
+▶ dispatched target imputed_dat_irmi.mar.0.2.2.scm1d
+▶ dispatched target imputed_dat_remasker.mcar.0.2.1.scm20d
+▶ dispatched target imputed_dat_nlpca.mar.0.3.2.oes10
+▶ dispatched target imputed_dat_mnmf.mar.0.3.1.scm20d
+▶ dispatched target imputed_dat_mice_drf.mcar.0.3.1.scm1d
+● completed target imputed_dat_mice_rf.mcar.0.3.1.oes10 [1.932 hours, 187.756 kilobytes]
+▶ dispatched target obtained_scores_mice_rf.mcar.0.3.1.oes10
+● completed target obtained_scores_mice_rf.mcar.0.3.1.oes10 [1.041 seconds, 330 bytes]
+▶ dispatched target imputed_dat_vim_pca_robust.mar.0.1.2.oes10
+Error in `get_result(output = out, options)` at eval.R:193:3:
+! callr subprocess failed: could not start R, exited with non-zero status, has crashed or was killed
+---
+Standard output:
+- The project is out-of-sync -- use `renv::status()` for details.
+[1] 323  13
+---
+Standard error:
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Registered S3 methods overwritten by 'registry':
+  method               from 
+  print.registry_field proxy
+  print.registry_entry proxy
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+Loading required package: mice
+
+Attaching package: ‘mice’
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    cbind, rbind
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-8
+Joining with `by = join_by(set_id, mechanism, case, method, imputation_fun,
+ratio, rep)`
+✔ skipping targets (1 so far)...
+▶ dispatched target imputed_dat_missforest.mar.0.3.2.scm20d
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.1.2.oes10
+▶ dispatched target imputed_dat_remasker.mcar.0.1.1.oes10
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.1.1.oes10
+▶ dispatched target imputed_dat_mnmf.mar.0.1.1.scm1d
+▶ dispatched target imputed_dat_mice_CALIBER.mcar.0.3.1.scm1d
+▶ dispatched target imputed_dat_remasker.mar.0.1.2.allergens
+▶ dispatched target imputed_dat_nlpca.mar.0.3.2.scm20d
+▶ dispatched target imputed_dat_mice_gamlss.mcar.0.2.1.scm20d
+▶ dispatched target imputed_dat_irmi.mcar.0.2.1.scm1d
+▶ dispatched target imputed_dat_FHDI.mar.0.1.2.allergens
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.3.2.oes10
+▶ dispatched target imputed_dat_remasker.mcar.0.3.1.oes10
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.3.1.oes10
+▶ dispatched target imputed_dat_nlpca.mar.0.3.2.scm1d
+▶ dispatched target imputed_dat_nlpca.mar.0.1.2.oes10
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.3.1.scm1d
+▶ dispatched target imputed_dat_remasker.mcar.0.3.2.allergens
+▶ dispatched target imputed_dat_nlpca.mar.0.1.2.scm1d
+▶ dispatched target imputed_dat_mice_rf.mcar.0.3.1.oes10
+▶ dispatched target imputed_dat_irmi.mar.0.2.2.scm1d
+▶ dispatched target imputed_dat_remasker.mcar.0.2.1.scm20d
+▶ dispatched target imputed_dat_nlpca.mar.0.3.2.oes10
+▶ dispatched target imputed_dat_mnmf.mar.0.3.1.scm20d
+▶ dispatched target imputed_dat_mice_drf.mcar.0.3.1.scm1d
+● completed target imputed_dat_mice_rf.mcar.0.3.1.oes10 [1.932 hours, 187.756 kilobytes]
+▶ dispatched target obtained_scores_mice_rf.mcar.0.3.1.oes10
+● completed target obtained_scores_mice_rf.mcar.0.3.1.oes10 [1.041 seconds, 330 bytes]
+▶ dispatched target imputed_dat_vim_pca_robust.mar.0.1.2.oes10
+---
+Backtrace:
+1. targets::tar_make_clustermq(workers = 25)
+2. targets:::callr_outer(targets_function = tar_make_clustermq_inner, targets_arguments… at tar_make_clustermq.R:115:3
+3. targets:::callr_dispatch(targets_function = targets_function, targets_arguments = ta… at utils_callr.R:27:3
+4. targets:::if_any(is.null(callr_function), callr_inner(targets_function = targets_fun… at utils_callr.R:126:3
+5. base::do.call(callr_function, callr_prepare_arguments(callr_function, … at utils_callr.R:126:3
+6. (function (func, args = list(), libpath = .libPaths(), repos = default_rep…
+7. callr:::get_result(output = out, options) at eval.R:193:3
+8. callr:::throw(new_callr_crash_error(output, killmsg)) at result.R:35:7
+Execution halted
+INFO:    Terminating squashfuse_ll after timeout
+INFO:    Timeouts can be caused by a running background process
+slurmstepd: error: Detected 1 oom_kill event in StepId=23131724.batch. Some of the step tasks have been OOM Killed.

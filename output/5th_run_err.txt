@@ -1,0 +1,20 @@
+Error:
+! targets::tar_make_clustermq() error
+
+── Debugging ───────────────────────────────────────────────────────────────────
+    • tar_errored()
+    • tar_meta(fields = any_of("error"), complete_only = TRUE)
+    • tar_workspace()
+    • tar_workspaces()
+
+── How to ──────────────────────────────────────────────────────────────────────
+    • Debug: https://books.ropensci.org/targets/debugging.html
+    • Help: https://books.ropensci.org/targets/help.html
+
+── Last error message ──────────────────────────────────────────────────────────
+    subscript out of bounds
+
+── Last error traceback ────────────────────────────────────────────────────────
+    impute(dataset_id = "sinkhorn.mcar.0.3.1.hayes_roth", missing_data_set =...
+    (function (condition)  {     state$error <- build_message(condition)    ...
+Execution halted

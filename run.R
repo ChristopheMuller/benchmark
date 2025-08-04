@@ -1,0 +1,16 @@
+#!/usr/bin/env Rscript
+
+# This is a helper script to run the pipeline.
+# Choose how to execute the pipeline below.
+# See https://books.ropensci.org/targets/hpc.html
+# to learn about your options.
+
+# targets::tar_make()
+# !!!! python is not working for this plan
+print(Sys.time())
+targets::tar_make_clustermq(workers = 25) # nolintz
+print(Sys.time())
+
+
+
+

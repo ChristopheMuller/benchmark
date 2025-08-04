@@ -1,0 +1,237 @@
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+[1] "2025-04-27 17:17:27 CEST"
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Registered S3 methods overwritten by 'registry':
+  method               from 
+  print.registry_field proxy
+  print.registry_entry proxy
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+Loading required package: mice
+
+Attaching package: ‘mice’
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    cbind, rbind
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-8
+
+Attaching package: ‘MetabImpute’
+
+The following object is masked from ‘package:stats’:
+
+    simulate
+
+Registered S3 methods overwritten by 'fmsb':
+  method    from
+  print.roc pROC
+  plot.roc  pROC
+[1] "total dim params: 2400" "total dim params: 14"  
+
+           choccake            chredlin                hips              nels88 
+                300                 300                 300                 300 
+PimaIndiansDiabetes              solder             uswages            worldcup 
+                300                 300                 300                 300 
+
+ mar mcar 
+1200 1200 
+
+   1    2 
+1200 1200 
+
+0.1 0.2 0.3 
+800 800 800 
+
+              areg       areg_normpmm    areg_regression                 cm 
+                96                 96                 96                 96 
+       hyperimpute               irmi             median     metabimpute_rf 
+                96                 96                 96                 96 
+      mice_CALIBER          mice_cart       mice_default           mice_drf 
+                96                 96                 96                 96 
+   mice_midastouch         mice_mixed           mice_pmm            mice_rf 
+                96                 96                 96                 96 
+               min         missforest    missmda_famd_em   missmda_famd_reg 
+                96                 96                 96                 96 
+ missmda_MIFAMD_em missmda_MIFAMD_reg              mixgb             random 
+                96                 96                 96                 96 
+           vim_knn 
+                96 
+Superclass QSys has cloneable=FALSE, but subclass MULTIPROCESS has cloneable=TRUE. A subclass cannot be cloneable when its superclass is not cloneable, so cloning will be disabled for MULTIPROCESS.
+▶ dispatched target amputed_dat_mcar.0.2.1.PimaIndiansDiabetes
+▶ dispatched target amputed_dat_mar.0.3.2.PimaIndiansDiabetes
+▶ dispatched target amputed_dat_mcar.0.3.1.nels88
+▶ dispatched target amputed_dat_mcar.0.3.1.worldcup
+▶ dispatched target amputed_dat_mar.0.3.1.worldcup
+▶ dispatched target amputed_dat_mcar.0.3.2.nels88
+▶ dispatched target amputed_dat_mcar.0.1.1.choccake
+▶ dispatched target amputed_dat_mcar.0.3.1.uswages
+▶ dispatched target amputed_dat_mar.0.3.1.chredlin
+▶ dispatched target amputed_dat_mcar.0.2.2.PimaIndiansDiabetes
+▶ dispatched target amputed_dat_mar.0.2.1.nels88
+▶ dispatched target amputed_dat_mcar.0.1.1.chredlin
+▶ dispatched target amputed_dat_mar.0.2.2.nels88
+▶ dispatched target amputed_dat_mcar.0.2.2.chredlin
+▶ dispatched target amputed_dat_mar.0.1.1.choccake
+▶ dispatched target amputed_dat_mar.0.2.1.PimaIndiansDiabetes
+▶ dispatched target amputed_dat_mcar.0.3.1.hips
+▶ dispatched target amputed_dat_mcar.0.2.1.hips
+▶ dispatched target amputed_dat_mcar.0.1.1.hips
+▶ dispatched target amputed_dat_mar.0.2.2.PimaIndiansDiabetes
+▶ dispatched target amputed_dat_mar.0.3.2.choccake
+▶ dispatched target amputed_dat_mar.0.1.2.solder
+▶ dispatched target amputed_dat_mar.0.1.1.chredlin
+▶ dispatched target amputed_dat_mar.0.1.1.solder
+● completed target amputed_dat_mcar.0.2.1.PimaIndiansDiabetes [9.544 seconds, 12.96 kilobytes]
+▶ dispatched target save_amputed_dat_mcar.0.2.1.PimaIndiansDiabetes
+● completed target amputed_dat_mcar.0.3.1.nels88 [9.485 seconds, 2.276 kilobytes]
+▶ dispatched target amputed_dat_mcar.0.3.2.choccake
+● completed target amputed_dat_mcar.0.1.1.choccake [8.996 seconds, 1.469 kilobytes]
+▶ dispatched target amputed_dat_mar.0.1.1.PimaIndiansDiabetes
+● completed target amputed_dat_mar.0.3.2.PimaIndiansDiabetes [10.316 seconds, 12.243 kilobytes]
+▶ dispatched target amputed_dat_mar.0.2.1.worldcup
+● completed target save_amputed_dat_mcar.0.2.1.PimaIndiansDiabetes [0.075 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mcar.0.1.2.worldcup
+● completed target amputed_dat_mcar.0.3.1.worldcup [9.786 seconds, 8.241 kilobytes]
+▶ dispatched target save_amputed_dat_mcar.0.3.1.worldcup
+● completed target amputed_dat_mcar.0.2.2.PimaIndiansDiabetes [9.213 seconds, 12.91 kilobytes]
+▶ dispatched target amputed_dat_mcar.0.1.2.uswages
+● completed target amputed_dat_mar.0.3.1.worldcup [10.348 seconds, 8.224 kilobytes]
+▶ dispatched target save_amputed_dat_mar.0.3.1.worldcup
+● completed target amputed_dat_mcar.0.3.2.choccake [0.243 seconds, 1.608 kilobytes]
+▶ dispatched target save_amputed_dat_mcar.0.3.2.choccake
+● completed target amputed_dat_mcar.0.3.2.nels88 [10.152 seconds, 2.287 kilobytes]
+▶ dispatched target save_amputed_dat_mcar.0.1.1.choccake
+● completed target amputed_dat_mar.0.3.1.chredlin [9.664 seconds, 1.161 kilobytes]
+▶ dispatched target save_amputed_dat_mar.0.3.1.chredlin
+● completed target amputed_dat_mcar.0.3.1.uswages [9.733 seconds, 21.538 kilobytes]
+▶ dispatched target amputed_dat_mar.0.1.2.PimaIndiansDiabetes
+● completed target amputed_dat_mar.0.2.1.worldcup [0.274 seconds, 8.41 kilobytes]
+▶ dispatched target save_amputed_dat_mar.0.2.1.worldcup
+● completed target amputed_dat_mar.0.1.1.PimaIndiansDiabetes [0.577 seconds, 13.302 kilobytes]
+▶ dispatched target amputed_dat_mar.0.1.1.hips
+● completed target amputed_dat_mcar.0.1.2.worldcup [0.238 seconds, 8.545 kilobytes]
+▶ dispatched target amputed_dat_mar.0.1.1.nels88
+● completed target save_amputed_dat_mcar.0.3.1.worldcup [0.044 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mar.0.1.1.uswages
+● completed target amputed_dat_mcar.0.1.1.chredlin [9.466 seconds, 1.261 kilobytes]
+▶ dispatched target save_amputed_dat_mcar.0.1.1.chredlin
+● completed target save_amputed_dat_mar.0.3.1.worldcup [0.016 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mar.0.1.1.worldcup
+● completed target save_amputed_dat_mcar.0.3.2.choccake [0.011 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mar.0.1.2.choccake
+● completed target save_amputed_dat_mcar.0.1.1.choccake [0.001 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mar.0.1.2.chredlin
+● completed target amputed_dat_mcar.0.1.2.uswages [0.244 seconds, 21.361 kilobytes]
+▶ dispatched target amputed_dat_mar.0.1.2.hips
+● completed target amputed_dat_mcar.0.2.2.chredlin [9.55 seconds, 1.192 kilobytes]
+▶ dispatched target save_amputed_dat_mcar.0.2.2.chredlin
+● completed target save_amputed_dat_mar.0.3.1.chredlin [0.001 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mar.0.1.2.nels88
+● completed target amputed_dat_mar.0.1.1.choccake [9.429 seconds, 1.529 kilobytes]
+▶ dispatched target save_amputed_dat_mar.0.1.1.choccake
+● completed target amputed_dat_mcar.0.2.1.hips [8.838 seconds, 967 bytes]
+▶ dispatched target amputed_dat_mar.0.1.2.uswages
+● completed target amputed_dat_mar.0.2.1.nels88 [9.873 seconds, 2.417 kilobytes]
+▶ dispatched target amputed_dat_mar.0.1.2.worldcup
+● completed target amputed_dat_mcar.0.3.1.hips [9.138 seconds, 950 bytes]
+▶ dispatched target amputed_dat_mar.0.2.1.choccake
+● completed target save_amputed_dat_mar.0.2.1.worldcup [0.002 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mar.0.2.1.chredlin
+● completed target amputed_dat_mar.0.1.1.hips [0.03 seconds, 960 bytes]
+▶ dispatched target amputed_dat_mar.0.2.1.hips
+● completed target amputed_dat_mcar.0.1.1.hips [8.992 seconds, 961 bytes]
+▶ dispatched target amputed_dat_mar.0.2.1.solder
+● completed target save_amputed_dat_mcar.0.1.1.chredlin [0.002 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mar.0.2.1.uswages
+● completed target amputed_dat_mar.0.1.2.PimaIndiansDiabetes [0.61 seconds, 13.278 kilobytes]
+▶ dispatched target amputed_dat_mar.0.2.2.choccake
+● completed target amputed_dat_mar.0.1.1.nels88 [0.231 seconds, 2.417 kilobytes]
+▶ dispatched target amputed_dat_mar.0.2.2.chredlin
+● completed target save_amputed_dat_mcar.0.2.2.chredlin [0.002 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mar.0.2.2.hips
+● completed target save_amputed_dat_mar.0.1.1.choccake [0.02 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mar.0.2.2.solder
+● completed target amputed_dat_mar.0.1.1.worldcup [0.273 seconds, 8.473 kilobytes]
+▶ dispatched target amputed_dat_mar.0.2.2.uswages
+● completed target amputed_dat_mar.0.1.2.choccake [0.224 seconds, 1.515 kilobytes]
+▶ dispatched target amputed_dat_mar.0.2.2.worldcup
+● completed target amputed_dat_mar.0.2.2.nels88 [10.499 seconds, 2.399 kilobytes]
+▶ dispatched target amputed_dat_mar.0.3.1.PimaIndiansDiabetes
+● completed target amputed_dat_mar.0.1.2.nels88 [0.25 seconds, 2.428 kilobytes]
+▶ dispatched target amputed_dat_mar.0.3.1.choccake
+● completed target amputed_dat_mar.0.1.2.hips [0.238 seconds, 978 bytes]
+▶ dispatched target amputed_dat_mar.0.3.1.hips
+● completed target amputed_dat_mar.0.2.1.chredlin [0.031 seconds, 1.185 kilobytes]
+▶ dispatched target amputed_dat_mar.0.3.1.nels88
+● completed target amputed_dat_mar.0.1.2.chredlin [0.539 seconds, 1.253 kilobytes]
+▶ dispatched target amputed_dat_mar.0.3.1.solder
+● completed target amputed_dat_mar.0.1.2.worldcup [0.291 seconds, 8.476 kilobytes]
+▶ dispatched target amputed_dat_mar.0.3.1.uswages
+● completed target amputed_dat_mar.0.2.1.hips [0.031 seconds, 979 bytes]
+▶ dispatched target amputed_dat_mar.0.3.2.chredlin
+● completed target amputed_dat_mar.0.2.2.PimaIndiansDiabetes [9.732 seconds, 12.881 kilobytes]
+▶ dispatched target save_amputed_dat_mar.0.2.2.PimaIndiansDiabetes
+● completed target amputed_dat_mar.0.2.1.choccake [0.532 seconds, 1.574 kilobytes]
+▶ dispatched target amputed_dat_mar.0.3.2.hips
+● completed target amputed_dat_mar.0.2.2.choccake [0.023 seconds, 1.59 kilobytes]
+▶ dispatched target amputed_dat_mar.0.3.2.nels88
+● completed target amputed_dat_mar.0.2.2.chredlin [0.038 seconds, 1.217 kilobytes]
+▶ dispatched target amputed_dat_mar.0.3.2.solder
+▶ recorded workspace amputed_dat_mar.0.1.2.uswages
+✖ errored target amputed_dat_mar.0.1.2.uswages
+Master: [19.3 secs 8.9% CPU]; Worker: [avg 78.5% CPU, max 1.2 Gb]
+✖ errored pipeline [25.124 seconds]
+Warning messages:
+1: replacing previous import ‘S4Arrays::makeNindexFromArrayViewport’ by ‘DelayedArray::makeNindexFromArrayViewport’ when loading ‘SummarizedExperiment’ 
+2: 19 targets produced warnings. Run targets::tar_meta(fields = warnings, complete_only = TRUE) for the messages. 

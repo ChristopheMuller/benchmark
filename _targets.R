@@ -1,135 +1,199 @@
 
-options(warn = -1)  # Turn off warnings
 # options(warn = 0)  # Re-enable warnings
 
-
-
 library(targets)
+options(clustermq.scheduler = "multiprocess")
 library(tarchetypes)
 library(purrr)
+library(dplyr)
+library(stringr)
+library(energy)
+library(reticulate)
+library(tidyr)
+library(clustermq)
+library(parallel)
 
+#imputations
+library(imputomics)
+library(miceDRF)
+library(ImputeRobust)
+library(mice)
+library(glmnet)
+library(missForest)
+library(MetabImpute)
+library(SuperImputer)
+
+# for vis
+library(ggplot2)
+library(patchwork)
+
+#dummy solution
+select <- dplyr::select
 
 # Source custom functions
-tar_source("R/functions.R")
+tar_source()
 
+# options(clustermq.scheduler = "multiprocess")
 
-# Tar options
-tar_option_set(
-  packages = c("imputomics", "energy"),
+reticulate::use_virtualenv("./.venv", required = TRUE)
+
+set.seed(56135)
+
+#################################################  PARAMETERS  #################
+
+# timeout value [in seconds]
+timeout_thresh <- 36000
+
+# number of attempts in a single run
+n_attempts <- 2
+
+# set paths
+path_to_amputed <- "./results/amputed/"
+path_to_complete_datasets <- "./data/datasets/complete/"
+path_to_incomplete_datasets <- "./data/datasets/incomplete/"
+path_to_categorical_datasets <- "./data/datasets/categorical/"
+path_to_incomplete_categorical_datasets <- "./data/datasets/incomplete_categorical/"
+path_to_imputed <- "./results/imputed/"
+
+path_to_results <- "./results/"
+
+path_to_methods <- "./data/functions.RDS"
+path_to_cat_methods <- "./data/categorical_funs.RDS"
+
+# amputation setup:
+amputation_mechanisms <- c("mcar", "mar")
+missing_ratios <- c(0.1, 0.2, 0.3)
+amputation_reps <- 2
+
+# imputation methods
+imputation_methods <- readRDS(path_to_methods) %>% 
+  rename(imputation_fun = `Function name`) %>% 
+  mutate(method = str_remove(imputation_fun, "impute_")) %>%
+  filter(method %in% c("missmda_famd_em", "missmda_famd_reg", "missmda_pca_em", "missmda_pca_reg", "missmda_MIFAMD_em", "missmda_MIFAMD_reg",
+                       "missmda_MIPCA_em", "missmda_MIPCA_reg"))
+
+imputation_categorical <- readRDS(path_to_cat_methods) 
+
+# parameters:
+params <- create_params(
+  path_to_complete_datasets = path_to_complete_datasets,
+  path_to_incomplete_datasets = path_to_incomplete_datasets,
+  path_to_categorical_datasets = path_to_categorical_datasets,
+  path_to_incomplete_categorical_datasets = path_to_incomplete_categorical_datasets,
+  path_to_amputed = path_to_amputed,
+  path_to_imputed = path_to_imputed,
+  amputation_mechanisms = amputation_mechanisms,
+  amputation_reps = amputation_reps,
+  missing_ratios = missing_ratios,
+  imputation_methods = imputation_methods,
+  imputation_categorical = imputation_categorical
 )
 
 
-methods <- list(method = c(
-          "mean", "median", "zero", "min", "halfmin", "random",
-          "mice_cart", "mice_pmm", "mice_mixed", "mice_rf", "missforest",
-          "metabimpute_rf", "missmda_em", "amelia", "areg", "tknn",
-          "corknn", "knn", "bpca", "metabimpute_bpca", "cm", "softimpute",
-          "bayesmetab", "mice_drf", "mice_norm_predict", "mice_norm_nob",
-          "FEFI", "pca_lls", "pca_classic", "pca_robust",
-          "rmiMAE", "gamlss", "FHDI",
-          "sinkhorn","hyperimpute","miwae","miracle","gain","EM"))
+print(paste0("total dim params: ", dim(params)))
+print(table(params$set_id))
+print(table(params$mechanism))
+print(table(params$rep))
+print(table(params$ratio))
+print(table(params$method))
 
 
 
-# Define pipeline
+# saveRDS(params, "./data/params.RDS")
 
-create_data <- list(
-  # Data generation parameters
+amputation_params <- params %>% 
+  select(amputed_id, mechanism, ratio, filepath_original, filepath_amputed) %>% 
+  unique()
+
+imputation_params <- params %>% 
+  select(imputed_id, amputed_id, filepath_amputed, imputation_fun, 
+         filepath_imputed, MI, filepath_original, case, var_type) %>% 
+  unique()
+
+#################################################  AMPUTATION  #################
+
+amputed_datasets <- tar_map(
+  values = amputation_params,
+  names = any_of("amputed_id"),
+  tar_target(amputed_dat, 
+             ampute_dataset(filepath = filepath_original,
+                            mechanism = mechanism,
+                            ratio = ratio), 
+             cue = tar_cue_skip(1 > 0)),
+  tar_target(save_amputed_dat,
+             saveRDS(amputed_dat, filepath_amputed))
+)
+
+#################################################  IMPUTATION  #################
+
+imputed_datasets <- tar_map(
+  values = imputation_params,
+  names = any_of("imputed_id"),
   tar_target(
-    data_params,
-    list(
-      n = 100,              # number of samples
-      d = 10,               # number of variables
-      prc_missing = 0.15,   # percentage of missing values
-      seed = 123            # random seeds
-    )
+    imputed_dat, {
+      impute(
+        dataset_id = imputed_id,
+        missing_data_set = amputed_all[[paste0("amputed_dat_", amputed_id)]], 
+        imputing_function = imputation_fun,
+        timeout_thresh = timeout_thresh,
+        n_attempts = n_attempts,
+        var_type = var_type,
+        case = case
+      )
+    },
+    # cue = tar_cue(depend = FALSE),
+    # cue = tar_cue(mode = "always")
   ),
-  
-  # Generate synthetic data
-  tar_target(
-    synthetic_data,
-    generate_fake_data(
-      n = data_params$n,
-      d = data_params$d,
-      prc_missing = data_params$prc_missing,
-      seed = data_params$seed
-    )
+  tar_target(save_imputed_dat,
+             saveRDS(imputed_dat[["imputed"]], filepath_imputed)
   ),
-  
-  # Compute and display statistics
   tar_target(
-    data_stats,
-    compute_statistics(synthetic_data)
+    obtained_scores, {
+      calculate_scores(imputed = imputed_dat, 
+                       amputed = amputed_all[[paste0("amputed_dat_", amputed_id)]],
+                       imputation_fun = get(imputation_fun),
+                       multiple = MI,
+                       imputed_id = imputed_id, 
+                       timeout_thresh = timeout_thresh,
+                       filepath_original = filepath_original,
+                       case = case, var_type = var_type)
+    },
+    # cue = tar_cue(depend = FALSE),
+    # cue = tar_cue(mode = "always"),
   )
 )
 
-
-mapped <- tar_map(
-    unlist = FALSE,
-    
-    values = methods,
-    tar_target(
-      imputed,
-      {
-        imputed <- impute_all(synthetic_data$missing, method)
-        imputed
-      }
-    ),
-    tar_target(
-      imputed_scores,
-      {
-        imputed_scores = list(
-          rmse = compute_imputation_rmse(synthetic_data$complete, imputed$Imp),
-          energy = compute_imputation_energy(synthetic_data$complete, imputed$Imp),
-          runtime = imputed$Runtime,
-          count_err = imputed$Err.count,
-          name = method
-        )
-        imputed_scores
-      }
-      
-    )
-)
-
-combine_scores <- tar_combine(
-  combined_scores,
-  mapped[["imputed_scores"]],
-  
-  command = dplyr::bind_rows(!!!.x, .id = "method")
-)
-
-plotting_scores <- tar_target(
-  plot_scores,
-  {
-    # Create individual plots
-    plot_rmse <- plot_imputation_scores(combined_scores, log_y = T, score_name = "rmse")
-    plot_energy <- plot_imputation_scores(combined_scores, log_y = T, score_name = "energy")
-    plot_runtime <- plot_imputation_scores(combined_scores, log_y = T, score_name = "runtime")
-    
-    # Combine plots using patchwork
-    library(patchwork)
-    combined_plot <- (plot_rmse / plot_energy / plot_runtime) +
-      plot_layout(heights = c(1, 1, 1)) +
-      plot_annotation(
-        title = "Imputation Method Comparison",
-        theme = theme(plot.title = element_text(hjust = 0.5))
-      )
-    
-    # Return all plots in a list
-    list(
-      rmse = plot_rmse,
-      energy = plot_energy,
-      runtime = plot_runtime,
-      combined = combined_plot
-    )
-  }
-)
+#################################################  TARGETS  ####################
 
 
 list(
-  create_data,
-  mapped,
-  combine_scores,
-  plotting_scores
+  # AMPUTATION
+  amputed_datasets,
+  tar_combine(amputed_all,
+              amputed_datasets[["amputed_dat"]],
+              command = list(!!!.x)),
+  tar_target(amputation_summary,
+             summarize_amputation(amputed_all, params)),
+  tar_target(save_amputation_summary, {
+    saveRDS(amputation_summary, 
+            paste0(path_to_results, "amputation_summary.RDS"))
+  }),
+  
+  # IMPUTATION
+  imputed_datasets,
+  tar_combine(all_scores,
+              imputed_datasets[["obtained_scores"]],
+              command = bind_rows(list(!!!.x))),
+  
+  tar_target(imputation_summary, {
+    summarize_imputations(all_scores, params)
+  }),
+  
+  tar_target(save_imputation_summary, {
+    saveRDS(imputation_summary, 
+            paste0(path_to_results, "imputation_summary.RDS"))
+  })
+  
+  # ANALYSIS
+  # nice code here
 )
-

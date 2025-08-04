@@ -1,0 +1,45 @@
+Error:
+! targets::tar_make_clustermq() error
+
+── Debugging ───────────────────────────────────────────────────────────────────
+    • tar_errored()
+    • tar_meta(fields = any_of("error"), complete_only = TRUE)
+    • tar_workspace()
+    • tar_workspaces()
+
+── How to ──────────────────────────────────────────────────────────────────────
+    • Debug: https://books.ropensci.org/targets/debugging.html
+    • Help: https://books.ropensci.org/targets/help.html
+
+── Last error message ──────────────────────────────────────────────────────────
+    Unexpected worker disconnect
+
+── Last error traceback ────────────────────────────────────────────────────────
+    base::tryCatch(base::withCallingHandlers({ NULL base::saveRDS(base::do.c...
+    tryCatchList(expr, classes, parentenv, handlers)
+    tryCatchOne(tryCatchList(expr, names[-nh], parentenv, handlers[-nh]), na...
+    doTryCatch(return(expr), name, parentenv, handler)
+    tryCatchList(expr, names[-nh], parentenv, handlers[-nh])
+    tryCatchOne(expr, names, parentenv, handlers[[1L]])
+    doTryCatch(return(expr), name, parentenv, handler)
+    base::withCallingHandlers({ NULL base::saveRDS(base::do.call(base::do.ca...
+    base::saveRDS(base::do.call(base::do.call, base::c(base::readRDS("/tmp/R...
+    base::do.call(base::do.call, base::c(base::readRDS("/tmp/Rtmp4r1P0m/call...
+    (function (what, args, quote = FALSE, envir = parent.frame()) { if (!is....
+    (function (targets_function, targets_arguments, options, envir = NULL, s...
+    tryCatch(out <- withCallingHandlers(targets::tar_callr_inner_try(targets...
+    tryCatchList(expr, classes, parentenv, handlers)
+    tryCatchOne(expr, names, parentenv, handlers[[1L]])
+    doTryCatch(return(expr), name, parentenv, handler)
+    withCallingHandlers(targets::tar_callr_inner_try(targets_function = targ...
+    targets::tar_callr_inner_try(targets_function = targets_function, target...
+    do.call(targets_function, targets_arguments)
+    (function (pipeline, path_store, names_quosure, shortcut, reporter, seco...
+    clustermq_init(pipeline = pipeline, meta = meta_init(path_store = path_s...
+    self$run_clustermq()
+    self$iterate()
+    self$conclude_worker_target(self$worker_list$recv())
+    self$worker_list$recv()
+    private$master$recv(timeout)
+    .External(list(name = "CppMethod__invoke_notvoid", address = <pointer: 0...
+Execution halted

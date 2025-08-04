@@ -1,0 +1,295 @@
+##########################
+### Code snippets for preprocessing the datasets
+##########################
+
+
+rename_columns <- function(data, prefix="X"){
+  colnames(data) <- paste0(prefix, 1:ncol(data))
+  return(data)
+}
+
+###################
+## NUMERICAL DATA
+###################
+
+### Airoil_self_noise
+# Only num
+
+airfoil_self_noise <- readRDS("./data/datasets/complete_backup/unprocessed/airfoil_self_noise.RDS")
+airfoil_self_noise <- rename_columns(airfoil_self_noise)
+
+# saveRDS(airfoil_self_noise, "data/datasets/complete_backup/only_num/airfoil_self_noise.RDS")
+
+### Allergens
+# Only num
+
+allergens <- read.csv("data/datasets/complete_backup/unprocessed/ACC_2023_Chip1.csv")
+allergens <- allergens[, which(colnames(allergens) == "Act.d.1"):ncol(allergens)]
+allergens <- rename_columns(allergens)
+
+dim(allergens)
+#> 2351 112
+sum(is.na(allergens))
+#> 7
+allergens[is.na(allergens)] <- 9  # replaced all 9 by NA by accident
+
+# saveRDS(allergens, "data/datasets/complete_backup/only_num/allergens.RDS")
+
+
+### Concrete
+# Only num
+
+concrete <- readRDS("./data/datasets/complete_backup/unprocessed/concrete.RDS")
+concrete <- rename_columns(concrete)
+
+# saveRDS(concrete, "data/datasets/complete_backup/only_num/concrete.RDS")
+
+### Enb
+# Only num
+enb <- readRDS("./data/datasets/complete_backup/unprocessed/enb.RDS")
+enb <- rename_columns(enb)
+
+# saveRDS(enb, "data/datasets/complete_backup/only_num/enb.RDS")
+
+
+### Oes10
+# Only num
+
+oes <- readRDS("./data/datasets/complete_backup/unprocessed/oes10.RDS")
+oes <- rename_columns(oes)
+
+# saveRDS(oes, "data/datasets/complete_backup/only_num/oes10.RDS")
+
+
+### Scm1d
+# Only num
+
+scm1d <- readRDS("./data/datasets/complete_backup/unprocessed/scm1d.RDS")
+scm1d <- rename_columns(scm1d)
+
+# saveRDS(scm1d, "data/datasets/complete_backup/only_num/scm1d.RDS")
+
+
+### Scm20d
+# Only num
+
+scm20d <- readRDS("./data/datasets/complete_backup/unprocessed/scm20d.RDS")
+scm20d <- rename_columns(scm20d)
+
+# saveRDS(scm20d, "data/datasets/complete_backup/only_num/scm20d.RDS")
+
+
+### Slump
+# Only num
+
+slump <- readRDS("./data/datasets/complete_backup/unprocessed/slump.RDS")
+slump <- rename_columns(slump)
+
+# saveRDS(slump, "data/datasets/complete_backup/only_num/slump.RDS")
+
+
+### Yeast
+# Mixed
+
+yeast <- readRDS("./data/datasets/complete_backup/unprocessed/yeast.RDS")
+yeast <- yeast[, -1] # remove ID column
+yeast <- rename_columns(yeast)
+
+# => Keep num only
+num_feat <- 1:8
+yeast_only_num <- yeast[, num_feat]
+
+# saveRDS(yeast_only_num, "data/datasets/complete_backup/only_num/yeast.RDS")
+
+
+
+
+
+
+###################
+## CATEGORICAL DATA
+###################
+
+### German
+# Mixed
+
+german <- readRDS("./data/datasets/complete_backup/unprocessed/german.RDS")
+german <- rename_columns(german)
+
+# 1. Keep num only
+num_feat <- c(2,5)
+german_only_num <- german[, num_feat]
+
+# saveRDS(german_only_num, "data/datasets/complete_backup/only_num/german.RDS")
+
+# 2. Cat as factor
+german_cat <- german
+german_cat[, -c(2, 5)] <- as.data.frame(lapply(german_cat[, -c(2, 5)], function(x) factor(as.integer(factor(x)))))
+
+# saveRDS(german_cat, "data/datasets/complete_backup/categorical_as_factor/german.RDS")
+
+
+### Yeast
+# Mixed
+
+yeast <- readRDS("./data/datasets/complete_backup/unprocessed/yeast.RDS")
+yeast <- yeast[, -1] # remove ID column
+yeast <- rename_columns(yeast)
+
+# => Cat as factor
+yeast_cat <- yeast
+yeast_cat$X9[yeast_cat$X9 == "ERL"] <- "ERLPOX"
+yeast_cat$X9[yeast_cat$X9 == "POX"] <- "ERLPOX"
+yeast_cat$X9 <- factor(as.integer(factor(yeast_cat$X9)))
+
+# saveRDS(yeast_cat, "data/datasets/complete_backup/categorical_as_factor/yeast.RDS")
+
+
+### Hayes_roth
+# Only cat
+
+hayes_roth <- readRDS("./data/datasets/complete_backup/unprocessed/hayes_roth.RDS")
+hayes_roth <- as.data.frame(hayes_roth)
+hayes_roth <- hayes_roth[, -1] # remove ID column
+hayes_roth <- rename_columns(hayes_roth)
+
+hayes_roth <- as.data.frame(lapply(hayes_roth, as.factor))
+
+# saveRDS(hayes_roth, "data/datasets/complete_backup/categorical_as_factor/hayes_roth.RDS")
+
+
+### Electricity
+# Mixed
+
+electricity <- readRDS("./data/datasets/complete_backup/unprocessed/electricity.RDS")
+electricity <- rename_columns(electricity)
+
+# => Cat as factor
+electricity_cat <- electricity
+num_features <- c(1,3,4,5,6,7,8)
+electricity_cat[, -num_features] <- as.data.frame(lapply(electricity_cat[, -num_features], function(x) factor(as.integer(factor(x)))))
+
+# saveRDS(electricity_cat, "data/datasets/complete_backup/categorical_as_factor/electricity.RDS")
+
+
+### Eye_movement
+# Mixed
+
+eye_movement <- readRDS("./data/datasets/complete_backup/unprocessed/eye_movement.RDS")
+eye_movement <- eye_movement[, 3:ncol(eye_movement)] # remove ID columns
+eye_movement <- rename_columns(eye_movement)
+
+# => Cat as factor
+eye_movement_cat <- eye_movement
+cat_features <- c(1, 2, 15, 20, 21, 22)
+eye_movement_cat$X21[eye_movement_cat$X21 == "10"] <- "9"
+eye_movement_cat[, cat_features] <- as.data.frame(lapply(eye_movement_cat[, cat_features], function(x) factor(as.integer(factor(x)))))
+
+# saveRDS(eye_movement_cat, "data/datasets/complete_backup/categorical_as_factor/eye_movement.RDS")
+
+
+### Diamond
+# Mixed
+
+diamond <- readRDS("./data/datasets/complete_backup/unprocessed/diamond.RDS")
+diamond <- rename_columns(diamond)
+
+# => Cat as factor
+diamond_cat <- diamond
+cat_features <- c(2, 3, 4)
+diamond_cat[, cat_features] <- as.data.frame(lapply(diamond_cat[, cat_features], function(x) factor(as.integer(factor(x)))))
+
+# saveRDS(diamond_cat, "data/datasets/complete_backup/categorical_as_factor/diamond.RDS")
+
+
+
+
+###############################
+## INCOMPLETE
+###############################
+
+###
+# Climate Change
+###
+
+data <- OpenML::getOMLDataSet(46728)
+data <- data$data
+
+data <- data %>% mutate_all(as.numeric)
+data[data == 99999] <- NA
+data$Month <- as.factor(data$Month)
+data$Latitude <- NULL
+data$Longitude <- NULL
+data$Altitude_m <- NULL
+data$Proximity_to_Water_km <- NULL
+
+data <- rename_columns(data)
+
+# saveRDS(data, "data/datasets/incomplete_backup/climate_change.RDS")
+
+
+###
+# Bone Marrow Transplant
+###
+
+data <- OpenML::getOMLDataSet(46610)
+data <- data$data
+
+cat.features <- c(1,2,5,6,7,8,9,11,12,13,14,15,16,17,18,20,21,22,26,27,28,37)
+num.features <- c(3,23,29,30,31,32,33,34,35,36)
+drop.features <- c(4,10,19,24,25)
+
+data$ANCrecovery[data$ANCrecovery == 1000000] <- NA
+data$PLTrecovery[data$PLTrecovery == 1000000] <- NA
+data$time_to_aGvHD_III_IV[data$time_to_aGvHD_III_IV == 1000000] <- NA
+
+data[, cat.features] <- as.data.frame(lapply(data[, cat.features], function(x) factor(as.integer(factor(x)))))
+data[, num.features] <- as.data.frame(lapply(data[, num.features], as.numeric))
+data[, drop.features] <- NULL
+
+data <- rename_columns(data)
+
+# saveRDS(data, "data/datasets/incomplete_backup/bone_marrow_transplant.RDS")
+
+
+###
+# RF1
+###
+
+data <- readRDS("./data/datasets/incomplete_backup/rf1.RDS")
+data <- rename_columns(data)
+
+# saveRDS(data, "data/datasets/incomplete_backup/pre_processed/rf1.RDS")
+
+
+###
+# NHANES
+###
+
+library(NHANES)
+data("NHANES")
+
+
+data <- NHANES
+
+# str(data)
+
+names(data)
+
+data <- data %>% 
+  mutate(nPregnancies = ifelse(Gender == "male" & is.na(nPregnancies), 0, nPregnancies)) %>% 
+  mutate(nBabies = ifelse(nPregnancies == 0 & is.na(nBabies), 0, nBabies)) %>% 
+  mutate(SexNumPartYear = ifelse(SexEver == "No", 0, SexNumPartYear)) %>%
+  mutate(PregnantNow = ifelse(Gender == "male" & is.na(PregnantNow), "No", as.character(PregnantNow)),
+         PregnantNow = factor(PregnantNow, levels = levels(data$PregnantNow))) %>% 
+  select(-ID,-Race3, -HHIncome, -BMI_WHO, -Smoke100n) %>% 
+  select(-DiabetesAge, -Age1stBaby, -Smoke100, -AgeFirstMarij, -AgeRegMarij, -SexAge)
+
+# make factor columns integer factors
+cols.factors <- names(data)[sapply(data, is.factor)]
+data[cols.factors] <- lapply(data[cols.factors], function(x) as.factor(as.integer(x)))
+
+# saveRDS(data, "data/datasets/incomplete_backup/nhanes.RDS")
+# saveRDS(data, "data/datasets/incomplete_backup/pre_processed/nhanes.RDS")
+
+

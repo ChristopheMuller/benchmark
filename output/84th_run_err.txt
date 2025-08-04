@@ -1,0 +1,27 @@
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+Error:
+! targets::tar_make_clustermq() error
+
+── Debugging ───────────────────────────────────────────────────────────────────
+    • tar_errored()
+    • tar_meta(fields = any_of("error"), complete_only = TRUE)
+    • tar_workspace()
+    • tar_workspaces()
+
+── How to ──────────────────────────────────────────────────────────────────────
+    • Debug: https://books.ropensci.org/targets/debugging.html
+    • Help: https://books.ropensci.org/targets/help.html
+
+── Last error message ──────────────────────────────────────────────────────────
+    NA/NaN/Inf in foreign function call (arg 1)
+
+── Last error traceback ────────────────────────────────────────────────────────
+    calculate_scores(imputed = imputed_dat_mice_norm_nob.mar.0.3.1.fpe,     ...
+    scores_for_complete(original_data = original_data, amputed_data = ampute...
+    miceDRF::energy_dist(X = original_data, X_imp = imputed_data)
+    energy::eqdist.e(rbind(X, X_imp), c(nrow(X), nrow(X_imp)))
+    eqdist.etest(x, sizes, distance = distance, R = 0, method = method)
+    .handleSimpleError(function (condition)  {     state$error <- build_mess...
+    h(simpleError(msg, call))
+Execution halted

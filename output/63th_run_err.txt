@@ -1,0 +1,34 @@
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+Error:
+! targets::tar_make_clustermq() error
+
+── Debugging ───────────────────────────────────────────────────────────────────
+    • tar_errored()
+    • tar_meta(fields = any_of("error"), complete_only = TRUE)
+    • tar_workspace()
+    • tar_workspaces()
+
+── How to ──────────────────────────────────────────────────────────────────────
+    • Debug: https://books.ropensci.org/targets/debugging.html
+    • Help: https://books.ropensci.org/targets/help.html
+
+── Last error message ──────────────────────────────────────────────────────────
+    no applicable method for 'tbl_vars' applied to an object of class "try-error"
+
+── Last error traceback ────────────────────────────────────────────────────────
+    impute(dataset_id = "areg_regression.mar.0.2.2.hayes_roth", missing_data...
+    mutate_all(imputed, as.numeric)
+    manip_all(.tbl, .funs, enquo(.funs), caller_env(), ..., .caller = "mutat...
+    syms(tbl_nongroup_vars(.tbl))
+    map(x, sym)
+    lapply(.x, .f, ...)
+    tbl_nongroup_vars(.tbl)
+    setdiff(tbl_vars(x), group_vars(x))
+    tbl_vars(x)
+    new_sel_vars(tbl_vars_dispatch(x), group_vars(x))
+    structure(vars, groups = group_vars, class = c("dplyr_sel_vars",      "c...
+    tbl_vars_dispatch(x)
+    .handleSimpleError(function (condition)  {     state$error <- build_mess...
+    h(simpleError(msg, call))
+Execution halted

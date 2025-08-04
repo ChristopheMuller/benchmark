@@ -1,0 +1,183 @@
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+[1] "2025-04-17 13:27:01 CEST"
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Registered S3 methods overwritten by 'registry':
+  method               from 
+  print.registry_field proxy
+  print.registry_entry proxy
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+Loading required package: mice
+
+Attaching package: ‘mice’
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    cbind, rbind
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-8
+
+Attaching package: ‘MetabImpute’
+
+The following object is masked from ‘package:stats’:
+
+    simulate
+
+Registered S3 methods overwritten by 'fmsb':
+  method    from
+  print.roc pROC
+  plot.roc  pROC
+[1] "total dim params: 216" "total dim params: 14" 
+
+airfoil_self_noise          allergens           concrete                enb 
+                24                 24                 24                 24 
+             oes10              scm1d             scm20d              slump 
+                24                 24                 24                 24 
+             yeast 
+                24 
+
+ mar mcar 
+ 108  108 
+
+  1   2 
+108 108 
+
+0.1 0.2 0.3 
+ 72  72  72 
+
+mice_cart100  mice_cart50 
+         108          108 
+✔ skipping targets (1 so far)...
+Superclass QSys has cloneable=FALSE, but subclass MULTIPROCESS has cloneable=TRUE. A subclass cannot be cloneable when its superclass is not cloneable, so cloning will be disabled for MULTIPROCESS.
+▶ dispatched target imputed_dat_mice_cart50.mar.0.1.2.scm1d
+✔ skipping targets (702 so far)...
+▶ dispatched target imputed_dat_mice_cart100.mcar.0.1.2.oes10
+✔ skipping targets (703 so far)...
+✔ skipping targets (712 so far)...
+▶ dispatched target imputed_dat_mice_cart50.mar.0.2.2.scm1d
+▶ dispatched target imputed_dat_mice_cart100.mcar.0.3.1.scm1d
+✔ skipping targets (717 so far)...
+✔ skipping targets (734 so far)...
+▶ dispatched target imputed_dat_mice_cart50.mcar.0.3.1.scm1d
+✔ skipping targets (735 so far)...
+▶ dispatched target imputed_dat_mice_cart50.mar.0.2.1.oes10
+✔ skipping targets (740 so far)...
+✔ skipping targets (750 so far)...
+✔ skipping targets (759 so far)...
+▶ dispatched target imputed_dat_mice_cart100.mar.0.1.1.oes10
+✔ skipping targets (766 so far)...
+✔ skipping targets (771 so far)...
+✔ skipping targets (776 so far)...
+✔ skipping targets (781 so far)...
+✔ skipping targets (786 so far)...
+✔ skipping targets (791 so far)...
+✔ skipping targets (796 so far)...
+✔ skipping targets (801 so far)...
+✔ skipping targets (806 so far)...
+✔ skipping targets (811 so far)...
+✔ skipping targets (816 so far)...
+✔ skipping targets (821 so far)...
+✔ skipping targets (826 so far)...
+✔ skipping targets (831 so far)...
+✔ skipping targets (836 so far)...
+✔ skipping targets (841 so far)...
+✔ skipping targets (846 so far)...
+● completed target imputed_dat_mice_cart50.mar.0.1.2.scm1d [10.023 hours, 1.221 kilobytes]
+▶ dispatched target obtained_scores_mice_cart50.mar.0.1.2.scm1d
+● completed target imputed_dat_mice_cart50.mar.0.2.2.scm1d [10.021 hours, 1.221 kilobytes]
+▶ dispatched target obtained_scores_mice_cart50.mar.0.2.2.scm1d
+▶ dispatched target save_imputed_dat_mice_cart50.mar.0.2.2.scm1d
+● completed target imputed_dat_mice_cart100.mcar.0.3.1.scm1d [10.02 hours, 1.222 kilobytes]
+▶ dispatched target obtained_scores_mice_cart100.mcar.0.3.1.scm1d
+● completed target imputed_dat_mice_cart50.mcar.0.3.1.scm1d [10.018 hours, 1.22 kilobytes]
+▶ dispatched target obtained_scores_mice_cart50.mcar.0.3.1.scm1d
+● completed target imputed_dat_mice_cart100.mcar.0.1.2.oes10 [10.022 hours, 1.221 kilobytes]
+▶ dispatched target obtained_scores_mice_cart100.mcar.0.1.2.oes10
+● completed target obtained_scores_mice_cart50.mar.0.1.2.scm1d [0.075 seconds, 294 bytes]
+▶ dispatched target save_imputed_dat_mice_cart100.mcar.0.1.2.oes10
+● completed target imputed_dat_mice_cart50.mar.0.2.1.oes10 [10.019 hours, 1.22 kilobytes]
+▶ dispatched target obtained_scores_mice_cart50.mar.0.2.1.oes10
+● completed target imputed_dat_mice_cart100.mar.0.1.1.oes10 [10.018 hours, 1.219 kilobytes]
+▶ dispatched target obtained_scores_mice_cart100.mar.0.1.1.oes10
+● completed target obtained_scores_mice_cart50.mar.0.2.2.scm1d [0.019 seconds, 294 bytes]
+▶ dispatched target save_imputed_dat_mice_cart100.mcar.0.3.1.scm1d
+● completed target obtained_scores_mice_cart50.mar.0.2.1.oes10 [0.02 seconds, 294 bytes]
+▶ dispatched target save_imputed_dat_mice_cart100.mar.0.1.1.oes10
+● completed target obtained_scores_mice_cart100.mcar.0.3.1.scm1d [0.02 seconds, 297 bytes]
+▶ dispatched target save_imputed_dat_mice_cart50.mar.0.1.2.scm1d
+● completed target obtained_scores_mice_cart50.mcar.0.3.1.scm1d [0.027 seconds, 296 bytes]
+▶ dispatched target save_imputed_dat_mice_cart50.mcar.0.3.1.scm1d
+● completed target obtained_scores_mice_cart100.mcar.0.1.2.oes10 [0.02 seconds, 295 bytes]
+▶ dispatched target save_imputed_dat_mice_cart50.mar.0.2.1.oes10
+● completed target save_imputed_dat_mice_cart100.mcar.0.1.2.oes10 [0.034 seconds, 44 bytes]
+● completed target save_imputed_dat_mice_cart50.mcar.0.3.1.scm1d [0.003 seconds, 44 bytes]
+● completed target save_imputed_dat_mice_cart100.mar.0.1.1.oes10 [0.003 seconds, 44 bytes]
+● completed target save_imputed_dat_mice_cart50.mar.0.1.2.scm1d [0.003 seconds, 44 bytes]
+● completed target save_imputed_dat_mice_cart50.mar.0.2.1.oes10 [0.003 seconds, 44 bytes]
+● completed target save_imputed_dat_mice_cart100.mcar.0.3.1.scm1d [0.003 seconds, 44 bytes]
+● completed target save_imputed_dat_mice_cart50.mar.0.2.2.scm1d [13.555 seconds, 44 bytes]
+● completed target obtained_scores_mice_cart100.mar.0.1.1.oes10 [0.021 seconds, 295 bytes]
+▶ dispatched target all_scores
+● completed target all_scores [0.005 seconds, 17.309 kilobytes]
+▶ dispatched target imputation_summary
+● completed target imputation_summary [0.021 seconds, 18.597 kilobytes]
+▶ dispatched target save_imputation_summary
+● completed target save_imputation_summary [0.017 seconds, 44 bytes]
+Master: [10.0 hours 0.8% CPU]; Worker: [avg 9.5% CPU, max 1 Gb]
+▶ ended pipeline [10.034 hours]
+Warning messages:
+1: replacing previous import ‘S4Arrays::makeNindexFromArrayViewport’ by ‘DelayedArray::makeNindexFromArrayViewport’ when loading ‘SummarizedExperiment’ 
+2: 8 targets produced warnings. Run targets::tar_meta(fields = warnings, complete_only = TRUE) for the messages. 
+Warning in .subset2(e, ".__enclos_env__")$private$finalize() :
+  Unclean shutdown for PIDs: 16138, 16146, 16154, 16162, 16178, 16194, 16204
+[1] "2025-04-17 23:29:37 CEST"

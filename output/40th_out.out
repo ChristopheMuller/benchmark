@@ -1,0 +1,417 @@
+- The project is out-of-sync -- use `renv::status()` for details.
+[1] "2025-02-11 13:54:11 CET"
+- The project is out-of-sync -- use `renv::status()` for details.
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Registered S3 methods overwritten by 'registry':
+  method               from 
+  print.registry_field proxy
+  print.registry_entry proxy
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+Loading required package: mice
+
+Attaching package: ‘mice’
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    cbind, rbind
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-8
+Joining with `by = join_by(set_id, mechanism, case, method, imputation_fun,
+ratio, rep)`
+[1] 323  13
+✔ skipping targets (1 so far)...
+▶ dispatched target imputed_dat_missforest.mar.0.3.2.scm20d
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.1.2.oes10
+▶ dispatched target imputed_dat_remasker.mcar.0.1.1.oes10
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.1.1.oes10
+▶ dispatched target imputed_dat_mnmf.mar.0.1.1.scm1d
+▶ dispatched target imputed_dat_mice_CALIBER.mcar.0.3.1.scm1d
+▶ dispatched target imputed_dat_remasker.mar.0.1.2.allergens
+▶ dispatched target imputed_dat_nlpca.mar.0.3.2.scm20d
+▶ dispatched target imputed_dat_mice_gamlss.mcar.0.2.1.scm20d
+▶ dispatched target imputed_dat_irmi.mcar.0.2.1.scm1d
+▶ dispatched target imputed_dat_FHDI.mar.0.1.2.allergens
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.3.2.oes10
+▶ dispatched target imputed_dat_remasker.mcar.0.3.1.oes10
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.3.1.oes10
+▶ dispatched target imputed_dat_nlpca.mar.0.3.2.scm1d
+▶ dispatched target imputed_dat_nlpca.mar.0.1.2.oes10
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.3.1.scm1d
+▶ dispatched target imputed_dat_remasker.mcar.0.3.2.allergens
+● completed target imputed_dat_missforest.mar.0.3.2.scm20d [3.293 hours, 2.151 megabytes]
+▶ dispatched target obtained_scores_missforest.mar.0.3.2.scm20d
+● completed target obtained_scores_missforest.mar.0.3.2.scm20d [30.912 seconds, 336 bytes]
+▶ dispatched target imputed_dat_nlpca.mar.0.1.2.scm1d
+● completed target imputed_dat_mice_CALIBER.mcar.0.3.1.scm1d [5.169 hours, 12.469 megabytes]
+▶ dispatched target obtained_scores_mice_CALIBER.mcar.0.3.1.scm1d
+● completed target obtained_scores_mice_CALIBER.mcar.0.3.1.scm1d [1.999 minutes, 339 bytes]
+✔ skipping targets (87 so far)...
+▶ dispatched target imputed_dat_irmi.mar.0.2.2.scm1d
+● completed target imputed_dat_nlpca.mar.0.3.2.scm20d [6.221 hours, 2.74 megabytes]
+▶ dispatched target save_imputed_dat_nlpca.mar.0.3.2.scm20d
+● completed target save_imputed_dat_nlpca.mar.0.3.2.scm20d [0.316 seconds, 44 bytes]
+▶ dispatched target obtained_scores_nlpca.mar.0.3.2.scm20d
+● completed target obtained_scores_nlpca.mar.0.3.2.scm20d [27.266 seconds, 330 bytes]
+▶ dispatched target imputed_dat_remasker.mcar.0.2.1.scm20d
+● completed target imputed_dat_FHDI.mar.0.1.2.allergens [7.746 hours, 141.636 kilobytes]
+▶ dispatched target obtained_scores_FHDI.mar.0.1.2.allergens
+● completed target obtained_scores_FHDI.mar.0.1.2.allergens [3.561 seconds, 331 bytes]
+▶ dispatched target imputed_dat_nlpca.mar.0.3.2.oes10
+● completed target imputed_dat_irmi.mcar.0.2.1.scm1d [9.925 hours, 10.858 megabytes]
+▶ dispatched target obtained_scores_irmi.mcar.0.2.1.scm1d
+● completed target obtained_scores_irmi.mcar.0.2.1.scm1d [2.135 minutes, 329 bytes]
+▶ dispatched target imputed_dat_mnmf.mar.0.3.1.scm20d
+● completed target imputed_dat_remasker.mcar.0.1.1.oes10 [10.013 hours, 1.194 kilobytes]
+▶ dispatched target obtained_scores_remasker.mcar.0.1.1.oes10
+● completed target obtained_scores_remasker.mcar.0.1.1.oes10 [0.015 seconds, 284 bytes]
+▶ dispatched target imputed_dat_mice_drf.mcar.0.3.1.scm1d
+● completed target imputed_dat_remasker.mar.0.1.2.allergens [10.014 hours, 1.265 kilobytes]
+▶ dispatched target obtained_scores_remasker.mar.0.1.2.allergens
+● completed target imputed_dat_mice_gamlss.mar.0.1.2.oes10 [10.02 hours, 1.167 kilobytes]
+▶ dispatched target obtained_scores_mice_gamlss.mar.0.1.2.oes10
+● completed target imputed_dat_mice_gamlss.mar.0.1.1.oes10 [10.019 hours, 1.167 kilobytes]
+▶ dispatched target obtained_scores_mice_gamlss.mar.0.1.1.oes10
+● completed target obtained_scores_remasker.mar.0.1.2.allergens [0.011 seconds, 288 bytes]
+▶ dispatched target imputed_dat_vim_pca_robust.mar.0.1.2.oes10
+● completed target obtained_scores_mice_gamlss.mar.0.1.2.oes10 [0.036 seconds, 285 bytes]
+▶ dispatched target imputed_dat_mice_gamlss.mcar.0.1.2.scm20d
+● completed target obtained_scores_mice_gamlss.mar.0.1.1.oes10 [0.026 seconds, 285 bytes]
+▶ dispatched target imputed_dat_irmi.mar.0.3.2.scm1d
+● completed target imputed_dat_mnmf.mar.0.1.1.scm1d [10.019 hours, 1.164 kilobytes]
+▶ dispatched target obtained_scores_mnmf.mar.0.1.1.scm1d
+● completed target obtained_scores_mnmf.mar.0.1.1.scm1d [0.018 seconds, 278 bytes]
+▶ dispatched target imputed_dat_FHDI.mar.0.1.2.scm20d
+● completed target imputed_dat_mice_gamlss.mcar.0.2.1.scm20d [10.019 hours, 1.17 kilobytes]
+▶ dispatched target save_imputed_dat_mice_gamlss.mcar.0.2.1.scm20d
+● completed target save_imputed_dat_mice_gamlss.mcar.0.2.1.scm20d [0.004 seconds, 44 bytes]
+▶ dispatched target obtained_scores_mice_gamlss.mcar.0.2.1.scm20d
+● completed target obtained_scores_mice_gamlss.mcar.0.2.1.scm20d [0.019 seconds, 289 bytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.2.2.scm20d
+● completed target imputed_dat_mice_gamlss.mar.0.3.2.oes10 [10.02 hours, 1.17 kilobytes]
+▶ dispatched target obtained_scores_mice_gamlss.mar.0.3.2.oes10
+● completed target imputed_dat_remasker.mcar.0.3.2.allergens [10.015 hours, 1.198 kilobytes]
+▶ dispatched target obtained_scores_remasker.mcar.0.3.2.allergens
+● completed target imputed_dat_mice_gamlss.mar.0.3.1.oes10 [10.02 hours, 1.167 kilobytes]
+▶ dispatched target obtained_scores_mice_gamlss.mar.0.3.1.oes10
+● completed target obtained_scores_mice_gamlss.mar.0.3.2.oes10 [0.01 seconds, 285 bytes]
+▶ dispatched target save_imputed_dat_remasker.mcar.0.3.2.allergens
+● completed target obtained_scores_remasker.mcar.0.3.2.allergens [0.016 seconds, 289 bytes]
+▶ dispatched target imputed_dat_mnmf.mar.0.3.1.scm1d
+● completed target imputed_dat_nlpca.mar.0.3.2.scm1d [10.02 hours, 1.198 kilobytes]
+▶ dispatched target save_imputed_dat_nlpca.mar.0.3.2.scm1d
+● completed target save_imputed_dat_remasker.mcar.0.3.2.allergens [0.003 seconds, 44 bytes]
+▶ dispatched target obtained_scores_nlpca.mar.0.3.2.scm1d
+● completed target obtained_scores_mice_gamlss.mar.0.3.1.oes10 [0.011 seconds, 288 bytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.3.2.scm20d
+● completed target save_imputed_dat_nlpca.mar.0.3.2.scm1d [0.008 seconds, 44 bytes]
+▶ dispatched target imputed_dat_vim_knn.mcar.0.1.2.scm1d
+● completed target obtained_scores_nlpca.mar.0.3.2.scm1d [0.01 seconds, 284 bytes]
+▶ dispatched target imputed_dat_mice_gamlss.mcar.0.1.1.scm20d
+● completed target imputed_dat_mice_gamlss.mar.0.3.1.scm1d [10.021 hours, 1.166 kilobytes]
+▶ dispatched target save_imputed_dat_mice_gamlss.mar.0.3.1.scm1d
+● completed target imputed_dat_nlpca.mar.0.1.2.oes10 [10.021 hours, 1.197 kilobytes]
+▶ dispatched target obtained_scores_mice_gamlss.mar.0.3.1.scm1d
+● completed target save_imputed_dat_mice_gamlss.mar.0.3.1.scm1d [0.003 seconds, 44 bytes]
+▶ dispatched target obtained_scores_nlpca.mar.0.1.2.oes10
+● completed target obtained_scores_mice_gamlss.mar.0.3.1.scm1d [0.01 seconds, 284 bytes]
+▶ dispatched target imputed_dat_mice_mixed.mcar.0.1.1.scm1d
+● completed target obtained_scores_nlpca.mar.0.1.2.oes10 [0.01 seconds, 280 bytes]
+▶ dispatched target imputed_dat_hyperimpute_em.mar.0.1.2.scm1d
+● completed target imputed_dat_hyperimpute_em.mar.0.1.2.scm1d [2.903 hours, 14.275 megabytes]
+▶ dispatched target obtained_scores_hyperimpute_em.mar.0.1.2.scm1d
+● completed target obtained_scores_hyperimpute_em.mar.0.1.2.scm1d [0.012 seconds, 289 bytes]
+▶ dispatched target save_imputed_dat_hyperimpute_em.mar.0.1.2.scm1d
+● completed target save_imputed_dat_hyperimpute_em.mar.0.1.2.scm1d [4.766 seconds, 44 bytes]
+▶ dispatched target imputed_dat_nlpca.mcar.0.3.1.oes10
+● completed target imputed_dat_nlpca.mar.0.1.2.scm1d [10.013 hours, 1.201 kilobytes]
+▶ dispatched target obtained_scores_nlpca.mar.0.1.2.scm1d
+● completed target obtained_scores_nlpca.mar.0.1.2.scm1d [0.01 seconds, 284 bytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.1.1.scm1d
+● completed target imputed_dat_mice_drf.mcar.0.3.1.scm1d [3.373 hours, 7.301 megabytes]
+▶ dispatched target obtained_scores_mice_drf.mcar.0.3.1.scm1d
+● completed target obtained_scores_mice_drf.mcar.0.3.1.scm1d [2.384 minutes, 333 bytes]
+▶ dispatched target save_imputed_dat_mice_drf.mcar.0.3.1.scm1d
+● completed target save_imputed_dat_mice_drf.mcar.0.3.1.scm1d [2.455 seconds, 44 bytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.1.2.allergens
+● completed target imputed_dat_vim_pca_robust.mar.0.1.2.oes10 [4.423 hours, 281.158 kilobytes]
+▶ dispatched target obtained_scores_vim_pca_robust.mar.0.1.2.oes10
+● completed target obtained_scores_vim_pca_robust.mar.0.1.2.oes10 [0.349 seconds, 341 bytes]
+▶ dispatched target save_imputed_dat_vim_pca_robust.mar.0.1.2.oes10
+● completed target save_imputed_dat_vim_pca_robust.mar.0.1.2.oes10 [0.053 seconds, 44 bytes]
+▶ dispatched target imputed_dat_irmi.mcar.0.1.2.scm1d
+● completed target imputed_dat_irmi.mar.0.2.2.scm1d [10.013 hours, 1.166 kilobytes]
+▶ dispatched target obtained_scores_irmi.mar.0.2.2.scm1d
+● completed target obtained_scores_irmi.mar.0.2.2.scm1d [0.011 seconds, 279 bytes]
+▶ dispatched target imputed_dat_corknn.mcar.0.3.1.scm1d
+● completed target imputed_dat_vim_knn.mcar.0.1.2.scm1d [5.46 hours, 7.26 megabytes]
+▶ dispatched target obtained_scores_vim_knn.mcar.0.1.2.scm1d
+● completed target obtained_scores_vim_knn.mcar.0.1.2.scm1d [2.167 minutes, 332 bytes]
+▶ dispatched target imputed_dat_nlpca.mcar.0.1.1.oes10
+● completed target imputed_dat_nlpca.mar.0.3.2.oes10 [9.619 hours, 171.339 kilobytes]
+▶ dispatched target obtained_scores_nlpca.mar.0.3.2.oes10
+● completed target obtained_scores_nlpca.mar.0.3.2.oes10 [0.039 seconds, 280 bytes]
+Error in `get_result(output = out, options)` at eval.R:193:3:
+! callr subprocess failed: could not start R, exited with non-zero status, has crashed or was killed
+---
+Standard output:
+- The project is out-of-sync -- use `renv::status()` for details.
+[1] 323  13
+---
+Standard error:
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Registered S3 methods overwritten by 'registry':
+  method               from 
+  print.registry_field proxy
+  print.registry_entry proxy
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+Loading required package: mice
+
+Attaching package: ‘mice’
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    cbind, rbind
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-8
+Joining with `by = join_by(set_id, mechanism, case, method, imputation_fun,
+ratio, rep)`
+✔ skipping targets (1 so far)...
+▶ dispatched target imputed_dat_missforest.mar.0.3.2.scm20d
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.1.2.oes10
+▶ dispatched target imputed_dat_remasker.mcar.0.1.1.oes10
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.1.1.oes10
+▶ dispatched target imputed_dat_mnmf.mar.0.1.1.scm1d
+▶ dispatched target imputed_dat_mice_CALIBER.mcar.0.3.1.scm1d
+▶ dispatched target imputed_dat_remasker.mar.0.1.2.allergens
+▶ dispatched target imputed_dat_nlpca.mar.0.3.2.scm20d
+▶ dispatched target imputed_dat_mice_gamlss.mcar.0.2.1.scm20d
+▶ dispatched target imputed_dat_irmi.mcar.0.2.1.scm1d
+▶ dispatched target imputed_dat_FHDI.mar.0.1.2.allergens
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.3.2.oes10
+▶ dispatched target imputed_dat_remasker.mcar.0.3.1.oes10
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.3.1.oes10
+▶ dispatched target imputed_dat_nlpca.mar.0.3.2.scm1d
+▶ dispatched target imputed_dat_nlpca.mar.0.1.2.oes10
+▶ dispatched target imputed_dat_mice_gamlss.mar.0.3.1.scm1d
+▶ dispatched target imputed_dat_remasker.mcar.0.3.2.allergens
+● completed target imputed_dat_missforest.mar.0.3.2.scm20d [3.293 hours, 2.151 megabytes]
+▶ dispatched target obtained_scores_missforest.mar.0.3.2.scm20d
+● completed target obtained_scores_missforest.mar.0.3.2.scm20d [30.912 seconds, 336 bytes]
+▶ dispatched target imputed_dat_nlpca.mar.0.1.2.scm1d
+● completed target imputed_dat_mice_CALIBER.mcar.0.3.1.scm1d [5.169 hours, 12.469 megabytes]
+▶ dispatched target obtained_scores_mice_CALIBER.mcar.0.3.1.scm1d
+● completed target obtained_scores_mice_CALIBER.mcar.0.3.1.scm1d [1.999 minutes, 339 bytes]
+✔ skipping targets (87 so far)...
+▶ dispatched target imputed_dat_irmi.mar.0.2.2.scm1d
+● completed target imputed_dat_nlpca.mar.0.3.2.scm20d [6.221 hours, 2.74 megabytes]
+▶ dispatched target save_imputed_dat_nlpca.mar.0.3.2.scm20d
+● completed target save_imputed_dat_nlpca.mar.0.3.2.scm20d [0.316 seconds, 44 bytes]
+▶ dispatched target obtained_scores_nlpca.mar.0.3.2.scm20d
+● completed target obtained_scores_nlpca.mar.0.3.2.scm20d [27.266 seconds, 330 bytes]
+▶ dispatched target imputed_dat_remasker.mcar.0.2.1.scm20d
+● completed target imputed_dat_FHDI.mar.0.1.2.allergens [7.746 hours, 141.636 kilobytes]
+▶ dispatched target obtained_scores_FHDI.mar.0.1.2.allergens
+● completed target obtained_scores_FHDI.mar.0.1.2.allergens [3.561 seconds, 331 bytes]
+▶ dispatched target imputed_dat_nlpca.mar.0.3.2.oes10
+● completed target imputed_dat_irmi.mcar.0.2.1.scm1d [9.925 hours, 10.858 megabytes]
+▶ dispatched target obtained_scores_irmi.mcar.0.2.1.scm1d
+● completed target obtained_scores_irmi.mcar.0.2.1.scm1d [2.135 minutes, 329 bytes]
+▶ dispatched target imputed_dat_mnmf.mar.0.3.1.scm20d
+● completed target imputed_dat_remasker.mcar.0.1.1.oes10 [10.013 hours, 1.194 kilobytes]
+▶ dispatched target obtained_scores_remasker.mcar.0.1.1.oes10
+● completed target obtained_scores_remasker.mcar.0.1.1.oes10 [0.015 seconds, 284 bytes]
+▶ dispatched target imputed_dat_mice_drf.mcar.0.3.1.scm1d
+● completed target imputed_dat_remasker.mar.0.1.2.allergens [10.014 hours, 1.265 kilobytes]
+▶ dispatched target obtained_scores_remasker.mar.0.1.2.allergens
+● completed target imputed_dat_mice_gamlss.mar.0.1.2.oes10 [10.02 hours, 1.167 kilobytes]
+▶ dispatched target obtained_scores_mice_gamlss.mar.0.1.2.oes10
+● completed target imputed_dat_mice_gamlss.mar.0.1.1.oes10 [10.019 hours, 1.167 kilobytes]
+▶ dispatched target obtained_scores_mice_gamlss.mar.0.1.1.oes10
+● completed target obtained_scores_remasker.mar.0.1.2.allergens [0.011 seconds, 288 bytes]
+▶ dispatched target imputed_dat_vim_pca_robust.mar.0.1.2.oes10
+● completed target obtained_scores_mice_gamlss.mar.0.1.2.oes10 [0.036 seconds, 285 bytes]
+▶ dispatched target imputed_dat_mice_gamlss.mcar.0.1.2.scm20d
+● completed target obtained_scores_mice_gamlss.mar.0.1.1.oes10 [0.026 seconds, 285 bytes]
+▶ dispatched target imputed_dat_irmi.mar.0.3.2.scm1d
+● completed target imputed_dat_mnmf.mar.0.1.1.scm1d [10.019 hours, 1.164 kilobytes]
+▶ dispatched target obtained_scores_mnmf.mar.0.1.1.scm1d
+● completed target obtained_scores_mnmf.mar.0.1.1.scm1d [0.018 seconds, 278 bytes]
+▶ dispatched target imputed_dat_FHDI.mar.0.1.2.scm20d
+● completed target imputed_dat_mice_gamlss.mcar.0.2.1.scm20d [10.019 hours, 1.17 kilobytes]
+▶ dispatched target save_imputed_dat_mice_gamlss.mcar.0.2.1.scm20d
+● completed target save_imputed_dat_mice_gamlss.mcar.0.2.1.scm20d [0.004 seconds, 44 bytes]
+▶ dispatched target obtained_scores_mice_gamlss.mcar.0.2.1.scm20d
+● completed target obtained_scores_mice_gamlss.mcar.0.2.1.scm20d [0.019 seconds, 289 bytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.2.2.scm20d
+● completed target imputed_dat_mice_gamlss.mar.0.3.2.oes10 [10.02 hours, 1.17 kilobytes]
+▶ dispatched target obtained_scores_mice_gamlss.mar.0.3.2.oes10
+● completed target imputed_dat_remasker.mcar.0.3.2.allergens [10.015 hours, 1.198 kilobytes]
+▶ dispatched target obtained_scores_remasker.mcar.0.3.2.allergens
+● completed target imputed_dat_mice_gamlss.mar.0.3.1.oes10 [10.02 hours, 1.167 kilobytes]
+▶ dispatched target obtained_scores_mice_gamlss.mar.0.3.1.oes10
+● completed target obtained_scores_mice_gamlss.mar.0.3.2.oes10 [0.01 seconds, 285 bytes]
+▶ dispatched target save_imputed_dat_remasker.mcar.0.3.2.allergens
+● completed target obtained_scores_remasker.mcar.0.3.2.allergens [0.016 seconds, 289 bytes]
+▶ dispatched target imputed_dat_mnmf.mar.0.3.1.scm1d
+● completed target imputed_dat_nlpca.mar.0.3.2.scm1d [10.02 hours, 1.198 kilobytes]
+▶ dispatched target save_imputed_dat_nlpca.mar.0.3.2.scm1d
+● completed target save_imputed_dat_remasker.mcar.0.3.2.allergens [0.003 seconds, 44 bytes]
+▶ dispatched target obtained_scores_nlpca.mar.0.3.2.scm1d
+● completed target obtained_scores_mice_gamlss.mar.0.3.1.oes10 [0.011 seconds, 288 bytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.3.2.scm20d
+● completed target save_imputed_dat_nlpca.mar.0.3.2.scm1d [0.008 seconds, 44 bytes]
+▶ dispatched target imputed_dat_vim_knn.mcar.0.1.2.scm1d
+● completed target obtained_scores_nlpca.mar.0.3.2.scm1d [0.01 seconds, 284 bytes]
+▶ dispatched target imputed_dat_mice_gamlss.mcar.0.1.1.scm20d
+● completed target imputed_dat_mice_gamlss.mar.0.3.1.scm1d [10.021 hours, 1.166 kilobytes]
+▶ dispatched target save_imputed_dat_mice_gamlss.mar.0.3.1.scm1d
+● completed target imputed_dat_nlpca.mar.0.1.2.oes10 [10.021 hours, 1.197 kilobytes]
+▶ dispatched target obtained_scores_mice_gamlss.mar.0.3.1.scm1d
+● completed target save_imputed_dat_mice_gamlss.mar.0.3.1.scm1d [0.003 seconds, 44 bytes]
+▶ dispatched target obtained_scores_nlpca.mar.0.1.2.oes10
+● completed target obtained_scores_mice_gamlss.mar.0.3.1.scm1d [0.01 seconds, 284 bytes]
+▶ dispatched target imputed_dat_mice_mixed.mcar.0.1.1.scm1d
+● completed target obtained_scores_nlpca.mar.0.1.2.oes10 [0.01 seconds, 280 bytes]
+▶ dispatched target imputed_dat_hyperimpute_em.mar.0.1.2.scm1d
+● completed target imputed_dat_hyperimpute_em.mar.0.1.2.scm1d [2.903 hours, 14.275 megabytes]
+▶ dispatched target obtained_scores_hyperimpute_em.mar.0.1.2.scm1d
+● completed target obtained_scores_hyperimpute_em.mar.0.1.2.scm1d [0.012 seconds, 289 bytes]
+▶ dispatched target save_imputed_dat_hyperimpute_em.mar.0.1.2.scm1d
+● completed target save_imputed_dat_hyperimpute_em.mar.0.1.2.scm1d [4.766 seconds, 44 bytes]
+▶ dispatched target imputed_dat_nlpca.mcar.0.3.1.oes10
+● completed target imputed_dat_nlpca.mar.0.1.2.scm1d [10.013 hours, 1.201 kilobytes]
+▶ dispatched target obtained_scores_nlpca.mar.0.1.2.scm1d
+● completed target obtained_scores_nlpca.mar.0.1.2.scm1d [0.01 seconds, 284 bytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.1.1.scm1d
+● completed target imputed_dat_mice_drf.mcar.0.3.1.scm1d [3.373 hours, 7.301 megabytes]
+▶ dispatched target obtained_scores_mice_drf.mcar.0.3.1.scm1d
+● completed target obtained_scores_mice_drf.mcar.0.3.1.scm1d [2.384 minutes, 333 bytes]
+▶ dispatched target save_imputed_dat_mice_drf.mcar.0.3.1.scm1d
+● completed target save_imputed_dat_mice_drf.mcar.0.3.1.scm1d [2.455 seconds, 44 bytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.1.2.allergens
+● completed target imputed_dat_vim_pca_robust.mar.0.1.2.oes10 [4.423 hours, 281.158 kilobytes]
+▶ dispatched target obtained_scores_vim_pca_robust.mar.0.1.2.oes10
+● completed target obtained_scores_vim_pca_robust.mar.0.1.2.oes10 [0.349 seconds, 341 bytes]
+▶ dispatched target save_imputed_dat_vim_pca_robust.mar.0.1.2.oes10
+● completed target save_imputed_dat_vim_pca_robust.mar.0.1.2.oes10 [0.053 seconds, 44 bytes]
+▶ dispatched target imputed_dat_irmi.mcar.0.1.2.scm1d
+● completed target imputed_dat_irmi.mar.0.2.2.scm1d [10.013 hours, 1.166 kilobytes]
+▶ dispatched target obtained_scores_irmi.mar.0.2.2.scm1d
+● completed target obtained_scores_irmi.mar.0.2.2.scm1d [0.011 seconds, 279 bytes]
+▶ dispatched target imputed_dat_corknn.mcar.0.3.1.scm1d
+● completed target imputed_dat_vim_knn.mcar.0.1.2.scm1d [5.46 hours, 7.26 megabytes]
+▶ dispatched target obtained_scores_vim_knn.mcar.0.1.2.scm1d
+● completed target obtained_scores_vim_knn.mcar.0.1.2.scm1d [2.167 minutes, 332 bytes]
+▶ dispatched target imputed_dat_nlpca.mcar.0.1.1.oes10
+● completed target imputed_dat_nlpca.mar.0.3.2.oes10 [9.619 hours, 171.339 kilobytes]
+▶ dispatched target obtained_scores_nlpca.mar.0.3.2.oes10
+● completed target obtained_scores_nlpca.mar.0.3.2.oes10 [0.039 seconds, 280 bytes]
+---
+Backtrace:
+1. targets::tar_make_clustermq(workers = 18)
+2. targets:::callr_outer(targets_function = tar_make_clustermq_inner, targets_arguments… at tar_make_clustermq.R:115:3
+3. targets:::callr_dispatch(targets_function = targets_function, targets_arguments = ta… at utils_callr.R:27:3
+4. targets:::if_any(is.null(callr_function), callr_inner(targets_function = targets_fun… at utils_callr.R:126:3
+5. base::do.call(callr_function, callr_prepare_arguments(callr_function, … at utils_callr.R:126:3
+6. (function (func, args = list(), libpath = .libPaths(), repos = default_rep…
+7. callr:::get_result(output = out, options) at eval.R:193:3
+8. callr:::throw(new_callr_crash_error(output, killmsg)) at result.R:35:7
+Execution halted
+INFO:    Terminating squashfuse_ll after timeout
+INFO:    Timeouts can be caused by a running background process
+slurmstepd: error: Detected 1 oom_kill event in StepId=23143275.batch. Some of the step tasks have been OOM Killed.

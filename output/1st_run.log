@@ -1,0 +1,2493 @@
+- The project is out-of-sync -- use `renv::status()` for details.
+- The project is out-of-sync -- use `renv::status()` for details.
+[1] "2024-12-09 21:09:45 CET"
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Registered S3 methods overwritten by 'registry':
+  method               from 
+  print.registry_field proxy
+  print.registry_entry proxy
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+Loading required package: parallel
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+Loading required package: mice
+
+Attaching package: ‘mice’
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    cbind, rbind
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-8
+/home/chmuller/benchmark/.venv/lib/python3.11/site-packages/timm/optim/optim_factory.py:7: FutureWarning: Importing from timm.optim.optim_factory is deprecated, please import via timm.optim
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.optim", FutureWarning)
+▶ dispatched target amputed_dat_mcar.0.3.4.airfoil_self_noise
+● completed target amputed_dat_mcar.0.3.4.airfoil_self_noise [0.09 seconds, 9.342 kilobytes]
+▶ dispatched target amputed_dat_mcar.0.3.2.airfoil_self_noise
+▶ dispatched target amputed_dat_mcar.0.3.5.airfoil_self_noise
+● completed target amputed_dat_mcar.0.3.2.airfoil_self_noise [0.931 seconds, 9.319 kilobytes]
+▶ dispatched target amputed_dat_mcar.0.3.3.airfoil_self_noise
+● completed target amputed_dat_mcar.0.3.5.airfoil_self_noise [0.004 seconds, 9.358 kilobytes]
+▶ dispatched target amputed_dat_mcar.0.3.1.airfoil_self_noise
+▶ dispatched target amputed_dat_mcar.0.5.4.airfoil_self_noise
+● completed target amputed_dat_mcar.0.3.1.airfoil_self_noise [0.004 seconds, 9.391 kilobytes]
+▶ dispatched target amputed_dat_mcar.0.5.2.airfoil_self_noise
+● completed target amputed_dat_mcar.0.5.4.airfoil_self_noise [0.003 seconds, 8.553 kilobytes]
+▶ dispatched target amputed_dat_mcar.0.5.5.airfoil_self_noise
+● completed target amputed_dat_mcar.0.3.3.airfoil_self_noise [0.003 seconds, 9.271 kilobytes]
+▶ dispatched target amputed_dat_mcar.0.5.3.airfoil_self_noise
+▶ dispatched target amputed_dat_mcar.0.5.1.airfoil_self_noise
+● completed target amputed_dat_mcar.0.5.5.airfoil_self_noise [0.004 seconds, 8.684 kilobytes]
+▶ dispatched target amputed_dat_mar.0.1.3.airfoil_self_noise
+● completed target amputed_dat_mcar.0.5.3.airfoil_self_noise [0.004 seconds, 8.568 kilobytes]
+▶ dispatched target amputed_dat_mar.0.1.5.airfoil_self_noise
+● completed target amputed_dat_mcar.0.5.1.airfoil_self_noise [0.003 seconds, 8.556 kilobytes]
+▶ dispatched target amputed_dat_mar.0.1.2.airfoil_self_noise
+● completed target amputed_dat_mcar.0.5.2.airfoil_self_noise [0.003 seconds, 8.671 kilobytes]
+▶ dispatched target amputed_dat_mar.0.1.4.airfoil_self_noise
+▶ dispatched target amputed_dat_mar.0.1.1.airfoil_self_noise
+● completed target amputed_dat_mar.0.1.4.airfoil_self_noise [0.189 seconds, 8.668 kilobytes]
+▶ dispatched target save_amputed_dat_mar.0.1.4.airfoil_self_noise
+● completed target amputed_dat_mar.0.1.3.airfoil_self_noise [1.114 seconds, 8.636 kilobytes]
+▶ dispatched target save_amputed_dat_mar.0.1.3.airfoil_self_noise
+● completed target amputed_dat_mar.0.1.5.airfoil_self_noise [0.206 seconds, 8.559 kilobytes]
+▶ dispatched target save_amputed_dat_mar.0.1.5.airfoil_self_noise
+● completed target amputed_dat_mar.0.1.1.airfoil_self_noise [0.189 seconds, 8.603 kilobytes]
+▶ dispatched target save_amputed_dat_mar.0.1.1.airfoil_self_noise
+● completed target amputed_dat_mar.0.1.2.airfoil_self_noise [0.188 seconds, 8.673 kilobytes]
+▶ dispatched target save_amputed_dat_mar.0.1.2.airfoil_self_noise
+▶ dispatched target amputed_dat_mar.0.3.3.airfoil_self_noise
+● completed target save_amputed_dat_mar.0.1.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mar.0.3.5.airfoil_self_noise
+● completed target save_amputed_dat_mar.0.1.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target amputed_dat_NA.NA.1.birth_incomplete
+● completed target save_amputed_dat_mar.0.1.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mar.0.3.2.airfoil_self_noise
+● completed target save_amputed_dat_mar.0.1.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mar.0.3.4.airfoil_self_noise
+● completed target amputed_dat_mar.0.3.3.airfoil_self_noise [0.205 seconds, 9.022 kilobytes]
+▶ dispatched target save_amputed_dat_mar.0.3.3.airfoil_self_noise
+● completed target save_amputed_dat_mar.0.1.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mar.0.3.1.airfoil_self_noise
+▶ dispatched target amputed_dat_mar.0.5.3.airfoil_self_noise
+● completed target amputed_dat_mar.0.3.1.airfoil_self_noise [0.198 seconds, 9.017 kilobytes]
+▶ dispatched target save_amputed_dat_mar.0.3.1.airfoil_self_noise
+● completed target amputed_dat_mar.0.5.3.airfoil_self_noise [0.184 seconds, 8.454 kilobytes]
+▶ dispatched target amputed_dat_mar.0.5.5.airfoil_self_noise
+● completed target amputed_dat_mar.0.3.2.airfoil_self_noise [0.197 seconds, 9.099 kilobytes]
+▶ dispatched target save_amputed_dat_mar.0.3.2.airfoil_self_noise
+● completed target amputed_dat_NA.NA.1.birth_incomplete [0.048 seconds, 252.217 kilobytes]
+▶ dispatched target save_amputed_dat_NA.NA.1.birth_incomplete
+● completed target save_amputed_dat_mar.0.3.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mar.0.5.2.airfoil_self_noise
+● completed target amputed_dat_mar.0.3.4.airfoil_self_noise [0.31 seconds, 9.102 kilobytes]
+▶ dispatched target save_amputed_dat_mar.0.3.4.airfoil_self_noise
+● completed target amputed_dat_mar.0.3.5.airfoil_self_noise [0.198 seconds, 9.126 kilobytes]
+▶ dispatched target save_amputed_dat_mar.0.3.5.airfoil_self_noise
+▶ dispatched target amputed_dat_mar.0.5.4.airfoil_self_noise
+● completed target amputed_dat_mar.0.5.2.airfoil_self_noise [0.181 seconds, 8.434 kilobytes]
+▶ dispatched target amputed_dat_mar.0.5.1.airfoil_self_noise
+● completed target amputed_dat_mar.0.5.4.airfoil_self_noise [0.184 seconds, 8.403 kilobytes]
+▶ dispatched target amputed_dat_mcar.0.1.4.airfoil_self_noise
+● completed target save_amputed_dat_NA.NA.1.birth_incomplete [0.135 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mcar.0.1.2.airfoil_self_noise
+● completed target save_amputed_dat_mar.0.3.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mcar.0.1.5.airfoil_self_noise
+● completed target save_amputed_dat_mar.0.3.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target amputed_dat_mcar.0.1.3.airfoil_self_noise
+● completed target amputed_dat_mar.0.5.5.airfoil_self_noise [0.184 seconds, 8.41 kilobytes]
+▶ dispatched target amputed_dat_mcar.0.1.1.airfoil_self_noise
+● completed target save_amputed_dat_mar.0.3.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target save_amputed_dat_mcar.0.5.1.airfoil_self_noise
+● completed target save_amputed_dat_mar.0.3.1.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target save_amputed_dat_mcar.0.5.5.airfoil_self_noise
+▶ dispatched target save_amputed_dat_mcar.0.5.4.airfoil_self_noise
+● completed target save_amputed_dat_mcar.0.5.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target save_amputed_dat_mcar.0.5.3.airfoil_self_noise
+● completed target amputed_dat_mcar.0.1.5.airfoil_self_noise [0.004 seconds, 8.789 kilobytes]
+▶ dispatched target save_amputed_dat_mcar.0.5.2.airfoil_self_noise
+● completed target save_amputed_dat_mcar.0.5.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target save_amputed_dat_mcar.0.1.5.airfoil_self_noise
+● completed target amputed_dat_mcar.0.1.3.airfoil_self_noise [0.003 seconds, 8.77 kilobytes]
+▶ dispatched target save_amputed_dat_mcar.0.1.3.airfoil_self_noise
+● completed target amputed_dat_mcar.0.1.1.airfoil_self_noise [0.004 seconds, 8.876 kilobytes]
+▶ dispatched target save_amputed_dat_mcar.0.1.1.airfoil_self_noise
+● completed target amputed_dat_mar.0.5.1.airfoil_self_noise [0.187 seconds, 8.392 kilobytes]
+▶ dispatched target save_amputed_dat_mcar.0.3.1.airfoil_self_noise
+● completed target amputed_dat_mcar.0.1.4.airfoil_self_noise [0.003 seconds, 8.7 kilobytes]
+▶ dispatched target save_amputed_dat_mcar.0.1.4.airfoil_self_noise
+● completed target amputed_dat_mcar.0.1.2.airfoil_self_noise [0.003 seconds, 8.795 kilobytes]
+▶ dispatched target amputed_all
+● completed target save_amputed_dat_mcar.0.5.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target save_amputed_dat_mcar.0.1.2.airfoil_self_noise
+▶ dispatched target save_amputed_dat_mcar.0.3.5.airfoil_self_noise
+● completed target save_amputed_dat_mcar.0.1.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target save_amputed_dat_mcar.0.3.4.airfoil_self_noise
+● completed target save_amputed_dat_mcar.0.5.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target save_amputed_dat_mcar.0.3.3.airfoil_self_noise
+● completed target amputed_all [0.001 seconds, 514.59 kilobytes]
+▶ dispatched target imputed_dat_impSeq.mar.0.5.3.airfoil_self_noise
+● completed target save_amputed_dat_mcar.0.1.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_ppca.mcar.0.3.4.airfoil_self_noise
+● completed target save_amputed_dat_mcar.0.1.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mixgb.mar.0.1.4.airfoil_self_noise
+● completed target save_amputed_dat_mcar.0.1.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_knn.mcar.0.5.2.airfoil_self_noise
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+● completed target save_amputed_dat_mcar.0.5.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_gamlss.mcar.0.1.4.airfoil_self_noise
+● completed target save_amputed_dat_mcar.0.3.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_vim_pca.mar.0.1.1.airfoil_self_noise
+● completed target save_amputed_dat_mcar.0.3.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_miracle.mcar.0.3.2.airfoil_self_noise
+2024-12-09 21:43:19.892238: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1733777000.145847    6750 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1733777000.180018    6750 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-12-09 21:43:20.538799: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:From /home/chmuller/benchmark/.venv/lib/python3.11/site-packages/tensorflow/python/compat/v2_compat.py:98: disable_resource_variables (from tensorflow.python.ops.resource_variables_toggle) is deprecated and will be removed in a future version.
+Instructions for updating:
+non-resource variables are not supported in the long term
+2024-12-09 21:43:36.344527: E external/local_xla/xla/stream_executor/cuda/cuda_driver.cc:152] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1733777016.426751    6750 mlir_graph_optimization_pass.cc:401] MLIR V1 optimization pass is not enabled
+● completed target save_amputed_dat_mcar.0.1.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_drf.mar.0.5.2.airfoil_self_noise
+▶ dispatched target imputed_dat_halfmin.mar.0.1.4.airfoil_self_noise
+● completed target save_amputed_dat_mcar.0.3.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mnmf.mcar.0.1.3.airfoil_self_noise
+Error in check_missdf(missdf, above_one = TRUE) : 
+  'missdf' must contain only numeric data above 1.
+Error in check_missdf(missdf, above_one = TRUE) : 
+  'missdf' must contain only numeric data above 1.
+● completed target imputed_dat_impSeq.mar.0.5.3.airfoil_self_noise [1.08 seconds, 40.149 kilobytes]
+▶ dispatched target imputed_dat_remasker.mar.0.5.3.airfoil_self_noise
+Error in .Call(`_reticulate_py_call_impl`, x, args, keywords) : 
+  reached CPU time limit
+[W1209 22:45:18.337572068 NNPACK.cpp:61] Could not initialize NNPACK! Reason: Unsupported hardware.
+● completed target imputed_dat_vim_pca.mar.0.1.1.airfoil_self_noise [0.232 seconds, 15.404 kilobytes]
+▶ dispatched target imputed_dat_mice_pmm.mcar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_knn.mcar.0.5.2.airfoil_self_noise [0.073 seconds, 12.691 kilobytes]
+▶ dispatched target save_imputed_dat_knn.mcar.0.5.2.airfoil_self_noise
+● completed target save_amputed_dat_mcar.0.3.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_hyperimpute.mar.0.1.3.airfoil_self_noise
+TBB Warning: The number of workers is currently limited to 15. The request for 63 workers is ignored. Further requests for more workers will be silently ignored until the limit changes.
+
+● completed target imputed_dat_ppca.mcar.0.3.4.airfoil_self_noise [0.125 seconds, 27.947 kilobytes]
+▶ dispatched target imputed_dat_bpca.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_miracle.mcar.0.3.2.airfoil_self_noise [26.976 seconds, 626 bytes]
+▶ dispatched target save_imputed_dat_miracle.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_mice_drf.mar.0.5.2.airfoil_self_noise [1.053 minutes, 11.944 kilobytes]
+▶ dispatched target imputed_dat_mice_cart.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_mice_gamlss.mcar.0.1.4.airfoil_self_noise [31.669 minutes, 8.878 kilobytes]
+▶ dispatched target save_imputed_dat_mice_gamlss.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_halfmin.mar.0.1.4.airfoil_self_noise [0.016 seconds, 8.666 kilobytes]
+▶ dispatched target imputed_dat_remasker.mcar.0.1.1.airfoil_self_noise
+Error in .Call(`_reticulate_py_call_impl`, x, args, keywords) : 
+  reached CPU time limit
+● completed target imputed_dat_mixgb.mar.0.1.4.airfoil_self_noise [1.719 seconds, 12.603 kilobytes]
+▶ dispatched target imputed_dat_random.mar.0.1.3.airfoil_self_noise
+▶ dispatched target imputed_dat_missforest.mcar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_mnmf.mcar.0.1.3.airfoil_self_noise [0.022 seconds, 382 bytes]
+▶ dispatched target imputed_dat_gsimp.mar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_random.mar.0.1.3.airfoil_self_noise [0.015 seconds, 9.408 kilobytes]
+▶ dispatched target save_imputed_dat_random.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_remasker.mar.0.5.3.airfoil_self_noise [1.012 hours, 24.163 kilobytes]
+▶ dispatched target save_imputed_dat_remasker.mar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_remasker.mcar.0.1.1.airfoil_self_noise [59.809 minutes, 11.169 kilobytes]
+▶ dispatched target save_imputed_dat_remasker.mcar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_miracle.mcar.0.3.2.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_impSeqRob.mcar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_missforest.mcar.0.1.3.airfoil_self_noise [26.246 seconds, 14.643 kilobytes]
+▶ dispatched target imputed_dat_bayesmetab.mcar.0.3.3.airfoil_self_noise
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+● completed target imputed_dat_hyperimpute.mar.0.1.3.airfoil_self_noise [18.552 seconds, 11.94 kilobytes]
+▶ dispatched target save_imputed_dat_hyperimpute.mar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_knn.mcar.0.5.2.airfoil_self_noise [0.008 seconds, 44 bytes]
+▶ dispatched target imputed_dat_areg.mcar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_mice_pmm.mcar.0.5.4.airfoil_self_noise [0.841 seconds, 12.67 kilobytes]
+▶ dispatched target save_imputed_dat_mice_pmm.mcar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_bpca.mar.0.1.2.airfoil_self_noise [3.929 seconds, 15.24 kilobytes]
+▶ dispatched target save_imputed_dat_bpca.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_mice_cart.mar.0.1.3.airfoil_self_noise [7.035 seconds, 8.473 kilobytes]
+▶ dispatched target imputed_dat_vim_pca.mar.0.1.4.airfoil_self_noise
+● completed target save_imputed_dat_mice_gamlss.mcar.0.1.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm.mcar.0.3.1.airfoil_self_noise
+▶ dispatched target imputed_dat_halfmin.mcar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_mice_norm.mcar.0.3.1.airfoil_self_noise [0.223 seconds, 29.689 kilobytes]
+▶ dispatched target imputed_dat_hyperimpute.mar.0.3.1.airfoil_self_noise
+● completed target save_imputed_dat_remasker.mcar.0.1.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_pmm.mcar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_random.mar.0.1.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_hyperimpute.mar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_gsimp.mar.0.5.1.airfoil_self_noise [36.603 seconds, 41.507 kilobytes]
+▶ dispatched target save_imputed_dat_gsimp.mar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_bayesmetab.mcar.0.3.3.airfoil_self_noise [0.275 seconds, 369 bytes]
+▶ dispatched target save_imputed_dat_bayesmetab.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_impSeqRob.mcar.0.5.3.airfoil_self_noise [0.822 seconds, 41.455 kilobytes]
+▶ dispatched target imputed_dat_random.mar.0.1.4.airfoil_self_noise
+● completed target save_imputed_dat_bpca.mar.0.1.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_gsimp.mar.0.5.2.airfoil_self_noise
+● completed target save_imputed_dat_remasker.mar.0.5.3.airfoil_self_noise [0.01 seconds, 44 bytes]
+▶ dispatched target imputed_dat_amelia.mcar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_hyperimpute.mar.0.1.3.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_rf.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_halfmin.mcar.0.1.3.airfoil_self_noise [0.013 seconds, 8.813 kilobytes]
+▶ dispatched target imputed_dat_impSeq.mcar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_vim_pca.mar.0.1.4.airfoil_self_noise [0.265 seconds, 15.499 kilobytes]
+▶ dispatched target imputed_dat_ppca.mcar.0.3.2.airfoil_self_noise
+● completed target save_imputed_dat_mice_pmm.mcar.0.5.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_vim_pca.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_areg.mcar.0.5.5.airfoil_self_noise [0.408 seconds, 12.851 kilobytes]
+▶ dispatched target save_imputed_dat_areg.mcar.0.5.5.airfoil_self_noise
+▶ dispatched target imputed_dat_dimar.mar.0.1.1.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target imputed_dat_hyperimpute.mar.0.1.4.airfoil_self_noise [16.77 seconds, 12.276 kilobytes]
+▶ dispatched target save_imputed_dat_hyperimpute.mar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_mice_rf.mar.0.1.2.airfoil_self_noise [9.92 seconds, 8.463 kilobytes]
+▶ dispatched target save_imputed_dat_mice_rf.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_mice_pmm.mcar.0.5.5.airfoil_self_noise [0.832 seconds, 12.82 kilobytes]
+▶ dispatched target save_imputed_dat_mice_pmm.mcar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_ppca.mcar.0.3.2.airfoil_self_noise [0.051 seconds, 28.042 kilobytes]
+▶ dispatched target imputed_dat_mixgb.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_impSeq.mcar.0.5.2.airfoil_self_noise [0.345 seconds, 41.674 kilobytes]
+▶ dispatched target save_imputed_dat_impSeq.mcar.0.5.2.airfoil_self_noise
+● completed target save_imputed_dat_bayesmetab.mcar.0.3.3.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_knn.mcar.0.5.4.airfoil_self_noise
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+● completed target save_imputed_dat_gsimp.mar.0.5.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_miracle.mcar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_areg.mcar.0.5.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_amelia.mar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_gsimp.mar.0.5.2.airfoil_self_noise [35.644 seconds, 41.395 kilobytes]
+▶ dispatched target save_imputed_dat_gsimp.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_amelia.mcar.0.5.5.airfoil_self_noise [0.121 seconds, 42.441 kilobytes]
+▶ dispatched target imputed_dat_vim_pca.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_random.mar.0.1.4.airfoil_self_noise [0.013 seconds, 9.447 kilobytes]
+▶ dispatched target save_imputed_dat_random.mar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_hyperimpute.mar.0.3.1.airfoil_self_noise [17.375 seconds, 19.076 kilobytes]
+▶ dispatched target save_imputed_dat_hyperimpute.mar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_vim_pca.mcar.0.3.1.airfoil_self_noise [0.33 seconds, 29.296 kilobytes]
+▶ dispatched target save_imputed_dat_vim_pca.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_dimar.mar.0.1.1.airfoil_self_noise [2.243 seconds, 420 bytes]
+▶ dispatched target save_imputed_dat_dimar.mar.0.1.1.airfoil_self_noise
+▶ dispatched target imputed_dat_vim_knn.mar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_dimar.mar.0.1.1.airfoil_self_noise [0.001 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_drf.mar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_mice_rf.mar.0.1.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_halfmin.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_vim_pca.mar.0.1.3.airfoil_self_noise [0.325 seconds, 15.338 kilobytes]
+▶ dispatched target imputed_dat_mnmf.mcar.0.1.5.airfoil_self_noise
+Error in check_missdf(missdf, above_one = TRUE) : 
+  'missdf' must contain only numeric data above 1.
+Error in check_missdf(missdf, above_one = TRUE) : 
+  'missdf' must contain only numeric data above 1.
+● completed target imputed_dat_amelia.mar.0.1.1.airfoil_self_noise [0.07 seconds, 15.454 kilobytes]
+▶ dispatched target imputed_dat_SVDImpute.mar.0.3.4.airfoil_self_noise
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+● completed target save_imputed_dat_hyperimpute.mar.0.3.1.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm.mar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_miracle.mcar.0.3.4.airfoil_self_noise [11.601 seconds, 618 bytes]
+▶ dispatched target save_imputed_dat_miracle.mcar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_mice_pmm.mcar.0.5.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_bpca.mar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_mixgb.mar.0.1.2.airfoil_self_noise [0.883 seconds, 12.528 kilobytes]
+▶ dispatched target imputed_dat_mice_cart.mar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_knn.mcar.0.5.4.airfoil_self_noise [0.022 seconds, 12.567 kilobytes]
+▶ dispatched target save_imputed_dat_knn.mcar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_random.mar.0.1.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_random.mar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_vim_knn.mar.0.5.1.airfoil_self_noise [7.222 seconds, 11.217 kilobytes]
+▶ dispatched target imputed_dat_missforest.mcar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_vim_pca.mcar.0.3.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_dimar_fast.mar.0.5.4.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target save_imputed_dat_impSeq.mcar.0.5.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sklearn_iterative_post.mar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_gsimp.mar.0.5.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_tknn.mar.0.1.2.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target save_imputed_dat_hyperimpute.mar.0.1.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_ppca.mcar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_dimar_fast.mar.0.5.4.airfoil_self_noise [1.38 seconds, 423 bytes]
+▶ dispatched target imputed_dat_vim_pca.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_mice_drf.mar.0.5.4.airfoil_self_noise [1.017 minutes, 12.025 kilobytes]
+▶ dispatched target imputed_dat_mixgb.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_ppca.mcar.0.3.5.airfoil_self_noise [0.048 seconds, 28.479 kilobytes]
+▶ dispatched target imputed_dat_rmiMAE.mar.0.3.1.airfoil_self_noise
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+● completed target imputed_dat_sklearn_iterative_post.mar.0.5.1.airfoil_self_noise [0.304 seconds, 41.127 kilobytes]
+▶ dispatched target imputed_dat_knn.mcar.0.5.5.airfoil_self_noise
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+● completed target imputed_dat_SVDImpute.mar.0.3.4.airfoil_self_noise [0.019 seconds, 347 bytes]
+▶ dispatched target imputed_dat_miracle.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_mice_norm.mar.0.1.4.airfoil_self_noise [0.222 seconds, 15.551 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm.mar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_missforest.mcar.0.1.5.airfoil_self_noise [22.541 seconds, 14.757 kilobytes]
+▶ dispatched target imputed_dat_halfmin.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_halfmin.mar.0.1.2.airfoil_self_noise [0.014 seconds, 8.692 kilobytes]
+▶ dispatched target imputed_dat_remasker.mar.0.5.2.airfoil_self_noise
+Error in .Call(`_reticulate_py_call_impl`, x, args, keywords) : 
+  reached CPU time limit
+● completed target imputed_dat_mnmf.mcar.0.1.5.airfoil_self_noise [0.02 seconds, 382 bytes]
+▶ dispatched target imputed_dat_SVDImpute.mar.0.3.3.airfoil_self_noise
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+● completed target imputed_dat_random.mar.0.1.1.airfoil_self_noise [0.013 seconds, 9.4 kilobytes]
+▶ dispatched target save_imputed_dat_random.mar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_tknn.mar.0.1.2.airfoil_self_noise [1.401 seconds, 426 bytes]
+▶ dispatched target save_imputed_dat_tknn.mar.0.1.2.airfoil_self_noise
+● completed target save_imputed_dat_miracle.mcar.0.3.4.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_hyperimpute.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_bpca.mar.0.1.4.airfoil_self_noise [3.807 seconds, 15.276 kilobytes]
+▶ dispatched target save_imputed_dat_bpca.mar.0.1.4.airfoil_self_noise
+● completed target save_imputed_dat_knn.mcar.0.5.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_bpca.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_mice_cart.mar.0.1.5.airfoil_self_noise [6.821 seconds, 8.541 kilobytes]
+▶ dispatched target imputed_dat_sklearn_iterative.mcar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_hyperimpute.mar.0.1.2.airfoil_self_noise [16.76 seconds, 12.223 kilobytes]
+▶ dispatched target save_imputed_dat_hyperimpute.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_vim_pca.mcar.0.3.2.airfoil_self_noise [0.287 seconds, 29.493 kilobytes]
+▶ dispatched target save_imputed_dat_vim_pca.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_knn.mcar.0.5.5.airfoil_self_noise [0.022 seconds, 12.585 kilobytes]
+▶ dispatched target save_imputed_dat_knn.mcar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_miracle.mcar.0.3.3.airfoil_self_noise [11.576 seconds, 617 bytes]
+▶ dispatched target save_imputed_dat_miracle.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_rmiMAE.mar.0.3.1.airfoil_self_noise [1.036 seconds, 493 bytes]
+▶ dispatched target save_imputed_dat_rmiMAE.mar.0.3.1.airfoil_self_noise
+● completed target save_imputed_dat_bpca.mar.0.1.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_cart.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_remasker.mar.0.5.2.airfoil_self_noise [1.003 hours, 24.042 kilobytes]
+▶ dispatched target save_imputed_dat_remasker.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_halfmin.mcar.0.1.1.airfoil_self_noise [0.015 seconds, 8.892 kilobytes]
+▶ dispatched target imputed_dat_sinkhorn.mcar.0.1.3.airfoil_self_noise
+Error in .Call(`_reticulate_py_call_impl`, x, args, keywords) : 
+  reached CPU time limit
+● completed target imputed_dat_bpca.mar.0.1.3.airfoil_self_noise [3.776 seconds, 15.169 kilobytes]
+▶ dispatched target save_imputed_dat_bpca.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_sklearn_iterative.mcar.0.1.3.airfoil_self_noise [0.037 seconds, 14.2 kilobytes]
+▶ dispatched target save_imputed_dat_sklearn_iterative.mcar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_mice_norm.mar.0.1.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_random.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_mixgb.mar.0.1.3.airfoil_self_noise [0.939 seconds, 12.42 kilobytes]
+▶ dispatched target imputed_dat_missforest.mcar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_SVDImpute.mar.0.3.3.airfoil_self_noise [0.02 seconds, 344 bytes]
+▶ dispatched target imputed_dat_amelia.mcar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_random.mar.0.1.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_impSeq.mcar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_tknn.mar.0.1.2.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_tknn.mar.0.1.1.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target imputed_dat_amelia.mcar.0.5.3.airfoil_self_noise [0.095 seconds, 42.259 kilobytes]
+▶ dispatched target imputed_dat_vim_pca.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_missforest.mcar.0.1.2.airfoil_self_noise [20.795 seconds, 14.625 kilobytes]
+▶ dispatched target imputed_dat_mnmf.mcar.0.1.2.airfoil_self_noise
+Error in check_missdf(missdf, above_one = TRUE) : 
+  'missdf' must contain only numeric data above 1.
+Error in check_missdf(missdf, above_one = TRUE) : 
+  'missdf' must contain only numeric data above 1.
+● completed target imputed_dat_random.mar.0.1.2.airfoil_self_noise [0.014 seconds, 9.375 kilobytes]
+▶ dispatched target save_imputed_dat_random.mar.0.1.2.airfoil_self_noise
+● completed target save_imputed_dat_remasker.mar.0.5.2.airfoil_self_noise [0.009 seconds, 44 bytes]
+▶ dispatched target imputed_dat_vim_pca.mar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_miracle.mcar.0.3.3.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_impSeq.mcar.0.5.4.airfoil_self_noise [0.335 seconds, 41.308 kilobytes]
+▶ dispatched target save_imputed_dat_impSeq.mcar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_sinkhorn.mcar.0.1.3.airfoil_self_noise [40.215 minutes, 14.384 kilobytes]
+▶ dispatched target imputed_dat_dimar_fast.mar.0.5.2.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target save_imputed_dat_knn.mcar.0.5.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_amelia.mcar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_mice_cart.mar.0.1.2.airfoil_self_noise [7.653 seconds, 8.534 kilobytes]
+▶ dispatched target imputed_dat_impSeq.mcar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_hyperimpute.mar.0.1.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_tknn.mar.0.1.4.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target save_imputed_dat_vim_pca.mcar.0.3.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_ppca.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_tknn.mar.0.1.1.airfoil_self_noise [0.912 seconds, 427 bytes]
+▶ dispatched target save_imputed_dat_tknn.mar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_rmiMAE.mar.0.3.1.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_bpca.mcar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_sklearn_iterative.mcar.0.1.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_vim_pca.mcar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_bpca.mar.0.1.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mixgb.mar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_mnmf.mcar.0.1.2.airfoil_self_noise [0.019 seconds, 382 bytes]
+▶ dispatched target imputed_dat_rmiMAE.mar.0.3.3.airfoil_self_noise
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+● completed target imputed_dat_vim_pca.mar.0.1.5.airfoil_self_noise [0.268 seconds, 15.034 kilobytes]
+▶ dispatched target imputed_dat_miracle.mcar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_vim_pca.mcar.0.3.3.airfoil_self_noise [0.282 seconds, 29.49 kilobytes]
+▶ dispatched target save_imputed_dat_vim_pca.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_mice_norm.mar.0.1.2.airfoil_self_noise [0.209 seconds, 15.463 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm.mar.0.1.2.airfoil_self_noise
+● completed target save_imputed_dat_random.mar.0.1.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_areg.mcar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_tknn.mar.0.1.1.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_rmiMAE.NA.NA.1.birth_incomplete
+Error in abs(x) : non-numeric argument to mathematical function
+Error in abs(x) : non-numeric argument to mathematical function
+● completed target imputed_dat_impSeq.mcar.0.5.5.airfoil_self_noise [0.339 seconds, 41.77 kilobytes]
+▶ dispatched target save_imputed_dat_impSeq.mcar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_amelia.mcar.0.5.4.airfoil_self_noise [0.077 seconds, 42.318 kilobytes]
+▶ dispatched target imputed_dat_remasker.mar.0.5.4.airfoil_self_noise
+Error in .Call(`_reticulate_py_call_impl`, x, args, keywords) : 
+  reached CPU time limit
+● completed target imputed_dat_vim_pca.mcar.0.3.4.airfoil_self_noise [0.264 seconds, 29.27 kilobytes]
+▶ dispatched target save_imputed_dat_vim_pca.mcar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_mixgb.mar.0.1.1.airfoil_self_noise [0.933 seconds, 12.499 kilobytes]
+▶ dispatched target imputed_dat_softimpute.mcar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_tknn.mar.0.1.4.airfoil_self_noise [0.924 seconds, 428 bytes]
+▶ dispatched target save_imputed_dat_tknn.mar.0.1.4.airfoil_self_noise
+● completed target save_imputed_dat_impSeq.mcar.0.5.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_SVDImpute.mar.0.3.5.airfoil_self_noise
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+● completed target imputed_dat_dimar_fast.mar.0.5.2.airfoil_self_noise [1.332 seconds, 427 bytes]
+▶ dispatched target imputed_dat_bpca.mar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_bpca.mcar.0.3.4.airfoil_self_noise [16.851 seconds, 28.831 kilobytes]
+▶ dispatched target save_imputed_dat_bpca.mcar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_ppca.mcar.0.3.3.airfoil_self_noise [0.07 seconds, 27.984 kilobytes]
+▶ dispatched target imputed_dat_mice_norm.mar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_areg.mcar.0.5.1.airfoil_self_noise [0.394 seconds, 12.731 kilobytes]
+▶ dispatched target save_imputed_dat_areg.mcar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_rmiMAE.mar.0.3.3.airfoil_self_noise [0.669 seconds, 485 bytes]
+▶ dispatched target save_imputed_dat_rmiMAE.mar.0.3.3.airfoil_self_noise
+● completed target save_imputed_dat_impSeq.mcar.0.5.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sklearn_iterative.mcar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_bpca.mcar.0.3.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_cart.mar.0.1.4.airfoil_self_noise
+● completed target save_imputed_dat_vim_pca.mcar.0.3.4.airfoil_self_noise [0.027 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sinkhorn.mcar.0.1.5.airfoil_self_noise
+Error in .Call(`_reticulate_py_call_impl`, x, args, keywords) : 
+  reached CPU time limit
+● completed target imputed_dat_mice_norm.mar.0.1.5.airfoil_self_noise [0.212 seconds, 15.151 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm.mar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_mice_norm.mar.0.1.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_missforest.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_miracle.mcar.0.3.5.airfoil_self_noise [11.912 seconds, 624 bytes]
+▶ dispatched target save_imputed_dat_miracle.mcar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_SVDImpute.mar.0.3.5.airfoil_self_noise [0.019 seconds, 346 bytes]
+▶ dispatched target imputed_dat_amelia.mcar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_softimpute.mcar.0.1.2.airfoil_self_noise [0.245 seconds, 15.344 kilobytes]
+▶ dispatched target imputed_dat_tknn.mar.0.1.3.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target imputed_dat_rmiMAE.NA.NA.1.birth_incomplete [0.41 seconds, 340 bytes]
+▶ dispatched target save_imputed_dat_rmiMAE.NA.NA.1.birth_incomplete
+● completed target save_imputed_dat_tknn.mar.0.1.4.airfoil_self_noise [0.001 seconds, 44 bytes]
+▶ dispatched target imputed_dat_vim_pca.mcar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_remasker.mar.0.5.4.airfoil_self_noise [1.004 hours, 23.941 kilobytes]
+▶ dispatched target save_imputed_dat_remasker.mar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_vim_pca.mcar.0.3.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mnmf.mcar.0.1.1.airfoil_self_noise
+Error in check_missdf(missdf, above_one = TRUE) : 
+  'missdf' must contain only numeric data above 1.
+Error in check_missdf(missdf, above_one = TRUE) : 
+  'missdf' must contain only numeric data above 1.
+● completed target imputed_dat_bpca.mar.0.1.5.airfoil_self_noise [3.434 seconds, 14.841 kilobytes]
+▶ dispatched target save_imputed_dat_bpca.mar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_sinkhorn.mcar.0.1.5.airfoil_self_noise [43.705 minutes, 14.456 kilobytes]
+▶ dispatched target imputed_dat_remasker.mar.0.5.1.airfoil_self_noise
+Error in .Call(`_reticulate_py_call_impl`, x, args, keywords) : 
+  reached CPU time limit
+● completed target imputed_dat_mice_cart.mar.0.1.4.airfoil_self_noise [6.599 seconds, 8.558 kilobytes]
+▶ dispatched target imputed_dat_softimpute.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_tknn.mar.0.1.3.airfoil_self_noise [8.834 minutes, 431 bytes]
+▶ dispatched target save_imputed_dat_tknn.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_mnmf.mcar.0.1.1.airfoil_self_noise [0.019 seconds, 379 bytes]
+▶ dispatched target imputed_dat_sklearn_iterative.mcar.0.1.2.airfoil_self_noise
+● completed target save_imputed_dat_areg.mcar.0.5.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm_predict.mar.0.3.1.airfoil_self_noise
+● completed target save_imputed_dat_rmiMAE.mar.0.3.3.airfoil_self_noise [0.001 seconds, 44 bytes]
+▶ dispatched target imputed_dat_norm.mar.0.3.4.airfoil_self_noise
+Error in get("impute_norm") : object 'impute_norm' not found
+Error in get("impute_norm") : object 'impute_norm' not found
+● completed target imputed_dat_sklearn_iterative.mcar.0.1.5.airfoil_self_noise [0.038 seconds, 14.26 kilobytes]
+▶ dispatched target save_imputed_dat_sklearn_iterative.mcar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_bpca.mar.0.1.5.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sinkhorn.mcar.0.1.2.airfoil_self_noise
+Error in .Call(`_reticulate_py_call_impl`, x, args, keywords) : 
+  reached CPU time limit
+● completed target imputed_dat_amelia.mcar.0.5.1.airfoil_self_noise [0.083 seconds, 42.433 kilobytes]
+▶ dispatched target imputed_dat_missforest.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_missforest.mcar.0.1.4.airfoil_self_noise [32.518 seconds, 14.66 kilobytes]
+▶ dispatched target imputed_dat_amelia.mcar.0.5.2.airfoil_self_noise
+● completed target save_imputed_dat_rmiMAE.NA.NA.1.birth_incomplete [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_metabimpute_qrilc.mcar.0.3.1.airfoil_self_noise
+● completed target save_imputed_dat_mice_norm.mar.0.1.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_ppca.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_vim_pca.mcar.0.3.5.airfoil_self_noise [0.278 seconds, 29.767 kilobytes]
+▶ dispatched target save_imputed_dat_vim_pca.mcar.0.3.5.airfoil_self_noise
+● completed target save_imputed_dat_remasker.mar.0.5.4.airfoil_self_noise [0.009 seconds, 44 bytes]
+▶ dispatched target imputed_dat_rmiMAE.mar.0.3.5.airfoil_self_noise
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+● completed target save_imputed_dat_miracle.mcar.0.3.5.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_knn.mcar.0.5.1.airfoil_self_noise
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+● completed target imputed_dat_softimpute.mcar.0.1.1.airfoil_self_noise [0.016 seconds, 15.827 kilobytes]
+▶ dispatched target imputed_dat_SVDImpute.mar.0.1.2.airfoil_self_noise
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+● completed target save_imputed_dat_tknn.mar.0.1.3.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_halfmin.mcar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_remasker.mar.0.5.1.airfoil_self_noise [59.852 minutes, 23.956 kilobytes]
+▶ dispatched target save_imputed_dat_remasker.mar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_amelia.mcar.0.5.2.airfoil_self_noise [0.084 seconds, 42.375 kilobytes]
+▶ dispatched target imputed_dat_softimpute.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_missforest.mcar.0.1.1.airfoil_self_noise [23.338 seconds, 15.154 kilobytes]
+▶ dispatched target imputed_dat_mice_norm.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_mice_norm_predict.mar.0.3.1.airfoil_self_noise [0.193 seconds, 28.774 kilobytes]
+▶ dispatched target imputed_dat_random.NA.NA.1.birth_incomplete
+Error in check_missdf(missdf) : 'missdf' must contain only numeric data.
+Error in check_missdf(missdf) : 'missdf' must contain only numeric data.
+● completed target imputed_dat_sklearn_iterative.mcar.0.1.2.airfoil_self_noise [0.035 seconds, 13.965 kilobytes]
+▶ dispatched target save_imputed_dat_sklearn_iterative.mcar.0.1.2.airfoil_self_noise
+● completed target save_imputed_dat_sklearn_iterative.mcar.0.1.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm_predict.mar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_sinkhorn.mcar.0.1.2.airfoil_self_noise [42.497 minutes, 14.148 kilobytes]
+▶ dispatched target imputed_dat_norm.mar.0.3.3.airfoil_self_noise
+Error in get("impute_norm") : object 'impute_norm' not found
+Error in get("impute_norm") : object 'impute_norm' not found
+● completed target imputed_dat_norm.mar.0.3.4.airfoil_self_noise [0.018 seconds, 339 bytes]
+▶ dispatched target save_imputed_dat_norm.mar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_vim_pca.mcar.0.3.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_tknn.mar.0.1.5.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target imputed_dat_metabimpute_qrilc.mcar.0.3.1.airfoil_self_noise [1.32 seconds, 15.813 kilobytes]
+▶ dispatched target save_imputed_dat_metabimpute_qrilc.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_ppca.mcar.0.3.1.airfoil_self_noise [0.044 seconds, 27.891 kilobytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_knn.mcar.0.5.1.airfoil_self_noise [0.023 seconds, 12.544 kilobytes]
+▶ dispatched target save_imputed_dat_knn.mcar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_rmiMAE.mar.0.3.5.airfoil_self_noise [0.685 seconds, 491 bytes]
+▶ dispatched target save_imputed_dat_rmiMAE.mar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_FEFI.mar.0.5.1.airfoil_self_noise [11.456 minutes, 22.342 kilobytes]
+▶ dispatched target save_imputed_dat_FEFI.mar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_knn.mcar.0.5.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_rmiMAE.mar.0.3.2.airfoil_self_noise
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+● completed target imputed_dat_random.NA.NA.1.birth_incomplete [0.035 seconds, 344 bytes]
+▶ dispatched target imputed_dat_nlpca.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_mice_norm_predict.mar.0.3.4.airfoil_self_noise [0.189 seconds, 29.285 kilobytes]
+▶ dispatched target imputed_dat_nipals.mcar.0.3.2.airfoil_self_noise
+● completed target save_imputed_dat_rmiMAE.mar.0.3.5.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_softimpute.mcar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_norm.mar.0.3.4.airfoil_self_noise [0.001 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sklearn_iterative.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_tknn.mar.0.1.5.airfoil_self_noise [0.844 seconds, 428 bytes]
+▶ dispatched target save_imputed_dat_tknn.mar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_softimpute.mcar.0.1.4.airfoil_self_noise [0.017 seconds, 15.326 kilobytes]
+▶ dispatched target imputed_dat_sinkhorn.mcar.0.1.4.airfoil_self_noise
+Error in .Call(`_reticulate_py_call_impl`, x, args, keywords) : 
+  reached CPU time limit
+● completed target save_imputed_dat_metabimpute_qrilc.mcar.0.3.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_nipals.mar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_sklearn_iterative.mcar.0.1.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_impSeq.mcar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_mice_norm.mar.0.1.3.airfoil_self_noise [0.186 seconds, 15.37 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_halfmin.mcar.0.1.5.airfoil_self_noise [0.014 seconds, 8.799 kilobytes]
+▶ dispatched target imputed_dat_cm.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_norm.mar.0.3.3.airfoil_self_noise [0.021 seconds, 335 bytes]
+▶ dispatched target save_imputed_dat_norm.mar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_SVDImpute.mar.0.1.2.airfoil_self_noise [0.021 seconds, 346 bytes]
+▶ dispatched target imputed_dat_sinkhorn.mar.0.3.4.airfoil_self_noise
+Error in .Call(`_reticulate_py_call_impl`, x, args, keywords) : 
+  reached CPU time limit
+● completed target save_imputed_dat_remasker.mar.0.5.1.airfoil_self_noise [0.008 seconds, 44 bytes]
+▶ dispatched target imputed_dat_SVTImpute.mar.0.1.3.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target imputed_dat_SVTImpute.mar.0.1.3.airfoil_self_noise [0.413 seconds, 423 bytes]
+▶ dispatched target save_imputed_dat_SVTImpute.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_sinkhorn.mar.0.3.4.airfoil_self_noise [27.52 minutes, 28.811 kilobytes]
+▶ dispatched target imputed_dat_miracle.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_sinkhorn.mcar.0.1.4.airfoil_self_noise [40.744 minutes, 14.317 kilobytes]
+▶ dispatched target imputed_dat_nipals.mcar.0.3.1.airfoil_self_noise
+● completed target save_imputed_dat_FEFI.mar.0.5.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_SVDImpute.mar.0.3.1.airfoil_self_noise
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+● completed target save_imputed_dat_mice_norm.mar.0.1.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm.mar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_tknn.mar.0.1.5.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_bpca.mar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_norm.mar.0.3.3.airfoil_self_noise [0.001 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sklearn_iterative.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_impSeq.mcar.0.5.1.airfoil_self_noise [0.331 seconds, 41.298 kilobytes]
+▶ dispatched target save_imputed_dat_impSeq.mcar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_sklearn_iterative.mcar.0.1.4.airfoil_self_noise [0.038 seconds, 14.124 kilobytes]
+▶ dispatched target save_imputed_dat_sklearn_iterative.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_nipals.mar.0.5.1.airfoil_self_noise [0.025 seconds, 32.193 kilobytes]
+▶ dispatched target save_imputed_dat_nipals.mar.0.5.1.airfoil_self_noise
+[1] "pcaMethods NLPCA imputation - in progress"
+● completed target imputed_dat_nlpca.mcar.0.1.1.airfoil_self_noise [10.232 seconds, 15.887 kilobytes]
+▶ dispatched target save_imputed_dat_nlpca.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_cm.mcar.0.1.1.airfoil_self_noise [0.068 seconds, 8.757 kilobytes]
+▶ dispatched target save_imputed_dat_cm.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_softimpute.mcar.0.1.3.airfoil_self_noise [0.018 seconds, 15.328 kilobytes]
+▶ dispatched target imputed_dat_norm.mar.0.3.5.airfoil_self_noise
+Error in get("impute_norm") : object 'impute_norm' not found
+Error in get("impute_norm") : object 'impute_norm' not found
+● completed target imputed_dat_nipals.mcar.0.3.2.airfoil_self_noise [0.029 seconds, 27.614 kilobytes]
+▶ dispatched target save_imputed_dat_nipals.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_rmiMAE.mar.0.3.2.airfoil_self_noise [0.665 seconds, 482 bytes]
+▶ dispatched target save_imputed_dat_rmiMAE.mar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_nipals.mcar.0.3.1.airfoil_self_noise [0.063 seconds, 27.536 kilobytes]
+▶ dispatched target save_imputed_dat_nipals.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_miracle.mcar.0.3.1.airfoil_self_noise [11.23 seconds, 625 bytes]
+▶ dispatched target save_imputed_dat_miracle.mcar.0.3.1.airfoil_self_noise
+● completed target save_imputed_dat_cm.mcar.0.1.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm_predict.mar.0.3.2.airfoil_self_noise
+● completed target save_imputed_dat_sklearn_iterative.mcar.0.1.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_halfmin.mar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_mice_norm.mar.0.1.1.airfoil_self_noise [0.208 seconds, 15.462 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm.mar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_rmiMAE.mar.0.3.2.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sinkhorn.mcar.0.1.1.airfoil_self_noise
+Error in .Call(`_reticulate_py_call_impl`, x, args, keywords) : 
+  reached CPU time limit
+● completed target save_imputed_dat_nipals.mcar.0.3.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_nipals.mar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_bpca.mar.0.1.1.airfoil_self_noise [3.873 seconds, 15.2 kilobytes]
+▶ dispatched target save_imputed_dat_bpca.mar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_norm.mar.0.3.5.airfoil_self_noise [0.022 seconds, 337 bytes]
+▶ dispatched target save_imputed_dat_norm.mar.0.3.5.airfoil_self_noise
+● completed target save_imputed_dat_nipals.mar.0.5.1.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_cm.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_SVDImpute.mar.0.3.1.airfoil_self_noise [0.024 seconds, 346 bytes]
+▶ dispatched target imputed_dat_regression.mcar.0.1.1.airfoil_self_noise
+Error in get("impute_regression") : object 'impute_regression' not found
+Error in get("impute_regression") : object 'impute_regression' not found
+● completed target save_imputed_dat_impSeq.mcar.0.5.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.5.3.airfoil_self_noise
+Error in Exception(...) : 
+  reached elapsed time limit [cpu=600s, elapsed=600s]
+● completed target imputed_dat_sklearn_iterative.mcar.0.1.1.airfoil_self_noise [0.038 seconds, 14.433 kilobytes]
+▶ dispatched target save_imputed_dat_sklearn_iterative.mcar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_nlpca.mcar.0.1.1.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_llsImpute.mcar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_SVTImpute.mar.0.1.3.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_rmiMAE.mar.0.3.4.airfoil_self_noise
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+● completed target save_imputed_dat_bpca.mar.0.1.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_nlpca.mcar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_mice_norm.mar.0.1.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_halfmin.mcar.0.1.4.airfoil_self_noise
+● completed target save_imputed_dat_norm.mar.0.3.5.airfoil_self_noise [0.001 seconds, 44 bytes]
+▶ dispatched target imputed_dat_nipals.mcar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_sinkhorn.mcar.0.1.1.airfoil_self_noise [43.74 minutes, 14.617 kilobytes]
+▶ dispatched target imputed_dat_softimpute.mcar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_llsImpute.mcar.0.1.1.airfoil_self_noise [1.496 seconds, 15.814 kilobytes]
+▶ dispatched target imputed_dat_regression.mar.0.5.2.airfoil_self_noise
+Error in get("impute_regression") : object 'impute_regression' not found
+Error in get("impute_regression") : object 'impute_regression' not found
+● completed target imputed_dat_rmiMAE.mar.0.3.4.airfoil_self_noise [0.665 seconds, 486 bytes]
+▶ dispatched target save_imputed_dat_rmiMAE.mar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_sklearn_iterative.mcar.0.1.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_tknn.mcar.0.1.4.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target imputed_dat_regression.mcar.0.1.1.airfoil_self_noise [0.023 seconds, 343 bytes]
+▶ dispatched target save_imputed_dat_regression.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_cm.mcar.0.1.4.airfoil_self_noise [0.017 seconds, 8.582 kilobytes]
+▶ dispatched target save_imputed_dat_cm.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_halfmin.mar.0.5.1.airfoil_self_noise [0.015 seconds, 8.215 kilobytes]
+▶ dispatched target imputed_dat_metabimpute_qrilc.mar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_nipals.mar.0.5.4.airfoil_self_noise [0.03 seconds, 32.391 kilobytes]
+▶ dispatched target save_imputed_dat_nipals.mar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_miracle.mcar.0.3.1.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm_predict.mar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_FEFI.mar.0.5.3.airfoil_self_noise [23.177 minutes, 22.888 kilobytes]
+▶ dispatched target save_imputed_dat_FEFI.mar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_mice_norm_predict.mar.0.3.2.airfoil_self_noise [0.185 seconds, 29.133 kilobytes]
+▶ dispatched target imputed_dat_metabimpute_qrilc.mcar.0.3.5.airfoil_self_noise
+● completed target save_imputed_dat_nipals.mcar.0.3.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_SVTImpute.mar.0.1.5.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target imputed_dat_mice_norm_predict.mar.0.3.5.airfoil_self_noise [0.204 seconds, 28.541 kilobytes]
+▶ dispatched target imputed_dat_miwae.mar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_regression.mcar.0.1.1.airfoil_self_noise [0.001 seconds, 44 bytes]
+▶ dispatched target imputed_dat_llsImpute.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_tknn.mcar.0.1.4.airfoil_self_noise [1.014 seconds, 428 bytes]
+▶ dispatched target imputed_dat_nipals.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_softimpute.mcar.0.1.5.airfoil_self_noise [0.018 seconds, 15.496 kilobytes]
+▶ dispatched target imputed_dat_areg.mar.0.3.1.airfoil_self_noise
+● completed target save_imputed_dat_FEFI.mar.0.5.3.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_nipals.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_halfmin.mcar.0.1.4.airfoil_self_noise [0.014 seconds, 8.719 kilobytes]
+▶ dispatched target imputed_dat_cm.mcar.0.1.2.airfoil_self_noise
+[1] "pcaMethods NLPCA imputation - in progress"
+● completed target imputed_dat_nlpca.mcar.0.1.3.airfoil_self_noise [8.988 seconds, 15.395 kilobytes]
+▶ dispatched target save_imputed_dat_nlpca.mcar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_nipals.mar.0.5.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_miwae.mar.0.1.4.airfoil_self_noise
+● completed target save_imputed_dat_cm.mcar.0.1.4.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_SVTImpute.mar.0.1.2.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target imputed_dat_SVTImpute.mar.0.1.5.airfoil_self_noise [0.649 seconds, 426 bytes]
+▶ dispatched target save_imputed_dat_SVTImpute.mar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_metabimpute_qrilc.mar.0.3.3.airfoil_self_noise [0.034 seconds, 16.04 kilobytes]
+▶ dispatched target save_imputed_dat_metabimpute_qrilc.mar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_nipals.mcar.0.3.4.airfoil_self_noise [0.026 seconds, 27.615 kilobytes]
+▶ dispatched target save_imputed_dat_nipals.mcar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_metabimpute_qrilc.mcar.0.3.5.airfoil_self_noise [0.032 seconds, 16.181 kilobytes]
+▶ dispatched target save_imputed_dat_metabimpute_qrilc.mcar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_regression.mar.0.5.2.airfoil_self_noise [0.022 seconds, 345 bytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_rmiMAE.mar.0.3.4.airfoil_self_noise [0.001 seconds, 44 bytes]
+▶ dispatched target imputed_dat_missmda_em.mcar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_nipals.mcar.0.3.3.airfoil_self_noise [0.023 seconds, 27.642 kilobytes]
+▶ dispatched target save_imputed_dat_nipals.mcar.0.3.3.airfoil_self_noise
+● completed target save_imputed_dat_metabimpute_qrilc.mcar.0.3.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_nlpca.mcar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_miwae.mar.0.1.1.airfoil_self_noise [49.503 seconds, 12.259 kilobytes]
+▶ dispatched target save_imputed_dat_miwae.mar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_nlpca.mcar.0.1.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_knn.mar.0.1.1.airfoil_self_noise
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+● completed target imputed_dat_FEFI.mar.0.5.5.airfoil_self_noise [10.011 minutes, 23.538 kilobytes]
+▶ dispatched target save_imputed_dat_FEFI.mar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_miwae.mar.0.1.4.airfoil_self_noise [49.608 seconds, 12.34 kilobytes]
+▶ dispatched target save_imputed_dat_miwae.mar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_areg.mar.0.3.1.airfoil_self_noise [0.356 seconds, 11.27 kilobytes]
+▶ dispatched target imputed_dat_halfmin.mcar.0.1.2.airfoil_self_noise
+● completed target save_imputed_dat_nipals.mcar.0.3.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_regression.mar.0.5.4.airfoil_self_noise
+Error in get("impute_regression") : object 'impute_regression' not found
+Error in get("impute_regression") : object 'impute_regression' not found
+● completed target imputed_dat_cm.mcar.0.1.2.airfoil_self_noise [0.013 seconds, 8.674 kilobytes]
+▶ dispatched target save_imputed_dat_cm.mcar.0.1.2.airfoil_self_noise
+● completed target save_imputed_dat_metabimpute_qrilc.mar.0.3.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_min.NA.NA.1.birth_incomplete
+Error in check_missdf(missdf) : 'missdf' must contain only numeric data.
+Error in check_missdf(missdf) : 'missdf' must contain only numeric data.
+● completed target imputed_dat_nipals.mar.0.5.2.airfoil_self_noise [0.024 seconds, 32.215 kilobytes]
+▶ dispatched target save_imputed_dat_nipals.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_llsImpute.mcar.0.1.4.airfoil_self_noise [1.439 seconds, 15.374 kilobytes]
+▶ dispatched target imputed_dat_mice_norm_predict.mar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_missmda_em.mcar.0.5.4.airfoil_self_noise [2.811 seconds, 39.437 kilobytes]
+▶ dispatched target save_imputed_dat_missmda_em.mcar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_SVTImpute.mar.0.1.5.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_nipals.mar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_SVTImpute.mar.0.1.2.airfoil_self_noise [0.407 seconds, 426 bytes]
+▶ dispatched target save_imputed_dat_SVTImpute.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_nipals.mar.0.5.5.airfoil_self_noise [0.025 seconds, 32.467 kilobytes]
+▶ dispatched target save_imputed_dat_nipals.mar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_min.NA.NA.1.birth_incomplete [0.038 seconds, 343 bytes]
+▶ dispatched target save_imputed_dat_min.NA.NA.1.birth_incomplete
+● completed target save_imputed_dat_nipals.mar.0.5.2.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_metabimpute_qrilc.mcar.0.3.3.airfoil_self_noise
+● completed target save_imputed_dat_cm.mcar.0.1.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_cm.mcar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_SVTImpute.mar.0.1.2.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.5.2.airfoil_self_noise
+● completed target save_imputed_dat_miwae.mar.0.1.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_llsImpute.mcar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_regression.mar.0.5.4.airfoil_self_noise [0.022 seconds, 348 bytes]
+▶ dispatched target imputed_dat_nlpca.mcar.0.1.2.airfoil_self_noise
+[1] "pcaMethods NLPCA imputation - in progress"
+● completed target imputed_dat_nlpca.mcar.0.1.5.airfoil_self_noise [9.083 seconds, 15.607 kilobytes]
+▶ dispatched target save_imputed_dat_nlpca.mcar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_mice_norm_predict.mar.0.3.3.airfoil_self_noise [0.2 seconds, 29.286 kilobytes]
+▶ dispatched target imputed_dat_nipals.mcar.0.3.5.airfoil_self_noise
+● completed target save_imputed_dat_miwae.mar.0.1.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_regression.mar.0.5.3.airfoil_self_noise
+Error in get("impute_regression") : object 'impute_regression' not found
+Error in get("impute_regression") : object 'impute_regression' not found
+● completed target save_imputed_dat_missmda_em.mcar.0.5.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_hyperimpute_em.mcar.0.3.1.airfoil_self_noise
+● completed target save_imputed_dat_FEFI.mar.0.5.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_areg.mar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_halfmin.mcar.0.1.2.airfoil_self_noise [0.015 seconds, 8.81 kilobytes]
+▶ dispatched target imputed_dat_norm.mar.0.3.1.airfoil_self_noise
+Error in get("impute_norm") : object 'impute_norm' not found
+Error in get("impute_norm") : object 'impute_norm' not found
+● completed target save_imputed_dat_nipals.mcar.0.3.3.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_halfmin.mar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_knn.mar.0.1.1.airfoil_self_noise [0.024 seconds, 14.265 kilobytes]
+▶ dispatched target save_imputed_dat_knn.mar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_areg.mar.0.3.3.airfoil_self_noise [0.4 seconds, 11.368 kilobytes]
+▶ dispatched target imputed_dat_nlpca.mcar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_FEFI.mar.0.5.2.airfoil_self_noise [13.334 minutes, 22.209 kilobytes]
+▶ dispatched target save_imputed_dat_FEFI.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_llsImpute.mcar.0.1.2.airfoil_self_noise [0.597 seconds, 15.383 kilobytes]
+▶ dispatched target imputed_dat_metabimpute_qrilc.mcar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_nipals.mar.0.5.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_regression.mcar.0.1.5.airfoil_self_noise
+Error in get("impute_regression") : object 'impute_regression' not found
+Error in get("impute_regression") : object 'impute_regression' not found
+● completed target save_imputed_dat_min.NA.NA.1.birth_incomplete [0.001 seconds, 44 bytes]
+▶ dispatched target imputed_dat_miwae.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_norm.mar.0.3.1.airfoil_self_noise [0.022 seconds, 339 bytes]
+▶ dispatched target save_imputed_dat_norm.mar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_metabimpute_qrilc.mcar.0.3.3.airfoil_self_noise [0.033 seconds, 16.012 kilobytes]
+▶ dispatched target save_imputed_dat_metabimpute_qrilc.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_cm.mcar.0.1.5.airfoil_self_noise [0.015 seconds, 8.649 kilobytes]
+▶ dispatched target save_imputed_dat_cm.mcar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_nipals.mcar.0.3.5.airfoil_self_noise [0.025 seconds, 28.127 kilobytes]
+▶ dispatched target save_imputed_dat_nipals.mcar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_regression.mar.0.5.3.airfoil_self_noise [0.022 seconds, 346 bytes]
+▶ dispatched target imputed_dat_SVTImpute.mar.0.1.4.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+[1] "pcaMethods NLPCA imputation - in progress"
+● completed target imputed_dat_nlpca.mcar.0.1.2.airfoil_self_noise [8.426 seconds, 15.413 kilobytes]
+▶ dispatched target save_imputed_dat_nlpca.mcar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_hyperimpute_em.mcar.0.3.1.airfoil_self_noise [22.993 seconds, 25.832 kilobytes]
+▶ dispatched target save_imputed_dat_hyperimpute_em.mcar.0.3.1.airfoil_self_noise
+● completed target save_imputed_dat_nlpca.mcar.0.1.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_missmda_em.mcar.0.5.2.airfoil_self_noise
+● completed target save_imputed_dat_knn.mar.0.1.1.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_llsImpute.mcar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_halfmin.mar.0.5.5.airfoil_self_noise [0.014 seconds, 8.254 kilobytes]
+▶ dispatched target imputed_dat_knn.mar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_nlpca.mcar.0.1.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_hyperimpute_em.mcar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_FEFI.mar.0.5.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_rmiMAE.mcar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_hyperimpute_em.mcar.0.3.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_nlpca.mcar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_regression.mcar.0.1.5.airfoil_self_noise [0.023 seconds, 343 bytes]
+▶ dispatched target save_imputed_dat_regression.mcar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_norm.mar.0.3.1.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_irmi.mar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_cm.mcar.0.1.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_nipals.mar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_nipals.mcar.0.3.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_cm.mcar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_missmda_em.mcar.0.5.2.airfoil_self_noise [2.688 seconds, 39.627 kilobytes]
+▶ dispatched target save_imputed_dat_missmda_em.mcar.0.5.2.airfoil_self_noise
+[1] "pcaMethods NLPCA imputation - in progress"
+● completed target imputed_dat_nlpca.mcar.0.5.5.airfoil_self_noise [13.324 seconds, 8.832 kilobytes]
+▶ dispatched target imputed_dat_impSeq.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_knn.mar.0.1.3.airfoil_self_noise [0.026 seconds, 14.401 kilobytes]
+▶ dispatched target save_imputed_dat_knn.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_llsImpute.mcar.0.1.5.airfoil_self_noise [0.113 seconds, 15.578 kilobytes]
+▶ dispatched target imputed_dat_mice_gamlss.mcar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_metabimpute_qrilc.mcar.0.3.4.airfoil_self_noise [0.033 seconds, 15.944 kilobytes]
+▶ dispatched target save_imputed_dat_metabimpute_qrilc.mcar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_metabimpute_qrilc.mcar.0.3.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_miwae.mar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_SVTImpute.mar.0.1.4.airfoil_self_noise [1.525 seconds, 425 bytes]
+▶ dispatched target save_imputed_dat_SVTImpute.mar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_miwae.mar.0.1.2.airfoil_self_noise [49.66 seconds, 12.271 kilobytes]
+▶ dispatched target save_imputed_dat_miwae.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_rmiMAE.mcar.0.1.3.airfoil_self_noise [3.406 seconds, 11.409 kilobytes]
+▶ dispatched target save_imputed_dat_rmiMAE.mcar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_mice_gamlss.mcar.0.5.1.airfoil_self_noise [23.521 minutes, 42.08 kilobytes]
+▶ dispatched target imputed_dat_SVTImpute.mar.0.1.1.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target save_imputed_dat_regression.mcar.0.1.5.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_missmda_em.mcar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_miwae.mar.0.1.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_missmda_em.mcar.0.5.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_nlpca.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_impSeq.mar.0.5.2.airfoil_self_noise [0.322 seconds, 39.715 kilobytes]
+▶ dispatched target imputed_dat_regression.mar.0.5.5.airfoil_self_noise
+Error in get("impute_regression") : object 'impute_regression' not found
+Error in get("impute_regression") : object 'impute_regression' not found
+● completed target imputed_dat_miwae.mar.0.1.5.airfoil_self_noise [50.074 seconds, 12.04 kilobytes]
+▶ dispatched target save_imputed_dat_miwae.mar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_knn.mar.0.1.3.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_areg.mar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_nipals.mar.0.5.3.airfoil_self_noise [0.025 seconds, 32.194 kilobytes]
+▶ dispatched target save_imputed_dat_nipals.mar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_hyperimpute_em.mcar.0.3.4.airfoil_self_noise [1.937 minutes, 25.764 kilobytes]
+▶ dispatched target save_imputed_dat_hyperimpute_em.mcar.0.3.4.airfoil_self_noise
+[1] "pcaMethods NLPCA imputation - in progress"
+● completed target imputed_dat_nlpca.mcar.0.5.2.airfoil_self_noise [12.861 seconds, 8.833 kilobytes]
+▶ dispatched target imputed_dat_halfmin.mar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_SVTImpute.mar.0.1.4.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sklearn_iterative.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_irmi.mar.0.5.1.airfoil_self_noise [11.928 seconds, 40.975 kilobytes]
+▶ dispatched target save_imputed_dat_irmi.mar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_metabimpute_qrilc.mcar.0.3.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_metabimpute_qrilc.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_cm.mcar.0.1.3.airfoil_self_noise [0.015 seconds, 8.649 kilobytes]
+▶ dispatched target save_imputed_dat_cm.mcar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_metabimpute_qrilc.mcar.0.3.2.airfoil_self_noise [0.032 seconds, 15.95 kilobytes]
+▶ dispatched target save_imputed_dat_metabimpute_qrilc.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_regression.mar.0.5.5.airfoil_self_noise [0.022 seconds, 347 bytes]
+▶ dispatched target imputed_dat_zero.mar.0.1.4.airfoil_self_noise
+[1] "pcaMethods NLPCA imputation - in progress"
+● completed target imputed_dat_nlpca.mcar.0.1.4.airfoil_self_noise [11.06 seconds, 8.868 kilobytes]
+▶ dispatched target save_imputed_dat_nlpca.mcar.0.1.4.airfoil_self_noise
+● completed target save_imputed_dat_irmi.mar.0.5.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_regression.mcar.0.1.3.airfoil_self_noise
+Error in get("impute_regression") : object 'impute_regression' not found
+Error in get("impute_regression") : object 'impute_regression' not found
+● completed target imputed_dat_halfmin.mar.0.5.3.airfoil_self_noise [0.015 seconds, 8.26 kilobytes]
+▶ dispatched target imputed_dat_llsImpute.mcar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_hyperimpute_em.mcar.0.3.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_knn.mar.0.1.5.airfoil_self_noise
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+● completed target save_imputed_dat_miwae.mar.0.1.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_tknn.mcar.0.1.2.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target imputed_dat_areg.mar.0.3.5.airfoil_self_noise [0.394 seconds, 11.207 kilobytes]
+▶ dispatched target imputed_dat_hyperimpute_em.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_FEFI.mar.0.5.4.airfoil_self_noise [11.977 minutes, 21.87 kilobytes]
+▶ dispatched target save_imputed_dat_FEFI.mar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_missmda_em.mcar.0.5.5.airfoil_self_noise [3.585 seconds, 40.191 kilobytes]
+▶ dispatched target save_imputed_dat_missmda_em.mcar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_sklearn_iterative.mcar.0.3.1.airfoil_self_noise [0.038 seconds, 25.639 kilobytes]
+▶ dispatched target imputed_dat_areg.mar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_SVTImpute.mar.0.1.1.airfoil_self_noise [0.477 seconds, 425 bytes]
+▶ dispatched target save_imputed_dat_SVTImpute.mar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_rmiMAE.mcar.0.1.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_rmiMAE.mcar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_cm.mcar.0.1.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_halfmin.mar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_nipals.mar.0.5.3.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sklearn_iterative.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_hyperimpute_em.mcar.0.3.2.airfoil_self_noise [35.964 seconds, 26.119 kilobytes]
+▶ dispatched target save_imputed_dat_hyperimpute_em.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_llsImpute.mcar.0.1.3.airfoil_self_noise [0.61 seconds, 15.348 kilobytes]
+▶ dispatched target imputed_dat_pemm.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_zero.mar.0.1.4.airfoil_self_noise [0.014 seconds, 8.784 kilobytes]
+▶ dispatched target save_imputed_dat_zero.mar.0.1.4.airfoil_self_noise
+● completed target save_imputed_dat_metabimpute_qrilc.mcar.0.3.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_nlpca.mcar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_missmda_em.mcar.0.5.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_irmi.mar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_nlpca.mcar.0.1.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_ppca.mar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_rmiMAE.mcar.0.1.5.airfoil_self_noise [3.401 seconds, 11.656 kilobytes]
+▶ dispatched target save_imputed_dat_rmiMAE.mcar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_FEFI.mar.0.5.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_impSeq.mar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_halfmin.mar.0.5.4.airfoil_self_noise [0.014 seconds, 8.227 kilobytes]
+▶ dispatched target imputed_dat_mice_gamlss.mcar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_regression.mcar.0.1.3.airfoil_self_noise [0.023 seconds, 341 bytes]
+▶ dispatched target save_imputed_dat_regression.mcar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_tknn.mcar.0.1.2.airfoil_self_noise [9.326 minutes, 429 bytes]
+▶ dispatched target imputed_dat_regression.mcar.0.1.4.airfoil_self_noise
+Error in get("impute_regression") : object 'impute_regression' not found
+Error in get("impute_regression") : object 'impute_regression' not found
+● completed target imputed_dat_areg.mar.0.3.2.airfoil_self_noise [0.422 seconds, 11.347 kilobytes]
+▶ dispatched target imputed_dat_miwae.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_sklearn_iterative.mcar.0.3.2.airfoil_self_noise [0.035 seconds, 25.906 kilobytes]
+▶ dispatched target imputed_dat_missmda_em.mcar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_SVTImpute.mar.0.1.1.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_knn.mar.0.1.2.airfoil_self_noise
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+● completed target imputed_dat_knn.mar.0.1.5.airfoil_self_noise [0.025 seconds, 14.339 kilobytes]
+▶ dispatched target save_imputed_dat_knn.mar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_missmda_em.mcar.0.5.3.airfoil_self_noise [2.822 seconds, 39.189 kilobytes]
+▶ dispatched target save_imputed_dat_missmda_em.mcar.0.5.3.airfoil_self_noise
+[1] "pcaMethods NLPCA imputation - in progress"
+● completed target imputed_dat_nlpca.mcar.0.5.4.airfoil_self_noise [12.26 seconds, 8.711 kilobytes]
+▶ dispatched target imputed_dat_missforest.mcar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_rmiMAE.mcar.0.1.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_tknn.mcar.0.1.1.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target imputed_dat_irmi.mar.0.5.3.airfoil_self_noise [11.886 seconds, 41.505 kilobytes]
+▶ dispatched target save_imputed_dat_irmi.mar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_zero.mar.0.1.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_cm.mar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_ppca.mar.0.1.1.airfoil_self_noise [0.034 seconds, 14.983 kilobytes]
+▶ dispatched target imputed_dat_hyperimpute_em.mcar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_mice_gamlss.mcar.0.5.3.airfoil_self_noise [23.906 minutes, 8.734 kilobytes]
+▶ dispatched target imputed_dat_mice_norm_nob.mcar.0.1.2.airfoil_self_noise
+● completed target save_imputed_dat_regression.mcar.0.1.3.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_rmiMAE.mcar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_knn.mar.0.1.2.airfoil_self_noise [0.025 seconds, 14.369 kilobytes]
+▶ dispatched target save_imputed_dat_knn.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_impSeq.mar.0.5.4.airfoil_self_noise [0.32 seconds, 39.924 kilobytes]
+▶ dispatched target imputed_dat_sklearn_iterative.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_miwae.mar.0.1.3.airfoil_self_noise [50.361 seconds, 12.234 kilobytes]
+▶ dispatched target save_imputed_dat_miwae.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_pemm.mcar.0.3.2.airfoil_self_noise [1.368 seconds, 26.603 kilobytes]
+▶ dispatched target save_imputed_dat_pemm.mcar.0.3.2.airfoil_self_noise
+● completed target save_imputed_dat_knn.mar.0.1.5.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_nlpca.mcar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_hyperimpute_em.mcar.0.3.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sklearn_iterative_post.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_regression.mcar.0.1.4.airfoil_self_noise [0.023 seconds, 346 bytes]
+▶ dispatched target save_imputed_dat_regression.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_cm.mar.0.5.5.airfoil_self_noise [0.015 seconds, 8.018 kilobytes]
+▶ dispatched target save_imputed_dat_cm.mar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_knn.mar.0.1.2.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_zero.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_sklearn_iterative.mcar.0.3.3.airfoil_self_noise [0.036 seconds, 25.647 kilobytes]
+▶ dispatched target imputed_dat_impSeq.mar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_sklearn_iterative_post.mcar.0.3.2.airfoil_self_noise [0.277 seconds, 26.549 kilobytes]
+▶ dispatched target imputed_dat_gsimp.mcar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_missforest.mcar.0.5.3.airfoil_self_noise [15.198 seconds, 32.24 kilobytes]
+▶ dispatched target save_imputed_dat_missforest.mcar.0.5.3.airfoil_self_noise
+[1] "pcaMethods NLPCA imputation - in progress"
+● completed target imputed_dat_nlpca.mcar.0.5.1.airfoil_self_noise [13.646 seconds, 8.712 kilobytes]
+▶ dispatched target imputed_dat_metabimpute_rf.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_hyperimpute_em.mcar.0.3.5.airfoil_self_noise [36.652 seconds, 26.322 kilobytes]
+▶ dispatched target save_imputed_dat_hyperimpute_em.mcar.0.3.5.airfoil_self_noise
+● completed target save_imputed_dat_pemm.mcar.0.3.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm_nob.mar.0.1.2.airfoil_self_noise
+● completed target save_imputed_dat_irmi.mar.0.5.3.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_zero.mar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_rmiMAE.mcar.0.1.2.airfoil_self_noise [3.366 seconds, 24.487 kilobytes]
+▶ dispatched target save_imputed_dat_rmiMAE.mcar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_mice_norm_nob.mcar.0.1.2.airfoil_self_noise [0.186 seconds, 15.339 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm_nob.mcar.0.1.2.airfoil_self_noise
+● completed target save_imputed_dat_regression.mcar.0.1.4.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_areg.mar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_miwae.mar.0.1.3.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm_nob.mcar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_tknn.mcar.0.1.1.airfoil_self_noise [8.902 minutes, 432 bytes]
+▶ dispatched target imputed_dat_halfmin.mar.0.5.2.airfoil_self_noise
+● completed target save_imputed_dat_missmda_em.mcar.0.5.3.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sklearn_iterative.mcar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_mice_norm_nob.mcar.0.1.5.airfoil_self_noise [0.207 seconds, 15.566 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm_nob.mcar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_missforest.mcar.0.5.3.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_pemm.mcar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_halfmin.mar.0.5.2.airfoil_self_noise [0.014 seconds, 8.287 kilobytes]
+▶ dispatched target imputed_dat_irmi.mar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_hyperimpute_em.mcar.0.3.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_gsimp.mcar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_metabimpute_rf.mar.0.1.2.airfoil_self_noise [1.515 seconds, 15.169 kilobytes]
+▶ dispatched target imputed_dat_zero.mar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_areg.mar.0.3.4.airfoil_self_noise [0.379 seconds, 11.343 kilobytes]
+▶ dispatched target imputed_dat_regression.mcar.0.1.2.airfoil_self_noise
+Error in get("impute_regression") : object 'impute_regression' not found
+Error in get("impute_regression") : object 'impute_regression' not found
+● completed target imputed_dat_gsimp.mcar.0.5.2.airfoil_self_noise [35.767 seconds, 42.794 kilobytes]
+▶ dispatched target save_imputed_dat_gsimp.mcar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_sklearn_iterative.mcar.0.3.4.airfoil_self_noise [0.037 seconds, 25.473 kilobytes]
+▶ dispatched target imputed_dat_median.mcar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_mice_norm_nob.mar.0.1.2.airfoil_self_noise [0.21 seconds, 15.469 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm_nob.mar.0.1.2.airfoil_self_noise
+● completed target save_imputed_dat_rmiMAE.mcar.0.1.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_missmda_em.mcar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_zero.mar.0.5.5.airfoil_self_noise [0.014 seconds, 8.541 kilobytes]
+▶ dispatched target imputed_dat_knn.mar.0.1.4.airfoil_self_noise
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+● completed target imputed_dat_zero.mar.0.1.2.airfoil_self_noise [0.014 seconds, 8.773 kilobytes]
+▶ dispatched target save_imputed_dat_zero.mar.0.1.2.airfoil_self_noise
+● completed target save_imputed_dat_mice_norm_nob.mcar.0.1.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_missforest.mcar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_cm.mar.0.5.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_regression.mar.0.5.1.airfoil_self_noise
+Error in get("impute_regression") : object 'impute_regression' not found
+Error in get("impute_regression") : object 'impute_regression' not found
+● completed target imputed_dat_impSeq.mar.0.5.5.airfoil_self_noise [0.322 seconds, 40.019 kilobytes]
+▶ dispatched target imputed_dat_tknn.mcar.0.1.3.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target imputed_dat_regression.mar.0.5.1.airfoil_self_noise [0.023 seconds, 345 bytes]
+▶ dispatched target imputed_dat_cm.mar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_zero.mar.0.1.5.airfoil_self_noise [0.013 seconds, 8.63 kilobytes]
+▶ dispatched target save_imputed_dat_zero.mar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_regression.mcar.0.1.2.airfoil_self_noise [0.022 seconds, 344 bytes]
+▶ dispatched target save_imputed_dat_regression.mcar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_tknn.mcar.0.1.3.airfoil_self_noise [9.227 minutes, 427 bytes]
+▶ dispatched target imputed_dat_mice_norm_nob.mar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_gsimp.mcar.0.5.5.airfoil_self_noise [35.16 seconds, 42.953 kilobytes]
+▶ dispatched target save_imputed_dat_gsimp.mcar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_missmda_em.mcar.0.5.1.airfoil_self_noise [2.809 seconds, 39.23 kilobytes]
+▶ dispatched target save_imputed_dat_missmda_em.mcar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_mice_norm_nob.mar.0.1.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_hyperimpute_em.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_knn.mar.0.1.4.airfoil_self_noise [0.045 seconds, 14.321 kilobytes]
+▶ dispatched target save_imputed_dat_knn.mar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_irmi.mar.0.5.5.airfoil_self_noise [10.921 seconds, 41.196 kilobytes]
+▶ dispatched target save_imputed_dat_irmi.mar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_pemm.mcar.0.3.4.airfoil_self_noise [1.314 seconds, 26.392 kilobytes]
+▶ dispatched target save_imputed_dat_pemm.mcar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_zero.mar.0.1.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_zero.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_missforest.mcar.0.5.5.airfoil_self_noise [18.267 seconds, 32.889 kilobytes]
+▶ dispatched target save_imputed_dat_missforest.mcar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_gsimp.mcar.0.5.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_rmiMAE.mcar.0.1.4.airfoil_self_noise
+● completed target save_imputed_dat_mice_norm_nob.mcar.0.1.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_pmm.NA.NA.1.birth_incomplete
+Error in check_missdf(missdf) : 'missdf' must contain only numeric data.
+Error in check_missdf(missdf) : 'missdf' must contain only numeric data.
+● completed target imputed_dat_median.mcar.0.3.4.airfoil_self_noise [0.016 seconds, 9.012 kilobytes]
+▶ dispatched target imputed_dat_sklearn_iterative.mcar.0.3.5.airfoil_self_noise
+● completed target save_imputed_dat_zero.mar.0.1.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_pemm.mcar.0.3.3.airfoil_self_noise
+● completed target save_imputed_dat_gsimp.mcar.0.5.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sklearn_iterative_post.mcar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_mice_norm_nob.mar.0.1.1.airfoil_self_noise [0.185 seconds, 15.44 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm_nob.mar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_hyperimpute_em.mcar.0.3.3.airfoil_self_noise [37.072 seconds, 25.874 kilobytes]
+▶ dispatched target save_imputed_dat_hyperimpute_em.mcar.0.3.3.airfoil_self_noise
+● completed target save_imputed_dat_pemm.mcar.0.3.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_irmi.mar.0.5.2.airfoil_self_noise
+● completed target save_imputed_dat_irmi.mar.0.5.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_zero.mcar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_rmiMAE.mcar.0.1.4.airfoil_self_noise [3.423 seconds, 23.796 kilobytes]
+▶ dispatched target save_imputed_dat_rmiMAE.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_mice_pmm.NA.NA.1.birth_incomplete [0.037 seconds, 350 bytes]
+▶ dispatched target save_imputed_dat_mice_pmm.NA.NA.1.birth_incomplete
+● completed target save_imputed_dat_regression.mcar.0.1.2.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_gamlss.mcar.0.5.2.airfoil_self_noise
+● completed target save_imputed_dat_missmda_em.mcar.0.5.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_missforest.mcar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_cm.mar.0.5.3.airfoil_self_noise [0.015 seconds, 8.028 kilobytes]
+▶ dispatched target save_imputed_dat_cm.mar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_knn.mar.0.1.4.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_cm.mar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_missforest.mcar.0.5.5.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm_nob.mar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_sklearn_iterative.mcar.0.3.5.airfoil_self_noise [0.037 seconds, 26.128 kilobytes]
+▶ dispatched target imputed_dat_mice_norm_nob.mcar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_zero.mar.0.5.2.airfoil_self_noise [0.014 seconds, 8.56 kilobytes]
+▶ dispatched target imputed_dat_rmiMAE.mcar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_rmiMAE.mcar.0.1.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sklearn_iterative_post.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_pemm.mcar.0.3.3.airfoil_self_noise [1.339 seconds, 26.603 kilobytes]
+▶ dispatched target save_imputed_dat_pemm.mcar.0.3.3.airfoil_self_noise
+● completed target save_imputed_dat_mice_pmm.NA.NA.1.birth_incomplete [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_ppca.mar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_missforest.mcar.0.5.2.airfoil_self_noise [15.179 seconds, 32.244 kilobytes]
+▶ dispatched target save_imputed_dat_missforest.mcar.0.5.2.airfoil_self_noise
+● completed target save_imputed_dat_cm.mar.0.5.3.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_zero.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_zero.mcar.0.1.2.airfoil_self_noise [0.014 seconds, 8.916 kilobytes]
+▶ dispatched target imputed_dat_gsimp.mcar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_mice_gamlss.mcar.0.5.2.airfoil_self_noise [22.484 minutes, 8.844 kilobytes]
+▶ dispatched target imputed_dat_median.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_irmi.mar.0.5.2.airfoil_self_noise [10.863 seconds, 40.911 kilobytes]
+▶ dispatched target save_imputed_dat_irmi.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_rmiMAE.mcar.0.1.1.airfoil_self_noise [3.383 seconds, 11.766 kilobytes]
+▶ dispatched target save_imputed_dat_rmiMAE.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_mice_norm_nob.mcar.0.1.3.airfoil_self_noise [0.213 seconds, 15.316 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm_nob.mcar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_hyperimpute_em.mcar.0.3.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_tknn.mcar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_cm.mar.0.5.4.airfoil_self_noise [0.015 seconds, 8.009 kilobytes]
+▶ dispatched target save_imputed_dat_cm.mar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_sklearn_iterative_post.mcar.0.3.4.airfoil_self_noise [0.265 seconds, 26.325 kilobytes]
+▶ dispatched target imputed_dat_tknn.mar.0.5.4.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target save_imputed_dat_mice_norm_nob.mar.0.1.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_cm.mar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_mice_norm_nob.mar.0.1.4.airfoil_self_noise [0.187 seconds, 15.548 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm_nob.mar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_cm.mar.0.5.1.airfoil_self_noise [0.015 seconds, 7.995 kilobytes]
+▶ dispatched target save_imputed_dat_cm.mar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_gsimp.mcar.0.5.3.airfoil_self_noise [35.838 seconds, 42.743 kilobytes]
+▶ dispatched target save_imputed_dat_gsimp.mcar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_sklearn_iterative_post.mcar.0.3.3.airfoil_self_noise [0.272 seconds, 26.37 kilobytes]
+▶ dispatched target imputed_dat_mice_norm_nob.mar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_mice_norm_nob.mar.0.1.4.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_minProb.mar.0.3.1.airfoil_self_noise
+● completed target save_imputed_dat_rmiMAE.mcar.0.1.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_zero.mar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_zero.mar.0.1.3.airfoil_self_noise [0.015 seconds, 8.748 kilobytes]
+▶ dispatched target save_imputed_dat_zero.mar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_mice_norm_nob.mcar.0.1.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_pemm.mcar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_tknn.mar.0.5.4.airfoil_self_noise [0.88 seconds, 427 bytes]
+▶ dispatched target imputed_dat_irmi.mar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_median.mcar.0.3.2.airfoil_self_noise [0.015 seconds, 8.977 kilobytes]
+▶ dispatched target imputed_dat_zero.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_ppca.mar.0.1.5.airfoil_self_noise [0.038 seconds, 14.657 kilobytes]
+▶ dispatched target imputed_dat_dimar_fast.mcar.0.5.4.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target save_imputed_dat_cm.mar.0.5.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_impSeq.mar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_pemm.mcar.0.3.3.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_gamlss.mcar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_irmi.mar.0.5.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_median.mcar.0.3.5.airfoil_self_noise
+● completed target save_imputed_dat_missforest.mcar.0.5.2.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mixgb.mar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_tknn.mcar.0.1.5.airfoil_self_noise [4.65 minutes, 19.007 kilobytes]
+▶ dispatched target imputed_dat_missforest.mcar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_dimar_fast.mcar.0.5.4.airfoil_self_noise [0.617 seconds, 429 bytes]
+▶ dispatched target imputed_dat_cm.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_zero.mar.0.5.4.airfoil_self_noise [0.013 seconds, 8.501 kilobytes]
+▶ dispatched target imputed_dat_mice_norm_nob.mcar.0.5.4.airfoil_self_noise
+[1] 547.0411
+● completed target imputed_dat_minProb.mar.0.3.1.airfoil_self_noise [0.086 seconds, 29.551 kilobytes]
+▶ dispatched target save_imputed_dat_minProb.mar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_pemm.mcar.0.3.5.airfoil_self_noise [1.341 seconds, 26.904 kilobytes]
+▶ dispatched target save_imputed_dat_pemm.mcar.0.3.5.airfoil_self_noise
+● completed target save_imputed_dat_zero.mar.0.1.3.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_zero.mar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_missforest.mcar.0.5.4.airfoil_self_noise [9.739 seconds, 32.398 kilobytes]
+▶ dispatched target save_imputed_dat_missforest.mcar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_gsimp.mcar.0.5.3.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_mixed.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_mice_norm_nob.mar.0.1.3.airfoil_self_noise [0.187 seconds, 15.357 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm_nob.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_median.mcar.0.3.5.airfoil_self_noise [0.015 seconds, 9.017 kilobytes]
+▶ dispatched target imputed_dat_mice_norm_nob.mcar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_cm.mar.0.5.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sklearn_iterative_post.mcar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_zero.mcar.0.1.4.airfoil_self_noise [0.013 seconds, 8.81 kilobytes]
+▶ dispatched target imputed_dat_zero.mcar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_mice_gamlss.mcar.0.5.4.airfoil_self_noise [23.615 minutes, 42.056 kilobytes]
+▶ dispatched target save_imputed_dat_sklearn_iterative_post.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_mixgb.mar.0.3.5.airfoil_self_noise [0.821 seconds, 20.645 kilobytes]
+▶ dispatched target save_imputed_dat_mixgb.mar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_impSeq.mar.0.5.1.airfoil_self_noise [0.321 seconds, 39.591 kilobytes]
+▶ dispatched target imputed_dat_ppca.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_irmi.mar.0.5.4.airfoil_self_noise [10.859 seconds, 41.228 kilobytes]
+▶ dispatched target save_imputed_dat_irmi.mar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_mice_norm_nob.mcar.0.1.1.airfoil_self_noise [0.207 seconds, 15.764 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm_nob.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_zero.mar.0.5.1.airfoil_self_noise [0.014 seconds, 8.511 kilobytes]
+▶ dispatched target imputed_dat_zero.mar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_sklearn_iterative_post.mcar.0.3.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_gsimp.mcar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_zero.mcar.0.1.3.airfoil_self_noise [0.013 seconds, 8.906 kilobytes]
+▶ dispatched target imputed_dat_impSeqRob.mar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_pemm.mcar.0.3.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_miracle.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_sklearn_iterative_post.mcar.0.3.5.airfoil_self_noise [0.263 seconds, 26.742 kilobytes]
+▶ dispatched target imputed_dat_metabimpute_rf.mar.0.1.1.airfoil_self_noise
+[1] "mice mixed imputation - in progress"
+● completed target imputed_dat_mice_mixed.mcar.0.1.1.airfoil_self_noise [4.766 seconds, 9.311 kilobytes]
+▶ dispatched target save_imputed_dat_mice_mixed.mcar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_mice_norm_nob.mar.0.1.3.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_missforest.mcar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_missforest.mcar.0.5.4.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm_nob.mar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_cm.mar.0.5.2.airfoil_self_noise [0.015 seconds, 8.056 kilobytes]
+▶ dispatched target save_imputed_dat_cm.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_ppca.mar.0.1.3.airfoil_self_noise [0.042 seconds, 14.961 kilobytes]
+▶ dispatched target imputed_dat_minProb.mar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_mice_norm_nob.mcar.0.5.4.airfoil_self_noise [0.203 seconds, 42.31 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm_nob.mcar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_mixgb.mar.0.3.5.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_bayesmetab.mcar.0.1.5.airfoil_self_noise
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+● completed target save_imputed_dat_minProb.mar.0.3.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mai.mcar.0.5.2.airfoil_self_noise
+Error in threshs[[which.min(lapply(threshs, function(x) { : 
+  attempt to select less than one element in get1index
+Error in threshs[[which.min(lapply(threshs, function(x) { : 
+  attempt to select less than one element in get1index
+● completed target save_imputed_dat_irmi.mar.0.5.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mai.mcar.0.5.4.airfoil_self_noise
+Error in threshs[[which.min(lapply(threshs, function(x) { : 
+  attempt to select less than one element in get1index
+Error in threshs[[which.min(lapply(threshs, function(x) { : 
+  attempt to select less than one element in get1index
+● completed target imputed_dat_mice_norm_nob.mar.0.1.5.airfoil_self_noise [0.217 seconds, 15.147 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm_nob.mar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_mice_mixed.mcar.0.1.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_dimar_fast.mcar.0.5.2.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target imputed_dat_metabimpute_rf.mar.0.1.1.airfoil_self_noise [2.555 seconds, 15.155 kilobytes]
+▶ dispatched target imputed_dat_ppca.mar.0.1.4.airfoil_self_noise
+● completed target save_imputed_dat_mice_norm_nob.mcar.0.1.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_median.mcar.0.3.3.airfoil_self_noise
+● completed target save_imputed_dat_cm.mar.0.5.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_remasker.NA.NA.1.birth_incomplete
+Error in py_call_impl(callable, call_args$unnamed, call_args$named) : 
+  TypeError: can't convert np.ndarray of type numpy.object_. The only supported types are: float64, float32, float16, complex64, complex128, int64, int32, int16, int8, uint64, uint32, uint16, uint8, and bool.
+Run `reticulate::py_last_error()` for details.
+Error in py_call_impl(callable, call_args$unnamed, call_args$named) : 
+  TypeError: can't convert np.ndarray of type numpy.object_. The only supported types are: float64, float32, float16, complex64, complex128, int64, int32, int16, int8, uint64, uint32, uint16, uint8, and bool.
+Run `reticulate::py_last_error()` for details.
+● completed target save_imputed_dat_mice_norm_nob.mcar.0.5.4.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_miracle.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_zero.mar.0.1.1.airfoil_self_noise [0.013 seconds, 8.681 kilobytes]
+▶ dispatched target save_imputed_dat_zero.mar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_mai.mcar.0.5.2.airfoil_self_noise [3.422 minutes, 447 bytes]
+▶ dispatched target imputed_dat_metabimpute_rf.mar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_miracle.mcar.0.1.1.airfoil_self_noise [11.12 seconds, 628 bytes]
+▶ dispatched target imputed_dat_miwae.mcar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_impSeqRob.mar.0.5.1.airfoil_self_noise [0.756 seconds, 39.181 kilobytes]
+▶ dispatched target imputed_dat_mice_norm.mar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_bayesmetab.mcar.0.1.5.airfoil_self_noise [0.283 seconds, 371 bytes]
+▶ dispatched target save_imputed_dat_bayesmetab.mcar.0.1.5.airfoil_self_noise
+[1] 596.4515
+● completed target imputed_dat_minProb.mar.0.3.3.airfoil_self_noise [0.071 seconds, 30.075 kilobytes]
+▶ dispatched target save_imputed_dat_minProb.mar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_gsimp.mcar.0.5.1.airfoil_self_noise [35.382 seconds, 42.893 kilobytes]
+▶ dispatched target save_imputed_dat_gsimp.mcar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_missforest.mcar.0.5.1.airfoil_self_noise [21.951 seconds, 32.18 kilobytes]
+▶ dispatched target save_imputed_dat_missforest.mcar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_mai.mcar.0.5.4.airfoil_self_noise [3.789 minutes, 449 bytes]
+▶ dispatched target save_imputed_dat_mai.mcar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_remasker.NA.NA.1.birth_incomplete [0.387 seconds, 7.983 megabytes]
+▶ dispatched target save_imputed_dat_remasker.NA.NA.1.birth_incomplete
+● completed target save_imputed_dat_bayesmetab.mcar.0.1.5.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_random.mar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_minProb.mar.0.3.3.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_minProb.mar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_metabimpute_rf.mar.0.1.4.airfoil_self_noise [2.023 seconds, 15.288 kilobytes]
+▶ dispatched target imputed_dat_metabimpute_bpca.mar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_mice_norm.mar.0.3.1.airfoil_self_noise [0.227 seconds, 29.118 kilobytes]
+▶ dispatched target imputed_dat_bayesmetab.mcar.0.1.2.airfoil_self_noise
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+● completed target save_imputed_dat_zero.mar.0.1.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mai.mcar.0.5.5.airfoil_self_noise
+Error in threshs[[which.min(lapply(threshs, function(x) { : 
+  attempt to select less than one element in get1index
+Error in threshs[[which.min(lapply(threshs, function(x) { : 
+  attempt to select less than one element in get1index
+● completed target save_imputed_dat_mai.mcar.0.5.4.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target save_imputed_dat_sklearn_iterative_post.mcar.0.3.5.airfoil_self_noise
+● completed target save_imputed_dat_missforest.mcar.0.5.1.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_zero.mcar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_miracle.mcar.0.1.4.airfoil_self_noise [11.161 seconds, 616 bytes]
+▶ dispatched target imputed_dat_dimar_fast.mcar.0.5.5.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target imputed_dat_miwae.mcar.0.3.5.airfoil_self_noise [50.394 seconds, 19.362 kilobytes]
+▶ dispatched target imputed_dat_corknn.mcar.0.3.2.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target imputed_dat_ppca.mar.0.1.4.airfoil_self_noise [0.036 seconds, 15.073 kilobytes]
+▶ dispatched target imputed_dat_svd.mcar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_gsimp.mcar.0.5.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mixgb.mar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_median.mcar.0.3.3.airfoil_self_noise [0.015 seconds, 8.877 kilobytes]
+▶ dispatched target imputed_dat_minProb.mar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_dimar_fast.mcar.0.5.2.airfoil_self_noise [0.586 seconds, 429 bytes]
+▶ dispatched target imputed_dat_irmi.mcar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_mice_norm_nob.mar.0.1.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_pemm.mcar.0.3.1.airfoil_self_noise
+[1] 600.228
+● completed target imputed_dat_minProb.mar.0.3.5.airfoil_self_noise [0.069 seconds, 29.364 kilobytes]
+▶ dispatched target save_imputed_dat_minProb.mar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_dimar_fast.mcar.0.5.5.airfoil_self_noise [0.623 seconds, 426 bytes]
+▶ dispatched target imputed_dat_SVDImpute.mcar.0.5.1.airfoil_self_noise
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+● completed target imputed_dat_corknn.mcar.0.3.2.airfoil_self_noise [0.167 seconds, 430 bytes]
+▶ dispatched target save_imputed_dat_corknn.mcar.0.3.2.airfoil_self_noise
+[1] 554.6812
+● completed target imputed_dat_minProb.mar.0.3.2.airfoil_self_noise [0.066 seconds, 29.875 kilobytes]
+▶ dispatched target save_imputed_dat_minProb.mar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_svd.mcar.0.5.3.airfoil_self_noise [0.046 seconds, 36.547 kilobytes]
+▶ dispatched target save_imputed_dat_mai.mcar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_pemm.mcar.0.3.1.airfoil_self_noise [1.468 seconds, 26.351 kilobytes]
+▶ dispatched target save_imputed_dat_pemm.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_metabimpute_bpca.mar.0.5.3.airfoil_self_noise [37.4 seconds, 34.638 kilobytes]
+▶ dispatched target save_imputed_dat_metabimpute_bpca.mar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_mai.mcar.0.5.5.airfoil_self_noise [3.834 minutes, 449 bytes]
+▶ dispatched target save_imputed_dat_mai.mcar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_sklearn_iterative_post.mcar.0.3.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_vim_knn.mar.0.3.1.airfoil_self_noise
+● completed target save_imputed_dat_remasker.NA.NA.1.birth_incomplete [3.102 seconds, 44 bytes]
+▶ dispatched target save_imputed_dat_impSeqRob.mar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_irmi.mcar.0.1.5.airfoil_self_noise [6.898 seconds, 15.514 kilobytes]
+▶ dispatched target save_imputed_dat_sklearn_iterative_post.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_zero.mcar.0.1.5.airfoil_self_noise [0.014 seconds, 8.925 kilobytes]
+▶ dispatched target imputed_dat_ppca.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_random.mar.0.5.1.airfoil_self_noise [0.016 seconds, 12.609 kilobytes]
+▶ dispatched target imputed_dat_vim_pca_robust.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_mixgb.mar.0.3.4.airfoil_self_noise [0.684 seconds, 21.12 kilobytes]
+▶ dispatched target save_imputed_dat_mixgb.mar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_bayesmetab.mcar.0.1.2.airfoil_self_noise [0.269 seconds, 371 bytes]
+▶ dispatched target save_imputed_dat_bayesmetab.mcar.0.1.2.airfoil_self_noise
+● completed target save_imputed_dat_mai.mcar.0.5.2.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_median.mcar.0.3.1.airfoil_self_noise
+● completed target save_imputed_dat_pemm.mcar.0.3.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_miracle.mcar.0.1.2.airfoil_self_noise
+● completed target save_imputed_dat_metabimpute_bpca.mar.0.5.3.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mai.NA.NA.1.birth_incomplete
+Error in check_missdf(missdf) : 'missdf' must contain only numeric data.
+Error in check_missdf(missdf) : 'missdf' must contain only numeric data.
+● completed target imputed_dat_ppca.mar.0.1.2.airfoil_self_noise [0.04 seconds, 15.036 kilobytes]
+▶ dispatched target imputed_dat_miwae.mcar.0.3.3.airfoil_self_noise
+● completed target save_imputed_dat_bayesmetab.mcar.0.1.2.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mixgb.mar.0.3.1.airfoil_self_noise
+● completed target save_imputed_dat_mixgb.mar.0.3.4.airfoil_self_noise [0.007 seconds, 44 bytes]
+▶ dispatched target imputed_dat_tknn.mar.0.5.1.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target save_imputed_dat_minProb.mar.0.3.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_mixed.mcar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_impSeqRob.mar.0.5.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_minProb.mar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_vim_pca_robust.mar.0.1.3.airfoil_self_noise [17.845 seconds, 15.197 kilobytes]
+▶ dispatched target save_imputed_dat_vim_pca_robust.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_SVDImpute.mcar.0.5.1.airfoil_self_noise [0.023 seconds, 346 bytes]
+▶ dispatched target imputed_dat_metabimpute_bpca.mar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_minProb.mar.0.3.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_irmi.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_vim_knn.mar.0.3.1.airfoil_self_noise [4.638 seconds, 10.24 kilobytes]
+▶ dispatched target save_imputed_dat_vim_knn.mar.0.3.1.airfoil_self_noise
+● completed target save_imputed_dat_corknn.mcar.0.3.2.airfoil_self_noise [0.001 seconds, 44 bytes]
+▶ dispatched target imputed_dat_bayesmetab.mcar.0.1.4.airfoil_self_noise
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+● completed target save_imputed_dat_sklearn_iterative_post.mcar.0.3.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mai.mcar.0.5.3.airfoil_self_noise
+Error in threshs[[which.min(lapply(threshs, function(x) { : 
+  attempt to select less than one element in get1index
+Error in threshs[[which.min(lapply(threshs, function(x) { : 
+  attempt to select less than one element in get1index
+● completed target save_imputed_dat_mai.mcar.0.5.5.airfoil_self_noise [0.001 seconds, 44 bytes]
+▶ dispatched target imputed_dat_SVTImpute.mcar.0.5.1.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target imputed_dat_metabimpute_bpca.mar.0.5.5.airfoil_self_noise [38.117 seconds, 34.733 kilobytes]
+▶ dispatched target save_imputed_dat_metabimpute_bpca.mar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_mai.mcar.0.5.3.airfoil_self_noise [3.54 minutes, 451 bytes]
+▶ dispatched target save_imputed_dat_mai.mcar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_miracle.mcar.0.1.2.airfoil_self_noise [11.324 seconds, 627 bytes]
+▶ dispatched target imputed_dat_sklearn_iterative_post.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_bayesmetab.mcar.0.1.4.airfoil_self_noise [0.31 seconds, 369 bytes]
+▶ dispatched target save_imputed_dat_bayesmetab.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_miwae.mcar.0.3.3.airfoil_self_noise [49.375 seconds, 19.062 kilobytes]
+▶ dispatched target imputed_dat_impSeqRob.mar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_mai.NA.NA.1.birth_incomplete [0.041 seconds, 345 bytes]
+▶ dispatched target imputed_dat_dimar_fast.mcar.0.5.3.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+[1] "mice mixed imputation - in progress"
+● completed target imputed_dat_mice_mixed.mcar.0.1.5.airfoil_self_noise [4.061 seconds, 9.247 kilobytes]
+▶ dispatched target save_imputed_dat_mice_mixed.mcar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_median.mcar.0.3.1.airfoil_self_noise [0.016 seconds, 9.003 kilobytes]
+▶ dispatched target imputed_dat_softimpute.NA.NA.1.birth_incomplete
+Error in check_missdf(missdf) : 'missdf' must contain only numeric data.
+Error in check_missdf(missdf) : 'missdf' must contain only numeric data.
+● completed target imputed_dat_tknn.mar.0.5.1.airfoil_self_noise [0.919 seconds, 429 bytes]
+▶ dispatched target imputed_dat_svd.mcar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_vim_knn.mar.0.3.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_gamlss.mcar.0.5.5.airfoil_self_noise
+[1] 553.8586
+● completed target imputed_dat_minProb.mar.0.3.4.airfoil_self_noise [0.068 seconds, 30.141 kilobytes]
+▶ dispatched target save_imputed_dat_minProb.mar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_irmi.mar.0.1.2.airfoil_self_noise [3.289 seconds, 15.456 kilobytes]
+▶ dispatched target imputed_dat_miracle.mcar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_SVTImpute.mcar.0.5.1.airfoil_self_noise [0.585 seconds, 427 bytes]
+▶ dispatched target imputed_dat_metabimpute_rf.mar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_mixgb.mar.0.3.1.airfoil_self_noise [0.753 seconds, 20.744 kilobytes]
+▶ dispatched target save_imputed_dat_mixgb.mar.0.3.1.airfoil_self_noise
+● completed target save_imputed_dat_vim_pca_robust.mar.0.1.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_miwae.mcar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_impSeqRob.mar.0.5.4.airfoil_self_noise [0.823 seconds, 39.732 kilobytes]
+▶ dispatched target save_imputed_dat_impSeqRob.mar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_mice_gamlss.mcar.0.5.5.airfoil_self_noise [23.276 minutes, 8.842 kilobytes]
+▶ dispatched target imputed_dat_mixgb.mar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_sklearn_iterative_post.mcar.0.3.1.airfoil_self_noise [0.286 seconds, 26.327 kilobytes]
+▶ dispatched target imputed_dat_tknn.mar.0.5.2.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target save_imputed_dat_mai.mcar.0.5.3.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_metabimpute_bpca.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_miracle.mcar.0.1.5.airfoil_self_noise [11.657 seconds, 626 bytes]
+▶ dispatched target imputed_dat_irmi.mar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_softimpute.NA.NA.1.birth_incomplete [0.044 seconds, 349 bytes]
+▶ dispatched target save_imputed_dat_softimpute.NA.NA.1.birth_incomplete
+● completed target imputed_dat_miwae.mcar.0.3.4.airfoil_self_noise [50.865 seconds, 19.135 kilobytes]
+▶ dispatched target imputed_dat_bayesmetab.mcar.0.1.1.airfoil_self_noise
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+● completed target save_imputed_dat_mixgb.mar.0.3.1.airfoil_self_noise [0.01 seconds, 44 bytes]
+▶ dispatched target imputed_dat_irmi.mcar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_dimar_fast.mcar.0.5.3.airfoil_self_noise [0.571 seconds, 427 bytes]
+▶ dispatched target imputed_dat_SVDImpute.mcar.0.5.3.airfoil_self_noise
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+● completed target save_imputed_dat_metabimpute_bpca.mar.0.5.5.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_SVTImpute.mcar.0.5.4.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target imputed_dat_svd.mcar.0.5.5.airfoil_self_noise [0.046 seconds, 37.374 kilobytes]
+▶ dispatched target save_imputed_dat_sklearn_iterative_post.mcar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_bayesmetab.mcar.0.1.4.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_vim_knn.mar.0.3.3.airfoil_self_noise
+● completed target save_imputed_dat_minProb.mar.0.3.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_qrilc.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_metabimpute_rf.mar.0.1.5.airfoil_self_noise [2.838 seconds, 14.858 kilobytes]
+▶ dispatched target imputed_dat_mice_drf.NA.NA.1.birth_incomplete
+Error in colMeans(x, na.rm = TRUE) : 'x' must be numeric
+Error in colMeans(x, na.rm = TRUE) : 'x' must be numeric
+● completed target save_imputed_dat_mice_mixed.mcar.0.1.5.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_svd.mcar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_mixgb.mar.0.3.2.airfoil_self_noise [0.862 seconds, 20.888 kilobytes]
+▶ dispatched target save_imputed_dat_mixgb.mar.0.3.2.airfoil_self_noise
+● completed target save_imputed_dat_sklearn_iterative_post.mcar.0.3.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_bayesmetab.mar.0.1.3.airfoil_self_noise
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+● completed target imputed_dat_mice_drf.NA.NA.1.birth_incomplete [2.278 minutes, 355 bytes]
+▶ dispatched target imputed_dat_mean.mcar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_impSeqRob.mar.0.5.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_miwae.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_qrilc.mcar.0.3.2.airfoil_self_noise [0.033 seconds, 30.217 kilobytes]
+▶ dispatched target save_imputed_dat_qrilc.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_tknn.mar.0.5.2.airfoil_self_noise [0.959 seconds, 429 bytes]
+▶ dispatched target imputed_dat_tknn.mar.0.5.3.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target imputed_dat_bayesmetab.mcar.0.1.1.airfoil_self_noise [0.263 seconds, 369 bytes]
+▶ dispatched target save_imputed_dat_bayesmetab.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_svd.mcar.0.5.2.airfoil_self_noise [0.048 seconds, 36.782 kilobytes]
+▶ dispatched target imputed_dat_random.mar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_irmi.mar.0.1.1.airfoil_self_noise [3.049 seconds, 15.448 kilobytes]
+▶ dispatched target imputed_dat_mice_mixed.mcar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_metabimpute_bpca.mar.0.5.2.airfoil_self_noise [39.31 seconds, 34.53 kilobytes]
+▶ dispatched target save_imputed_dat_metabimpute_bpca.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_irmi.mcar.0.1.3.airfoil_self_noise [6.707 seconds, 15.31 kilobytes]
+▶ dispatched target imputed_dat_irmi.mar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_SVDImpute.mcar.0.5.3.airfoil_self_noise [0.022 seconds, 346 bytes]
+▶ dispatched target imputed_dat_irmi.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_SVTImpute.mcar.0.5.4.airfoil_self_noise [0.628 seconds, 426 bytes]
+▶ dispatched target imputed_dat_zero.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_vim_knn.mar.0.3.3.airfoil_self_noise [4.72 seconds, 10.337 kilobytes]
+▶ dispatched target save_imputed_dat_vim_knn.mar.0.3.3.airfoil_self_noise
+● completed target save_imputed_dat_softimpute.NA.NA.1.birth_incomplete [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_impSeqRob.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_irmi.mar.0.1.4.airfoil_self_noise [3.095 seconds, 15.535 kilobytes]
+▶ dispatched target imputed_dat_dimar_fast.mcar.0.5.1.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target save_imputed_dat_bayesmetab.mcar.0.1.1.airfoil_self_noise [0.001 seconds, 44 bytes]
+▶ dispatched target save_imputed_dat_sklearn_iterative_post.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_bayesmetab.mar.0.1.3.airfoil_self_noise [0.269 seconds, 368 bytes]
+▶ dispatched target imputed_dat_qrilc.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_irmi.mcar.0.1.4.airfoil_self_noise [6.674 seconds, 15.318 kilobytes]
+▶ dispatched target imputed_dat_vim_knn.mcar.0.5.2.airfoil_self_noise
+● completed target save_imputed_dat_metabimpute_bpca.mar.0.5.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_median.mar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_random.mar.0.5.5.airfoil_self_noise [0.016 seconds, 12.669 kilobytes]
+▶ dispatched target imputed_dat_bayesmetab.mar.0.1.4.airfoil_self_noise
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+● completed target save_imputed_dat_qrilc.mcar.0.3.2.airfoil_self_noise [0.01 seconds, 44 bytes]
+▶ dispatched target imputed_dat_miracle.mcar.0.1.3.airfoil_self_noise
+[1] "mice mixed imputation - in progress"
+● completed target imputed_dat_mice_mixed.mcar.0.1.3.airfoil_self_noise [4.062 seconds, 9.262 kilobytes]
+▶ dispatched target save_imputed_dat_mice_mixed.mcar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_mixgb.mar.0.3.2.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_bcv_svd.mar.0.3.5.airfoil_self_noise
+● completed target save_imputed_dat_vim_knn.mar.0.3.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_metabimpute_rf.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_miwae.mcar.0.3.1.airfoil_self_noise [50.61 seconds, 19.16 kilobytes]
+▶ dispatched target imputed_dat_miwae.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_impSeqRob.mar.0.5.2.airfoil_self_noise [0.794 seconds, 39.445 kilobytes]
+▶ dispatched target save_imputed_dat_impSeqRob.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_zero.mcar.0.1.1.airfoil_self_noise [0.014 seconds, 8.986 kilobytes]
+▶ dispatched target imputed_dat_mice_drf.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_tknn.mar.0.5.3.airfoil_self_noise [0.896 seconds, 429 bytes]
+▶ dispatched target imputed_dat_mice_mixed.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_mean.mcar.0.1.5.airfoil_self_noise [0.017 seconds, 8.852 kilobytes]
+▶ dispatched target save_imputed_dat_mean.mcar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_mice_drf.mcar.0.3.1.airfoil_self_noise [48.637 seconds, 10.781 kilobytes]
+▶ dispatched target imputed_dat_metabimpute_bpca.mar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_bcv_svd.mar.0.3.5.airfoil_self_noise [0.095 seconds, 15.573 kilobytes]
+▶ dispatched target save_imputed_dat_bcv_svd.mar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_miracle.mcar.0.1.3.airfoil_self_noise [13.002 seconds, 627 bytes]
+▶ dispatched target imputed_dat_irmi.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_metabimpute_rf.mar.0.1.3.airfoil_self_noise [2.093 seconds, 15.058 kilobytes]
+▶ dispatched target imputed_dat_SVTImpute.mcar.0.5.2.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target imputed_dat_median.mar.0.5.5.airfoil_self_noise [0.016 seconds, 7.978 kilobytes]
+▶ dispatched target imputed_dat_SVDImpute.mcar.0.5.5.airfoil_self_noise
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+● completed target imputed_dat_bayesmetab.mar.0.1.4.airfoil_self_noise [0.278 seconds, 372 bytes]
+▶ dispatched target imputed_dat_impSeqRob.mar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_qrilc.mcar.0.3.1.airfoil_self_noise [0.031 seconds, 29.95 kilobytes]
+▶ dispatched target save_imputed_dat_qrilc.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_vim_knn.mcar.0.5.2.airfoil_self_noise [6.175 seconds, 11.846 kilobytes]
+▶ dispatched target save_imputed_dat_vim_knn.mcar.0.5.2.airfoil_self_noise
+● completed target save_imputed_dat_sklearn_iterative_post.mcar.0.3.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_vim_knn.mar.0.3.5.airfoil_self_noise
+● completed target save_imputed_dat_mean.mcar.0.1.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_qrilc.mcar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_impSeqRob.mar.0.5.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_svd.mcar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_dimar_fast.mcar.0.5.1.airfoil_self_noise [0.553 seconds, 428 bytes]
+▶ dispatched target imputed_dat_bayesmetab.mar.0.1.1.airfoil_self_noise
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+[1] "mice mixed imputation - in progress"
+● completed target imputed_dat_mice_mixed.mcar.0.1.4.airfoil_self_noise [3.967 seconds, 9.191 kilobytes]
+▶ dispatched target save_imputed_dat_mice_mixed.mcar.0.1.4.airfoil_self_noise
+● completed target save_imputed_dat_mice_mixed.mcar.0.1.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_minProb.NA.NA.1.birth_incomplete
+Error in (1 - h) * qs[i] : non-numeric argument to binary operator
+Error in (1 - h) * qs[i] : non-numeric argument to binary operator
+● completed target imputed_dat_miwae.mcar.0.3.2.airfoil_self_noise [51.682 seconds, 19.261 kilobytes]
+▶ dispatched target imputed_dat_minProb.mar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_minProb.NA.NA.1.birth_incomplete [0.447 seconds, 375 bytes]
+▶ dispatched target save_imputed_dat_minProb.NA.NA.1.birth_incomplete
+● completed target imputed_dat_qrilc.mcar.0.3.4.airfoil_self_noise [0.03 seconds, 30.105 kilobytes]
+▶ dispatched target save_imputed_dat_qrilc.mcar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_impSeqRob.mar.0.5.5.airfoil_self_noise [0.937 seconds, 39.657 kilobytes]
+▶ dispatched target save_imputed_dat_impSeqRob.mar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_mice_mixed.mcar.0.1.4.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_tknn.mar.0.5.5.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+[1] 641.7831
+● completed target imputed_dat_minProb.mar.0.1.5.airfoil_self_noise [0.082 seconds, 15.374 kilobytes]
+▶ dispatched target imputed_dat_random.mar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_svd.mcar.0.5.4.airfoil_self_noise [0.043 seconds, 36.856 kilobytes]
+▶ dispatched target imputed_dat_corknn.mar.0.1.2.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target imputed_dat_irmi.mar.0.1.3.airfoil_self_noise [3.211 seconds, 15.375 kilobytes]
+▶ dispatched target imputed_dat_metabimpute_bpca.mar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_SVDImpute.mcar.0.5.5.airfoil_self_noise [0.027 seconds, 345 bytes]
+▶ dispatched target imputed_dat_rmiMAE.mar.0.5.1.airfoil_self_noise
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+● completed target imputed_dat_SVTImpute.mcar.0.5.2.airfoil_self_noise [0.578 seconds, 425 bytes]
+▶ dispatched target imputed_dat_irmi.mcar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_vim_knn.mar.0.3.5.airfoil_self_noise [4.535 seconds, 10.243 kilobytes]
+▶ dispatched target save_imputed_dat_vim_knn.mar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_bayesmetab.mar.0.1.1.airfoil_self_noise [0.346 seconds, 367 bytes]
+▶ dispatched target imputed_dat_missforest.mar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_metabimpute_bpca.mar.0.5.4.airfoil_self_noise [37.138 seconds, 34.544 kilobytes]
+▶ dispatched target save_imputed_dat_metabimpute_bpca.mar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_bcv_svd.mar.0.3.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_SVDImpute.mcar.0.5.2.airfoil_self_noise
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+● completed target save_imputed_dat_qrilc.mcar.0.3.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_SVTImpute.mcar.0.5.5.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target save_imputed_dat_vim_knn.mcar.0.5.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_vim_knn.mar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_corknn.mar.0.1.2.airfoil_self_noise [0.273 seconds, 425 bytes]
+▶ dispatched target imputed_dat_qrilc.mcar.0.3.3.airfoil_self_noise
+● completed target save_imputed_dat_vim_knn.mar.0.3.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_vim_knn.mcar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_tknn.mar.0.5.5.airfoil_self_noise [0.923 seconds, 427 bytes]
+▶ dispatched target imputed_dat_svd.mcar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_vim_knn.mar.0.3.2.airfoil_self_noise [4.539 seconds, 10.368 kilobytes]
+▶ dispatched target save_imputed_dat_vim_knn.mar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_SVTImpute.mcar.0.5.5.airfoil_self_noise [0.573 seconds, 426 bytes]
+▶ dispatched target imputed_dat_bayesmetab.mar.0.1.2.airfoil_self_noise
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+Error in eigen(sigma, symmetric = TRUE) : 
+  infinite or missing values in 'x'
+● completed target imputed_dat_SVDImpute.mcar.0.5.2.airfoil_self_noise [0.024 seconds, 347 bytes]
+▶ dispatched target save_imputed_dat_SVTImpute.mcar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_missforest.mar.0.3.4.airfoil_self_noise [15.619 seconds, 25.257 kilobytes]
+▶ dispatched target save_imputed_dat_missforest.mar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_irmi.mcar.0.1.2.airfoil_self_noise [6.764 seconds, 15.317 kilobytes]
+▶ dispatched target imputed_dat_dimar.mcar.0.5.1.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target save_imputed_dat_metabimpute_bpca.mar.0.5.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mean.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_metabimpute_bpca.mar.0.5.1.airfoil_self_noise [39.373 seconds, 34.611 kilobytes]
+▶ dispatched target save_imputed_dat_metabimpute_bpca.mar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_random.mar.0.5.3.airfoil_self_noise [0.016 seconds, 12.627 kilobytes]
+▶ dispatched target imputed_dat_minProb.mar.0.1.2.airfoil_self_noise
+● completed target save_imputed_dat_minProb.NA.NA.1.birth_incomplete [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_drf.mcar.0.3.3.airfoil_self_noise
+● completed target save_imputed_dat_impSeqRob.mar.0.5.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_random.mar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_rmiMAE.mar.0.5.1.airfoil_self_noise [0.685 seconds, 483 bytes]
+▶ dispatched target save_imputed_dat_rmiMAE.mar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_qrilc.mcar.0.3.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_mixed.mcar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_dimar.mcar.0.5.1.airfoil_self_noise [0.586 seconds, 423 bytes]
+▶ dispatched target save_imputed_dat_dimar.mcar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_missforest.mar.0.3.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_irmi.mar.0.1.5.airfoil_self_noise
+[1] "mice mixed imputation - in progress"
+● completed target imputed_dat_mice_mixed.mcar.0.1.2.airfoil_self_noise [4.011 seconds, 9.272 kilobytes]
+▶ dispatched target save_imputed_dat_mice_mixed.mcar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_qrilc.mcar.0.3.3.airfoil_self_noise [0.032 seconds, 30.138 kilobytes]
+▶ dispatched target save_imputed_dat_qrilc.mcar.0.3.3.airfoil_self_noise
+[1] 641.1938
+● completed target imputed_dat_minProb.mar.0.1.2.airfoil_self_noise [0.083 seconds, 15.753 kilobytes]
+▶ dispatched target imputed_dat_impSeqRob.mar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_vim_knn.mar.0.3.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm_predict.mcar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_svd.mcar.0.5.1.airfoil_self_noise [0.044 seconds, 36.76 kilobytes]
+▶ dispatched target imputed_dat_vim_knn.mcar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_mice_drf.mcar.0.3.3.airfoil_self_noise [46.692 seconds, 10.577 kilobytes]
+▶ dispatched target imputed_dat_svd.mar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_mean.mcar.0.1.4.airfoil_self_noise [0.016 seconds, 8.778 kilobytes]
+▶ dispatched target imputed_dat_median.mar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_SVTImpute.mcar.0.5.1.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target save_imputed_dat_SVDImpute.mcar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_bayesmetab.mar.0.1.2.airfoil_self_noise [0.342 seconds, 369 bytes]
+▶ dispatched target imputed_dat_dimar.mcar.0.5.4.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target save_imputed_dat_rmiMAE.mar.0.5.1.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mean.mcar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_metabimpute_bpca.mar.0.5.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mixgb.mar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_vim_knn.mcar.0.5.4.airfoil_self_noise [6.109 seconds, 11.73 kilobytes]
+▶ dispatched target save_imputed_dat_vim_knn.mcar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_random.mar.0.5.4.airfoil_self_noise [0.016 seconds, 12.61 kilobytes]
+▶ dispatched target imputed_dat_corknn.mar.0.1.4.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target imputed_dat_dimar.mcar.0.5.4.airfoil_self_noise [0.578 seconds, 422 bytes]
+▶ dispatched target save_imputed_dat_dimar.mcar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_svd.mar.0.3.1.airfoil_self_noise [0.045 seconds, 26.415 kilobytes]
+▶ dispatched target imputed_dat_rmiMAE.mar.0.5.3.airfoil_self_noise
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+● completed target save_imputed_dat_qrilc.mcar.0.3.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mai.mcar.0.5.1.airfoil_self_noise
+Error in threshs[[which.min(lapply(threshs, function(x) { : 
+  attempt to select less than one element in get1index
+Error in threshs[[which.min(lapply(threshs, function(x) { : 
+  attempt to select less than one element in get1index
+● completed target save_imputed_dat_vim_knn.mcar.0.5.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mnmf.mar.0.3.3.airfoil_self_noise
+Error in check_missdf(missdf, above_one = TRUE) : 
+  'missdf' must contain only numeric data above 1.
+Error in check_missdf(missdf, above_one = TRUE) : 
+  'missdf' must contain only numeric data above 1.
+● completed target imputed_dat_mixgb.mar.0.3.3.airfoil_self_noise [0.776 seconds, 21.021 kilobytes]
+▶ dispatched target save_imputed_dat_mixgb.mar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_impSeqRob.mar.0.5.3.airfoil_self_noise [0.775 seconds, 39.612 kilobytes]
+▶ dispatched target save_imputed_dat_impSeqRob.mar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_corknn.mar.0.1.4.airfoil_self_noise [0.211 seconds, 429 bytes]
+▶ dispatched target imputed_dat_SVTImpute.mcar.0.5.3.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target imputed_dat_mice_norm_predict.mcar.0.5.1.airfoil_self_noise [0.188 seconds, 41.844 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm_predict.mcar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_mice_mixed.mcar.0.1.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_SVDImpute.mcar.0.5.4.airfoil_self_noise
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+Error in get("impute_SVDImpute") : object 'impute_SVDImpute' not found
+● completed target save_imputed_dat_dimar.mcar.0.5.1.airfoil_self_noise [0.001 seconds, 44 bytes]
+▶ dispatched target imputed_dat_qrilc.mcar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_irmi.mar.0.1.5.airfoil_self_noise [3.108 seconds, 15.128 kilobytes]
+▶ dispatched target imputed_dat_vim_knn.mar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_mean.mcar.0.1.1.airfoil_self_noise [0.015 seconds, 8.934 kilobytes]
+▶ dispatched target imputed_dat_svd.mar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_median.mar.0.5.4.airfoil_self_noise [0.016 seconds, 7.983 kilobytes]
+▶ dispatched target imputed_dat_median.mar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_SVDImpute.mcar.0.5.1.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_drf.mar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_vim_knn.mcar.0.5.3.airfoil_self_noise [6.4 seconds, 11.852 kilobytes]
+▶ dispatched target save_imputed_dat_vim_knn.mcar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_mice_norm_predict.mcar.0.5.1.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mean.mcar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_svd.mar.0.3.4.airfoil_self_noise [0.045 seconds, 27.136 kilobytes]
+▶ dispatched target imputed_dat_minProb.mar.0.1.4.airfoil_self_noise
+● completed target save_imputed_dat_impSeqRob.mar.0.5.3.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_drf.mcar.0.3.5.airfoil_self_noise
+● completed target save_imputed_dat_vim_knn.mcar.0.5.3.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_halfmin.NA.NA.1.birth_incomplete
+Error in check_missdf(missdf) : 'missdf' must contain only numeric data.
+Error in check_missdf(missdf) : 'missdf' must contain only numeric data.
+● completed target imputed_dat_mai.mcar.0.5.1.airfoil_self_noise [3.82 minutes, 452 bytes]
+▶ dispatched target imputed_dat_random.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_qrilc.mcar.0.3.5.airfoil_self_noise [0.032 seconds, 30.418 kilobytes]
+▶ dispatched target save_imputed_dat_qrilc.mcar.0.3.5.airfoil_self_noise
+● completed target save_imputed_dat_mixgb.mar.0.3.3.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_miracle.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_mice_drf.mar.0.1.1.airfoil_self_noise [37.956 seconds, 8.445 kilobytes]
+▶ dispatched target save_imputed_dat_mice_drf.mar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_mnmf.mar.0.3.3.airfoil_self_noise [0.023 seconds, 379 bytes]
+▶ dispatched target save_imputed_dat_mnmf.mar.0.3.3.airfoil_self_noise
+● completed target save_imputed_dat_dimar.mcar.0.5.4.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_corknn.mar.0.1.3.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target imputed_dat_vim_knn.mar.0.3.4.airfoil_self_noise [4.645 seconds, 10.5 kilobytes]
+▶ dispatched target save_imputed_dat_vim_knn.mar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_SVDImpute.mcar.0.5.4.airfoil_self_noise [0.023 seconds, 346 bytes]
+▶ dispatched target save_imputed_dat_SVDImpute.mcar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_SVTImpute.mcar.0.5.3.airfoil_self_noise [0.579 seconds, 426 bytes]
+▶ dispatched target save_imputed_dat_SVTImpute.mcar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_median.mar.0.5.1.airfoil_self_noise [0.016 seconds, 7.964 kilobytes]
+▶ dispatched target imputed_dat_metabimpute_rf.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_rmiMAE.mar.0.5.3.airfoil_self_noise [0.625 seconds, 483 bytes]
+▶ dispatched target save_imputed_dat_rmiMAE.mar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_mice_drf.mar.0.1.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_missforest.mar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_halfmin.NA.NA.1.birth_incomplete [0.038 seconds, 345 bytes]
+▶ dispatched target save_imputed_dat_halfmin.NA.NA.1.birth_incomplete
+● completed target save_imputed_dat_rmiMAE.mar.0.5.3.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_min.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_metabimpute_rf.mar.0.5.2.airfoil_self_noise [3.843 seconds, 36.401 kilobytes]
+▶ dispatched target save_imputed_dat_metabimpute_rf.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_miracle.mar.0.1.2.airfoil_self_noise [12.435 seconds, 12.912 kilobytes]
+▶ dispatched target imputed_dat_vim_knn.mcar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_random.mar.0.5.2.airfoil_self_noise [0.016 seconds, 12.573 kilobytes]
+▶ dispatched target imputed_dat_median.mar.0.5.2.airfoil_self_noise
+● completed target save_imputed_dat_mnmf.mar.0.3.3.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_dimar.mcar.0.5.2.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target save_imputed_dat_qrilc.mcar.0.3.5.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm_nob.mar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_corknn.mar.0.1.3.airfoil_self_noise [0.235 seconds, 429 bytes]
+▶ dispatched target imputed_dat_minProb.mar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_vim_knn.mar.0.3.4.airfoil_self_noise [0.008 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_drf.mcar.0.3.2.airfoil_self_noise
+[1] 641.1135
+● completed target imputed_dat_minProb.mar.0.1.4.airfoil_self_noise [0.088 seconds, 15.86 kilobytes]
+▶ dispatched target imputed_dat_gsimp.mcar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_mice_drf.mcar.0.3.5.airfoil_self_noise [47.203 seconds, 10.642 kilobytes]
+▶ dispatched target imputed_dat_tknn.mcar.0.3.1.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target imputed_dat_mean.mcar.0.1.2.airfoil_self_noise [0.017 seconds, 8.861 kilobytes]
+▶ dispatched target imputed_dat_rmiMAE.mar.0.5.5.airfoil_self_noise
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+● completed target save_imputed_dat_SVTImpute.mcar.0.5.3.airfoil_self_noise [0.001 seconds, 44 bytes]
+▶ dispatched target imputed_dat_metabimpute_rf.mar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_SVDImpute.mcar.0.5.4.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_hyperimpute.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_tknn.mcar.0.3.1.airfoil_self_noise [0.941 seconds, 427 bytes]
+▶ dispatched target save_imputed_dat_tknn.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_gsimp.mcar.0.1.2.airfoil_self_noise [36.934 seconds, 15.754 kilobytes]
+▶ dispatched target save_imputed_dat_gsimp.mcar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_missforest.mar.0.3.5.airfoil_self_noise [20.703 seconds, 24.09 kilobytes]
+▶ dispatched target save_imputed_dat_missforest.mar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_hyperimpute.mcar.0.1.4.airfoil_self_noise [33.007 seconds, 11.508 kilobytes]
+▶ dispatched target save_imputed_dat_hyperimpute.mcar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_mice_drf.mcar.0.3.2.airfoil_self_noise [48.055 seconds, 10.802 kilobytes]
+▶ dispatched target imputed_dat_svd.mar.0.3.2.airfoil_self_noise
+● completed target save_imputed_dat_halfmin.NA.NA.1.birth_incomplete [0.002 seconds, 44 bytes]
+▶ dispatched target save_imputed_dat_SVTImpute.mcar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_dimar.mcar.0.5.2.airfoil_self_noise [0.633 seconds, 422 bytes]
+▶ dispatched target save_imputed_dat_dimar.mcar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_min.mcar.0.3.1.airfoil_self_noise [0.019 seconds, 9.045 kilobytes]
+▶ dispatched target save_imputed_dat_SVDImpute.mcar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_rmiMAE.mar.0.5.5.airfoil_self_noise [0.729 seconds, 488 bytes]
+▶ dispatched target save_imputed_dat_rmiMAE.mar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_metabimpute_rf.mar.0.5.1.airfoil_self_noise [4.234 seconds, 37.042 kilobytes]
+▶ dispatched target save_imputed_dat_metabimpute_rf.mar.0.5.1.airfoil_self_noise
+[1] 641.4112
+● completed target imputed_dat_minProb.mar.0.1.1.airfoil_self_noise [0.095 seconds, 15.711 kilobytes]
+▶ dispatched target imputed_dat_sklearn_iterative_post.mar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_vim_knn.mcar.0.5.5.airfoil_self_noise [6.217 seconds, 11.969 kilobytes]
+▶ dispatched target save_imputed_dat_vim_knn.mcar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_mice_norm_nob.mar.0.5.1.airfoil_self_noise [0.212 seconds, 41.089 kilobytes]
+▶ dispatched target imputed_dat_dimar.mcar.0.5.5.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target imputed_dat_median.mar.0.5.2.airfoil_self_noise [0.016 seconds, 8.023 kilobytes]
+▶ dispatched target imputed_dat_gsimp.mcar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_metabimpute_rf.mar.0.5.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_corknn.mar.0.1.5.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target save_imputed_dat_rmiMAE.mar.0.5.5.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sinkhorn.mcar.0.5.1.airfoil_self_noise
+Error in .Call(`_reticulate_py_call_impl`, x, args, keywords) : 
+  reached CPU time limit
+● completed target save_imputed_dat_metabimpute_rf.mar.0.5.1.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_SVTImpute.mar.0.5.2.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target imputed_dat_sklearn_iterative_post.mar.0.3.3.airfoil_self_noise [0.393 seconds, 29.647 kilobytes]
+▶ dispatched target save_imputed_dat_sklearn_iterative_post.mar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_svd.mar.0.3.2.airfoil_self_noise [0.059 seconds, 26.961 kilobytes]
+▶ dispatched target imputed_dat_metabimpute_rf.mar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_gsimp.mcar.0.1.5.airfoil_self_noise [37.286 seconds, 15.957 kilobytes]
+▶ dispatched target save_imputed_dat_gsimp.mcar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_gsimp.mcar.0.1.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_rmiMAE.mar.0.5.2.airfoil_self_noise
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+● completed target save_imputed_dat_dimar.mcar.0.5.2.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_missforest.mar.0.3.3.airfoil_self_noise
+● completed target save_imputed_dat_hyperimpute.mcar.0.1.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm_predict.mcar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_dimar.mcar.0.5.5.airfoil_self_noise [0.699 seconds, 422 bytes]
+▶ dispatched target save_imputed_dat_dimar.mcar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_vim_knn.mcar.0.5.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_hyperimpute.mcar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_tknn.mcar.0.3.1.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_svd.mar.0.3.5.airfoil_self_noise
+● completed target save_imputed_dat_SVDImpute.mcar.0.5.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target save_imputed_dat_SVDImpute.mcar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_SVTImpute.mcar.0.5.5.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target save_imputed_dat_SVTImpute.mcar.0.5.2.airfoil_self_noise
+● completed target save_imputed_dat_missforest.mar.0.3.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_dimar.mar.0.1.4.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target imputed_dat_corknn.mar.0.1.5.airfoil_self_noise [0.198 seconds, 428 bytes]
+▶ dispatched target imputed_dat_mice_rf.mcar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_mice_norm_predict.mcar.0.5.5.airfoil_self_noise [0.217 seconds, 41.828 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm_predict.mcar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_missforest.mar.0.3.3.airfoil_self_noise [29.292 seconds, 25.045 kilobytes]
+▶ dispatched target save_imputed_dat_missforest.mar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_dimar.mar.0.1.4.airfoil_self_noise [0.826 seconds, 420 bytes]
+▶ dispatched target imputed_dat_nlpca.NA.NA.1.birth_incomplete
+Error in missCompare::impute_data(missdf, scale = FALSE, n.iter = 1, sel_method = 10) : 
+  Your data contains string variables. Please inspect your data and either remove these variables or convert them
+         into type factor/numeric where applicable.
+Error in missCompare::impute_data(missdf, scale = FALSE, n.iter = 1, sel_method = 10) : 
+  Your data contains string variables. Please inspect your data and either remove these variables or convert them
+         into type factor/numeric where applicable.
+● completed target imputed_dat_hyperimpute.mcar.0.1.3.airfoil_self_noise [33.362 seconds, 11.596 kilobytes]
+▶ dispatched target save_imputed_dat_hyperimpute.mcar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_svd.mar.0.3.5.airfoil_self_noise [0.051 seconds, 26.16 kilobytes]
+▶ dispatched target save_imputed_dat_vim_pca.mar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_mice_rf.mcar.0.5.4.airfoil_self_noise [13.855 seconds, 11.963 kilobytes]
+▶ dispatched target save_imputed_dat_mice_rf.mcar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_gsimp.mcar.0.1.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_drf.mcar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_dimar.mcar.0.5.5.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target imputed_dat_tknn.mcar.0.3.3.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target save_imputed_dat_sklearn_iterative_post.mar.0.3.3.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sinkhorn.mcar.0.5.2.airfoil_self_noise
+Error in .Call(`_reticulate_py_call_impl`, x, args, keywords) : 
+  reached CPU time limit
+● completed target imputed_dat_rmiMAE.mar.0.5.2.airfoil_self_noise [0.752 seconds, 488 bytes]
+▶ dispatched target save_imputed_dat_rmiMAE.mar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_SVTImpute.mar.0.5.2.airfoil_self_noise [0.637 seconds, 426 bytes]
+▶ dispatched target imputed_dat_metabimpute_rf.mar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_sinkhorn.mcar.0.5.1.airfoil_self_noise [48.382 minutes, 36.589 kilobytes]
+▶ dispatched target save_imputed_dat_sinkhorn.mcar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_metabimpute_rf.mar.0.5.4.airfoil_self_noise [3.219 seconds, 36.235 kilobytes]
+▶ dispatched target save_imputed_dat_metabimpute_rf.mar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_SVTImpute.mcar.0.5.2.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_corknn.mcar.0.1.1.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target save_imputed_dat_SVDImpute.mcar.0.5.5.airfoil_self_noise [0.001 seconds, 44 bytes]
+▶ dispatched target imputed_dat_pemm.mcar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_pemm.mcar.0.5.4.airfoil_self_noise [1.552 seconds, 33.58 kilobytes]
+▶ dispatched target imputed_dat_irmi.NA.NA.1.birth_incomplete
+Error in Exception(...) : 
+  reached elapsed time limit [cpu=600s, elapsed=600s]
+Error in Exception(...) : 
+  reached elapsed time limit [cpu=600s, elapsed=600s]
+● completed target save_imputed_dat_sinkhorn.mcar.0.5.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_dimar.mar.0.1.3.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target imputed_dat_corknn.mcar.0.1.1.airfoil_self_noise [0.312 seconds, 428 bytes]
+▶ dispatched target imputed_dat_mice_drf.mar.0.1.5.airfoil_self_noise
+● completed target save_imputed_dat_missforest.mar.0.3.3.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_dimar.mcar.0.5.3.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target save_imputed_dat_rmiMAE.mar.0.5.2.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_gsimp.mcar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_metabimpute_rf.mar.0.5.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_tknn.mcar.0.3.2.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target imputed_dat_tknn.mcar.0.3.3.airfoil_self_noise [0.996 seconds, 430 bytes]
+▶ dispatched target save_imputed_dat_tknn.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_nlpca.NA.NA.1.birth_incomplete [0.036 seconds, 508 bytes]
+▶ dispatched target save_imputed_dat_nlpca.NA.NA.1.birth_incomplete
+● completed target imputed_dat_sinkhorn.mcar.0.5.2.airfoil_self_noise [48.431 minutes, 36.398 kilobytes]
+▶ dispatched target save_imputed_dat_sinkhorn.mcar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_mice_drf.mcar.0.3.4.airfoil_self_noise [52.376 seconds, 10.753 kilobytes]
+▶ dispatched target imputed_dat_sinkhorn.mcar.0.5.3.airfoil_self_noise
+Error in .Call(`_reticulate_py_call_impl`, x, args, keywords) : 
+  reached CPU time limit
+● completed target save_imputed_dat_mice_norm_predict.mcar.0.5.5.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_rmiMAE.mar.0.5.4.airfoil_self_noise
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+Error in if (sum((ak - akprev)^2) < 0.05) converged <- TRUE else if (repe >  : 
+  missing value where TRUE/FALSE needed
+● completed target save_imputed_dat_mice_rf.mcar.0.5.4.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_knn.mar.0.5.2.airfoil_self_noise
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+● completed target save_imputed_dat_hyperimpute.mcar.0.1.3.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_missforest.mar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_metabimpute_rf.mar.0.5.3.airfoil_self_noise [3.827 seconds, 37.864 kilobytes]
+▶ dispatched target save_imputed_dat_metabimpute_rf.mar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_vim_pca.mar.0.1.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_pemm.mar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_irmi.NA.NA.1.birth_incomplete [20.062 minutes, 10.683 megabytes]
+▶ dispatched target imputed_dat_mice_norm_predict.mcar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_sinkhorn.mcar.0.5.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mean.mar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_metabimpute_rf.mar.0.5.3.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_min.mcar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_knn.mar.0.5.2.airfoil_self_noise [0.027 seconds, 12.353 kilobytes]
+▶ dispatched target imputed_dat_pemm.mcar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_nlpca.NA.NA.1.birth_incomplete [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_hyperimpute.mcar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_dimar.mar.0.1.3.airfoil_self_noise [0.547 seconds, 420 bytes]
+▶ dispatched target imputed_dat_vim_knn.mcar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_gsimp.mcar.0.1.3.airfoil_self_noise [34.842 seconds, 15.735 kilobytes]
+▶ dispatched target save_imputed_dat_gsimp.mcar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_mice_drf.mar.0.1.5.airfoil_self_noise [39.223 seconds, 8.426 kilobytes]
+▶ dispatched target save_imputed_dat_mice_drf.mar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_missforest.mar.0.3.1.airfoil_self_noise [24.546 seconds, 24.316 kilobytes]
+▶ dispatched target save_imputed_dat_missforest.mar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_pemm.mar.0.3.5.airfoil_self_noise [1.416 seconds, 24.925 kilobytes]
+▶ dispatched target imputed_dat_svd.mar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_dimar.mcar.0.5.3.airfoil_self_noise [0.594 seconds, 425 bytes]
+▶ dispatched target save_imputed_dat_dimar.mcar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_tknn.mcar.0.3.2.airfoil_self_noise [0.94 seconds, 427 bytes]
+▶ dispatched target save_imputed_dat_tknn.mcar.0.3.2.airfoil_self_noise
+● completed target save_imputed_dat_tknn.mcar.0.3.3.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target save_imputed_dat_SVTImpute.mcar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_sinkhorn.mcar.0.5.3.airfoil_self_noise [48.29 minutes, 36.4 kilobytes]
+▶ dispatched target save_imputed_dat_sinkhorn.mcar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_rmiMAE.mar.0.5.4.airfoil_self_noise [0.68 seconds, 489 bytes]
+▶ dispatched target save_imputed_dat_rmiMAE.mar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_min.mcar.0.3.5.airfoil_self_noise [0.015 seconds, 9.015 kilobytes]
+▶ dispatched target save_imputed_dat_SVDImpute.mcar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_tknn.mcar.0.3.2.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_random.mcar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_mice_drf.mar.0.1.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm_nob.mar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_pemm.mcar.0.5.3.airfoil_self_noise [1.419 seconds, 33.448 kilobytes]
+▶ dispatched target imputed_dat_mean.mcar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_SVTImpute.mcar.0.5.4.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_rf.mcar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_mean.mar.0.5.5.airfoil_self_noise [0.015 seconds, 8.294 kilobytes]
+▶ dispatched target save_imputed_dat_mean.mar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_sinkhorn.mcar.0.5.3.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target save_imputed_dat_vim_pca.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_mice_norm_predict.mcar.0.5.3.airfoil_self_noise [0.182 seconds, 41.668 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm_predict.mcar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_vim_knn.mcar.0.5.1.airfoil_self_noise [6.534 seconds, 11.647 kilobytes]
+▶ dispatched target save_imputed_dat_vim_knn.mcar.0.5.1.airfoil_self_noise
+● completed target save_imputed_dat_missforest.mar.0.3.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_tknn.mcar.0.3.5.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target save_imputed_dat_rmiMAE.mar.0.5.4.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sinkhorn.mcar.0.5.4.airfoil_self_noise
+Error in .Call(`_reticulate_py_call_impl`, x, args, keywords) : 
+  reached CPU time limit
+● completed target imputed_dat_hyperimpute.mcar.0.1.5.airfoil_self_noise [32.746 seconds, 11.653 kilobytes]
+▶ dispatched target save_imputed_dat_hyperimpute.mcar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_svd.mar.0.3.3.airfoil_self_noise [0.049 seconds, 27.113 kilobytes]
+▶ dispatched target imputed_dat_metabimpute_rf.mar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_gsimp.mcar.0.1.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_knn.mar.0.5.5.airfoil_self_noise
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+● completed target save_imputed_dat_dimar.mcar.0.5.3.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target save_imputed_dat_ppca.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_mice_rf.mcar.0.5.2.airfoil_self_noise [13.152 seconds, 12.064 kilobytes]
+▶ dispatched target save_imputed_dat_mice_rf.mcar.0.5.2.airfoil_self_noise
+● completed target save_imputed_dat_vim_knn.mcar.0.5.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm_predict.mcar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_SVDImpute.mcar.0.5.3.airfoil_self_noise [0.001 seconds, 44 bytes]
+▶ dispatched target imputed_dat_corknn.mcar.0.1.3.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target save_imputed_dat_ppca.mcar.0.3.2.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.3.1.airfoil_self_noise
+Error in Exception(...) : 
+  reached elapsed time limit [cpu=600s, elapsed=600s]
+● completed target imputed_dat_metabimpute_rf.mar.0.5.5.airfoil_self_noise [1.507 seconds, 34.975 kilobytes]
+▶ dispatched target save_imputed_dat_metabimpute_rf.mar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_mice_norm_nob.mar.0.5.5.airfoil_self_noise [0.289 seconds, 41.199 kilobytes]
+▶ dispatched target imputed_dat_median.mar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_knn.mar.0.5.5.airfoil_self_noise [0.025 seconds, 12.336 kilobytes]
+▶ dispatched target imputed_dat_dimar.mar.0.1.5.airfoil_self_noise
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+Error in stats::glm.fit(design$X, design$y, family = stats::binomial()) : 
+  NA/NaN/Inf in 'x'
+● completed target imputed_dat_tknn.mcar.0.3.5.airfoil_self_noise [0.904 seconds, 429 bytes]
+▶ dispatched target save_imputed_dat_tknn.mcar.0.3.5.airfoil_self_noise
+● completed target save_imputed_dat_mean.mar.0.5.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_drf.mar.0.1.3.airfoil_self_noise
+● completed target imputed_dat_random.mcar.0.1.1.airfoil_self_noise [0.016 seconds, 9.571 kilobytes]
+▶ dispatched target imputed_dat_mice_rf.mcar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_sinkhorn.mcar.0.5.4.airfoil_self_noise [48.455 minutes, 36.648 kilobytes]
+▶ dispatched target save_imputed_dat_sinkhorn.mcar.0.5.4.airfoil_self_noise
+● completed target save_imputed_dat_mice_norm_predict.mcar.0.5.3.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target save_imputed_dat_vim_pca.mar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_mean.mcar.0.1.3.airfoil_self_noise [0.016 seconds, 8.845 kilobytes]
+▶ dispatched target imputed_dat_gsimp.mcar.0.1.1.airfoil_self_noise
+● completed target save_imputed_dat_hyperimpute.mcar.0.1.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_corknn.mar.0.1.1.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target save_imputed_dat_vim_pca.mar.0.1.3.airfoil_self_noise [0.011 seconds, 44 bytes]
+▶ dispatched target imputed_dat_tknn.mcar.0.3.4.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target save_imputed_dat_vim_pca.mar.0.1.4.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_sinkhorn.mcar.0.5.5.airfoil_self_noise
+Error in .Call(`_reticulate_py_call_impl`, x, args, keywords) : 
+  reached CPU time limit
+● completed target imputed_dat_mice_drf.mar.0.1.3.airfoil_self_noise [38.285 seconds, 8.429 kilobytes]
+▶ dispatched target save_imputed_dat_mice_drf.mar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_tknn.mcar.0.3.5.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_gain.NA.NA.1.birth_incomplete
+Error in py_call_impl(callable, call_args$unnamed, call_args$named) : 
+  TypeError: can't convert np.ndarray of type numpy.object_. The only supported types are: float64, float32, float16, complex64, complex128, int64, int32, int16, int8, uint64, uint32, uint16, uint8, and bool.
+Run `reticulate::py_last_error()` for details.
+Error in py_call_impl(callable, call_args$unnamed, call_args$named) : 
+  TypeError: can't convert np.ndarray of type numpy.object_. The only supported types are: float64, float32, float16, complex64, complex128, int64, int32, int16, int8, uint64, uint32, uint16, uint8, and bool.
+Run `reticulate::py_last_error()` for details.
+● completed target imputed_dat_corknn.mcar.0.1.3.airfoil_self_noise [0.412 seconds, 428 bytes]
+▶ dispatched target save_imputed_dat_ppca.mcar.0.3.5.airfoil_self_noise
+● completed target imputed_dat_corknn.mar.0.1.1.airfoil_self_noise [0.191 seconds, 427 bytes]
+▶ dispatched target imputed_dat_pemm.mar.0.3.3.airfoil_self_noise
+● completed target save_imputed_dat_sinkhorn.mcar.0.5.4.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_min.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_gsimp.mcar.0.1.1.airfoil_self_noise [36.182 seconds, 16.24 kilobytes]
+▶ dispatched target save_imputed_dat_gsimp.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_mice_norm_predict.mcar.0.5.4.airfoil_self_noise [0.191 seconds, 41.705 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm_predict.mcar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_median.mar.0.5.3.airfoil_self_noise [0.017 seconds, 7.969 kilobytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_metabimpute_rf.mar.0.5.5.airfoil_self_noise [0.012 seconds, 44 bytes]
+▶ dispatched target imputed_dat_pemm.mcar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_FEFI.mar.0.3.1.airfoil_self_noise [23.708 minutes, 21.859 kilobytes]
+▶ dispatched target imputed_dat_amelia.mar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_dimar.mar.0.1.5.airfoil_self_noise [0.66 seconds, 420 bytes]
+▶ dispatched target imputed_dat_mice_gamlss.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_mice_rf.mcar.0.5.5.airfoil_self_noise [13.004 seconds, 12.186 kilobytes]
+▶ dispatched target save_imputed_dat_mice_rf.mcar.0.5.5.airfoil_self_noise
+● completed target save_imputed_dat_mice_rf.mcar.0.5.2.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_drf.mar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_tknn.mcar.0.3.4.airfoil_self_noise [0.908 seconds, 428 bytes]
+▶ dispatched target save_imputed_dat_tknn.mcar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_mice_rf.mcar.0.5.5.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_random.mcar.0.1.3.airfoil_self_noise
+● completed target save_imputed_dat_gsimp.mcar.0.1.1.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_norm_nob.mar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_sinkhorn.mcar.0.5.5.airfoil_self_noise [48.58 minutes, 36.7 kilobytes]
+▶ dispatched target save_imputed_dat_sinkhorn.mcar.0.5.5.airfoil_self_noise
+● completed target imputed_dat_mice_gamlss.mcar.0.3.1.airfoil_self_noise [25.65 minutes, 29.397 kilobytes]
+▶ dispatched target save_imputed_dat_mice_gamlss.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_min.mcar.0.3.3.airfoil_self_noise [0.015 seconds, 8.925 kilobytes]
+▶ dispatched target imputed_dat_sklearn_iterative_post.mar.0.3.2.airfoil_self_noise
+● completed target save_imputed_dat_tknn.mcar.0.3.4.airfoil_self_noise [0.002 seconds, 44 bytes]
+▶ dispatched target imputed_dat_knn.mar.0.5.3.airfoil_self_noise
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+● completed target save_imputed_dat_mice_drf.mar.0.1.3.airfoil_self_noise [0.004 seconds, 44 bytes]
+▶ dispatched target imputed_dat_missforest.mar.0.3.2.airfoil_self_noise
+● completed target save_imputed_dat_ppca.mcar.0.3.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_pemm.mar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_pemm.mcar.0.5.5.airfoil_self_noise [1.533 seconds, 34.178 kilobytes]
+▶ dispatched target imputed_dat_mice_norm_predict.mcar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_amelia.mar.0.3.2.airfoil_self_noise [0.077 seconds, 29.444 kilobytes]
+▶ dispatched target imputed_dat_corknn.mcar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_FEFI.mar.0.3.4.airfoil_self_noise [11.601 minutes, 23.101 kilobytes]
+▶ dispatched target imputed_dat_min.mcar.0.3.4.airfoil_self_noise
+● completed target save_imputed_dat_mice_norm_predict.mcar.0.5.4.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_pmm.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_gain.NA.NA.1.birth_incomplete [0.413 seconds, 11.529 megabytes]
+▶ dispatched target imputed_dat_sklearn_iterative.mar.0.5.1.airfoil_self_noise
+● completed target imputed_dat_pemm.mar.0.3.3.airfoil_self_noise [1.356 seconds, 25.684 kilobytes]
+▶ dispatched target imputed_dat_norm.mcar.0.5.3.airfoil_self_noise
+Error in get("impute_norm") : object 'impute_norm' not found
+Error in get("impute_norm") : object 'impute_norm' not found
+● completed target imputed_dat_mice_drf.mar.0.1.4.airfoil_self_noise [37.613 seconds, 8.561 kilobytes]
+▶ dispatched target save_imputed_dat_mice_drf.mar.0.1.4.airfoil_self_noise
+● completed target imputed_dat_pemm.mar.0.3.4.airfoil_self_noise [1.265 seconds, 25.658 kilobytes]
+▶ dispatched target imputed_dat_mice_norm_nob.mar.0.5.4.airfoil_self_noise
+● completed target imputed_dat_sklearn_iterative.mar.0.5.1.airfoil_self_noise [0.2 seconds, 35.106 kilobytes]
+▶ dispatched target imputed_dat_mice_rf.mcar.0.5.3.airfoil_self_noise
+● completed target save_imputed_dat_mice_gamlss.mcar.0.3.1.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_vim_pca.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_missforest.mar.0.3.2.airfoil_self_noise [36.366 seconds, 24.767 kilobytes]
+▶ dispatched target save_imputed_dat_missforest.mar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_norm.mcar.0.5.3.airfoil_self_noise [0.022 seconds, 336 bytes]
+▶ dispatched target save_imputed_dat_norm.mcar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_min.mcar.0.3.4.airfoil_self_noise [0.014 seconds, 8.935 kilobytes]
+▶ dispatched target imputed_dat_impSeqRob.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_mice_pmm.mcar.0.3.2.airfoil_self_noise [0.885 seconds, 11.533 kilobytes]
+▶ dispatched target imputed_dat_pemm.mar.0.3.1.airfoil_self_noise
+● completed target save_imputed_dat_mice_drf.mar.0.1.4.airfoil_self_noise [0.003 seconds, 44 bytes]
+▶ dispatched target save_imputed_dat_ppca.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_sklearn_iterative_post.mar.0.3.2.airfoil_self_noise [0.33 seconds, 29.469 kilobytes]
+▶ dispatched target imputed_dat_corknn.mcar.0.1.2.airfoil_self_noise
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+Error in imputeKNN(data = as.matrix(missdf), distance = distance, k = k,  : 
+  Fewer than K finite distances found
+● completed target save_imputed_dat_sinkhorn.mcar.0.5.5.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.3.2.airfoil_self_noise
+Error in Exception(...) : 
+  reached elapsed time limit [cpu=600s, elapsed=600s]
+Error in Exception(...) : 
+  reached elapsed time limit [cpu=600s, elapsed=600s]
+● completed target imputed_dat_corknn.mcar.0.1.5.airfoil_self_noise [0.939 seconds, 19.004 kilobytes]
+▶ dispatched target imputed_dat_mice_pmm.mcar.0.3.1.airfoil_self_noise
+● completed target imputed_dat_mice_norm_nob.mar.0.5.3.airfoil_self_noise [0.189 seconds, 41.595 kilobytes]
+▶ dispatched target imputed_dat_hyperimpute.mcar.0.1.1.airfoil_self_noise
+● completed target imputed_dat_knn.mar.0.5.3.airfoil_self_noise [0.024 seconds, 12.328 kilobytes]
+▶ dispatched target imputed_dat_amelia.mar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_mice_norm_predict.mcar.0.5.2.airfoil_self_noise [0.185 seconds, 41.774 kilobytes]
+▶ dispatched target save_imputed_dat_mice_norm_predict.mcar.0.5.2.airfoil_self_noise
+● completed target imputed_dat_random.mcar.0.1.3.airfoil_self_noise [0.015 seconds, 9.48 kilobytes]
+▶ dispatched target imputed_dat_mice_gamlss.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_amelia.mar.0.3.4.airfoil_self_noise [0.075 seconds, 29.627 kilobytes]
+▶ dispatched target imputed_dat_zero.mar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_FEFI.mar.0.3.2.airfoil_self_noise [22.092 minutes, 11.979 megabytes]
+▶ dispatched target imputed_dat_mice_drf.mar.0.1.2.airfoil_self_noise
+● completed target save_imputed_dat_mice_norm_predict.mcar.0.5.2.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_random.mcar.0.1.5.airfoil_self_noise
+● completed target imputed_dat_pemm.mar.0.3.1.airfoil_self_noise [1.257 seconds, 24.903 kilobytes]
+▶ dispatched target imputed_dat_impSeqRob.mcar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_vim_pca.mar.0.1.2.airfoil_self_noise [0.235 seconds, 15.42 kilobytes]
+▶ dispatched target save_imputed_dat_vim_pca.mar.0.1.2.airfoil_self_noise
+● completed target imputed_dat_mice_rf.mcar.0.5.3.airfoil_self_noise [12.739 seconds, 12.097 kilobytes]
+▶ dispatched target save_imputed_dat_mice_rf.mcar.0.5.3.airfoil_self_noise
+● completed target imputed_dat_impSeqRob.mcar.0.3.1.airfoil_self_noise [0.82 seconds, 29.36 kilobytes]
+▶ dispatched target imputed_dat_sklearn_iterative_post.mar.0.3.4.airfoil_self_noise
+● completed target imputed_dat_mice_gamlss.mcar.0.3.3.airfoil_self_noise [25.26 minutes, 29.941 kilobytes]
+▶ dispatched target save_imputed_dat_mice_gamlss.mcar.0.3.3.airfoil_self_noise
+● completed target imputed_dat_mice_pmm.mcar.0.3.1.airfoil_self_noise [0.851 seconds, 11.6 kilobytes]
+▶ dispatched target imputed_dat_knn.mar.0.5.1.airfoil_self_noise
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+Error in (function (data, k = 10, rowmax = 0.5, colmax = 0.8, maxp = 1500,  : 
+  a column has more than 80 % missing values!
+● completed target save_imputed_dat_ppca.mcar.0.3.3.airfoil_self_noise [0.005 seconds, 44 bytes]
+▶ dispatched target imputed_dat_pemm.mar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_corknn.mcar.0.1.2.airfoil_self_noise [0.591 seconds, 433 bytes]
+▶ dispatched target imputed_dat_min.mcar.0.3.2.airfoil_self_noise
+● completed target imputed_dat_mice_norm_nob.mar.0.5.4.airfoil_self_noise [0.248 seconds, 41.321 kilobytes]
+▶ dispatched target imputed_dat_FEFI.mar.0.3.5.airfoil_self_noise
+● completed target save_imputed_dat_missforest.mar.0.3.2.airfoil_self_noise [0.006 seconds, 44 bytes]
+▶ dispatched target imputed_dat_mice_pmm.mcar.0.3.4.airfoil_self_noise
+▶ ended pipeline [21.414 hours]
