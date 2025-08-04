@@ -1064,7 +1064,7 @@ plot_ranking_boxplots <- function(imputation_summary, breaks = c(0, 1, 40, 80, 9
     ylab("Ranking") +
     coord_flip() 
   
-  p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = 'bottom')
+  p1 + p2 + plot_layout(guides = "collect") & theme(legend.position = 'bottom') # 16 x 14
   # save as pdf
   # ggsave("~/INRIA/R_scripts/benchmark/latex/energy_time_ranking_cat_num.pdf", width = 12, height = 15, units="cm")
   
@@ -1227,5 +1227,126 @@ shreks_plot <- function(imputation_summary ) {
 }
 
 
+
+
+
+plot_ranking_boxplots_measures <- function(imputation_summary, breaks = c(0, 1, 40, 80, 99, 100)) {
+  
+  score_name = "energ"
+  
+  n_methods <- length(unique(pull(imputation_summary, method)))
+  
+  dat_plt <- imputation_summary %>% 
+    mutate(score = ifelse(measure %in% c("ccc", "rsq"), 1 - score, score)) %>% 
+    filter(!is.na(measure)) %>% 
+    select(-imputation_fun, -attempts) %>% 
+    filter(!(measure %in% c("IScore", "IScore_cat", "rmse",
+                            "entropic_wasserstein"))) %>%
+    unique() %>% 
+    group_by(method, measure) %>% 
+    mutate(`success [%]` = mean(is.na(error)) * 100) %>% 
+    group_by(method, set_id, mechanism, ratio, measure) %>% 
+    mutate(score = mean(score, na.rm = TRUE),
+           time = mean(time, na.rm = TRUE)) %>% 
+    select(-rep, -case, -error) %>% 
+    unique() %>% 
+    mutate(score = ifelse(is.nan(score), NA, score)) %>% 
+    ungroup() %>% 
+    group_by(set_id, mechanism, ratio, measure) %>% 
+    mutate(
+      n_successful = sum(!is.na(score)),  # count non-NA scores
+      ranking = {
+        ranking <- rep(NA, length(score))
+        valid_idx <- !is.na(score)
+        ranking[valid_idx] <- rank(score[valid_idx])
+        ranking[!valid_idx] <- n_successful[!valid_idx] + 1  # set to max + 1
+        ranking
+      }
+    ) %>% 
+    ungroup() %>% 
+    group_by(method, measure) %>% 
+    reframe(mean_score = mean(score, na.rm = TRUE),
+            mean_ranking = mean(ranking, na.rm = TRUE),
+            median_ranking = median(ranking, na.rm = TRUE),
+            time = mean(time, na.rm = TRUE), 
+            `success [%]` = `success [%]`,
+            ranking = ranking) %>% 
+    mutate(`success [%]` = cut(`success [%]`, breaks, 
+                               include.lowest = TRUE)) %>% 
+    #unique() %>% 
+    arrange(mean_score) %>% 
+    mutate(method = factor(method, levels = unique(method)))
+  
+  dat_plt <- dat_plt %>% 
+    arrange(mean_ranking) %>% 
+    mutate(method = factor(method, levels = unique(method)))
+  
+  method_order <- dat_plt %>%
+    filter(measure == "energy") %>%
+    group_by(method) %>%
+    summarise(mean_ranking = mean(ranking, na.rm = TRUE)) %>%
+    arrange(mean_ranking) %>%
+    pull(method)
+  
+  p2 <- dat_plt %>% 
+    mutate(method = factor(method, levels = method_order)) %>% 
+    mutate(measure = factor(measure, levels = c("energy",
+                                                "energy_std", 
+                                                "feature_wise_wasserstein", 
+                                                "sliced_wasserstein",
+                                                "KLD",
+                                                "nrmse",
+                                                "mae",
+                                                "ccc",
+                                                'rsq'))) %>% 
+    ungroup() %>% 
+    ggplot(aes(x = method, y = ranking)) +
+    geom_boxplot(fill = "gray90") +
+    geom_point(aes(x = method, y = mean_ranking, col = "a"), size = 2) +
+    scale_fill_manual(name = "success [%]", 
+                      values = get_colors_fractions()) +
+    scale_color_manual(
+      name = "", 
+      values = c("a" = "royalblue4"),
+      labels = c("a" = "Averaged rank")
+    ) +
+    labs(x = "Methods", y = "Mean Energy") +
+    theme_bw(base_size = 15) +
+    theme(axis.text.y = element_text(hjust = 0.5),
+          axis.title.y = element_blank(),
+          legend.position = "bottom") +
+    ylab("Ranking") +
+    coord_flip()+
+    facet_grid(~ measure, labeller = as_labeller(c(
+      "energy" = "Energy",
+      "energy_std" = "Standardized\nEnergy\nDistance",
+      "feature_wise_wasserstein" = "Feature-wise\nWasserstein",
+      "sliced_wasserstein" = "Sliced\nWasserstein",
+      "KLD" = "KL\ndivergence",
+      "nrmse" = "NRMSE",
+      "mae" = "MAE",
+      "ccc" = "CCC",
+      "rsq" = "R²"
+    ))) +
+    theme_minimal(base_size = 14) +
+    theme(axis.title.y = element_blank())
+    
+  
+    p2 + plot_layout(guides = "collect") & theme(legend.position = 'none') # 16 x 14
+  # save as pdf
+  # ggsave("~/INRIA/R_scripts/benchmark/latex/energy_time_ranking_cat_num.pdf", width = 12, height = 15, units="cm")
+  
+    dat_plt %>%  
+      select(-time, -ranking, -median_ranking, -`success [%]`, -mean_score) %>% 
+      unique() %>% 
+      tidyr::pivot_wider(names_from = measure, values_from =  mean_ranking) %>% 
+      select(-method, -sliced_wasserstein) %>% 
+      as.matrix() %>% 
+      cor() %>% 
+      ggcorrplot::ggcorrplot()
+    
+    
+    
+}
 
 
