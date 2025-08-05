@@ -69,8 +69,7 @@ amputation_reps <- 2
 imputation_methods <- readRDS(path_to_methods) %>% 
   rename(imputation_fun = `Function name`) %>% 
   mutate(method = str_remove(imputation_fun, "impute_")) %>%
-  filter(method %in% c("missmda_famd_em", "missmda_famd_reg", "missmda_pca_em", "missmda_pca_reg", "missmda_MIFAMD_em", "missmda_MIFAMD_reg",
-                       "missmda_MIPCA_em", "missmda_MIPCA_reg"))
+  filter(! (method %in% c("mice_cart50", "mice_cart100", "supersuperimputer", "superimputer", "engressimpute", "engression")))
 
 imputation_categorical <- readRDS(path_to_cat_methods) 
 
@@ -96,7 +95,7 @@ print(table(params$rep))
 print(table(params$ratio))
 print(table(params$method))
 
-
+print("ATTENTION: ALWAYS SCORE, NEVER IMPUTE !!!")
 
 # saveRDS(params, "./data/params.RDS")
 
@@ -141,7 +140,7 @@ imputed_datasets <- tar_map(
       )
     },
     # cue = tar_cue(depend = FALSE),
-    # cue = tar_cue(mode = "always")
+    cue = tar_cue(mode = "never")
   ),
   tar_target(save_imputed_dat,
              saveRDS(imputed_dat[["imputed"]], filepath_imputed)
@@ -158,7 +157,7 @@ imputed_datasets <- tar_map(
                        case = case, var_type = var_type)
     },
     # cue = tar_cue(depend = FALSE),
-    # cue = tar_cue(mode = "always"),
+    cue = tar_cue(mode = "always"),
   )
 )
 
