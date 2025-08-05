@@ -101,7 +101,7 @@ export DISPLAY=:99
 
 R =>
 
-Sys.setenv(GITHUB_PAT = "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")
+Sys.setenv(GITHUB_PAT = "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")
 Sys.setenv(R_COMPILE_AND_INSTALL_PACKAGES = "never")# => to install NMF
 devtools::install_github("renozao/pkgmaker")
 
