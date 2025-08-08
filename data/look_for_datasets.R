@@ -135,7 +135,7 @@ cols_to_num_factors <- function(dat, cols_vec = NULL) {
     as.factor(as.numeric(dat[, ith_factor]))
   })
   
-  dat
+  dat 
 }
 
 ##### categorical complete
@@ -199,8 +199,10 @@ Ozone %>% cols_to_num_factors() %>%
   saveRDS("./data/datasets/incomplete_backup/categorical/Ozone.RDS")
 
 tbc %>% cols_to_num_factors() %>% 
+  select(where(~ n_distinct(., na.rm = TRUE) > 1)) %>% 
   saveRDS("./data/datasets/incomplete_backup/categorical/tbc.RDS")
 
+data(snorena) 
 snorena %>%  cols_to_num_factors() %>% 
   saveRDS("./data/datasets/incomplete_backup/categorical/snorena.RDS")
 
@@ -208,5 +210,7 @@ walking %>% cols_to_num_factors() %>%
   saveRDS("./data/datasets/incomplete_backup/categorical/walking.RDS")
 
 colic %>%  cols_to_num_factors() %>% 
+  select(where(~ n_distinct(., na.rm = TRUE) > 1)) %>% 
+  mutate(hospitalID = as.factor(hospitalID)) %>% 
   saveRDS("./data/datasets/incomplete_backup/categorical/colic.RDS")
 
