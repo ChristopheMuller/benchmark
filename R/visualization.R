@@ -14,8 +14,8 @@ get_colors_errors <- function() {
   c("computational" = "#7A4E7E", "modification" = "#A3A725", 
     "timeout" = "#1E9CC2", "missings" = "#3D6649", 
     "modification+wrong_levels" = "orangered3", "wrong_levels" = "gold",
-    "none" = "#EDF2EF"
-    )
+    "none" = "#EDF2EF", "missings+wrong_levels" = "#FFB6C1"
+  )
 }
 
 get_labels_errors <- function() {
@@ -116,8 +116,9 @@ plot_errors_datasets <- function(imputation_summary) {
     group_by(method, set_id) %>% 
     mutate(n_attempts = n()) %>% 
     mutate(error = ifelse(is.na(error), "none", error)) %>% 
-    mutate(error = factor(error, levels = c("computational",  "modification", 
-                                            "timeout", "missings", "none"))) %>% 
+    mutate(error = factor(error, levels = c("computational",  "modification", "wrong_levels",
+                                            "timeout", "missings", "none", "missings+wrong_levels",
+                                            "modification+wrong_levels"))) %>% 
     # mutate(method = factor(method, levels = sort(unique(imputation_summary$method), decreasing = TRUE))) %>% 
     rename(`Type of error` = "error") %>% 
     group_by(method, `Type of error`, set_id) %>% 
@@ -132,7 +133,11 @@ plot_errors_datasets <- function(imputation_summary) {
     facet_grid(~set_id) +
     scale_fill_manual(name = "Type of error", values = get_colors_errors()) +
     scale_alpha_manual(values = c("computational" = 1, "modification" = 1, 
-                                  "timeout" = 1, "missings" = 1, "none" = 0.8)) +
+                                  "timeout" = 1, "missings" = 1,
+                                  "wrong_levels" = 1,
+                                  "modification+wrong_levels"=1,
+                                  "missings+wrong_levels"=1,
+                                  "none" = 0.8)) +
     theme_minimal() +
     theme(legend.position = "bottom", 
           axis.text.x = element_blank()) +
@@ -1197,7 +1202,7 @@ shreks_plot <- function(imputation_summary ) {
   imputation_summary %>%
     filter(!is.na(measure)) %>% 
     select(-imputation_fun) %>% 
-    filter(measure == "energy_std") %>% 
+    filter(measure == "IScore_cat") %>% 
     unique() %>% 
     group_by(method, set_id, mechanism, ratio) %>% 
     reframe(score = mean(score, na.rm = TRUE)) %>% 
@@ -1232,7 +1237,7 @@ shreks_plot <- function(imputation_summary ) {
 
 plot_ranking_boxplots_measures <- function(imputation_summary, breaks = c(0, 1, 40, 80, 99, 100)) {
   
-  score_name = "energ"
+  score_name = "energy"
   
   n_methods <- length(unique(pull(imputation_summary, method)))
   
@@ -1330,7 +1335,7 @@ plot_ranking_boxplots_measures <- function(imputation_summary, breaks = c(0, 1, 
     ))) +
     theme_minimal(base_size = 14) +
     theme(axis.title.y = element_blank())
-    
+
   
     p2 + plot_layout(guides = "collect") & theme(legend.position = 'none') # 16 x 14
   # save as pdf
@@ -1348,5 +1353,73 @@ plot_ranking_boxplots_measures <- function(imputation_summary, breaks = c(0, 1, 
     
     
 }
+
+
+
+plot_errors_datasets_with_indicator_for_score_error <- function(imputation_summary) {
+  
+  measure_case <- "IScore"
+  
+  dataset2 <- imputation_summary %>%
+    filter(measure == measure_case) %>%
+    filter(is.na(error)) %>%
+    mutate(error_in_score = is.na(score)) %>%
+    select(method, set_id, error_in_score) %>%
+    unique()
+  
+  plotting_data <- imputation_summary %>%
+    filter(!is.na(measure)) %>%
+    select(-measure, -score, -imputation_fun) %>%
+    unique() %>%
+    group_by(method) %>%
+    mutate(overall_errors = sum(!is.na(error))) %>%
+    ungroup() %>%
+    group_by(method, set_id) %>%
+    mutate(n_attempts = n()) %>%
+    mutate(error = ifelse(is.na(error), "none", error)) %>%
+    mutate(error = factor(error, levels = c("computational", "modification", "wrong_levels",
+                                            "timeout", "missings", "none", "missings+wrong_levels",
+                                            "modification+wrong_levels"))) %>%
+    rename(`Type of error` = "error") %>%
+    group_by(method, `Type of error`, set_id) %>%
+    reframe(error_frac = 100 * n() / n_attempts, overall_errors = overall_errors) %>%
+    unique()
+  
+  plotting_data <- left_join(plotting_data, dataset2, by = c("method", "set_id"))
+  plotting_data$error_in_score <- ifelse(is.na(plotting_data$error_in_score), TRUE, plotting_data$error_in_score)
+  
+  plotting_data %>%
+    ggplot() +
+    geom_col(aes(x = reorder(method, overall_errors), y = error_frac, fill = `Type of error`,
+                 alpha = `Type of error`)) +
+    geom_point(data = filter(plotting_data, error_in_score == TRUE),
+               aes(x = reorder(method, overall_errors), y = 0),
+               shape = 4, color = "red", size = 3, stroke = 1) +
+    ylim(0, 100) +
+    ylab("imputations [%]") +
+    coord_flip() +
+    facet_grid(~set_id) +
+    scale_fill_manual(name = "Type of error", values = get_colors_errors()) +
+    scale_alpha_manual(values = c("computational" = 1, "modification" = 1,
+                                  "timeout" = 1, "missings" = 1,
+                                  "wrong_levels" = 1,
+                                  "modification+wrong_levels" = 1,
+                                  "missings+wrong_levels" = 1,
+                                  "none" = 0.8)) +
+    theme_minimal() +
+    theme(legend.position = "bottom",
+          axis.text.x = element_blank()) +
+    xlab("method")
+  
+
+}
+
+
+
+
+
+
+
+
 
 
