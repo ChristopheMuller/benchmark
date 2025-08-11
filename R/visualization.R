@@ -104,6 +104,44 @@ plot_errors <- function(imputation_summary) {
 }
 
 
+plot_errors_categorical <- function(imputation_summary) {
+  
+  imputation_summary %>% 
+    filter(!is.na(measure)) %>% 
+    select(-measure, -score) %>% 
+    unique() %>% 
+    group_by(method) %>% 
+    mutate(n_attempts = n()) %>% 
+    mutate(error = ifelse(is.na(error), "none", error)) %>% 
+    mutate(error = factor(error, levels = c("computational",  "modification", "modification+wrong_levels",
+                                            "wrong_levels",
+                                            "timeout", "missings", "none"))) %>% 
+    mutate(method = factor(method, levels = sort(unique(imputation_summary$method), decreasing = TRUE))) %>% 
+    rename(`Type of error` = "error") %>% 
+    group_by(method, `Type of error`) %>% 
+    reframe(error_frac = 100*n()/n_attempts) %>% 
+    unique() %>% 
+    group_by(method) %>% 
+    mutate(joint_error = sum(error_frac[`Type of error` != "none"])) %>%
+    ggplot() + 
+    geom_col(aes(x = reorder(method, joint_error), y = error_frac, fill = `Type of error`, alpha = `Type of error`)) +
+    ylim(0, 100.5) +
+    ylab("Imputations [%]" ) +
+    xlab("Method") +
+    scale_fill_manual(name = "Type of error", values = get_colors_errors(), labels = get_labels_errors()) +
+    scale_alpha_manual(values = c("computational" = 1, "modification" = 1, 
+                                  "timeout" = 1, "missings" = 1,
+                                  "wrong_levels" = 1,
+                                  "modification+wrong_levels"=1 ,
+                                  "missings+wrong_levels"= 1,
+                                  "none" = 0.8), labels = get_labels_errors()) +
+    theme_minimal(base_size = 13)  +
+    theme(axis.text.x = element_text(angle = 90),
+          legend.position = "top")
+  
+}
+
+
 plot_errors_datasets <- function(imputation_summary) {
   
   imputation_summary %>% 
@@ -135,8 +173,8 @@ plot_errors_datasets <- function(imputation_summary) {
     scale_alpha_manual(values = c("computational" = 1, "modification" = 1, 
                                   "timeout" = 1, "missings" = 1,
                                   "wrong_levels" = 1,
-                                  "modification+wrong_levels"=1,
-                                  "missings+wrong_levels"=1,
+                                  "modification+wrong_levels"=1 ,
+                                  "missings+wrong_levels"= 1,
                                   "none" = 0.8)) +
     theme_minimal() +
     theme(legend.position = "bottom", 
@@ -1237,7 +1275,6 @@ shreks_plot <- function(imputation_summary ) {
 
 plot_ranking_boxplots_measures <- function(imputation_summary, breaks = c(0, 1, 40, 80, 99, 100)) {
   
-  score_name = "energy"
   
   n_methods <- length(unique(pull(imputation_summary, method)))
   
@@ -1245,8 +1282,8 @@ plot_ranking_boxplots_measures <- function(imputation_summary, breaks = c(0, 1, 
     mutate(score = ifelse(measure %in% c("ccc", "rsq"), 1 - score, score)) %>% 
     filter(!is.na(measure)) %>% 
     select(-imputation_fun, -attempts) %>% 
-    filter(!(measure %in% c("IScore", "IScore_cat", "rmse",
-                            "entropic_wasserstein"))) %>%
+    filter((measure %in% c("energy", "energy_std",
+                            "nrmse", "mae"))) %>%
     unique() %>% 
     group_by(method, measure) %>% 
     mutate(`success [%]` = mean(is.na(error)) * 100) %>% 
@@ -1295,15 +1332,10 @@ plot_ranking_boxplots_measures <- function(imputation_summary, breaks = c(0, 1, 
   
   p2 <- dat_plt %>% 
     mutate(method = factor(method, levels = method_order)) %>% 
-    mutate(measure = factor(measure, levels = c("energy",
-                                                "energy_std", 
-                                                "feature_wise_wasserstein", 
-                                                "sliced_wasserstein",
-                                                "KLD",
+    mutate(measure = factor(measure, levels = c("energy_std",
+                                                "energy",
                                                 "nrmse",
-                                                "mae",
-                                                "ccc",
-                                                'rsq'))) %>% 
+                                                "mae"))) %>% 
     ungroup() %>% 
     ggplot(aes(x = method, y = ranking)) +
     geom_boxplot(fill = "gray90") +
@@ -1323,15 +1355,16 @@ plot_ranking_boxplots_measures <- function(imputation_summary, breaks = c(0, 1, 
     ylab("Ranking") +
     coord_flip()+
     facet_grid(~ measure, labeller = as_labeller(c(
-      "energy" = "Energy",
-      "energy_std" = "Standardized\nEnergy\nDistance",
+      "energy" = "Energy Distance",
+      "energy_std" = "Standardized\nEnergy Distance",
       "feature_wise_wasserstein" = "Feature-wise\nWasserstein",
       "sliced_wasserstein" = "Sliced\nWasserstein",
       "KLD" = "KL\ndivergence",
-      "nrmse" = "NRMSE",
-      "mae" = "MAE",
+      "nrmse" = "Normalized\nRoot Mean\nSquared Error",
+      "mae" = "Mean Absolute Error",
       "ccc" = "CCC",
-      "rsq" = "R²"
+      "rsq" = "R²",
+      "rmse" = "RMSE"
     ))) +
     theme_minimal(base_size = 14) +
     theme(axis.title.y = element_blank())
