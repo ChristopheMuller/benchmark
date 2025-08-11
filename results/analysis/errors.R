@@ -1,5 +1,6 @@
 
-
+library(dplyr)
+library(tidyr)
 
 
 tbl <- expand.grid(error = c("computational",  "modification", 
@@ -14,7 +15,14 @@ imputation_summary %>%
   mutate(error = ifelse(is.na(error), "none", error)) %>% 
   group_by(error) %>% 
   reframe(n = n() / nrow(.)) %>% 
-  filter(error != "none") 
+  filter(error != "none") %>%  pull(n) %>%  sum()
+
+
+imputation_summary %>% 
+  filter(!is.na(error)) %>% 
+  pull(method) %>%  unique() %>%  length()
+
+
 
 imputation_summary %>% 
   filter(!is.na(measure)) %>% 
@@ -24,7 +32,7 @@ imputation_summary %>%
   mutate(n_attempts = n()) %>% 
   mutate(error = ifelse(is.na(error), "none", error)) %>% 
   filter(attempts == 2, error == "none") %>%  
-  nrow() %>%  pull(method) %>%  unique()
+  pull(method) %>%  unique()
 
 
 imputation_summary %>% 

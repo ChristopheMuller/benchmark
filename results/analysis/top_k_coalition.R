@@ -163,7 +163,7 @@ final_results %>%
              hjust         = 0, show.legend = FALSE,
              nudge_x = 0.02)  +
   coord_cartesian(clip = "off") +
-  theme(legend.position = "none"
+  theme(legend.position = "bottom"
   )
 # theme(axis.text.y = element_blank(),
 #       axis.title.y = element_blank())
