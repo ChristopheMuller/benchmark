@@ -211,6 +211,6 @@ walking %>% cols_to_num_factors() %>%
 
 colic %>%  cols_to_num_factors() %>% 
   select(where(~ n_distinct(., na.rm = TRUE) > 1)) %>% 
-  mutate(hospitalID = as.factor(hospitalID)) %>% 
+  select(- hospitalID) %>% 
   saveRDS("./data/datasets/incomplete_backup/categorical/colic.RDS")
 
