@@ -115,12 +115,12 @@ scores_for_complete <- function(original_data, amputed_data,
     original_data,
     imputed_data
   )  
-    
+  
   energy_std <- safe_score({
     scaled_original <- scale(original_data)
     
     scaled_imputed <- sapply(1:ncol(imputed_data), function(i) {
-    (imputed_data[, i] - attr(scaled_original, "scaled:center")[i])/ 
+      (imputed_data[, i] - attr(scaled_original, "scaled:center")[i])/ 
         attr(scaled_original, "scaled:scale")[i]
     })
     
@@ -176,13 +176,13 @@ scores_for_incomplete <- function(original_data, imputed_data, imputation_fun,
   
   if(case == "incomplete_categorical") {
     
-    ids_categoricals <- which(sapply(original_data, is.factor))
-    imputed_data <- mutate(imputed_data, across(all_of(names(ids_categoricals)), as.factor))
+    ids_categoricals <- names(which(sapply(original_data, is.factor)))
+    imputed_data <- mutate(imputed_data, across(all_of(ids_categoricals), as.factor))
     
     ImpScore <- try({
       miceDRF::Iscore_cat(X = original_data, X_imp = imputed_data, N = 20,
                           imputation_func = imputation_fun, 
-                          factor_vars = var_type == "Factor", 
+                          factor_vars = var_type != "Numeric", 
                           multiple = multiple)
     })
     score_name <- "IScore_cat"
