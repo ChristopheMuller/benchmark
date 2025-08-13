@@ -191,8 +191,8 @@ saveRDS(popmis[, -6], "./data/datasets/incomplete_backup/popmis.RDS")
 
 sapply(kanga, is.factor)
 
-kanga %>% cols_to_num_factors(1:2) %>% 
-  saveRDS("./data/datasets/incomplete_backup/categorical/kanga.RDS")
+# kanga %>% cols_to_num_factors(1:2) %>%  # only one column with > 20 missing values, also no categorical column with missing values
+#   saveRDS("./data/datasets/incomplete_backup/categorical/kanga.RDS")
 
 data(Ozone)
 Ozone %>% cols_to_num_factors() %>% 
@@ -200,6 +200,9 @@ Ozone %>% cols_to_num_factors() %>%
 
 tbc %>% cols_to_num_factors() %>% 
   select(where(~ n_distinct(., na.rm = TRUE) > 1)) %>% 
+  mutate(ao = as.factor(ao)) %>% 
+  # what about "ID"?
+  select(-id) %>%
   saveRDS("./data/datasets/incomplete_backup/categorical/tbc.RDS")
 
 data(snorena) 
@@ -214,3 +217,7 @@ colic %>%  cols_to_num_factors() %>%
   select(- hospitalID) %>% 
   saveRDS("./data/datasets/incomplete_backup/categorical/colic.RDS")
 
+data(Soybean)
+Soybean %>% cols_to_num_factors() %>%
+  mutate(across(where(~ n_distinct(., na.rm = TRUE) > 1), as.factor)) %>% 
+  saveRDS("./data/datasets/incomplete_backup/categorical/soybean.RDS")

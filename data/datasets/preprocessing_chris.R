@@ -39,6 +39,8 @@ data <- data %>%
   select(-bmi)
 
 data$reg <- as.factor(as.numeric(as.factor(data$reg)))
+data$gen <- as.factor(as.numeric(as.factor(data$gen)))
+data$phb <- as.factor(as.numeric(as.factor(data$phb)))
 
 saveRDS(data, "data/datasets/incomplete_backup/categorical/boys.RDS")
 
