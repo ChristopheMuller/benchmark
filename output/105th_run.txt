@@ -1,0 +1,467 @@
+renv 1.1.5 was loaded from project library, but this project is configured to use renv 1.0.11.
+- Use `renv::record("renv@1.1.5")` to record renv 1.1.5 in the lockfile.
+- Use `renv::restore(packages = "renv")` to install renv 1.0.11 into the project library.
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+[1] "2025-08-17 22:03:13 CEST"
+renv 1.1.5 was loaded from project library, but this project is configured to use renv 1.0.11.
+- Use `renv::record("renv@1.1.5")` to record renv 1.1.5 in the lockfile.
+- Use `renv::restore(packages = "renv")` to install renv 1.0.11 into the project library.
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Registered S3 methods overwritten by 'registry':
+  method               from 
+  print.registry_field proxy
+  print.registry_entry proxy
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+Loading required package: mice
+
+Attaching package: ‘mice’
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    cbind, rbind
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-10
+
+Attaching package: ‘MetabImpute’
+
+The following object is masked from ‘package:stats’:
+
+    simulate
+
+Registered S3 methods overwritten by 'fmsb':
+  method    from
+  print.roc pROC
+  plot.roc  pROC
+[1] "total dim params: 220" "total dim params: 14" 
+
+        boys        colic  colic_fixed         debt housevotes84   selfreport 
+          22           22           22           22           22           22 
+     soybean          tbc          vnf      walking 
+          22           22           22           22 
+< table of extent 0 >
+< table of extent 0 >
+< table of extent 0 >
+
+              areg       areg_normpmm    areg_regression        hyperimpute 
+                10                 10                 10                 10 
+              irmi             median     metabimpute_rf          mice_cart 
+                10                 10                 10                 10 
+      mice_default           mice_drf    mice_midastouch         mice_mixed 
+                10                 10                 10                 10 
+          mice_pmm            mice_rf         missforest    missmda_famd_em 
+                10                 10                 10                 10 
+  missmda_famd_reg  missmda_MIFAMD_em missmda_MIFAMD_reg              mixgb 
+                10                 10                 10                 10 
+            random            vim_knn 
+                10                 10 
+[1] "ATTENTION: ALWAYS IMPUTE, ALWAYS SCORE, ALWAYS AMPUTE !!!"
+→ de-duplicating _targets/meta/meta
+→ reading _targets/meta/meta
+→ parsing _targets/meta/meta
+→ noting builders and branches
+→ parsing _targets/meta/meta
+→ restricting metadata records
+→ querying 70872 local files in _targets/objects
+→ reading _targets/meta/process
+→ parsing _targets/meta/process
+→ 686 targets ■                                [3.7s, 0+, 0-]
++ amputed_dat_NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■                                [3.7s, 0+, 0-]→ 686 targets ■                                [7s, 0+, 2-]
+→ 686 targets ■■                               [9.7s, 0+, 12-]
+→ 686 targets ■■                               [22.4s, 1+, 18-]
+✔ amputed_dat_NA.NA.NA.colic_fixed completed [14.5s, 7.26 kB]
+→ 686 targets ■■                               [22.4s, 1+, 18-]+ save_amputed_dat_NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■                               [22.4s, 1+, 18-]+ amputed_all dispatched
+→ 686 targets ■■                               [22.4s, 1+, 18-]✔ save_amputed_dat_NA.NA.NA.colic_fixed completed [6ms, 44 B]
+→ 686 targets ■■                               [22.4s, 1+, 18-]→ 686 targets ■■                               [37.6s, 3+, 18-]
+✔ amputed_all completed [0ms, 131.46 kB]
+→ 686 targets ■■                               [37.6s, 3+, 18-]→ 686 targets ■■                               [40.1s, 3+, 24-]
+→ 686 targets ■■                               [42.7s, 3+, 30-]
+→ 686 targets ■■■                              [45.8s, 3+, 37-]
+→ 686 targets ■■■                              [48.9s, 3+, 44-]
++ imputed_dat_irmi.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■                              [48.9s, 3+, 44-]→ 686 targets ■■■                              [52.5s, 3+, 50-]
++ imputed_dat_mice_mixed.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■                              [52.5s, 3+, 50-]→ 686 targets ■■■                              [2m 25.4s, 4+, 51-]
+✔ imputed_dat_mice_mixed.NA.NA.NA.colic_fixed completed [1m 29.8s, 2.27 kB]
+→ 686 targets ■■■                              [2m 25.4s, 4+, 51-]→ 686 targets ■■■■                             [2m 28.5s, 4+, 55-]
+→ 686 targets ■■■■                             [2m 31.4s, 4+, 58-]
+→ 686 targets ■■■■                             [2m 34.2s, 4+, 60-]
++ amputation_summary dispatched
+→ 686 targets ■■■■                             [2m 34.2s, 4+, 60-]✔ amputation_summary completed [98ms, 615 B]
+→ 686 targets ■■■■                             [2m 34.2s, 4+, 60-]→ 686 targets ■■■■                             [2m 37.2s, 5+, 63-]
+→ 686 targets ■■■■                             [2m 39.9s, 5+, 66-]
++ imputed_dat_median.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■                             [2m 39.9s, 5+, 66-]→ 686 targets ■■■■                             [3m 9.8s, 6+, 68-]
+✔ imputed_dat_median.NA.NA.NA.colic_fixed completed [26.1s, 6.57 kB]
+→ 686 targets ■■■■                             [3m 9.8s, 6+, 68-]→ 686 targets ■■■■                             [3m 13.5s, 6+, 73-]
+→ 686 targets ■■■■■                            [3m 16.2s, 6+, 76-]
+→ 686 targets ■■■■■                            [3m 18.9s, 6+, 78-]
++ imputed_dat_mixgb.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■                            [3m 18.9s, 6+, 78-]→ 686 targets ■■■■■                            [3m 30.4s, 7+, 78-]
+✔ imputed_dat_irmi.NA.NA.NA.colic_fixed completed [2m 37.8s, 18.31 kB]
+→ 686 targets ■■■■■                            [3m 30.4s, 7+, 78-]+ imputed_dat_hyperimpute.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■                            [3m 30.4s, 7+, 78-]→ 686 targets ■■■■■                            [3m 49.2s, 8+, 78-]
+✔ imputed_dat_mixgb.NA.NA.NA.colic_fixed completed [29.2s, 13.62 kB]
+→ 686 targets ■■■■■                            [3m 49.2s, 8+, 78-]→ 686 targets ■■■■■                            [3m 51.9s, 8+, 81-]
++ imputed_dat_mice_midastouch.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■                            [3m 51.9s, 8+, 81-]→ 686 targets ■■■■■                            [5m 20.6s, 9+, 81-]
+✔ imputed_dat_mice_midastouch.NA.NA.NA.colic_fixed completed [1m 27.5s, 7.29 kB]
+→ 686 targets ■■■■■                            [5m 20.6s, 9+, 81-]→ 686 targets ■■■■■                            [5m 22.6s, 9+, 84-]
+→ 686 targets ■■■■■                            [5m 25.2s, 9+, 86-]
++ imputed_dat_random.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■                            [5m 25.2s, 9+, 86-]→ 686 targets ■■■■■                            [5m 53.7s, 10+, 86-]
+✔ imputed_dat_random.NA.NA.NA.colic_fixed completed [27.4s, 7.23 kB]
+→ 686 targets ■■■■■                            [5m 53.7s, 10+, 86-]→ 686 targets ■■■■■                            [5m 55.6s, 10+, 89-]
++ imputed_dat_mice_drf.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■                            [5m 55.6s, 10+, 89-]→ 686 targets ■■■■■                            [6m 31.9s, 11+, 90-]
+✔ imputed_dat_mice_drf.NA.NA.NA.colic_fixed completed [33.4s, 7.15 kB]
+→ 686 targets ■■■■■                            [6m 31.9s, 11+, 90-]→ 686 targets ■■■■■■                           [6m 33.9s, 11+, 93-]
+→ 686 targets ■■■■■■                           [6m 37.6s, 11+, 97-]
++ imputed_dat_mice_default.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■                           [6m 37.6s, 11+, 97-]→ 686 targets ■■■■■■                           [7m 39.6s, 12+, 97-]
+✔ imputed_dat_mice_default.NA.NA.NA.colic_fixed completed [59.7s, 2.34 kB]
+→ 686 targets ■■■■■■                           [7m 39.6s, 12+, 97-]→ 686 targets ■■■■■■                           [7m 39.7s, 12+, 98-]
+→ 686 targets ■■■■■■                           [7m 42.9s, 12+, 101-]
++ imputed_dat_vim_knn.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■                           [7m 42.9s, 12+, 101-]→ 686 targets ■■■■■■                           [8m 14.1s, 13+, 103-]
+✔ imputed_dat_vim_knn.NA.NA.NA.colic_fixed completed [27.4s, 7.03 kB]
+→ 686 targets ■■■■■■                           [8m 14.1s, 13+, 103-]→ 686 targets ■■■■■■                           [8m 15.9s, 13+, 105-]
++ imputed_dat_areg.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■                           [8m 15.9s, 13+, 105-]→ 686 targets ■■■■■■                           [9m 5.7s, 14+, 105-]
+✔ imputed_dat_areg.NA.NA.NA.colic_fixed completed [48.5s, 2.30 kB]
+→ 686 targets ■■■■■■                           [9m 5.7s, 14+, 105-]→ 686 targets ■■■■■■                           [9m 6.8s, 14+, 107-]
+→ 686 targets ■■■■■■                           [9m 9.7s, 14+, 110-]
+→ 686 targets ■■■■■■■                          [9m 13.4s, 14+, 114-]
++ imputed_dat_mice_cart.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■                          [9m 13.4s, 14+, 114-]→ 686 targets ■■■■■■■                          [9m 48.8s, 15+, 114-]
+✔ imputed_dat_mice_cart.NA.NA.NA.colic_fixed completed [33.4s, 7.17 kB]
+→ 686 targets ■■■■■■■                          [9m 48.8s, 15+, 114-]→ 686 targets ■■■■■■■                          [9m 52.4s, 15+, 119-]
++ imputed_dat_areg_regression.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■                          [9m 52.4s, 15+, 119-]→ 686 targets ■■■■■■■                          [10m 43.4s, 16+, 119-]
+✔ imputed_dat_areg_regression.NA.NA.NA.colic_fixed completed [49.1s, 2.31 kB]
+→ 686 targets ■■■■■■■                          [10m 43.4s, 16+, 119-]→ 686 targets ■■■■■■■                          [10m 46.1s, 16+, 122-]
++ imputed_dat_missmda_MIFAMD_em.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■                          [10m 46.1s, 16+, 122-]→ 686 targets ■■■■■■■                          [12m 8.7s, 17+, 122-]
+✔ imputed_dat_missmda_MIFAMD_em.NA.NA.NA.colic_fixed completed [1m 21.6s, 2.10 kB]
+→ 686 targets ■■■■■■■                          [12m 8.7s, 17+, 122-]→ 686 targets ■■■■■■■                          [12m 10.5s, 17+, 125-]
+→ 686 targets ■■■■■■■                          [12m 13.1s, 17+, 128-]
+→ 686 targets ■■■■■■■                          [12m 15.7s, 17+, 131-]
+→ 686 targets ■■■■■■■■                         [12m 19.3s, 17+, 135-]
+→ 686 targets ■■■■■■■■                         [12m 21.9s, 17+, 138-]
+→ 686 targets ■■■■■■■■                         [12m 25.4s, 17+, 142-]
++ imputed_dat_missmda_MIFAMD_reg.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■                         [12m 25.4s, 17+, 142-]→ 686 targets ■■■■■■■■                         [13m 3.2s, 18+, 142-]
+✔ imputed_dat_missmda_MIFAMD_reg.NA.NA.NA.colic_fixed completed [36s, 18.48 kB]
+→ 686 targets ■■■■■■■■                         [13m 3.2s, 18+, 142-]→ 686 targets ■■■■■■■■                         [13m 4.3s, 18+, 144-]
++ imputed_dat_mice_pmm.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■                         [13m 4.3s, 18+, 144-]✔ imputed_dat_hyperimpute.NA.NA.NA.colic_fixed completed [9m 33.9s, 7.28 kB]
+→ 686 targets ■■■■■■■■                         [13m 4.3s, 18+, 144-]+ imputed_dat_missforest.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■                         [13m 4.3s, 18+, 144-]→ 686 targets ■■■■■■■■                         [13m 37.7s, 20+, 144-]
+✔ imputed_dat_mice_pmm.NA.NA.NA.colic_fixed completed [31.6s, 7.24 kB]
+→ 686 targets ■■■■■■■■                         [13m 37.7s, 20+, 144-]→ 686 targets ■■■■■■■■                         [13m 40.5s, 20+, 148-]
+→ 686 targets ■■■■■■■■                         [13m 43.2s, 20+, 151-]
+→ 686 targets ■■■■■■■■■                        [13m 45.9s, 20+, 154-]
+→ 686 targets ■■■■■■■■■                        [13m 48.7s, 20+, 157-]
+→ 686 targets ■■■■■■■■■                        [13m 52.3s, 20+, 161-]
+→ 686 targets ■■■■■■■■■                        [13m 55s, 20+, 164-]
++ imputed_dat_areg_normpmm.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■                        [13m 55s, 20+, 164-]→ 686 targets ■■■■■■■■■                        [13m 58.4s, 21+, 165-]
+✔ imputed_dat_missforest.NA.NA.NA.colic_fixed completed [51.4s, 1.93 kB]
+→ 686 targets ■■■■■■■■■                        [13m 58.4s, 21+, 165-]→ 686 targets ■■■■■■■■■                        [14m 1.5s, 21+, 169-]
+→ 686 targets ■■■■■■■■■                        [14m 4.4s, 21+, 171-]
++ imputed_dat_missmda_famd_em.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■                        [14m 4.4s, 21+, 171-]→ 686 targets ■■■■■■■■■                        [14m 49.7s, 22+, 171-]
+✔ imputed_dat_areg_normpmm.NA.NA.NA.colic_fixed completed [51.5s, 2.01 kB]
+→ 686 targets ■■■■■■■■■                        [14m 49.7s, 22+, 171-]→ 686 targets ■■■■■■■■■■                       [14m 51.9s, 22+, 174-]
+→ 686 targets ■■■■■■■■■■                       [14m 54.9s, 22+, 177-]
+→ 686 targets ■■■■■■■■■■                       [14m 57.8s, 22+, 180-]
+→ 686 targets ■■■■■■■■■■                       [15m 0.7s, 22+, 183-]
+✔ imputed_dat_missmda_famd_em.NA.NA.NA.colic_fixed completed [57.3s, 2.02 kB]
+→ 686 targets ■■■■■■■■■■                       [15m 0.7s, 22+, 183-]+ imputed_dat_mice_rf.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■                       [15m 0.7s, 22+, 183-]→ 686 targets ■■■■■■■■■■                       [15m 4.2s, 23+, 186-]
++ imputed_dat_metabimpute_rf.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■                       [15m 4.2s, 23+, 186-]→ 686 targets ■■■■■■■■■■                       [15m 33.8s, 24+, 186-]
+✔ imputed_dat_metabimpute_rf.NA.NA.NA.colic_fixed completed [28.3s, 15.78 kB]
+→ 686 targets ■■■■■■■■■■                       [15m 33.8s, 24+, 186-]✔ imputed_dat_mice_rf.NA.NA.NA.colic_fixed completed [31.1s, 7.17 kB]
+→ 686 targets ■■■■■■■■■■                       [15m 33.8s, 24+, 186-]→ 686 targets ■■■■■■■■■■                       [15m 36.9s, 25+, 191-]
+→ 686 targets ■■■■■■■■■■■                      [15m 39.9s, 25+, 197-]
++ imputed_dat_missmda_famd_reg.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■                      [15m 39.9s, 25+, 197-]→ 686 targets ■■■■■■■■■■■                      [15m 43.2s, 25+, 202-]
+→ 686 targets ■■■■■■■■■■■                      [15m 46s, 25+, 205-]
+→ 686 targets ■■■■■■■■■■■                      [15m 48.8s, 25+, 208-]
+→ 686 targets ■■■■■■■■■■■                      [15m 52.5s, 25+, 212-]
+→ 686 targets ■■■■■■■■■■■                      [15m 55.3s, 25+, 215-]
+→ 686 targets ■■■■■■■■■■■■                     [15m 58.2s, 25+, 218-]
+→ 686 targets ■■■■■■■■■■■■                     [16m 1s, 25+, 221-]
+→ 686 targets ■■■■■■■■■■■■                     [16m 4.6s, 25+, 225-]
+→ 686 targets ■■■■■■■■■■■■                     [16m 7.4s, 25+, 228-]
+→ 686 targets ■■■■■■■■■■■■                     [16m 10.1s, 25+, 231-]
+→ 686 targets ■■■■■■■■■■■■                     [16m 12.8s, 25+, 234-]
+✔ imputed_dat_missmda_famd_reg.NA.NA.NA.colic_fixed completed [32.5s, 18.52 kB]
+→ 686 targets ■■■■■■■■■■■■                     [16m 12.8s, 25+, 234-]→ 686 targets ■■■■■■■■■■■■■                    [16m 16.3s, 26+, 239-]
+→ 686 targets ■■■■■■■■■■■■■                    [16m 19.2s, 26+, 245-]
+→ 686 targets ■■■■■■■■■■■■■                    [16m 22s, 26+, 251-]
+→ 686 targets ■■■■■■■■■■■■■                    [16m 24.8s, 26+, 257-]
+→ 686 targets ■■■■■■■■■■■■■■                   [16m 28.4s, 26+, 265-]
+→ 686 targets ■■■■■■■■■■■■■■                   [16m 31.2s, 26+, 271-]
+→ 686 targets ■■■■■■■■■■■■■■                   [16m 34s, 26+, 277-]
+→ 686 targets ■■■■■■■■■■■■■■                   [16m 36.7s, 26+, 282-]
++ obtained_scores_mice_mixed.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■                   [16m 36.7s, 26+, 282-]+ save_imputed_dat_mice_mixed.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■                   [16m 36.7s, 26+, 282-]✔ obtained_scores_mice_mixed.NA.NA.NA.colic_fixed completed [30ms, 290 B]
+→ 686 targets ■■■■■■■■■■■■■■                   [16m 36.7s, 26+, 282-]✔ save_imputed_dat_mice_mixed.NA.NA.NA.colic_fixed completed [4ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■                   [16m 36.7s, 26+, 282-]→ 686 targets ■■■■■■■■■■■■■■■                  [16m 40.5s, 28+, 289-]
+→ 686 targets ■■■■■■■■■■■■■■■                  [16m 43.2s, 28+, 295-]
+→ 686 targets ■■■■■■■■■■■■■■■                  [16m 45.9s, 28+, 300-]
++ save_amputation_summary dispatched
+→ 686 targets ■■■■■■■■■■■■■■■                  [16m 45.9s, 28+, 300-]✔ save_amputation_summary completed [4ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■                  [16m 45.9s, 28+, 300-]→ 686 targets ■■■■■■■■■■■■■■■■                 [16m 48.7s, 29+, 306-]
+→ 686 targets ■■■■■■■■■■■■■■■■                 [16m 51.7s, 29+, 313-]
++ save_imputed_dat_median.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■                 [16m 51.7s, 29+, 313-]+ obtained_scores_median.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■                 [16m 51.7s, 29+, 313-]✔ save_imputed_dat_median.NA.NA.NA.colic_fixed completed [5ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■                 [16m 51.7s, 29+, 313-]→ 686 targets ■■■■■■■■■■■■■■■■                 [16m 55.3s, 30+, 318-]
+✔ obtained_scores_median.NA.NA.NA.colic_fixed completed [924ms, 230 B]
+→ 686 targets ■■■■■■■■■■■■■■■■                 [16m 55.3s, 30+, 318-]→ 686 targets ■■■■■■■■■■■■■■■■                 [16m 57.9s, 31+, 323-]
+→ 686 targets ■■■■■■■■■■■■■■■■■                [17m 0.8s, 31+, 330-]
+→ 686 targets ■■■■■■■■■■■■■■■■■                [17m 4.3s, 31+, 336-]
++ obtained_scores_irmi.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■                [17m 4.3s, 31+, 336-]+ save_imputed_dat_irmi.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■                [17m 4.3s, 31+, 336-]✔ save_imputed_dat_irmi.NA.NA.NA.colic_fixed completed [4ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■                [17m 4.3s, 31+, 336-]+ save_imputed_dat_mixgb.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■                [17m 4.3s, 31+, 336-]✔ save_imputed_dat_mixgb.NA.NA.NA.colic_fixed completed [5ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■                [17m 4.3s, 31+, 336-]+ obtained_scores_mixgb.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■                [17m 4.3s, 31+, 336-]→ 686 targets ■■■■■■■■■■■■■■■■■                [17m 38.3s, 34+, 336-]
+✔ obtained_scores_mixgb.NA.NA.NA.colic_fixed completed [30.8s, 226 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■                [17m 38.3s, 34+, 336-]→ 686 targets ■■■■■■■■■■■■■■■■■                [17m 40.6s, 34+, 339-]
+→ 686 targets ■■■■■■■■■■■■■■■■■                [17m 43.4s, 34+, 342-]
++ save_imputed_dat_mice_midastouch.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■                [17m 43.4s, 34+, 342-]✔ save_imputed_dat_mice_midastouch.NA.NA.NA.colic_fixed completed [4ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■                [17m 43.4s, 34+, 342-]+ obtained_scores_mice_midastouch.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■                [17m 43.4s, 34+, 342-]→ 686 targets ■■■■■■■■■■■■■■■■■■               [18m 8.6s, 36+, 342-]
+✔ obtained_scores_irmi.NA.NA.NA.colic_fixed completed [1m 3.3s, 232 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■               [18m 8.6s, 36+, 342-]→ 686 targets ■■■■■■■■■■■■■■■■■■               [18m 10.4s, 36+, 345-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■               [18m 13s, 36+, 348-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■               [18m 16.5s, 36+, 352-]
++ save_imputed_dat_random.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■               [18m 16.5s, 36+, 352-]✔ save_imputed_dat_random.NA.NA.NA.colic_fixed completed [5ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■               [18m 16.5s, 36+, 352-]+ obtained_scores_random.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■               [18m 16.5s, 36+, 352-]→ 686 targets ■■■■■■■■■■■■■■■■■■               [18m 25.5s, 38+, 352-]
+✔ obtained_scores_random.NA.NA.NA.colic_fixed completed [6.4s, 232 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■               [18m 25.5s, 38+, 352-]✔ obtained_scores_mice_midastouch.NA.NA.NA.colic_fixed completed [40.7s, 243 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■               [18m 25.5s, 38+, 352-]→ 686 targets ■■■■■■■■■■■■■■■■■■               [18m 27.9s, 39+, 357-]
++ save_imputed_dat_mice_drf.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■               [18m 27.9s, 39+, 357-]+ obtained_scores_mice_drf.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■               [18m 27.9s, 39+, 357-]✔ save_imputed_dat_mice_drf.NA.NA.NA.colic_fixed completed [4ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■               [18m 27.9s, 39+, 357-]→ 686 targets ■■■■■■■■■■■■■■■■■■■              [18m 31.4s, 40+, 362-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■              [18m 34.2s, 40+, 365-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■              [18m 36.9s, 40+, 368-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■              [18m 40.5s, 40+, 372-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■              [18m 43.2s, 40+, 374-]
++ obtained_scores_mice_default.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■              [18m 43.2s, 40+, 374-]✔ obtained_scores_mice_default.NA.NA.NA.colic_fixed completed [2ms, 293 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■              [18m 43.2s, 40+, 374-]+ save_imputed_dat_mice_default.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■              [18m 43.2s, 40+, 374-]✔ save_imputed_dat_mice_default.NA.NA.NA.colic_fixed completed [2ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■              [18m 43.2s, 40+, 374-]→ 686 targets ■■■■■■■■■■■■■■■■■■■              [18m 45.9s, 42+, 376-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■              [18m 49.5s, 42+, 380-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■             [18m 52.2s, 42+, 383-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■             [18m 54.9s, 42+, 386-]
++ save_imputed_dat_vim_knn.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■             [18m 54.9s, 42+, 386-]✔ save_imputed_dat_vim_knn.NA.NA.NA.colic_fixed completed [4ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■             [18m 54.9s, 42+, 386-]+ obtained_scores_vim_knn.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■             [18m 54.9s, 42+, 386-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■             [19m 0.7s, 44+, 386-]
+✔ obtained_scores_vim_knn.NA.NA.NA.colic_fixed completed [3.1s, 235 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■             [19m 0.7s, 44+, 386-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■             [19m 0.7s, 44+, 387-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■             [19m 4.4s, 44+, 390-]
++ obtained_scores_areg.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■             [19m 4.4s, 44+, 390-]✔ obtained_scores_areg.NA.NA.NA.colic_fixed completed [1ms, 285 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■             [19m 4.4s, 44+, 390-]+ save_imputed_dat_areg.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■             [19m 4.4s, 44+, 390-]✔ save_imputed_dat_areg.NA.NA.NA.colic_fixed completed [2ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■             [19m 4.4s, 44+, 390-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■             [19m 7.1s, 46+, 392-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■             [19m 9.8s, 46+, 395-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■             [19m 13.4s, 46+, 399-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■            [19m 16.1s, 46+, 402-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■            [19m 18.8s, 46+, 405-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■            [19m 22.5s, 46+, 408-]
++ obtained_scores_mice_cart.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■            [19m 22.5s, 46+, 408-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■            [20m 0.3s, 47+, 408-]
+✔ obtained_scores_mice_cart.NA.NA.NA.colic_fixed completed [36.7s, 235 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■            [20m 0.3s, 47+, 408-]+ save_imputed_dat_mice_cart.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■            [20m 0.3s, 47+, 408-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■            [20m 1.3s, 48+, 408-]
+✔ save_imputed_dat_mice_cart.NA.NA.NA.colic_fixed completed [4ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■            [20m 1.3s, 48+, 408-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■            [20m 4.3s, 48+, 412-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■            [20m 7.1s, 48+, 415-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■            [20m 10s, 48+, 418-]
++ save_imputed_dat_areg_regression.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■            [20m 10s, 48+, 418-]✔ save_imputed_dat_areg_regression.NA.NA.NA.colic_fixed completed [2ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■            [20m 10s, 48+, 418-]+ obtained_scores_areg_regression.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■            [20m 10s, 48+, 418-]✔ obtained_scores_areg_regression.NA.NA.NA.colic_fixed completed [2ms, 293 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■            [20m 10s, 48+, 418-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■           [20m 12.7s, 50+, 419-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■           [20m 16.5s, 50+, 423-]
++ obtained_scores_missmda_MIFAMD_em.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■           [20m 16.5s, 50+, 423-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■           [20m 19.3s, 51+, 424-]
+✔ obtained_scores_missmda_MIFAMD_em.NA.NA.NA.colic_fixed completed [2ms, 299 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■           [20m 19.3s, 51+, 424-]+ save_imputed_dat_missmda_MIFAMD_em.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■           [20m 19.3s, 51+, 424-]✔ save_imputed_dat_missmda_MIFAMD_em.NA.NA.NA.colic_fixed completed [2ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■           [20m 19.3s, 51+, 424-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■           [20m 22.1s, 52+, 427-]
+✔ obtained_scores_mice_drf.NA.NA.NA.colic_fixed completed [1m 52.4s, 235 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■           [20m 22.1s, 52+, 427-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■           [20m 24.9s, 53+, 432-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■          [20m 27.8s, 53+, 439-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■          [20m 31.4s, 53+, 446-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■          [20m 34s, 53+, 452-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■          [20m 36.7s, 53+, 458-]
++ save_imputed_dat_missmda_MIFAMD_reg.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■          [20m 36.7s, 53+, 458-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [20m 40.1s, 53+, 464-]
++ obtained_scores_missmda_MIFAMD_reg.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [20m 40.1s, 53+, 464-]✔ save_imputed_dat_missmda_MIFAMD_reg.NA.NA.NA.colic_fixed completed [4ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [20m 40.1s, 53+, 464-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [20m 43.3s, 54+, 468-]
++ save_imputed_dat_hyperimpute.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [20m 43.3s, 54+, 468-]✔ save_imputed_dat_hyperimpute.NA.NA.NA.colic_fixed completed [4ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [20m 43.3s, 54+, 468-]+ obtained_scores_hyperimpute.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [20m 43.3s, 54+, 468-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [22m 56s, 56+, 468-]
+✔ obtained_scores_missmda_MIFAMD_reg.NA.NA.NA.colic_fixed completed [2m 14.8s, 246 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [22m 56s, 56+, 468-]+ obtained_scores_mice_pmm.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [22m 56s, 56+, 468-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [23m 15.6s, 57+, 468-]
+✔ obtained_scores_mice_pmm.NA.NA.NA.colic_fixed completed [18.7s, 236 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [23m 15.6s, 57+, 468-]+ save_imputed_dat_mice_pmm.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [23m 15.6s, 57+, 468-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [23m 16.5s, 58+, 468-]
+✔ save_imputed_dat_mice_pmm.NA.NA.NA.colic_fixed completed [4ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [23m 16.5s, 58+, 468-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [23m 19.1s, 58+, 472-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [23m 21.7s, 58+, 475-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [23m 25.2s, 58+, 479-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [23m 27.8s, 58+, 482-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [23m 31.5s, 58+, 486-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [23m 34.1s, 58+, 489-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [23m 36.7s, 58+, 492-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [23m 40.2s, 58+, 496-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [23m 42.8s, 58+, 499-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [23m 46.3s, 58+, 503-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [23m 48.9s, 58+, 506-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [23m 52.3s, 58+, 510-]
++ obtained_scores_missforest.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [23m 52.3s, 58+, 510-]✔ obtained_scores_missforest.NA.NA.NA.colic_fixed completed [2ms, 292 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [23m 52.3s, 58+, 510-]+ save_imputed_dat_missforest.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [23m 52.3s, 58+, 510-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [23m 54.8s, 60+, 510-]
+✔ save_imputed_dat_missforest.NA.NA.NA.colic_fixed completed [4ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [23m 54.8s, 60+, 510-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [23m 58.3s, 60+, 515-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [24m 0.9s, 60+, 518-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [24m 4.4s, 60+, 522-]
++ save_imputed_dat_areg_normpmm.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [24m 4.4s, 60+, 522-]✔ save_imputed_dat_areg_normpmm.NA.NA.NA.colic_fixed completed [2ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [24m 4.4s, 60+, 522-]+ obtained_scores_areg_normpmm.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [24m 4.4s, 60+, 522-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [24m 6.8s, 62+, 522-]
+✔ obtained_scores_areg_normpmm.NA.NA.NA.colic_fixed completed [2ms, 293 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [24m 6.8s, 62+, 522-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [24m 10.3s, 62+, 527-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [24m 12.9s, 62+, 530-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [24m 16.3s, 62+, 534-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [24m 18.9s, 62+, 537-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [24m 22.4s, 62+, 541-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [24m 25s, 62+, 544-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [24m 28.4s, 62+, 548-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [24m 30.9s, 62+, 550-]
++ obtained_scores_missmda_famd_em.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [24m 30.9s, 62+, 550-]✔ obtained_scores_missmda_famd_em.NA.NA.NA.colic_fixed completed [2ms, 295 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [24m 30.9s, 62+, 550-]+ save_imputed_dat_missmda_famd_em.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [24m 30.9s, 62+, 550-]✔ save_imputed_dat_missmda_famd_em.NA.NA.NA.colic_fixed completed [2ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [24m 30.9s, 62+, 550-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [24m 34.4s, 64+, 552-]
++ save_imputed_dat_metabimpute_rf.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [24m 34.4s, 64+, 552-]✔ save_imputed_dat_metabimpute_rf.NA.NA.NA.colic_fixed completed [5ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [24m 34.4s, 64+, 552-]+ obtained_scores_metabimpute_rf.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [24m 34.4s, 64+, 552-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [24m 50.7s, 66+, 552-]
+✔ obtained_scores_metabimpute_rf.NA.NA.NA.colic_fixed completed [14.6s, 237 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [24m 50.7s, 66+, 552-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [24m 52.5s, 66+, 555-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [24m 55.1s, 66+, 558-]
++ obtained_scores_mice_rf.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [24m 55.1s, 66+, 558-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [25m 56s, 67+, 558-]
+✔ obtained_scores_mice_rf.NA.NA.NA.colic_fixed completed [59.1s, 235 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [25m 56s, 67+, 558-]+ save_imputed_dat_mice_rf.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [25m 56s, 67+, 558-]✔ save_imputed_dat_mice_rf.NA.NA.NA.colic_fixed completed [4ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [25m 56s, 67+, 558-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [25m 57.9s, 68+, 560-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [26m 1.4s, 68+, 564-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [26m 4s, 68+, 567-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [26m 7.5s, 68+, 571-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [26m 10.1s, 68+, 574-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [26m 12.7s, 68+, 577-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [26m 16.2s, 68+, 581-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [26m 18.8s, 68+, 584-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [26m 22.2s, 68+, 588-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [26m 24.8s, 68+, 591-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [26m 28.2s, 68+, 595-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [26m 30.8s, 68+, 598-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [26m 34.2s, 68+, 602-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [26m 36.8s, 68+, 605-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [26m 40.2s, 68+, 609-]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [26m 42.7s, 68+, 612-]
++ save_imputed_dat_missmda_famd_reg.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [26m 42.7s, 68+, 612-]✔ save_imputed_dat_missmda_famd_reg.NA.NA.NA.colic_fixed completed [4ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [26m 42.7s, 68+, 612-]+ obtained_scores_missmda_famd_reg.NA.NA.NA.colic_fixed dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [26m 42.7s, 68+, 612-]✔ obtained_scores_missmda_famd_reg.NA.NA.NA.colic_fixed completed [2ms, 310 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [26m 42.7s, 68+, 612-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [47m 8s, 71+, 612-]
+✔ obtained_scores_hyperimpute.NA.NA.NA.colic_fixed completed [26m 21.8s, 235 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [47m 8s, 71+, 612-]+ all_scores dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [47m 8s, 71+, 612-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [47m 9.8s, 72+, 612-]
+✔ all_scores completed [3ms, 4.80 kB]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [47m 9.8s, 72+, 612-]+ imputation_summary dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [47m 9.8s, 72+, 612-]✔ imputation_summary completed [5ms, 4.88 kB]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [47m 9.8s, 72+, 612-]+ save_imputation_summary dispatched
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [47m 9.8s, 72+, 612-]✔ save_imputation_summary completed [5ms, 44 B]
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [47m 9.8s, 72+, 612-]Master: [47.2 mins 0.4% CPU]; Worker: [avg 75.6% CPU, max 1.3 Gb]
+→ de-duplicating _targets/meta/meta
+→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [47m 9.8s, 72+, 612-]→ 686 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [47m 12.2s, 74+, 612-]
+✔ ended pipeline [47m 24.2s, 74 completed, 612 skipped]
+Warning messages:
+1: replacing previous import ‘S4Arrays::makeNindexFromArrayViewport’ by ‘DelayedArray::makeNindexFromArrayViewport’ when loading ‘SummarizedExperiment’ 
+2: 14 targets produced warnings. Run targets::tar_meta(fields = warnings, complete_only = TRUE) for the messages. 
+[1] "2025-08-17 22:51:13 CEST"
