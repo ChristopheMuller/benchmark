@@ -169,6 +169,8 @@ pre_process <- function(missing_data_set, imputing_function, var_type) {
   if (var_type == "Numeric") {
     factor_cols <- sapply(missing_data_set, is.factor)
     missing_data_set[factor_cols] <- lapply(missing_data_set[factor_cols], factor_to_numeric)
+    
+    missing_data_set[, !sapply(missing_data_set, is.numeric)] <- as.numeric(missing_data_set[, !sapply(missing_data_set, is.numeric)])
   }
   
   missing_data_set
