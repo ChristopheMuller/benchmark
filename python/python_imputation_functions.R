@@ -21,16 +21,22 @@
 
 reticulate::source_python("python/python_imputation_functions.py")
 
-make_integer_double <- function(data.frame){
+make_integer_double <- function(dat){
   
-  for (i in 1:ncol(data.frame)){
-    if (is.integer(data.frame[[i]])){
-      data.frame[[i]] <- as.double(data.frame[[i]])
+  for (i in 1:ncol(dat)){
+    if (is.integer(dat[[i]])){
+      dat[[i]] <- as.double(dat[[i]])
     }
   }
-  
-  return(data.frame)
-  
+  return(dat)
+}
+
+to_numeric <- function(x) {
+  if(is.factor(x)) {
+    factor_to_numeric(x)
+  } else {
+    as.numeric(x)
+  }
 }
 
 call_hyperimpute_fun <- function(missdf, method, ...) {
@@ -58,7 +64,7 @@ impute_hyperimpute <- function(missdf, ...){
   } else {
     max_categories <- 5 # default from hyperimpute
   }
-  missdf <- make_integer_double(dplyr::mutate_all(missdf, as.numeric))
+  missdf <- make_integer_double(dplyr::mutate_all(missdf, to_numeric))
   print(max_categories)
   call_hyperimpute_fun(missdf, method = "hyperimpute", class_threshold=max_categories)
 }
@@ -85,12 +91,12 @@ impute_hyperimpute_em <- function(missdf, ...){
 
 impute_sklearn_iterative_post <- function(missdf, ...){
   missdf <- make_integer_double(missdf)
-  iterative_imp(missdf, post=TRUE, ...)
+  iterative_imp(missdf, post = TRUE, ...)
 }
 
 impute_sklearn_iterative <- function(missdf, ...){
   missdf <- make_integer_double(missdf)
-  iterative_imp(missdf, post=FALSE, ...)
+  iterative_imp(missdf, post = FALSE, ...)
 }
 
 impute_remasker <- function(missdf, ...){
