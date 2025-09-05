@@ -11,12 +11,18 @@ impute_areg_tmp <- function(missdf, type_imp = "pmm", verbose = FALSE, ...) {
   
   imputomics:::silence_function(verbose)(imputed <- do.call(Hmisc::aregImpute, all_args))
   
+  cat_vars <- names(which(sapply(missdf, is.factor)))
+  
+  if(length(cat_vars) == 0)
+    cat_vars <- NULL
+  
   data.frame(do.call(cbind, Hmisc::impute.transcan(imputed,
                                                    imputation = 1,
                                                    data = missdf,
                                                    list.out = TRUE,
                                                    pr = FALSE,
-                                                   check = FALSE)))
+                                                   check = FALSE,
+                                                   categorical = cat_vars)))
 }
 
 
