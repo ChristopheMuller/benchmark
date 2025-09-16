@@ -14,22 +14,33 @@ imputation_summary <- readRDS("./results/imputation_summary_M13.RDS") %>%
 imputation_summary <- imputation_summary %>% 
   filter(!(method %in% c("mice_cart50", "mice_cart100", "superimputer", 
                          "supersuperimputer", "engression", "missmda_em"))) %>% 
-  
-  filter(set_id != "oes10") %>% # Had Missing Data in it!
-  filter(set_id != "pyrimidines") %>%  # weird error for collinearity
-  filter(set_id != "solder") %>%   # always error
-  filter(set_id != "Ozone") %>%  # always error (in score)
-  filter(set_id != "colic") %>%  # always error 
-  filter(set_id != "tao") %>%  # exact same as oceanbuoys
-  filter(set_id != "meatspec") %>%  # high correlations
-  filter(set_id != "exa") %>%  # weird
   filter(!(method %in% c("min", "cm", "halfmin",
                          "minProb")))
 
-small_sets <- c("star", "tvdoctor", "cheddar", "eco", "leafburn", "stat500", "savings",
-                "chicago", "sat", "seatpos", "fpe", "pyrimidines", "Animals_na", 
-                "employee", "mammalsleep", "chredlin")
 
+problematic_sets <- c(
+  "oes10", # Had Missing Data in it!
+  "pyrimidines",  # weird error for collinearity
+  "solder",   # always error
+  "Ozone",  # always error (in score)
+  "tao",  # exact same as oceanbuoys
+  "meatspec",  # high correlations
+  "exa"  # weird
+)
+
+small_sets <- c("cheddar", "chicago", "divusa", "eco", "exa", "fpe", "leafburn", 
+                "pyrimidines", "sat", "savings", "seatpos", "slump", "star", "stat500", 
+                "tvdoctor",
+                
+                "chredlin", "hayes_roth", "hips",
+                
+                "airquality", "Animals_na", "employee", "mammalsleep"
+                )
+
+
+imputation_summary <- imputation_summary %>% 
+  filter(!(set_id %in% problematic_sets)) %>%
+  filter(!(set_id %in% small_sets))
 
 ### Case 1 : NUM + COMPLETE
 
@@ -37,26 +48,22 @@ imputation_summary <- imputation_summary %>%
   filter(case == "complete") %>% 
   filter(!(method %in% c("mice_default", "gbmImpute", 
                          "missmda_mifamd_reg", "missmda_mifamd_em",
-                         "SVTImpute"))) %>% 
-  filter(!(set_id %in% small_sets))
+                         "SVTImpute")))
 
 ### Case 2 : NUM + INCOMPLETE
 imputation_summary <-imputation_summary %>% 
   filter(case == "incomplete") %>% 
   filter(!(method %in% c("mice_default", "mixgb", "gbmImpute", 
                          "missmda_mifamd_reg", "missmda_mifamd_em",
-                         "rmiMAE", "SVTImpute"))) %>% 
-  filter(!(set_id %in% small_sets))
+                         "rmiMAE", "SVTImpute")))
 
 ### Case 3 : Mixed + COMPLETE
 imputation_summary <- imputation_summary %>% 
-  filter(case == "categorical") %>% 
-  filter(!(set_id %in% small_sets))
+  filter(case == "categorical")
 
 ### Case 4 : Mixed + INCOMPLETE
 imputation_summary <- imputation_summary %>% 
   filter(case == "incomplete_categorical") %>% 
-  filter(!(set_id %in% small_sets)) %>% 
   filter(!(method %in% c("missmda_famd_em", "missmda_famd_reg")))
 
 
@@ -67,9 +74,7 @@ methods_cat <- unique((imputation_summary %>% filter(case == "categorical"))$met
 
 imputation_summary <- imputation_summary %>%
   filter(case %in% c("complete", "categorical")) %>% 
-  filter(method %in% methods_cat) %>% 
-  filter(!(set_id %in% small_sets))
-  
+  filter(method %in% methods_cat)
 
 ### Case 6 : ALL + Incomplete
 
@@ -78,8 +83,6 @@ methods_cat <- unique((imputation_summary %>% filter(case == "categorical"))$met
 imputation_summary <- imputation_summary %>% 
   filter(case %in% c("incomplete", "incomplete_categorical")) %>% 
   filter(method %in% methods_cat) %>% 
-  mutate(measure = ifelse(measure == "IScore_cat", "IScore", measure)) %>% 
-  filter(!(set_id %in% small_sets))
-
+  mutate(measure = ifelse(measure == "IScore_cat", "IScore", measure))
 
 
