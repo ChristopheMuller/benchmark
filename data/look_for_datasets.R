@@ -142,7 +142,7 @@ cols_to_num_factors <- function(dat, cols_vec = NULL) {
 
 choccake %>% cols_to_num_factors(1:2) %>%  
   saveRDS("./data/datasets/complete_backup/categorical_as_factor/choccake.RDS")
-  
+
 nels88 %>% cols_to_num_factors(c(1, 2, 4)) %>%  
   saveRDS("./data/datasets/complete_backup/categorical_as_factor/nels88.RDS")
 
@@ -212,10 +212,31 @@ snorena %>%  cols_to_num_factors() %>%
 walking %>% cols_to_num_factors() %>% 
   saveRDS("./data/datasets/incomplete_backup/categorical/walking.RDS")
 
+# colic %>%  cols_to_num_factors() %>% 
+#   select(where(~ n_distinct(., na.rm = TRUE) > 1)) %>% 
+#   select(- hospitalID) %>% 
+#   saveRDS("./data/datasets/incomplete_backup/categorical/colic.RDS")
+
 colic %>%  cols_to_num_factors() %>% 
   select(where(~ n_distinct(., na.rm = TRUE) > 1)) %>% 
-  select(- hospitalID) %>% 
-  saveRDS("./data/datasets/incomplete_backup/categorical/colic.RDS")
+  select(- hospitalID,
+         - temp_extreme_ordered,
+         - temp_extreme_num,
+         - lesion_type1,
+         - lesion_type2,
+         - lesion_type3) %>% 
+  mutate(pain = as.factor(pain),
+         peristalsis = as.factor(peristalsis),
+         abdominal_distension = as.factor(abdominal_distension),
+         nasogastric_tube = as.factor(nasogastric_tube),
+         nasogastric_reflux  = as.factor(nasogastric_reflux),
+         rectal_examination = as.factor(rectal_examination),
+         abdomen = as.factor(abdomen),
+         abdominocentesis_appearance = as.factor(abdominocentesis_appearance),
+  ) %>% 
+  saveRDS("./data/datasets/incomplete_backup/categorical/colic_again.RDS")
+
+
 
 data(Soybean)
 Soybean %>% cols_to_num_factors() %>%
