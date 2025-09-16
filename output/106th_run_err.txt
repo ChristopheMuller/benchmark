@@ -1,0 +1,8 @@
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+## OAR [2025-09-04 18:38:46] Job 1989021 KILLED ##
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+## OAR [2025-09-09 10:48:32] Job 1992684 KILLED ##

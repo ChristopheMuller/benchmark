@@ -1,0 +1,192 @@
+renv 1.1.5 was loaded from project library, but this project is configured to use renv 1.0.11.
+- Use `renv::record("renv@1.1.5")` to record renv 1.1.5 in the lockfile.
+- Use `renv::restore(packages = "renv")` to install renv 1.0.11 into the project library.
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+[1] "2025-08-15 14:20:57 CEST"
+renv 1.1.5 was loaded from project library, but this project is configured to use renv 1.0.11.
+- Use `renv::record("renv@1.1.5")` to record renv 1.1.5 in the lockfile.
+- Use `renv::restore(packages = "renv")` to install renv 1.0.11 into the project library.
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Registered S3 methods overwritten by 'registry':
+  method               from 
+  print.registry_field proxy
+  print.registry_entry proxy
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+Loading required package: mice
+
+Attaching package: ‘mice’
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    cbind, rbind
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-10
+
+Attaching package: ‘MetabImpute’
+
+The following object is masked from ‘package:stats’:
+
+    simulate
+
+Registered S3 methods overwritten by 'fmsb':
+  method    from
+  print.roc pROC
+  plot.roc  pROC
+[1] "total dim params: 9"  "total dim params: 14"
+
+        boys        colic         debt housevotes84   selfreport      soybean 
+           1            1            1            1            1            1 
+         tbc          vnf      walking 
+           1            1            1 
+< table of extent 0 >
+< table of extent 0 >
+< table of extent 0 >
+
+mice_CALIBER 
+           9 
+[1] "ATTENTION: ALWAYS IMPUTE, ALWAYS SCORE, ALWAYS AMPUTE !!!"
+→ de-duplicating _targets/meta/meta
+→ reading _targets/meta/meta
+→ parsing _targets/meta/meta
+→ noting builders and branches
+→ parsing _targets/meta/meta
+→ restricting metadata records
+→ querying 70872 local files in _targets/objects
+→ reading _targets/meta/process
+→ parsing _targets/meta/process
+→ 51 targets ■                                [3.9s, 0+, 0-]
++ amputed_dat_NA.NA.NA.debt dispatched
+→ 51 targets ■                                [3.9s, 0+, 0-]+ amputed_dat_NA.NA.NA.walking dispatched
+→ 51 targets ■                                [3.9s, 0+, 0-]→ 51 targets ■■                               [22s, 1+, 0-]
+✔ amputed_dat_NA.NA.NA.debt completed [13.8s, 5.45 kB]
+→ 51 targets ■■                               [22s, 1+, 0-]+ amputed_dat_NA.NA.NA.soybean dispatched
+→ 51 targets ■■                               [22s, 1+, 0-]✔ amputed_dat_NA.NA.NA.walking completed [13.8s, 3.89 kB]
+→ 51 targets ■■                               [22s, 1+, 0-]+ amputed_dat_NA.NA.NA.tbc dispatched
+→ 51 targets ■■                               [22s, 1+, 0-]✔ amputed_dat_NA.NA.NA.soybean completed [12ms, 6.87 kB]
+→ 51 targets ■■                               [22s, 1+, 0-]+ amputed_dat_NA.NA.NA.vnf dispatched
+→ 51 targets ■■                               [22s, 1+, 0-]✔ amputed_dat_NA.NA.NA.tbc completed [4ms, 54.35 kB]
+→ 51 targets ■■                               [22s, 1+, 0-]+ amputed_dat_NA.NA.NA.boys dispatched
+→ 51 targets ■■                               [22s, 1+, 0-]✔ amputed_dat_NA.NA.NA.vnf completed [15ms, 6.43 kB]
+→ 51 targets ■■                               [22s, 1+, 0-]+ amputed_dat_NA.NA.NA.colic dispatched
+→ 51 targets ■■                               [22s, 1+, 0-]✔ amputed_dat_NA.NA.NA.boys completed [8ms, 11.29 kB]
+→ 51 targets ■■                               [22s, 1+, 0-]+ amputed_dat_NA.NA.NA.housevotes84 dispatched
+→ 51 targets ■■                               [22s, 1+, 0-]✔ amputed_dat_NA.NA.NA.colic completed [11ms, 7.47 kB]
+→ 51 targets ■■                               [22s, 1+, 0-]+ amputed_dat_NA.NA.NA.selfreport dispatched
+→ 51 targets ■■                               [22s, 1+, 0-]→ 51 targets ■■■■■■                           [24.8s, 8+, 0-]
+✔ amputed_dat_NA.NA.NA.housevotes84 completed [10ms, 3.65 kB]
+→ 51 targets ■■■■■■                           [24.8s, 8+, 0-]✔ amputed_dat_NA.NA.NA.selfreport completed [3ms, 22.15 kB]
+→ 51 targets ■■■■■■                           [24.8s, 8+, 0-]→ 51 targets ■■■■■■■■■■■                      [28.2s, 9+, 8-]
++ imputed_dat_mice_CALIBER.NA.NA.NA.selfreport dispatched
+→ 51 targets ■■■■■■■■■■■                      [28.2s, 9+, 8-]+ imputed_dat_mice_CALIBER.NA.NA.NA.soybean dispatched
+→ 51 targets ■■■■■■■■■■■                      [28.2s, 9+, 8-]→ 51 targets ■■■■■■■■■■■■■                    [1m 33.6s, 10+, 10-]
+✔ imputed_dat_mice_CALIBER.NA.NA.NA.selfreport completed [1m 3.2s, 30.81 kB]
+→ 51 targets ■■■■■■■■■■■■■                    [1m 33.6s, 10+, 10-]+ imputed_dat_mice_CALIBER.NA.NA.NA.housevotes84 dispatched
+→ 51 targets ■■■■■■■■■■■■■                    [1m 33.6s, 10+, 10-]→ 51 targets ■■■■■■■■■■■■■                    [1m 45.4s, 11+, 10-]
+✔ imputed_dat_mice_CALIBER.NA.NA.NA.soybean completed [1m 14s, 6.96 kB]
+→ 51 targets ■■■■■■■■■■■■■                    [1m 45.4s, 11+, 10-]+ amputation_summary dispatched
+→ 51 targets ■■■■■■■■■■■■■                    [1m 45.4s, 11+, 10-]→ 51 targets ■■■■■■■■■■■■■■                   [1m 46.6s, 12+, 10-]
+✔ amputation_summary completed [74ms, 589 B]
+→ 51 targets ■■■■■■■■■■■■■■                   [1m 46.6s, 12+, 10-]+ imputed_dat_mice_CALIBER.NA.NA.NA.walking dispatched
+→ 51 targets ■■■■■■■■■■■■■■                   [1m 46.6s, 12+, 10-]→ 51 targets ■■■■■■■■■■■■■■■                  [2m 5.7s, 13+, 10-]
+✔ imputed_dat_mice_CALIBER.NA.NA.NA.housevotes84 completed [30.9s, 3.30 kB]
+→ 51 targets ■■■■■■■■■■■■■■■                  [2m 5.7s, 13+, 10-]+ imputed_dat_mice_CALIBER.NA.NA.NA.debt dispatched
+→ 51 targets ■■■■■■■■■■■■■■■                  [2m 5.7s, 13+, 10-]→ 51 targets ■■■■■■■■■■■■■■■                  [2m 15.5s, 14+, 10-]
+✔ imputed_dat_mice_CALIBER.NA.NA.NA.walking completed [27.6s, 4.23 kB]
+→ 51 targets ■■■■■■■■■■■■■■■                  [2m 15.5s, 14+, 10-]+ imputed_dat_mice_CALIBER.NA.NA.NA.tbc dispatched
+→ 51 targets ■■■■■■■■■■■■■■■                  [2m 15.5s, 14+, 10-]→ 51 targets ■■■■■■■■■■■■■■■■                 [2m 36.7s, 15+, 10-]
+✔ imputed_dat_mice_CALIBER.NA.NA.NA.debt completed [29.6s, 5.84 kB]
+→ 51 targets ■■■■■■■■■■■■■■■■                 [2m 36.7s, 15+, 10-]+ imputed_dat_mice_CALIBER.NA.NA.NA.vnf dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■                 [2m 36.7s, 15+, 10-]→ 51 targets ■■■■■■■■■■■■■■■■                 [2m 49.1s, 16+, 10-]
+✔ imputed_dat_mice_CALIBER.NA.NA.NA.tbc completed [32.2s, 55.34 kB]
+→ 51 targets ■■■■■■■■■■■■■■■■                 [2m 49.1s, 16+, 10-]+ imputed_dat_mice_CALIBER.NA.NA.NA.boys dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■                 [2m 49.1s, 16+, 10-]→ 51 targets ■■■■■■■■■■■■■■■■■                [3m 12s, 17+, 10-]
+✔ imputed_dat_mice_CALIBER.NA.NA.NA.vnf completed [34.1s, 5.16 kB]
+→ 51 targets ■■■■■■■■■■■■■■■■■                [3m 12s, 17+, 10-]+ imputed_dat_mice_CALIBER.NA.NA.NA.colic dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■                [3m 12s, 17+, 10-]→ 51 targets ■■■■■■■■■■■■■■■■■                [3m 19.1s, 18+, 10-]
+✔ imputed_dat_mice_CALIBER.NA.NA.NA.boys completed [28.8s, 14.24 kB]
+→ 51 targets ■■■■■■■■■■■■■■■■■                [3m 19.1s, 18+, 10-]+ obtained_scores_mice_CALIBER.NA.NA.NA.selfreport dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■                [3m 19.1s, 18+, 10-]→ 51 targets ■■■■■■■■■■■■■■■■■■               [3m 44.9s, 19+, 10-]
+✔ imputed_dat_mice_CALIBER.NA.NA.NA.colic completed [31.7s, 18.23 kB]
+→ 51 targets ■■■■■■■■■■■■■■■■■■               [3m 44.9s, 19+, 10-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.selfreport dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■               [3m 44.9s, 19+, 10-]→ 51 targets ■■■■■■■■■■■■■■■■■■■              [3m 45.8s, 20+, 10-]
+✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.selfreport completed [10ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■              [3m 45.8s, 20+, 10-]+ obtained_scores_mice_CALIBER.NA.NA.NA.soybean dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■              [3m 45.8s, 20+, 10-]→ 51 targets ■■■■■■■■■■■■■■■■■■■              [4m 20s, 21+, 10-]
+✔ obtained_scores_mice_CALIBER.NA.NA.NA.selfreport completed [59.8s, 239 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■              [4m 20s, 21+, 10-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.soybean dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■              [4m 20s, 21+, 10-]✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.soybean completed [6ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■              [4m 20s, 21+, 10-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■             [4m 21.8s, 22+, 11-]
++ obtained_scores_mice_CALIBER.NA.NA.NA.housevotes84 dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■             [4m 21.8s, 22+, 11-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 41.6s, 23+, 11-]
+✔ obtained_scores_mice_CALIBER.NA.NA.NA.soybean completed [8m 54.7s, 236 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 41.6s, 23+, 11-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.housevotes84 dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 41.6s, 23+, 11-]✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.housevotes84 completed [4ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 41.6s, 23+, 11-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.walking dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 41.6s, 23+, 11-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 43.3s, 25+, 11-]
+✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.walking completed [3ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 43.3s, 25+, 11-]+ obtained_scores_mice_CALIBER.NA.NA.NA.walking dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 43.3s, 25+, 11-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■          [13m 17.3s, 26+, 11-]
+✔ obtained_scores_mice_CALIBER.NA.NA.NA.walking completed [33.1s, 236 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■          [13m 17.3s, 26+, 11-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.debt dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■          [13m 17.3s, 26+, 11-]✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.debt completed [3ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■          [13m 17.3s, 26+, 11-]+ obtained_scores_mice_CALIBER.NA.NA.NA.debt dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■          [13m 17.3s, 26+, 11-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [14m 26.7s, 28+, 11-]
+✔ obtained_scores_mice_CALIBER.NA.NA.NA.debt completed [1m 7.6s, 233 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [14m 26.7s, 28+, 11-]+ obtained_scores_mice_CALIBER.NA.NA.NA.tbc dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [14m 26.7s, 28+, 11-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [15m 22.5s, 29+, 11-]
+✔ obtained_scores_mice_CALIBER.NA.NA.NA.tbc completed [54.9s, 230 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [15m 22.5s, 29+, 11-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.tbc dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [15m 22.5s, 29+, 11-]✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.tbc completed [12ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [15m 22.5s, 29+, 11-]+ obtained_scores_mice_CALIBER.NA.NA.NA.vnf dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [15m 22.5s, 29+, 11-]

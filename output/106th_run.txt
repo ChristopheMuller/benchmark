@@ -1,0 +1,434 @@
+renv 1.1.5 was loaded from project library, but this project is configured to use renv 1.0.11.
+- Use `renv::record("renv@1.1.5")` to record renv 1.1.5 in the lockfile.
+- Use `renv::restore(packages = "renv")` to install renv 1.0.11 into the project library.
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+[1] "2025-09-01 18:38:40 CEST"
+renv 1.1.5 was loaded from project library, but this project is configured to use renv 1.0.11.
+- Use `renv::record("renv@1.1.5")` to record renv 1.1.5 in the lockfile.
+- Use `renv::restore(packages = "renv")` to install renv 1.0.11 into the project library.
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Registered S3 methods overwritten by 'registry':
+  method               from 
+  print.registry_field proxy
+  print.registry_entry proxy
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+Loading required package: mice
+
+Attaching package: ‘mice’
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    cbind, rbind
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-10
+
+Attaching package: ‘MetabImpute’
+
+The following object is masked from ‘package:stats’:
+
+    simulate
+
+Registered S3 methods overwritten by 'fmsb':
+  method    from
+  print.roc pROC
+  plot.roc  pROC
+[1] "total dim params: 9"  "total dim params: 14"
+
+        boys  colic_fixed         debt housevotes84   selfreport      soybean 
+           1            1            1            1            1            1 
+         tbc          vnf      walking 
+           1            1            1 
+< table of extent 0 >
+< table of extent 0 >
+< table of extent 0 >
+
+mice_CALIBER 
+           9 
+[1] "ATTENTION: DEPEND = TRUE!!!"
+→ de-duplicating _targets/meta/meta
+→ reading _targets/meta/meta
+→ parsing _targets/meta/meta
+→ noting builders and branches
+→ parsing _targets/meta/meta
+→ restricting metadata records
+→ querying 70915 local files in _targets/objects
+→ reading _targets/meta/process
+→ parsing _targets/meta/process
+→ 51 targets ■■■■■■■■■■■■                     [4.2s, 0+, 19-]
++ imputed_dat_mice_CALIBER.NA.NA.NA.colic_fixed dispatched
+→ 51 targets ■■■■■■■■■■■■                     [4.2s, 0+, 19-]+ imputed_dat_mice_CALIBER.NA.NA.NA.selfreport dispatched
+→ 51 targets ■■■■■■■■■■■■                     [4.2s, 0+, 19-]+ imputed_dat_mice_CALIBER.NA.NA.NA.soybean dispatched
+→ 51 targets ■■■■■■■■■■■■                     [4.2s, 0+, 19-]+ imputed_dat_mice_CALIBER.NA.NA.NA.housevotes84 dispatched
+→ 51 targets ■■■■■■■■■■■■                     [4.2s, 0+, 19-]+ imputed_dat_mice_CALIBER.NA.NA.NA.walking dispatched
+→ 51 targets ■■■■■■■■■■■■                     [4.2s, 0+, 19-]+ imputed_dat_mice_CALIBER.NA.NA.NA.debt dispatched
+→ 51 targets ■■■■■■■■■■■■                     [4.2s, 0+, 19-]+ imputed_dat_mice_CALIBER.NA.NA.NA.tbc dispatched
+→ 51 targets ■■■■■■■■■■■■                     [4.2s, 0+, 19-]→ 51 targets ■■■■■■■■■■■■■                    [8.8s, 0+, 20-]
++ imputed_dat_mice_CALIBER.NA.NA.NA.vnf dispatched
+→ 51 targets ■■■■■■■■■■■■■                    [8.8s, 0+, 20-]→ 51 targets ■■■■■■■■■■■■■                    [1m 11.2s, 1+, 20-]
+✔ imputed_dat_mice_CALIBER.NA.NA.NA.walking completed [45.1s, 4.19 kB]
+→ 51 targets ■■■■■■■■■■■■■                    [1m 11.2s, 1+, 20-]+ imputed_dat_mice_CALIBER.NA.NA.NA.boys dispatched
+→ 51 targets ■■■■■■■■■■■■■                    [1m 11.2s, 1+, 20-]✔ imputed_dat_mice_CALIBER.NA.NA.NA.housevotes84 completed [47.9s, 3.29 kB]
+→ 51 targets ■■■■■■■■■■■■■                    [1m 11.2s, 1+, 20-]✔ imputed_dat_mice_CALIBER.NA.NA.NA.debt completed [46.8s, 5.87 kB]
+→ 51 targets ■■■■■■■■■■■■■                    [1m 11.2s, 1+, 20-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.walking dispatched
+→ 51 targets ■■■■■■■■■■■■■                    [1m 11.2s, 1+, 20-]+ obtained_scores_mice_CALIBER.NA.NA.NA.walking dispatched
+→ 51 targets ■■■■■■■■■■■■■                    [1m 11.2s, 1+, 20-]→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 13.8s, 4+, 21-]
+✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.walking completed [4ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 13.8s, 4+, 21-]+ obtained_scores_mice_CALIBER.NA.NA.NA.housevotes84 dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 13.8s, 4+, 21-]✔ imputed_dat_mice_CALIBER.NA.NA.NA.selfreport completed [50.3s, 30.84 kB]
+→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 13.8s, 4+, 21-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.housevotes84 dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 13.8s, 4+, 21-]✔ imputed_dat_mice_CALIBER.NA.NA.NA.colic_fixed completed [50.3s, 18.40 kB]
+→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 13.8s, 4+, 21-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.debt dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 13.8s, 4+, 21-]✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.housevotes84 completed [5ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 13.8s, 4+, 21-]+ obtained_scores_mice_CALIBER.NA.NA.NA.debt dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 13.8s, 4+, 21-]✔ imputed_dat_mice_CALIBER.NA.NA.NA.tbc completed [48.7s, 55.30 kB]
+→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 13.8s, 4+, 21-]+ obtained_scores_mice_CALIBER.NA.NA.NA.selfreport dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 13.8s, 4+, 21-]✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.debt completed [5ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 13.8s, 4+, 21-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.selfreport dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 13.8s, 4+, 21-]→ 51 targets ■■■■■■■■■■■■■■■■■■■              [1m 16.9s, 10+, 21-]
+✔ imputed_dat_mice_CALIBER.NA.NA.NA.vnf completed [51.9s, 5.19 kB]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■              [1m 16.9s, 10+, 21-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.colic_fixed dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■              [1m 16.9s, 10+, 21-]✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.selfreport completed [8ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■              [1m 16.9s, 10+, 21-]+ obtained_scores_mice_CALIBER.NA.NA.NA.colic_fixed dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■              [1m 16.9s, 10+, 21-]✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.colic_fixed completed [6ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■              [1m 16.9s, 10+, 21-]+ obtained_scores_mice_CALIBER.NA.NA.NA.tbc dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■              [1m 16.9s, 10+, 21-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■            [1m 30.3s, 13+, 21-]
+✔ imputed_dat_mice_CALIBER.NA.NA.NA.soybean completed [1m 4s, 6.93 kB]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■            [1m 30.3s, 13+, 21-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.tbc dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■            [1m 30.3s, 13+, 21-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■           [1m 31.3s, 14+, 21-]
+✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.tbc completed [14ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■           [1m 31.3s, 14+, 21-]+ obtained_scores_mice_CALIBER.NA.NA.NA.vnf dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■           [1m 31.3s, 14+, 21-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■           [1m 43.4s, 15+, 21-]
+✔ imputed_dat_mice_CALIBER.NA.NA.NA.boys completed [31s, 14.20 kB]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■           [1m 43.4s, 15+, 21-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.vnf dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■           [1m 43.4s, 15+, 21-]✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.vnf completed [6ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■           [1m 43.4s, 15+, 21-]+ obtained_scores_mice_CALIBER.NA.NA.NA.soybean dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■           [1m 43.4s, 15+, 21-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■          [1m 50.9s, 17+, 21-]
+✔ obtained_scores_mice_CALIBER.NA.NA.NA.walking completed [36.9s, 235 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■          [1m 50.9s, 17+, 21-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.soybean dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■          [1m 50.9s, 17+, 21-]✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.soybean completed [6ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■          [1m 50.9s, 17+, 21-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.boys dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■          [1m 50.9s, 17+, 21-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [1m 52.8s, 19+, 21-]
+✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.boys completed [5ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [1m 52.8s, 19+, 21-]+ obtained_scores_mice_CALIBER.NA.NA.NA.boys dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [1m 52.8s, 19+, 21-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [2m 14.9s, 20+, 21-]
+✔ obtained_scores_mice_CALIBER.NA.NA.NA.boys completed [21s, 233 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [2m 14.9s, 20+, 21-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [2m 19.7s, 21+, 21-]
+✔ obtained_scores_mice_CALIBER.NA.NA.NA.selfreport completed [1m 3s, 239 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [2m 19.7s, 21+, 21-]✔ obtained_scores_mice_CALIBER.NA.NA.NA.tbc completed [1m 1.5s, 232 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [2m 19.7s, 21+, 21-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [2m 25s, 23+, 21-]
+✔ obtained_scores_mice_CALIBER.NA.NA.NA.colic_fixed completed [1m 6.9s, 240 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [2m 25s, 23+, 21-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [11m 2.9s, 24+, 21-]
+✔ obtained_scores_mice_CALIBER.NA.NA.NA.soybean completed [9m 17.1s, 236 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [11m 2.9s, 24+, 21-]renv 1.1.5 was loaded from project library, but this project is configured to use renv 1.0.11.
+- Use `renv::record("renv@1.1.5")` to record renv 1.1.5 in the lockfile.
+- Use `renv::restore(packages = "renv")` to install renv 1.0.11 into the project library.
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+[1] "2025-09-05 10:35:16 CEST"
+renv 1.1.5 was loaded from project library, but this project is configured to use renv 1.0.11.
+- Use `renv::record("renv@1.1.5")` to record renv 1.1.5 in the lockfile.
+- Use `renv::restore(packages = "renv")` to install renv 1.0.11 into the project library.
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Registered S3 methods overwritten by 'registry':
+  method               from 
+  print.registry_field proxy
+  print.registry_entry proxy
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+Loading required package: mice
+
+Attaching package: ‘mice’
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    cbind, rbind
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-10
+
+Attaching package: ‘MetabImpute’
+
+The following object is masked from ‘package:stats’:
+
+    simulate
+
+Registered S3 methods overwritten by 'fmsb':
+  method    from
+  print.roc pROC
+  plot.roc  pROC
+[1] "total dim params: 9"  "total dim params: 14"
+
+        boys  colic_fixed         debt housevotes84   selfreport      soybean 
+           1            1            1            1            1            1 
+         tbc          vnf      walking 
+           1            1            1 
+< table of extent 0 >
+< table of extent 0 >
+< table of extent 0 >
+
+mice_CALIBER 
+           9 
+[1] "ATTENTION: DEPEND = TRUE!!!"
+→ de-duplicating _targets/meta/meta
+→ reading _targets/meta/meta
+→ parsing _targets/meta/meta
+→ noting builders and branches
+→ parsing _targets/meta/meta
+→ restricting metadata records
+→ querying 70939 local files in _targets/objects
+→ reading _targets/meta/process
+→ parsing _targets/meta/process
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■           [4s, 0+, 35-]
++ obtained_scores_mice_CALIBER.NA.NA.NA.housevotes84 dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■           [4s, 0+, 35-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■          [7.4s, 0+, 38-]
++ obtained_scores_mice_CALIBER.NA.NA.NA.debt dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■          [7.4s, 0+, 38-]+ obtained_scores_mice_CALIBER.NA.NA.NA.vnf dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■          [7.4s, 0+, 38-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [25.6s, 1+, 42-]
+✔ obtained_scores_mice_CALIBER.NA.NA.NA.debt completed [2s, 227 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [25.6s, 1+, 42-]✔ obtained_scores_mice_CALIBER.NA.NA.NA.housevotes84 completed [2.4s, 238 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [25.6s, 1+, 42-]✔ obtained_scores_mice_CALIBER.NA.NA.NA.vnf completed [2.8s, 229 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [25.6s, 1+, 42-]+ all_scores dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [25.6s, 1+, 42-]✔ all_scores completed [3ms, 432 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [25.6s, 1+, 42-]+ imputation_summary dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [25.6s, 1+, 42-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [28.5s, 5+, 45-]
+✔ imputation_summary completed [17ms, 714 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [28.5s, 5+, 45-]+ save_imputation_summary dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [28.5s, 5+, 45-]✔ save_imputation_summary completed [4ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [28.5s, 5+, 45-]Master: [28.0 secs 2.3% CPU]; Worker: [avg 84.9% CPU, max 976.4 Mb]
+→ de-duplicating _targets/meta/meta
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [28.5s, 5+, 45-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [30s, 6+, 45-]
+✔ ended pipeline [43.9s, 6 completed, 45 skipped]
+Warning messages:
+1: replacing previous import ‘S4Arrays::makeNindexFromArrayViewport’ by ‘DelayedArray::makeNindexFromArrayViewport’ when loading ‘SummarizedExperiment’ 
+2: 3 targets produced warnings. Run targets::tar_meta(fields = warnings, complete_only = TRUE) for the messages. 
+[1] "2025-09-05 10:37:02 CEST"
+renv 1.1.5 was loaded from project library, but this project is configured to use renv 1.0.11.
+- Use `renv::record("renv@1.1.5")` to record renv 1.1.5 in the lockfile.
+- Use `renv::restore(packages = "renv")` to install renv 1.0.11 into the project library.
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+[1] "2025-09-05 10:48:28 CEST"
+renv 1.1.5 was loaded from project library, but this project is configured to use renv 1.0.11.
+- Use `renv::record("renv@1.1.5")` to record renv 1.1.5 in the lockfile.
+- Use `renv::restore(packages = "renv")` to install renv 1.0.11 into the project library.
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Registered S3 methods overwritten by 'registry':
+  method               from 
+  print.registry_field proxy
+  print.registry_entry proxy
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+Loading required package: mice
+
+Attaching package: ‘mice’
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    cbind, rbind
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-10
+
+Attaching package: ‘MetabImpute’
+
+The following object is masked from ‘package:stats’:
+
+    simulate
+
+Registered S3 methods overwritten by 'fmsb':
+  method    from
+  print.roc pROC
+  plot.roc  pROC
+[1] "total dim params: 9"  "total dim params: 14"
+
+        boys  colic_fixed         debt housevotes84   selfreport      soybean 
+           1            1            1            1            1            1 
+         tbc          vnf      walking 
+           1            1            1 
+< table of extent 0 >
+< table of extent 0 >
+< table of extent 0 >
+
+mice_CALIBER 
+           9 
+[1] "ATTENTION: DEPEND = TRUE!!!"
+→ de-duplicating _targets/meta/meta
+→ reading _targets/meta/meta
+→ parsing _targets/meta/meta
+→ noting builders and branches
+→ parsing _targets/meta/meta
+→ restricting metadata records
+→ querying 70933 local files in _targets/objects
+→ reading _targets/meta/process
+→ parsing _targets/meta/process
+→ 51 targets ■■■■■■■■■■■■■■                   [3.9s, 0+, 22-]
++ imputed_dat_mice_CALIBER.NA.NA.NA.housevotes84 dispatched
+→ 51 targets ■■■■■■■■■■■■■■                   [3.9s, 0+, 22-]→ 51 targets ■■■■■■■■■■■■■■■                  [4.3s, 0+, 24-]
+→ 51 targets ■■■■■■■■■■■■■■■                  [8.5s, 0+, 24-]
++ imputed_dat_mice_CALIBER.NA.NA.NA.debt dispatched
+→ 51 targets ■■■■■■■■■■■■■■■                  [8.5s, 0+, 24-]+ imputed_dat_mice_CALIBER.NA.NA.NA.vnf dispatched
+→ 51 targets ■■■■■■■■■■■■■■■                  [8.5s, 0+, 24-]→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 36s, 1+, 25-]
+✔ imputed_dat_mice_CALIBER.NA.NA.NA.housevotes84 completed [1m 11.1s, 3.27 kB]
+→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 36s, 1+, 25-]✔ imputed_dat_mice_CALIBER.NA.NA.NA.debt completed [1m 10.6s, 5.84 kB]
+→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 36s, 1+, 25-]✔ imputed_dat_mice_CALIBER.NA.NA.NA.vnf completed [1m 10.7s, 5.16 kB]
+→ 51 targets ■■■■■■■■■■■■■■■■                 [1m 36s, 1+, 25-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■             [1m 37.3s, 3+, 30-]
++ obtained_scores_mice_CALIBER.NA.NA.NA.housevotes84 dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■             [1m 37.3s, 3+, 30-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [1m 40.3s, 3+, 37-]
++ save_imputed_dat_mice_CALIBER.NA.NA.NA.housevotes84 dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [1m 40.3s, 3+, 37-]✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.housevotes84 completed [22ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [1m 40.3s, 3+, 37-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.debt dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [1m 40.3s, 3+, 37-]+ obtained_scores_mice_CALIBER.NA.NA.NA.debt dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [1m 40.3s, 3+, 37-]✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.debt completed [14ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [1m 40.3s, 3+, 37-]+ obtained_scores_mice_CALIBER.NA.NA.NA.vnf dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [1m 40.3s, 3+, 37-]→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [2m 55.3s, 6+, 39-]
+✔ obtained_scores_mice_CALIBER.NA.NA.NA.debt completed [1m 12s, 232 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [2m 55.3s, 6+, 39-]+ save_imputed_dat_mice_CALIBER.NA.NA.NA.vnf dispatched
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [2m 55.3s, 6+, 39-]✔ save_imputed_dat_mice_CALIBER.NA.NA.NA.vnf completed [14ms, 44 B]
+→ 51 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [2m 55.3s, 6+, 39-]
