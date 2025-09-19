@@ -130,9 +130,10 @@ imputed_datasets <- tar_map(
   names = any_of("imputed_id"),
   tar_target(
     imputed_dat, {
+    missing_data <- readRDS(filepath_amputed)
       impute(
         dataset_id = imputed_id,
-        missing_data_set = amputed_all[[paste0("amputed_dat_", amputed_id)]], 
+        missing_data_set = missing_data,
         imputing_function = imputation_fun,
         timeout_thresh = timeout_thresh,
         n_attempts = n_attempts,
@@ -148,8 +149,9 @@ imputed_datasets <- tar_map(
   ),
   tar_target(
     obtained_scores, {
+      missing_data <- readRDS(filepath_amputed)
       calculate_scores(imputed = imputed_dat, 
-                       amputed = amputed_all[[paste0("amputed_dat_", amputed_id)]],
+                       amputed = missing_data,
                        imputation_fun = get(imputation_fun),
                        multiple = MI,
                        imputed_id = imputed_id, 
