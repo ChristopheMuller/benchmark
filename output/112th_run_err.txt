@@ -1,0 +1,60 @@
+# 1. First run, besteffort, with missmda
+#
+#
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+## OAR [2025-09-19 15:15:20] Job 2016104 KILLED ##
+
+# 2. Second run, besteffort, without missmda
+#
+#
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+## OAR [2025-09-19 16:40:35] Job 2016118 KILLED ##
+
+# 3. Third run, on production
+#
+#
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+Error:
+! Error in tar_make_clustermq():
+  Unexpected worker disconnect
+  See https://books.ropensci.org/targets/debugging.html
+Execution halted
+
+# 4. Re-run after worker disconnect Error
+#
+#
+
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+Error:
+! Error in tar_make_clustermq():
+  Unexpected worker disconnect
+  See https://books.ropensci.org/targets/debugging.html
+Execution halted
+
+# 5. Re-run after worker disconnect Error
+#
+#
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+Error:
+! Error in tar_make_clustermq():
+  Unexpected worker disconnect
+  See https://books.ropensci.org/targets/debugging.html
+Execution halted
+
+# 6. Re-run after worker disconnect Error
+#
+#
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+## OAR [2025-09-22 07:42:28] Job 2018184 KILLED ##
+
+# 7. Re-run after worker disconnect Error
+#
+#
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
