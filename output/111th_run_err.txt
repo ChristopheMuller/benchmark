@@ -1,0 +1,27 @@
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+Error:
+! Error in tar_make_clustermq():
+  amputation error
+  See https://books.ropensci.org/targets/debugging.html
+Execution halted
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+## OAR [2025-09-18 12:34:18] Job 2010249 KILLED ##
+
+# 2nd attempt, besteffort 30 minutes to see if targets skip fine.
+#
+#
+/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+## OAR [2025-09-18 15:04:57] Job 2014412 KILLED ##
+
+# 3rd launch again to finish simulation
+#
+#/var/lib/oar/.batch_job_bashrc: line 5: /home/cmuller/.bashrc: No such file or directory
+/bin/bash: line 1: Xvfb: command not found
+Error:
+! Error in tar_make_clustermq():
+  NA/NaN/Inf in foreign function call (arg 1)
+  See https://books.ropensci.org/targets/debugging.html
+Execution halted
