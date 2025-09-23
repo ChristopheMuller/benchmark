@@ -1,0 +1,890 @@
+renv 1.1.5 was loaded from project library, but this project is configured to use renv 1.0.11.
+- Use `renv::record("renv@1.1.5")` to record renv 1.1.5 in the lockfile.
+- Use `renv::restore(packages = "renv")` to install renv 1.0.11 into the project library.
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+[1] "2025-09-23 16:58:05 CEST"
+renv 1.1.5 was loaded from project library, but this project is configured to use renv 1.0.11.
+- Use `renv::record("renv@1.1.5")` to record renv 1.1.5 in the lockfile.
+- Use `renv::restore(packages = "renv")` to install renv 1.0.11 into the project library.
+- One or more packages recorded in the lockfile are not installed.
+- Use `renv::status()` for more details.
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Registered S3 methods overwritten by 'registry':
+  method               from 
+  print.registry_field proxy
+  print.registry_entry proxy
+Loading required package: gamlss
+Loading required package: splines
+Loading required package: gamlss.data
+
+Attaching package: ‘gamlss.data’
+
+The following object is masked from ‘package:datasets’:
+
+    sleep
+
+Loading required package: gamlss.dist
+Loading required package: nlme
+
+Attaching package: ‘nlme’
+
+The following object is masked from ‘package:dplyr’:
+
+    collapse
+
+ **********   GAMLSS Version 5.4-22  ********** 
+For more on GAMLSS look at https://www.gamlss.com/
+Type gamlssNews() to see new features/changes/bug fixes.
+
+Loading required package: mice
+
+Attaching package: ‘mice’
+
+The following objects are masked from ‘package:BiocGenerics’:
+
+    cbind, rbind
+
+The following object is masked from ‘package:stats’:
+
+    filter
+
+The following objects are masked from ‘package:base’:
+
+    cbind, rbind
+
+Loading required package: Matrix
+
+Attaching package: ‘Matrix’
+
+The following objects are masked from ‘package:tidyr’:
+
+    expand, pack, unpack
+
+Loaded glmnet 4.1-10
+
+Attaching package: ‘MetabImpute’
+
+The following object is masked from ‘package:stats’:
+
+    simulate
+
+Registered S3 methods overwritten by 'fmsb':
+  method    from
+  print.roc pROC
+  plot.roc  pROC
+[1] "total dim params: 96" "total dim params: 14"
+
+           choccake             diamond         electricity        eye_movement 
+                 12                  12                  12                  12 
+             german              nels88 PimaIndiansDiabetes            worldcup 
+                 12                  12                  12                  12 
+
+ mar mcar 
+  48   48 
+
+ 1  2 
+48 48 
+
+0.1 0.2 0.3 
+ 32  32  32 
+
+mice_CALIBER 
+          96 
+→ de-duplicating _targets/meta/meta
+→ reading _targets/meta/meta
+→ parsing _targets/meta/meta
+→ noting builders and branches
+→ parsing _targets/meta/meta
+→ restricting metadata records
+→ querying 70196 local files in _targets/objects
+→ reading _targets/meta/process
+→ parsing _targets/meta/process
+→ 486 targets ■                                [3.7s, 0+, 0-]
++ imputed_dat_mice_CALIBER.mar.0.2.1.worldcup dispatched
+→ 486 targets ■                                [3.7s, 0+, 0-]+ imputed_dat_mice_CALIBER.mcar.0.2.2.german dispatched
+→ 486 targets ■                                [3.7s, 0+, 0-]+ imputed_dat_mice_CALIBER.mcar.0.3.1.nels88 dispatched
+→ 486 targets ■                                [3.7s, 0+, 0-]+ imputed_dat_mice_CALIBER.mcar.0.1.1.electricity dispatched
+→ 486 targets ■                                [3.7s, 0+, 0-]+ imputed_dat_mice_CALIBER.mar.0.1.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■                                [3.7s, 0+, 0-]+ imputed_dat_mice_CALIBER.mcar.0.3.2.german dispatched
+→ 486 targets ■                                [3.7s, 0+, 0-]→ 486 targets ■                                [5.8s, 0+, 2-]
++ imputed_dat_mice_CALIBER.mcar.0.2.1.nels88 dispatched
+→ 486 targets ■                                [5.8s, 0+, 2-]+ imputed_dat_mice_CALIBER.mar.0.3.2.electricity dispatched
+→ 486 targets ■                                [5.8s, 0+, 2-]+ imputed_dat_mice_CALIBER.mar.0.3.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■                                [5.8s, 0+, 2-]+ imputed_dat_mice_CALIBER.mcar.0.1.1.nels88 dispatched
+→ 486 targets ■                                [5.8s, 0+, 2-]+ imputed_dat_mice_CALIBER.mcar.0.1.2.eye_movement dispatched
+→ 486 targets ■                                [5.8s, 0+, 2-]→ 486 targets ■                                [8.7s, 0+, 6-]
++ imputed_dat_mice_CALIBER.mar.0.3.1.german dispatched
+→ 486 targets ■                                [8.7s, 0+, 6-]+ imputed_dat_mice_CALIBER.mar.0.2.2.worldcup dispatched
+→ 486 targets ■                                [8.7s, 0+, 6-]+ imputed_dat_mice_CALIBER.mar.0.1.1.german dispatched
+→ 486 targets ■                                [8.7s, 0+, 6-]+ imputed_dat_mice_CALIBER.mar.0.2.1.german dispatched
+→ 486 targets ■                                [8.7s, 0+, 6-]→ 486 targets ■■                               [11.6s, 0+, 9-]
++ imputed_dat_mice_CALIBER.mar.0.1.1.electricity dispatched
+→ 486 targets ■■                               [11.6s, 0+, 9-]→ 486 targets ■■                               [1m 23.3s, 1+, 9-]
+✔ imputed_dat_mice_CALIBER.mar.0.1.2.PimaIndiansDiabetes completed [1m 12.8s, 18.14 kB]
+→ 486 targets ■■                               [1m 23.3s, 1+, 9-]+ imputed_dat_mice_CALIBER.mcar.0.2.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■■                               [1m 23.3s, 1+, 9-]✔ imputed_dat_mice_CALIBER.mcar.0.3.1.nels88 completed [1m 13.5s, 3.72 kB]
+→ 486 targets ■■                               [1m 23.3s, 1+, 9-]+ imputed_dat_mice_CALIBER.mar.0.2.1.diamond dispatched
+→ 486 targets ■■                               [1m 23.3s, 1+, 9-]✔ imputed_dat_mice_CALIBER.mcar.0.2.1.nels88 completed [1m 12.2s, 3.28 kB]
+→ 486 targets ■■                               [1m 23.3s, 1+, 9-]+ imputed_dat_mice_CALIBER.mar.0.2.1.eye_movement dispatched
+→ 486 targets ■■                               [1m 23.3s, 1+, 9-]✔ imputed_dat_mice_CALIBER.mar.0.3.2.PimaIndiansDiabetes completed [1m 11s, 25.76 kB]
+→ 486 targets ■■                               [1m 23.3s, 1+, 9-]+ imputed_dat_mice_CALIBER.mcar.0.3.2.eye_movement dispatched
+→ 486 targets ■■                               [1m 23.3s, 1+, 9-]✔ imputed_dat_mice_CALIBER.mcar.0.1.1.nels88 completed [1m 10.7s, 2.87 kB]
+→ 486 targets ■■                               [1m 23.3s, 1+, 9-]→ 486 targets ■■                               [1m 23.6s, 5+, 10-]
+✔ imputed_dat_mice_CALIBER.mar.0.2.2.worldcup completed [1m 12.2s, 13.73 kB]
+→ 486 targets ■■                               [1m 23.6s, 5+, 10-]✔ imputed_dat_mice_CALIBER.mar.0.2.1.worldcup completed [1m 14.2s, 13.76 kB]
+→ 486 targets ■■                               [1m 23.6s, 5+, 10-]+ imputed_dat_mice_CALIBER.mar.0.3.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■                               [1m 23.6s, 5+, 10-]+ imputed_dat_mice_CALIBER.mcar.0.1.1.diamond dispatched
+→ 486 targets ■■                               [1m 23.6s, 5+, 10-]+ imputed_dat_mice_CALIBER.mar.0.2.2.eye_movement dispatched
+→ 486 targets ■■                               [1m 23.6s, 5+, 10-]→ 486 targets ■■                               [1m 30.6s, 8+, 14-]
+✔ imputed_dat_mice_CALIBER.mar.0.3.1.german completed [1m 16.6s, 19.12 kB]
+→ 486 targets ■■                               [1m 30.6s, 8+, 14-]+ imputed_dat_mice_CALIBER.mar.0.3.1.electricity dispatched
+→ 486 targets ■■                               [1m 30.6s, 8+, 14-]→ 486 targets ■■                               [1m 32.8s, 9+, 15-]
+✔ imputed_dat_mice_CALIBER.mar.0.2.1.german completed [1m 17.9s, 17.26 kB]
+→ 486 targets ■■                               [1m 32.8s, 9+, 15-]+ imputed_dat_mice_CALIBER.mar.0.1.2.eye_movement dispatched
+→ 486 targets ■■                               [1m 32.8s, 9+, 15-]✔ imputed_dat_mice_CALIBER.mar.0.1.1.german completed [1m 19.9s, 15.06 kB]
+→ 486 targets ■■                               [1m 32.8s, 9+, 15-]+ imputed_dat_mice_CALIBER.mar.0.1.1.eye_movement dispatched
+→ 486 targets ■■                               [1m 32.8s, 9+, 15-]✔ imputed_dat_mice_CALIBER.mcar.0.3.2.german completed [1m 22.2s, 19.44 kB]
+→ 486 targets ■■                               [1m 32.8s, 9+, 15-]+ imputed_dat_mice_CALIBER.mar.0.3.1.choccake dispatched
+→ 486 targets ■■                               [1m 32.8s, 9+, 15-]✔ imputed_dat_mice_CALIBER.mcar.0.2.2.german completed [1m 23.8s, 17.05 kB]
+→ 486 targets ■■                               [1m 32.8s, 9+, 15-]+ imputed_dat_mice_CALIBER.mcar.0.1.1.worldcup dispatched
+→ 486 targets ■■                               [1m 32.8s, 9+, 15-]→ 486 targets ■■■                              [1m 49.8s, 13+, 15-]
+✔ imputed_dat_mice_CALIBER.mcar.0.2.2.PimaIndiansDiabetes completed [24.7s, 22.23 kB]
+→ 486 targets ■■■                              [1m 49.8s, 13+, 15-]→ 486 targets ■■■                              [1m 51.2s, 13+, 17-]
+✔ imputed_dat_mice_CALIBER.mar.0.3.1.PimaIndiansDiabetes completed [24.9s, 26.07 kB]
+→ 486 targets ■■■                              [1m 51.2s, 13+, 17-]+ imputed_dat_mice_CALIBER.mar.0.2.2.electricity dispatched
+→ 486 targets ■■■                              [1m 51.2s, 13+, 17-]→ 486 targets ■■■                              [1m 53.7s, 14+, 19-]
++ imputed_dat_mice_CALIBER.mar.0.3.2.german dispatched
+→ 486 targets ■■■                              [1m 53.7s, 14+, 19-]→ 486 targets ■■■                              [2m 0.5s, 15+, 20-]
+✔ imputed_dat_mice_CALIBER.mar.0.3.1.choccake completed [24.5s, 2.97 kB]
+→ 486 targets ■■■                              [2m 0.5s, 15+, 20-]+ imputed_dat_mice_CALIBER.mar.0.1.2.nels88 dispatched
+→ 486 targets ■■■                              [2m 0.5s, 15+, 20-]✔ imputed_dat_mice_CALIBER.mcar.0.1.1.worldcup completed [25.8s, 11.83 kB]
+→ 486 targets ■■■                              [2m 0.5s, 15+, 20-]+ imputed_dat_mice_CALIBER.mcar.0.3.1.worldcup dispatched
+→ 486 targets ■■■                              [2m 0.5s, 15+, 20-]→ 486 targets ■■■                              [2m 26.2s, 17+, 20-]
+✔ imputed_dat_mice_CALIBER.mar.0.1.2.nels88 completed [23.9s, 2.80 kB]
+→ 486 targets ■■■                              [2m 26.2s, 17+, 20-]→ 486 targets ■■■                              [2m 27.1s, 18+, 21-]
+✔ imputed_dat_mice_CALIBER.mcar.0.3.1.worldcup completed [24.3s, 16.15 kB]
+→ 486 targets ■■■                              [2m 27.1s, 18+, 21-]+ imputed_dat_mice_CALIBER.mcar.0.3.1.electricity dispatched
+→ 486 targets ■■■                              [2m 27.1s, 18+, 21-]+ imputed_dat_mice_CALIBER.mar.0.2.1.electricity dispatched
+→ 486 targets ■■■                              [2m 27.1s, 18+, 21-]→ 486 targets ■■■                              [2m 31.4s, 19+, 21-]
+✔ imputed_dat_mice_CALIBER.mar.0.3.2.german completed [34.1s, 18.82 kB]
+→ 486 targets ■■■                              [2m 31.4s, 19+, 21-]+ imputed_dat_mice_CALIBER.mar.0.3.1.eye_movement dispatched
+→ 486 targets ■■■                              [2m 31.4s, 19+, 21-]→ 486 targets ■■■■                             [2m 45.7s, 20+, 21-]
+✔ imputed_dat_mice_CALIBER.mar.0.3.2.electricity completed [2m 33.8s, 2.45 kB]
+→ 486 targets ■■■■                             [2m 45.7s, 20+, 21-]+ imputed_dat_mice_CALIBER.mcar.0.1.2.diamond dispatched
+→ 486 targets ■■■■                             [2m 45.7s, 20+, 21-]→ 486 targets ■■■■                             [3m 0.6s, 21+, 21-]
+✔ imputed_dat_mice_CALIBER.mar.0.1.1.electricity completed [2m 46.2s, 2.45 kB]
+→ 486 targets ■■■■                             [3m 0.6s, 21+, 21-]+ imputed_dat_mice_CALIBER.mar.0.2.2.german dispatched
+→ 486 targets ■■■■                             [3m 0.6s, 21+, 21-]→ 486 targets ■■■■                             [3m 20.7s, 22+, 21-]
+✔ imputed_dat_mice_CALIBER.mcar.0.1.2.eye_movement completed [3m 10.7s, 377.71 kB]
+→ 486 targets ■■■■                             [3m 20.7s, 22+, 21-]+ imputed_dat_mice_CALIBER.mcar.0.1.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■                             [3m 20.7s, 22+, 21-]✔ imputed_dat_mice_CALIBER.mar.0.3.1.electricity completed [1m 48.9s, 2.45 kB]
+→ 486 targets ■■■■                             [3m 20.7s, 22+, 21-]+ imputed_dat_mice_CALIBER.mar.0.1.1.choccake dispatched
+→ 486 targets ■■■■                             [3m 20.7s, 22+, 21-]→ 486 targets ■■■■                             [3m 25s, 24+, 21-]
+✔ imputed_dat_mice_CALIBER.mcar.0.3.2.eye_movement completed [1m 59.7s, 526.21 kB]
+→ 486 targets ■■■■                             [3m 25s, 24+, 21-]→ 486 targets ■■■■                             [3m 27.4s, 24+, 23-]
++ imputed_dat_mice_CALIBER.mar.0.3.2.eye_movement dispatched
+→ 486 targets ■■■■                             [3m 27.4s, 24+, 23-]→ 486 targets ■■■■                             [3m 34.4s, 25+, 23-]
+✔ imputed_dat_mice_CALIBER.mar.0.2.1.eye_movement completed [2m 9s, 448.91 kB]
+→ 486 targets ■■■■                             [3m 34.4s, 25+, 23-]+ imputed_dat_mice_CALIBER.mcar.0.2.1.choccake dispatched
+→ 486 targets ■■■■                             [3m 34.4s, 25+, 23-]→ 486 targets ■■■■                             [3m 36.2s, 26+, 23-]
+✔ imputed_dat_mice_CALIBER.mar.0.2.2.eye_movement completed [2m 8.2s, 447.12 kB]
+→ 486 targets ■■■■                             [3m 36.2s, 26+, 23-]+ imputed_dat_mice_CALIBER.mcar.0.1.2.german dispatched
+→ 486 targets ■■■■                             [3m 36.2s, 26+, 23-]✔ imputed_dat_mice_CALIBER.mar.0.2.2.german completed [33.9s, 17.41 kB]
+→ 486 targets ■■■■                             [3m 36.2s, 26+, 23-]+ imputed_dat_mice_CALIBER.mcar.0.1.2.worldcup dispatched
+→ 486 targets ■■■■                             [3m 36.2s, 26+, 23-]→ 486 targets ■■■■                             [3m 47s, 28+, 24-]
+✔ imputed_dat_mice_CALIBER.mcar.0.1.2.PimaIndiansDiabetes completed [24.8s, 17.94 kB]
+→ 486 targets ■■■■                             [3m 47s, 28+, 24-]✔ imputed_dat_mice_CALIBER.mar.0.2.2.electricity completed [1m 53.5s, 2.45 kB]
+→ 486 targets ■■■■                             [3m 47s, 28+, 24-]+ imputed_dat_mice_CALIBER.mar.0.1.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■                             [3m 47s, 28+, 24-]✔ imputed_dat_mice_CALIBER.mar.0.1.1.choccake completed [23.3s, 2.10 kB]
+→ 486 targets ■■■■                             [3m 47s, 28+, 24-]+ imputed_dat_mice_CALIBER.mcar.0.3.1.eye_movement dispatched
+→ 486 targets ■■■■                             [3m 47s, 28+, 24-]→ 486 targets ■■■■                             [3m 48.3s, 30+, 26-]
++ imputed_dat_mice_CALIBER.mar.0.2.2.nels88 dispatched
+→ 486 targets ■■■■                             [3m 48.3s, 30+, 26-]→ 486 targets ■■■■■                            [3m 54.1s, 31+, 26-]
+✔ imputed_dat_mice_CALIBER.mar.0.1.1.eye_movement completed [2m 19.5s, 376.69 kB]
+→ 486 targets ■■■■■                            [3m 54.1s, 31+, 26-]+ imputed_dat_mice_CALIBER.mcar.0.2.2.nels88 dispatched
+→ 486 targets ■■■■■                            [3m 54.1s, 31+, 26-]→ 486 targets ■■■■■                            [3m 58s, 32+, 26-]
+✔ imputed_dat_mice_CALIBER.mar.0.1.2.eye_movement completed [2m 22.1s, 375.77 kB]
+→ 486 targets ■■■■■                            [3m 58s, 32+, 26-]+ imputed_dat_mice_CALIBER.mar.0.1.1.nels88 dispatched
+→ 486 targets ■■■■■                            [3m 58s, 32+, 26-]→ 486 targets ■■■■■                            [4m 0.1s, 33+, 26-]
+✔ imputed_dat_mice_CALIBER.mcar.0.2.1.choccake completed [23.9s, 2.58 kB]
+→ 486 targets ■■■■■                            [4m 0.1s, 33+, 26-]+ imputed_dat_mice_CALIBER.mcar.0.3.2.worldcup dispatched
+→ 486 targets ■■■■■                            [4m 0.1s, 33+, 26-]→ 486 targets ■■■■■                            [4m 3.5s, 34+, 26-]
+✔ imputed_dat_mice_CALIBER.mcar.0.1.2.worldcup completed [24.3s, 11.82 kB]
+→ 486 targets ■■■■■                            [4m 3.5s, 34+, 26-]→ 486 targets ■■■■■                            [4m 6.3s, 34+, 28-]
++ imputed_dat_mice_CALIBER.mcar.0.1.2.choccake dispatched
+→ 486 targets ■■■■■                            [4m 6.3s, 34+, 28-]→ 486 targets ■■■■■                            [4m 10.9s, 35+, 28-]
+✔ imputed_dat_mice_CALIBER.mcar.0.1.2.german completed [32.9s, 15.17 kB]
+→ 486 targets ■■■■■                            [4m 10.9s, 35+, 28-]+ imputed_dat_mice_CALIBER.mar.0.1.2.german dispatched
+→ 486 targets ■■■■■                            [4m 10.9s, 35+, 28-]→ 486 targets ■■■■■                            [4m 13.9s, 36+, 28-]
+✔ imputed_dat_mice_CALIBER.mar.0.1.1.PimaIndiansDiabetes completed [25s, 17.78 kB]
+→ 486 targets ■■■■■                            [4m 13.9s, 36+, 28-]+ imputed_dat_mice_CALIBER.mar.0.3.2.nels88 dispatched
+→ 486 targets ■■■■■                            [4m 13.9s, 36+, 28-]✔ imputed_dat_mice_CALIBER.mar.0.2.2.nels88 completed [23.7s, 3.33 kB]
+→ 486 targets ■■■■■                            [4m 13.9s, 36+, 28-]→ 486 targets ■■■■■                            [4m 15.6s, 37+, 30-]
+→ 486 targets ■■■■■                            [4m 17.8s, 37+, 31-]
++ imputed_dat_mice_CALIBER.mcar.0.1.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■                            [4m 17.8s, 37+, 31-]✔ imputed_dat_mice_CALIBER.mcar.0.2.2.nels88 completed [23.3s, 3.25 kB]
+→ 486 targets ■■■■■                            [4m 17.8s, 37+, 31-]+ imputed_dat_mice_CALIBER.mcar.0.1.1.eye_movement dispatched
+→ 486 targets ■■■■■                            [4m 17.8s, 37+, 31-]→ 486 targets ■■■■■                            [4m 23.8s, 39+, 31-]
+✔ imputed_dat_mice_CALIBER.mar.0.1.1.nels88 completed [23.6s, 2.90 kB]
+→ 486 targets ■■■■■                            [4m 23.8s, 39+, 31-]+ imputed_dat_mice_CALIBER.mcar.0.3.2.choccake dispatched
+→ 486 targets ■■■■■                            [4m 23.8s, 39+, 31-]✔ imputed_dat_mice_CALIBER.mar.0.2.1.electricity completed [1m 55s, 2.45 kB]
+→ 486 targets ■■■■■                            [4m 23.8s, 39+, 31-]+ imputed_dat_mice_CALIBER.mcar.0.3.2.electricity dispatched
+→ 486 targets ■■■■■                            [4m 23.8s, 39+, 31-]→ 486 targets ■■■■■■                           [4m 26.7s, 41+, 32-]
+✔ imputed_dat_mice_CALIBER.mcar.0.3.2.worldcup completed [24s, 15.81 kB]
+→ 486 targets ■■■■■■                           [4m 26.7s, 41+, 32-]+ imputed_dat_mice_CALIBER.mcar.0.2.2.choccake dispatched
+→ 486 targets ■■■■■■                           [4m 26.7s, 41+, 32-]→ 486 targets ■■■■■■                           [4m 32.2s, 42+, 32-]
+✔ imputed_dat_mice_CALIBER.mcar.0.1.2.choccake completed [23.2s, 2.10 kB]
+→ 486 targets ■■■■■■                           [4m 32.2s, 42+, 32-]→ 486 targets ■■■■■■                           [4m 33.9s, 42+, 34-]
+✔ imputed_dat_mice_CALIBER.mar.0.3.1.eye_movement completed [2m 1.9s, 513.97 kB]
+→ 486 targets ■■■■■■                           [4m 33.9s, 42+, 34-]+ imputed_dat_mice_CALIBER.mar.0.2.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■                           [4m 33.9s, 42+, 34-]→ 486 targets ■■■■■■                           [4m 36.3s, 43+, 36-]
++ imputed_dat_mice_CALIBER.mcar.0.1.1.german dispatched
+→ 486 targets ■■■■■■                           [4m 36.3s, 43+, 36-]→ 486 targets ■■■■■■                           [4m 38.8s, 44+, 37-]
+✔ imputed_dat_mice_CALIBER.mar.0.3.2.nels88 completed [23.5s, 3.63 kB]
+→ 486 targets ■■■■■■                           [4m 38.8s, 44+, 37-]+ imputed_dat_mice_CALIBER.mar.0.3.1.nels88 dispatched
+→ 486 targets ■■■■■■                           [4m 38.8s, 44+, 37-]→ 486 targets ■■■■■■                           [4m 43s, 45+, 37-]
+✔ imputed_dat_mice_CALIBER.mcar.0.1.1.PimaIndiansDiabetes completed [23.8s, 17.76 kB]
+→ 486 targets ■■■■■■                           [4m 43s, 45+, 37-]+ imputed_dat_mice_CALIBER.mar.0.2.1.nels88 dispatched
+→ 486 targets ■■■■■■                           [4m 43s, 45+, 37-]→ 486 targets ■■■■■■                           [4m 45.9s, 46+, 38-]
+✔ imputed_dat_mice_CALIBER.mar.0.1.2.german completed [33.1s, 15.11 kB]
+→ 486 targets ■■■■■■                           [4m 45.9s, 46+, 38-]+ imputed_dat_mice_CALIBER.mcar.0.1.2.electricity dispatched
+→ 486 targets ■■■■■■                           [4m 45.9s, 46+, 38-]→ 486 targets ■■■■■■                           [4m 49.5s, 47+, 39-]
+✔ imputed_dat_mice_CALIBER.mcar.0.3.2.choccake completed [24s, 3.11 kB]
+→ 486 targets ■■■■■■                           [4m 49.5s, 47+, 39-]→ 486 targets ■■■■■■                           [4m 50.9s, 47+, 41-]
+✔ imputed_dat_mice_CALIBER.mcar.0.2.2.choccake completed [23.3s, 2.66 kB]
+→ 486 targets ■■■■■■                           [4m 50.9s, 47+, 41-]+ imputed_dat_mice_CALIBER.mcar.0.1.1.choccake dispatched
+→ 486 targets ■■■■■■                           [4m 50.9s, 47+, 41-]→ 486 targets ■■■■■■■                          [4m 54.6s, 48+, 44-]
++ imputed_dat_mice_CALIBER.mcar.0.2.2.electricity dispatched
+→ 486 targets ■■■■■■■                          [4m 54.6s, 48+, 44-]→ 486 targets ■■■■■■■                          [5m 0.3s, 49+, 44-]
+✔ imputed_dat_mice_CALIBER.mar.0.2.2.PimaIndiansDiabetes completed [23.9s, 21.83 kB]
+→ 486 targets ■■■■■■■                          [5m 0.3s, 49+, 44-]+ imputed_dat_mice_CALIBER.mcar.0.3.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■                          [5m 0.3s, 49+, 44-]→ 486 targets ■■■■■■■                          [5m 4s, 50+, 44-]
+✔ imputed_dat_mice_CALIBER.mar.0.3.1.nels88 completed [23.7s, 3.55 kB]
+→ 486 targets ■■■■■■■                          [5m 4s, 50+, 44-]+ imputed_dat_mice_CALIBER.mar.0.1.2.diamond dispatched
+→ 486 targets ■■■■■■■                          [5m 4s, 50+, 44-]→ 486 targets ■■■■■■■                          [5m 9.3s, 51+, 44-]
+✔ imputed_dat_mice_CALIBER.mar.0.2.1.nels88 completed [23.8s, 3.28 kB]
+→ 486 targets ■■■■■■■                          [5m 9.3s, 51+, 44-]+ imputed_dat_mice_CALIBER.mar.0.3.1.diamond dispatched
+→ 486 targets ■■■■■■■                          [5m 9.3s, 51+, 44-]→ 486 targets ■■■■■■■                          [5m 13.1s, 52+, 44-]
+✔ imputed_dat_mice_CALIBER.mcar.0.1.1.german completed [32.8s, 15.04 kB]
+→ 486 targets ■■■■■■■                          [5m 13.1s, 52+, 44-]→ 486 targets ■■■■■■■                          [5m 15.7s, 52+, 46-]
++ imputed_dat_mice_CALIBER.mcar.0.3.1.choccake dispatched
+→ 486 targets ■■■■■■■                          [5m 15.7s, 52+, 46-]→ 486 targets ■■■■■■■                          [5m 18.4s, 53+, 46-]
+✔ imputed_dat_mice_CALIBER.mcar.0.1.1.choccake completed [23.4s, 2.09 kB]
+→ 486 targets ■■■■■■■                          [5m 18.4s, 53+, 46-]→ 486 targets ■■■■■■■                          [5m 20.9s, 53+, 48-]
++ imputed_dat_mice_CALIBER.mar.0.3.2.diamond dispatched
+→ 486 targets ■■■■■■■                          [5m 20.9s, 53+, 48-]→ 486 targets ■■■■■■■                          [5m 26.7s, 54+, 48-]
+✔ imputed_dat_mice_CALIBER.mcar.0.3.2.PimaIndiansDiabetes completed [24.7s, 25.86 kB]
+→ 486 targets ■■■■■■■                          [5m 26.7s, 54+, 48-]+ imputed_dat_mice_CALIBER.mar.0.2.2.choccake dispatched
+→ 486 targets ■■■■■■■                          [5m 26.7s, 54+, 48-]✔ imputed_dat_mice_CALIBER.mar.0.3.2.eye_movement completed [1m 58s, 514.63 kB]
+→ 486 targets ■■■■■■■                          [5m 26.7s, 54+, 48-]+ imputed_dat_mice_CALIBER.mcar.0.2.2.worldcup dispatched
+→ 486 targets ■■■■■■■                          [5m 26.7s, 54+, 48-]→ 486 targets ■■■■■■■                          [5m 41.1s, 56+, 49-]
+✔ imputed_dat_mice_CALIBER.mcar.0.3.1.choccake completed [23.9s, 3.15 kB]
+→ 486 targets ■■■■■■■                          [5m 41.1s, 56+, 49-]+ imputed_dat_mice_CALIBER.mar.0.1.2.electricity dispatched
+→ 486 targets ■■■■■■■                          [5m 41.1s, 56+, 49-]→ 486 targets ■■■■■■■■                         [5m 47.9s, 57+, 49-]
+✔ imputed_dat_mice_CALIBER.mcar.0.3.1.eye_movement completed [1m 58.7s, 529.09 kB]
+→ 486 targets ■■■■■■■■                         [5m 47.9s, 57+, 49-]+ imputed_dat_mice_CALIBER.mar.0.2.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■                         [5m 47.9s, 57+, 49-]→ 486 targets ■■■■■■■■                         [5m 55.4s, 58+, 49-]
+✔ imputed_dat_mice_CALIBER.mcar.0.2.2.worldcup completed [25.5s, 14.21 kB]
+→ 486 targets ■■■■■■■■                         [5m 55.4s, 58+, 49-]→ 486 targets ■■■■■■■■                         [5m 56.8s, 58+, 51-]
+✔ imputed_dat_mice_CALIBER.mar.0.2.2.choccake completed [28.5s, 2.62 kB]
+→ 486 targets ■■■■■■■■                         [5m 56.8s, 58+, 51-]+ imputed_dat_mice_CALIBER.mcar.0.3.1.german dispatched
+→ 486 targets ■■■■■■■■                         [5m 56.8s, 58+, 51-]+ imputed_dat_mice_CALIBER.mar.0.1.1.worldcup dispatched
+→ 486 targets ■■■■■■■■                         [5m 56.8s, 58+, 51-]→ 486 targets ■■■■■■■■                         [6m 13.5s, 60+, 54-]
+✔ imputed_dat_mice_CALIBER.mar.0.2.1.PimaIndiansDiabetes completed [23.9s, 22.01 kB]
+→ 486 targets ■■■■■■■■                         [6m 13.5s, 60+, 54-]→ 486 targets ■■■■■■■■                         [6m 14.9s, 60+, 55-]
++ imputed_dat_mice_CALIBER.mcar.0.3.2.diamond dispatched
+→ 486 targets ■■■■■■■■                         [6m 14.9s, 60+, 55-]→ 486 targets ■■■■■■■■                         [6m 25.7s, 61+, 55-]
+✔ imputed_dat_mice_CALIBER.mar.0.1.1.worldcup completed [24.8s, 11.95 kB]
+→ 486 targets ■■■■■■■■                         [6m 25.7s, 61+, 55-]+ imputed_dat_mice_CALIBER.mar.0.3.2.choccake dispatched
+→ 486 targets ■■■■■■■■                         [6m 25.7s, 61+, 55-]→ 486 targets ■■■■■■■■                         [6m 29.7s, 62+, 55-]
+✔ imputed_dat_mice_CALIBER.mcar.0.1.1.electricity completed [6m 19.6s, 903.94 kB]
+→ 486 targets ■■■■■■■■                         [6m 29.7s, 62+, 55-]+ imputed_dat_mice_CALIBER.mar.0.3.1.worldcup dispatched
+→ 486 targets ■■■■■■■■                         [6m 29.7s, 62+, 55-]→ 486 targets ■■■■■■■■                         [6m 34.8s, 63+, 55-]
+✔ imputed_dat_mice_CALIBER.mcar.0.3.1.german completed [34s, 19.05 kB]
+→ 486 targets ■■■■■■■■                         [6m 34.8s, 63+, 55-]→ 486 targets ■■■■■■■■                         [6m 36.1s, 63+, 56-]
++ imputed_dat_mice_CALIBER.mcar.0.2.1.worldcup dispatched
+→ 486 targets ■■■■■■■■                         [6m 36.1s, 63+, 56-]→ 486 targets ■■■■■■■■                         [6m 41.6s, 64+, 56-]
+✔ imputed_dat_mice_CALIBER.mcar.0.1.1.eye_movement completed [2m 20.7s, 375.91 kB]
+→ 486 targets ■■■■■■■■                         [6m 41.6s, 64+, 56-]+ imputed_dat_mice_CALIBER.mar.0.1.1.diamond dispatched
+→ 486 targets ■■■■■■■■                         [6m 41.6s, 64+, 56-]→ 486 targets ■■■■■■■■■                        [6m 50.6s, 65+, 58-]
+✔ imputed_dat_mice_CALIBER.mar.0.3.2.choccake completed [23.6s, 2.96 kB]
+→ 486 targets ■■■■■■■■■                        [6m 50.6s, 65+, 58-]+ imputed_dat_mice_CALIBER.mar.0.2.1.choccake dispatched
+→ 486 targets ■■■■■■■■■                        [6m 50.6s, 65+, 58-]→ 486 targets ■■■■■■■■■                        [6m 55.8s, 66+, 58-]
+✔ imputed_dat_mice_CALIBER.mar.0.3.1.worldcup completed [24.5s, 15.72 kB]
+→ 486 targets ■■■■■■■■■                        [6m 55.8s, 66+, 58-]✔ imputed_dat_mice_CALIBER.mcar.0.3.1.electricity completed [4m 27s, 1.25 MB]
+→ 486 targets ■■■■■■■■■                        [6m 55.8s, 66+, 58-]+ imputed_dat_mice_CALIBER.mcar.0.2.1.electricity dispatched
+→ 486 targets ■■■■■■■■■                        [6m 55.8s, 66+, 58-]→ 486 targets ■■■■■■■■■                        [6m 57.1s, 67+, 59-]
++ imputed_dat_mice_CALIBER.mcar.0.3.1.diamond dispatched
+→ 486 targets ■■■■■■■■■                        [6m 57.1s, 67+, 59-]→ 486 targets ■■■■■■■■■                        [7m 2.5s, 68+, 59-]
+✔ imputed_dat_mice_CALIBER.mcar.0.2.1.worldcup completed [24.7s, 14.04 kB]
+→ 486 targets ■■■■■■■■■                        [7m 2.5s, 68+, 59-]+ imputed_dat_mice_CALIBER.mar.0.2.2.diamond dispatched
+→ 486 targets ■■■■■■■■■                        [7m 2.5s, 68+, 59-]→ 486 targets ■■■■■■■■■                        [7m 15.6s, 69+, 59-]
+✔ imputed_dat_mice_CALIBER.mar.0.2.1.choccake completed [23.5s, 2.50 kB]
+→ 486 targets ■■■■■■■■■                        [7m 15.6s, 69+, 59-]+ imputed_dat_mice_CALIBER.mar.0.1.2.choccake dispatched
+→ 486 targets ■■■■■■■■■                        [7m 15.6s, 69+, 59-]→ 486 targets ■■■■■■■■■                        [7m 41.2s, 70+, 60-]
+✔ imputed_dat_mice_CALIBER.mar.0.1.2.choccake completed [23.1s, 2.17 kB]
+→ 486 targets ■■■■■■■■■                        [7m 41.2s, 70+, 60-]+ imputed_dat_mice_CALIBER.mcar.0.2.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■                        [7m 41.2s, 70+, 60-]→ 486 targets ■■■■■■■■■                        [7m 44s, 71+, 60-]
+✔ imputed_dat_mice_CALIBER.mar.0.1.2.electricity completed [2m 1.1s, 2.46 kB]
+→ 486 targets ■■■■■■■■■                        [7m 44s, 71+, 60-]→ 486 targets ■■■■■■■■■                        [7m 45.4s, 71+, 62-]
++ imputed_dat_mice_CALIBER.mcar.0.2.2.eye_movement dispatched
+→ 486 targets ■■■■■■■■■                        [7m 45.4s, 71+, 62-]→ 486 targets ■■■■■■■■■                        [8m 6s, 72+, 62-]
+✔ imputed_dat_mice_CALIBER.mcar.0.2.1.PimaIndiansDiabetes completed [23.5s, 21.98 kB]
+→ 486 targets ■■■■■■■■■                        [8m 6s, 72+, 62-]→ 486 targets ■■■■■■■■■■                       [8m 9.4s, 72+, 66-]
++ imputed_dat_mice_CALIBER.mar.0.3.2.worldcup dispatched
+→ 486 targets ■■■■■■■■■■                       [8m 9.4s, 72+, 66-]→ 486 targets ■■■■■■■■■■                       [8m 36.4s, 73+, 66-]
+✔ imputed_dat_mice_CALIBER.mar.0.3.2.worldcup completed [24.7s, 15.67 kB]
+→ 486 targets ■■■■■■■■■■                       [8m 36.4s, 73+, 66-]+ imputed_dat_mice_CALIBER.mcar.0.2.1.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■                       [8m 36.4s, 73+, 66-]→ 486 targets ■■■■■■■■■■                       [8m 55.3s, 74+, 67-]
+✔ imputed_dat_mice_CALIBER.mcar.0.3.2.electricity completed [4m 27.7s, 1.25 MB]
+→ 486 targets ■■■■■■■■■■                       [8m 55.3s, 74+, 67-]→ 486 targets ■■■■■■■■■■                       [8m 56.6s, 74+, 69-]
+→ 486 targets ■■■■■■■■■■                       [8m 59.8s, 74+, 72-]
++ imputed_dat_mice_CALIBER.mar.0.1.2.worldcup dispatched
+→ 486 targets ■■■■■■■■■■                       [8m 59.8s, 74+, 72-]→ 486 targets ■■■■■■■■■■                       [9m 26.7s, 75+, 72-]
+✔ imputed_dat_mice_CALIBER.mar.0.1.2.worldcup completed [24.2s, 11.73 kB]
+→ 486 targets ■■■■■■■■■■                       [9m 26.7s, 75+, 72-]→ 486 targets ■■■■■■■■■■                       [9m 30.5s, 75+, 75-]
++ imputed_dat_mice_CALIBER.mcar.0.1.2.nels88 dispatched
+→ 486 targets ■■■■■■■■■■                       [9m 30.5s, 75+, 75-]→ 486 targets ■■■■■■■■■■                       [9m 54.6s, 76+, 75-]
+✔ imputed_dat_mice_CALIBER.mcar.0.2.2.electricity completed [4m 58.2s, 1.08 MB]
+→ 486 targets ■■■■■■■■■■                       [9m 54.6s, 76+, 75-]✔ imputed_dat_mice_CALIBER.mcar.0.1.2.nels88 completed [23.2s, 2.93 kB]
+→ 486 targets ■■■■■■■■■■                       [9m 54.6s, 76+, 75-]→ 486 targets ■■■■■■■■■■■                      [9m 56.8s, 77+, 79-]
++ imputed_dat_mice_CALIBER.mcar.0.3.2.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■                      [9m 56.8s, 77+, 79-]✔ imputed_dat_mice_CALIBER.mcar.0.2.2.eye_movement completed [2m 9.1s, 454.76 kB]
+→ 486 targets ■■■■■■■■■■■                      [9m 56.8s, 77+, 79-]+ imputed_dat_mice_CALIBER.mcar.0.2.1.german dispatched
+→ 486 targets ■■■■■■■■■■■                      [9m 56.8s, 77+, 79-]→ 486 targets ■■■■■■■■■■■                      [10m 0.1s, 78+, 82-]
+→ 486 targets ■■■■■■■■■■■                      [10m 3.7s, 78+, 85-]
+→ 486 targets ■■■■■■■■■■■                      [10m 5.9s, 78+, 86-]
++ imputed_dat_mice_CALIBER.mcar.0.2.1.diamond dispatched
+→ 486 targets ■■■■■■■■■■■                      [10m 5.9s, 78+, 86-]✔ imputed_dat_mice_CALIBER.mcar.0.1.2.electricity completed [5m 19.4s, 904.72 kB]
+→ 486 targets ■■■■■■■■■■■                      [10m 5.9s, 78+, 86-]→ 486 targets ■■■■■■■■■■■                      [10m 9.7s, 79+, 87-]
++ imputed_dat_mice_CALIBER.mcar.0.2.2.diamond dispatched
+→ 486 targets ■■■■■■■■■■■                      [10m 9.7s, 79+, 87-]→ 486 targets ■■■■■■■■■■■                      [10m 21.9s, 80+, 87-]
+✔ imputed_dat_mice_CALIBER.mcar.0.3.2.nels88 completed [23.3s, 3.59 kB]
+→ 486 targets ■■■■■■■■■■■                      [10m 21.9s, 80+, 87-]→ 486 targets ■■■■■■■■■■■                      [10m 24.5s, 80+, 89-]
++ imputed_dat_mice_CALIBER.mcar.0.3.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■                      [10m 24.5s, 80+, 89-]→ 486 targets ■■■■■■■■■■■                      [10m 32.4s, 81+, 89-]
+✔ imputed_dat_mice_CALIBER.mcar.0.2.1.german completed [32.7s, 17.35 kB]
+→ 486 targets ■■■■■■■■■■■                      [10m 32.4s, 81+, 89-]→ 486 targets ■■■■■■■■■■■■                     [10m 33.9s, 81+, 91-]
+→ 486 targets ■■■■■■■■■■■■                     [10m 36.5s, 81+, 93-]
+→ 486 targets ■■■■■■■■■■■■                     [10m 38.9s, 81+, 95-]
+→ 486 targets ■■■■■■■■■■■■                     [10m 42.6s, 81+, 98-]
+→ 486 targets ■■■■■■■■■■■■                     [10m 44.9s, 81+, 100-]
+→ 486 targets ■■■■■■■■■■■■                     [10m 48.5s, 81+, 103-]
+✔ imputed_dat_mice_CALIBER.mcar.0.3.1.PimaIndiansDiabetes completed [24s, 25.90 kB]
+→ 486 targets ■■■■■■■■■■■■                     [10m 48.5s, 81+, 103-]→ 486 targets ■■■■■■■■■■■■■                    [10m 50.6s, 82+, 105-]
++ save_imputed_dat_mice_CALIBER.mar.0.1.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■                    [10m 50.6s, 82+, 105-]+ obtained_scores_mice_CALIBER.mar.0.1.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■                    [10m 50.6s, 82+, 105-]✔ save_imputed_dat_mice_CALIBER.mar.0.1.2.PimaIndiansDiabetes completed [6ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■                    [10m 50.6s, 82+, 105-]+ save_imputed_dat_mice_CALIBER.mcar.0.3.1.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■                    [10m 50.6s, 82+, 105-]✔ imputed_dat_mice_CALIBER.mcar.0.2.1.eye_movement completed [2m 13.7s, 453.73 kB]
+→ 486 targets ■■■■■■■■■■■■■                    [10m 50.6s, 82+, 105-]+ obtained_scores_mice_CALIBER.mcar.0.3.1.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■                    [10m 50.6s, 82+, 105-]✔ save_imputed_dat_mice_CALIBER.mcar.0.3.1.nels88 completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■                    [10m 50.6s, 82+, 105-]+ save_imputed_dat_mice_CALIBER.mcar.0.2.1.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■                    [10m 50.6s, 82+, 105-]✔ obtained_scores_mice_CALIBER.mar.0.1.2.PimaIndiansDiabetes completed [237ms, 281 B]
+→ 486 targets ■■■■■■■■■■■■■                    [10m 50.6s, 82+, 105-]+ obtained_scores_mice_CALIBER.mcar.0.2.1.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■                    [10m 50.6s, 82+, 105-]→ 486 targets ■■■■■■■■■■■■■                    [10m 53.9s, 87+, 105-]
+✔ obtained_scores_mice_CALIBER.mcar.0.3.1.nels88 completed [116ms, 268 B]
+→ 486 targets ■■■■■■■■■■■■■                    [10m 53.9s, 87+, 105-]+ save_imputed_dat_mice_CALIBER.mar.0.3.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■                    [10m 53.9s, 87+, 105-]✔ save_imputed_dat_mice_CALIBER.mcar.0.2.1.nels88 completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■                    [10m 53.9s, 87+, 105-]+ obtained_scores_mice_CALIBER.mar.0.3.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■                    [10m 53.9s, 87+, 105-]✔ obtained_scores_mice_CALIBER.mcar.0.2.1.nels88 completed [41ms, 267 B]
+→ 486 targets ■■■■■■■■■■■■■                    [10m 53.9s, 87+, 105-]+ save_imputed_dat_mice_CALIBER.mcar.0.1.1.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■                    [10m 53.9s, 87+, 105-]✔ save_imputed_dat_mice_CALIBER.mar.0.3.2.PimaIndiansDiabetes completed [6ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■                    [10m 53.9s, 87+, 105-]+ obtained_scores_mice_CALIBER.mcar.0.1.1.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■                    [10m 53.9s, 87+, 105-]✔ obtained_scores_mice_CALIBER.mar.0.3.2.PimaIndiansDiabetes completed [197ms, 281 B]
+→ 486 targets ■■■■■■■■■■■■■                    [10m 53.9s, 87+, 105-]✔ save_imputed_dat_mice_CALIBER.mcar.0.1.1.nels88 completed [3ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■                    [10m 53.9s, 87+, 105-]+ obtained_scores_mice_CALIBER.mar.0.2.2.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■                    [10m 53.9s, 87+, 105-]✔ obtained_scores_mice_CALIBER.mcar.0.1.1.nels88 completed [35ms, 266 B]
+→ 486 targets ■■■■■■■■■■■■■                    [10m 53.9s, 87+, 105-]+ save_imputed_dat_mice_CALIBER.mar.0.2.2.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■                    [10m 53.9s, 87+, 105-]→ 486 targets ■■■■■■■■■■■■■                    [10m 56.7s, 94+, 107-]
+✔ obtained_scores_mice_CALIBER.mar.0.2.2.worldcup completed [125ms, 269 B]
+→ 486 targets ■■■■■■■■■■■■■                    [10m 56.7s, 94+, 107-]+ save_imputed_dat_mice_CALIBER.mar.0.2.1.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■                    [10m 56.7s, 94+, 107-]✔ save_imputed_dat_mice_CALIBER.mar.0.2.2.worldcup completed [3ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■                    [10m 56.7s, 94+, 107-]+ obtained_scores_mice_CALIBER.mar.0.2.1.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■                    [10m 56.7s, 94+, 107-]✔ save_imputed_dat_mice_CALIBER.mar.0.2.1.worldcup completed [3ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■                    [10m 56.7s, 94+, 107-]✔ obtained_scores_mice_CALIBER.mar.0.2.1.worldcup completed [124ms, 269 B]
+→ 486 targets ■■■■■■■■■■■■■                    [10m 56.7s, 94+, 107-]+ obtained_scores_mice_CALIBER.mar.0.3.1.german dispatched
+→ 486 targets ■■■■■■■■■■■■■                    [10m 56.7s, 94+, 107-]+ save_imputed_dat_mice_CALIBER.mar.0.3.1.german dispatched
+→ 486 targets ■■■■■■■■■■■■■                    [10m 56.7s, 94+, 107-]→ 486 targets ■■■■■■■■■■■■■■                   [11m 0.4s, 97+, 111-]
++ obtained_scores_mice_CALIBER.mar.0.2.1.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 0.4s, 97+, 111-]✔ save_imputed_dat_mice_CALIBER.mar.0.3.1.german completed [11ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 0.4s, 97+, 111-]+ save_imputed_dat_mice_CALIBER.mar.0.2.1.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 0.4s, 97+, 111-]✔ obtained_scores_mice_CALIBER.mar.0.3.1.german completed [727ms, 269 B]
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 0.4s, 97+, 111-]+ obtained_scores_mice_CALIBER.mar.0.1.1.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 0.4s, 97+, 111-]✔ save_imputed_dat_mice_CALIBER.mar.0.2.1.german completed [7ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 0.4s, 97+, 111-]+ save_imputed_dat_mice_CALIBER.mar.0.1.1.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 0.4s, 97+, 111-]→ 486 targets ■■■■■■■■■■■■■■                   [11m 2.7s, 101+, 111-]
+✔ obtained_scores_mice_CALIBER.mar.0.2.1.german completed [752ms, 269 B]
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 2.7s, 101+, 111-]+ save_imputed_dat_mice_CALIBER.mcar.0.3.2.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 2.7s, 101+, 111-]✔ save_imputed_dat_mice_CALIBER.mar.0.1.1.german completed [6ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 2.7s, 101+, 111-]+ obtained_scores_mice_CALIBER.mcar.0.3.2.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 2.7s, 101+, 111-]✔ obtained_scores_mice_CALIBER.mar.0.1.1.german completed [727ms, 267 B]
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 2.7s, 101+, 111-]+ save_imputed_dat_mice_CALIBER.mcar.0.2.2.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 2.7s, 101+, 111-]✔ save_imputed_dat_mice_CALIBER.mcar.0.3.2.german completed [24ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 2.7s, 101+, 111-]+ obtained_scores_mice_CALIBER.mcar.0.2.2.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 2.7s, 101+, 111-]✔ save_imputed_dat_mice_CALIBER.mcar.0.2.2.german completed [34ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 2.7s, 101+, 111-]+ save_imputed_dat_mice_CALIBER.mcar.0.2.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 2.7s, 101+, 111-]✔ obtained_scores_mice_CALIBER.mcar.0.3.2.german completed [768ms, 270 B]
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 2.7s, 101+, 111-]+ obtained_scores_mice_CALIBER.mcar.0.2.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 2.7s, 101+, 111-]→ 486 targets ■■■■■■■■■■■■■■                   [11m 6.2s, 107+, 111-]
+✔ save_imputed_dat_mice_CALIBER.mcar.0.2.2.PimaIndiansDiabetes completed [5ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 6.2s, 107+, 111-]✔ obtained_scores_mice_CALIBER.mcar.0.2.2.PimaIndiansDiabetes completed [86ms, 276 B]
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 6.2s, 107+, 111-]✔ obtained_scores_mice_CALIBER.mcar.0.2.2.german completed [766ms, 269 B]
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 6.2s, 107+, 111-]+ obtained_scores_mice_CALIBER.mar.0.3.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 6.2s, 107+, 111-]+ save_imputed_dat_mice_CALIBER.mar.0.3.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 6.2s, 107+, 111-]✔ obtained_scores_mice_CALIBER.mar.0.3.1.PimaIndiansDiabetes completed [90ms, 281 B]
+→ 486 targets ■■■■■■■■■■■■■■                   [11m 6.2s, 107+, 111-]→ 486 targets ■■■■■■■■■■■■■■■                  [11m 8.7s, 111+, 115-]
+✔ save_imputed_dat_mice_CALIBER.mar.0.3.1.PimaIndiansDiabetes completed [4ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 8.7s, 111+, 115-]+ obtained_scores_mice_CALIBER.mar.0.3.1.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 8.7s, 111+, 115-]+ save_imputed_dat_mice_CALIBER.mar.0.3.1.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 8.7s, 111+, 115-]+ obtained_scores_mice_CALIBER.mcar.0.1.1.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 8.7s, 111+, 115-]✔ obtained_scores_mice_CALIBER.mar.0.3.1.choccake completed [39ms, 269 B]
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 8.7s, 111+, 115-]+ save_imputed_dat_mice_CALIBER.mcar.0.1.1.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 8.7s, 111+, 115-]✔ save_imputed_dat_mice_CALIBER.mar.0.3.1.choccake completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 8.7s, 111+, 115-]+ obtained_scores_mice_CALIBER.mar.0.1.2.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 8.7s, 111+, 115-]✔ obtained_scores_mice_CALIBER.mcar.0.1.1.worldcup completed [127ms, 270 B]
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 8.7s, 111+, 115-]+ save_imputed_dat_mice_CALIBER.mar.0.1.2.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 8.7s, 111+, 115-]✔ save_imputed_dat_mice_CALIBER.mcar.0.1.1.worldcup completed [4ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 8.7s, 111+, 115-]→ 486 targets ■■■■■■■■■■■■■■■                  [11m 11.7s, 116+, 117-]
+✔ obtained_scores_mice_CALIBER.mar.0.1.2.nels88 completed [35ms, 268 B]
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 11.7s, 116+, 117-]+ save_imputed_dat_mice_CALIBER.mcar.0.3.1.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 11.7s, 116+, 117-]+ obtained_scores_mice_CALIBER.mcar.0.3.1.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 11.7s, 116+, 117-]✔ save_imputed_dat_mice_CALIBER.mar.0.1.2.nels88 completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 11.7s, 116+, 117-]+ save_imputed_dat_mice_CALIBER.mar.0.3.2.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 11.7s, 116+, 117-]✔ save_imputed_dat_mice_CALIBER.mcar.0.3.1.worldcup completed [4ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 11.7s, 116+, 117-]+ obtained_scores_mice_CALIBER.mar.0.3.2.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 11.7s, 116+, 117-]✔ obtained_scores_mice_CALIBER.mcar.0.3.1.worldcup completed [136ms, 272 B]
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 11.7s, 116+, 117-]+ save_imputed_dat_mice_CALIBER.mar.0.3.2.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 11.7s, 116+, 117-]✔ save_imputed_dat_mice_CALIBER.mar.0.3.2.german completed [7ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 11.7s, 116+, 117-]+ obtained_scores_mice_CALIBER.mar.0.3.2.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■                  [11m 11.7s, 116+, 117-]→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 15s, 121+, 117-]
+✔ save_imputed_dat_mice_CALIBER.mar.0.3.2.electricity completed [22ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 15s, 121+, 117-]+ save_imputed_dat_mice_CALIBER.mar.0.1.1.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 15s, 121+, 117-]✔ obtained_scores_mice_CALIBER.mar.0.3.2.german completed [744ms, 269 B]
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 15s, 121+, 117-]+ obtained_scores_mice_CALIBER.mar.0.1.1.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 15s, 121+, 117-]✔ obtained_scores_mice_CALIBER.mar.0.3.2.electricity completed [14ms, 299 B]
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 15s, 121+, 117-]+ obtained_scores_mice_CALIBER.mcar.0.1.2.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 15s, 121+, 117-]✔ save_imputed_dat_mice_CALIBER.mar.0.1.1.electricity completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 15s, 121+, 117-]+ save_imputed_dat_mice_CALIBER.mcar.0.1.2.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 15s, 121+, 117-]✔ obtained_scores_mice_CALIBER.mar.0.1.1.electricity completed [14ms, 295 B]
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 15s, 121+, 117-]+ save_imputed_dat_mice_CALIBER.mar.0.3.1.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 15s, 121+, 117-]✔ save_imputed_dat_mice_CALIBER.mcar.0.1.2.eye_movement completed [73ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 15s, 121+, 117-]+ obtained_scores_mice_CALIBER.mar.0.3.1.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 15s, 121+, 117-]→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 17.8s, 127+, 117-]
+✔ save_imputed_dat_mice_CALIBER.mar.0.3.1.electricity completed [19ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 17.8s, 127+, 117-]+ obtained_scores_mice_CALIBER.mcar.0.3.2.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 17.8s, 127+, 117-]✔ obtained_scores_mice_CALIBER.mar.0.3.1.electricity completed [14ms, 299 B]
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 17.8s, 127+, 117-]+ save_imputed_dat_mice_CALIBER.mcar.0.3.2.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 17.8s, 127+, 117-]✔ save_imputed_dat_mice_CALIBER.mcar.0.3.2.eye_movement completed [78ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 17.8s, 127+, 117-]→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 21.7s, 129+, 119-]
++ save_imputed_dat_mice_CALIBER.mar.0.2.1.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 21.7s, 129+, 119-]→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 24.2s, 130+, 119-]
+✔ save_imputed_dat_mice_CALIBER.mar.0.2.1.eye_movement completed [72ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 24.2s, 130+, 119-]+ obtained_scores_mice_CALIBER.mar.0.2.1.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 24.2s, 130+, 119-]→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 36.4s, 131+, 119-]
+✔ obtained_scores_mice_CALIBER.mcar.0.1.2.eye_movement completed [19.9s, 276 B]
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 36.4s, 131+, 119-]+ obtained_scores_mice_CALIBER.mar.0.2.2.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 36.4s, 131+, 119-]→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 39.2s, 132+, 119-]
+✔ obtained_scores_mice_CALIBER.mcar.0.3.2.eye_movement completed [20s, 276 B]
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 39.2s, 132+, 119-]+ save_imputed_dat_mice_CALIBER.mar.0.2.2.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 39.2s, 132+, 119-]✔ save_imputed_dat_mice_CALIBER.mar.0.2.2.eye_movement completed [71ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 39.2s, 132+, 119-]+ save_imputed_dat_mice_CALIBER.mar.0.2.2.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 39.2s, 132+, 119-]✔ save_imputed_dat_mice_CALIBER.mar.0.2.2.german completed [6ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 39.2s, 132+, 119-]+ obtained_scores_mice_CALIBER.mar.0.2.2.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■                 [11m 39.2s, 132+, 119-]→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 43.2s, 135+, 119-]
+✔ obtained_scores_mice_CALIBER.mar.0.2.2.german completed [694ms, 268 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 43.2s, 135+, 119-]+ save_imputed_dat_mice_CALIBER.mcar.0.1.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 43.2s, 135+, 119-]→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 44.9s, 136+, 120-]
+✔ obtained_scores_mice_CALIBER.mar.0.2.1.eye_movement completed [19.3s, 275 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 44.9s, 136+, 120-]+ obtained_scores_mice_CALIBER.mcar.0.1.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 44.9s, 136+, 120-]✔ save_imputed_dat_mice_CALIBER.mcar.0.1.2.PimaIndiansDiabetes completed [4ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 44.9s, 136+, 120-]✔ obtained_scores_mice_CALIBER.mcar.0.1.2.PimaIndiansDiabetes completed [72ms, 281 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 44.9s, 136+, 120-]+ save_imputed_dat_mice_CALIBER.mar.0.2.2.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 44.9s, 136+, 120-]+ obtained_scores_mice_CALIBER.mar.0.2.2.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 44.9s, 136+, 120-]✔ save_imputed_dat_mice_CALIBER.mar.0.2.2.electricity completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 44.9s, 136+, 120-]+ obtained_scores_mice_CALIBER.mar.0.1.1.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 44.9s, 136+, 120-]✔ obtained_scores_mice_CALIBER.mar.0.2.2.electricity completed [14ms, 296 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 44.9s, 136+, 120-]+ save_imputed_dat_mice_CALIBER.mar.0.1.1.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 44.9s, 136+, 120-]→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 48.1s, 141+, 121-]
+✔ obtained_scores_mice_CALIBER.mar.0.1.1.choccake completed [32ms, 269 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 48.1s, 141+, 121-]✔ save_imputed_dat_mice_CALIBER.mar.0.1.1.choccake completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 48.1s, 141+, 121-]+ save_imputed_dat_mice_CALIBER.mar.0.1.1.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 48.1s, 141+, 121-]+ obtained_scores_mice_CALIBER.mar.0.1.1.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 48.1s, 141+, 121-]✔ save_imputed_dat_mice_CALIBER.mar.0.1.1.eye_movement completed [53ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 48.1s, 141+, 121-]+ obtained_scores_mice_CALIBER.mar.0.1.2.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 48.1s, 141+, 121-]→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 56.1s, 144+, 122-]
+✔ imputed_dat_mice_CALIBER.mcar.0.2.1.electricity completed [4m 58.2s, 1.08 MB]
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 56.1s, 144+, 122-]+ save_imputed_dat_mice_CALIBER.mar.0.1.2.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 56.1s, 144+, 122-]→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 57.2s, 145+, 122-]
+✔ obtained_scores_mice_CALIBER.mar.0.2.2.eye_movement completed [19.5s, 273 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 57.2s, 145+, 122-]+ obtained_scores_mice_CALIBER.mcar.0.2.1.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 57.2s, 145+, 122-]✔ save_imputed_dat_mice_CALIBER.mar.0.1.2.eye_movement completed [71ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 57.2s, 145+, 122-]+ save_imputed_dat_mice_CALIBER.mcar.0.2.1.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 57.2s, 145+, 122-]✔ obtained_scores_mice_CALIBER.mcar.0.2.1.choccake completed [32ms, 271 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 57.2s, 145+, 122-]+ save_imputed_dat_mice_CALIBER.mcar.0.1.2.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 57.2s, 145+, 122-]✔ save_imputed_dat_mice_CALIBER.mcar.0.2.1.choccake completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 57.2s, 145+, 122-]+ obtained_scores_mice_CALIBER.mcar.0.1.2.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 57.2s, 145+, 122-]✔ save_imputed_dat_mice_CALIBER.mcar.0.1.2.worldcup completed [3ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■                [11m 57.2s, 145+, 122-]→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m, 150+, 123-]
+✔ obtained_scores_mice_CALIBER.mcar.0.1.2.worldcup completed [245ms, 272 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m, 150+, 123-]+ obtained_scores_mice_CALIBER.mcar.0.1.2.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m, 150+, 123-]+ save_imputed_dat_mice_CALIBER.mcar.0.1.2.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m, 150+, 123-]✔ obtained_scores_mice_CALIBER.mcar.0.1.2.german completed [692ms, 270 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m, 150+, 123-]+ obtained_scores_mice_CALIBER.mar.0.1.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m, 150+, 123-]✔ save_imputed_dat_mice_CALIBER.mcar.0.1.2.german completed [6ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m, 150+, 123-]+ save_imputed_dat_mice_CALIBER.mar.0.1.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m, 150+, 123-]→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 3.3s, 153+, 124-]
+✔ obtained_scores_mice_CALIBER.mar.0.1.1.PimaIndiansDiabetes completed [77ms, 277 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 3.3s, 153+, 124-]+ obtained_scores_mice_CALIBER.mar.0.2.2.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 3.3s, 153+, 124-]✔ save_imputed_dat_mice_CALIBER.mar.0.1.1.PimaIndiansDiabetes completed [4ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 3.3s, 153+, 124-]+ save_imputed_dat_mice_CALIBER.mar.0.2.2.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 3.3s, 153+, 124-]✔ obtained_scores_mice_CALIBER.mar.0.2.2.nels88 completed [31ms, 268 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 3.3s, 153+, 124-]✔ save_imputed_dat_mice_CALIBER.mar.0.2.2.nels88 completed [3ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 3.3s, 153+, 124-]→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 5.8s, 156+, 127-]
++ obtained_scores_mice_CALIBER.mcar.0.2.2.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 5.8s, 156+, 127-]+ save_imputed_dat_mice_CALIBER.mcar.0.2.2.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 5.8s, 156+, 127-]✔ obtained_scores_mice_CALIBER.mcar.0.2.2.nels88 completed [37ms, 268 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 5.8s, 156+, 127-]+ obtained_scores_mice_CALIBER.mar.0.1.1.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 5.8s, 156+, 127-]✔ save_imputed_dat_mice_CALIBER.mcar.0.2.2.nels88 completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 5.8s, 156+, 127-]+ save_imputed_dat_mice_CALIBER.mar.0.1.1.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 5.8s, 156+, 127-]✔ obtained_scores_mice_CALIBER.mar.0.1.1.nels88 completed [32ms, 265 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 5.8s, 156+, 127-]+ save_imputed_dat_mice_CALIBER.mar.0.2.1.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 5.8s, 156+, 127-]✔ save_imputed_dat_mice_CALIBER.mar.0.1.1.nels88 completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 5.8s, 156+, 127-]+ obtained_scores_mice_CALIBER.mar.0.2.1.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■               [12m 5.8s, 156+, 127-]→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 9.1s, 161+, 127-]
+✔ save_imputed_dat_mice_CALIBER.mar.0.2.1.electricity completed [4ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 9.1s, 161+, 127-]✔ obtained_scores_mice_CALIBER.mar.0.2.1.electricity completed [17ms, 299 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 9.1s, 161+, 127-]+ save_imputed_dat_mice_CALIBER.mcar.0.3.2.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 9.1s, 161+, 127-]✔ obtained_scores_mice_CALIBER.mar.0.1.1.eye_movement completed [19.7s, 272 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 9.1s, 161+, 127-]+ obtained_scores_mice_CALIBER.mcar.0.3.2.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 9.1s, 161+, 127-]+ save_imputed_dat_mice_CALIBER.mcar.0.1.2.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 9.1s, 161+, 127-]✔ save_imputed_dat_mice_CALIBER.mcar.0.3.2.worldcup completed [3ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 9.1s, 161+, 127-]+ obtained_scores_mice_CALIBER.mcar.0.1.2.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 9.1s, 161+, 127-]✔ obtained_scores_mice_CALIBER.mar.0.1.2.eye_movement completed [20s, 271 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 9.1s, 161+, 127-]✔ save_imputed_dat_mice_CALIBER.mcar.0.1.2.choccake completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 9.1s, 161+, 127-]✔ obtained_scores_mice_CALIBER.mcar.0.3.2.worldcup completed [115ms, 272 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 9.1s, 161+, 127-]+ save_imputed_dat_mice_CALIBER.mar.0.3.1.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 9.1s, 161+, 127-]→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 11.7s, 168+, 130-]
+✔ obtained_scores_mice_CALIBER.mcar.0.1.2.choccake completed [32ms, 272 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 11.7s, 168+, 130-]+ obtained_scores_mice_CALIBER.mar.0.3.1.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 11.7s, 168+, 130-]✔ save_imputed_dat_mice_CALIBER.mar.0.3.1.eye_movement completed [63ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 11.7s, 168+, 130-]+ obtained_scores_mice_CALIBER.mar.0.3.2.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 11.7s, 168+, 130-]+ save_imputed_dat_mice_CALIBER.mar.0.3.2.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 11.7s, 168+, 130-]+ save_imputed_dat_mice_CALIBER.mcar.0.1.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 11.7s, 168+, 130-]✔ obtained_scores_mice_CALIBER.mar.0.3.2.nels88 completed [32ms, 269 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 11.7s, 168+, 130-]+ obtained_scores_mice_CALIBER.mcar.0.1.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■              [12m 11.7s, 168+, 130-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 14.7s, 171+, 133-]
+✔ save_imputed_dat_mice_CALIBER.mar.0.3.2.nels88 completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 14.7s, 171+, 133-]✔ save_imputed_dat_mice_CALIBER.mcar.0.1.1.PimaIndiansDiabetes completed [5ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 14.7s, 171+, 133-]+ save_imputed_dat_mice_CALIBER.mar.0.1.2.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 14.7s, 171+, 133-]✔ obtained_scores_mice_CALIBER.mcar.0.1.1.PimaIndiansDiabetes completed [83ms, 280 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 14.7s, 171+, 133-]+ obtained_scores_mice_CALIBER.mar.0.1.2.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 14.7s, 171+, 133-]✔ save_imputed_dat_mice_CALIBER.mar.0.1.2.german completed [6ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 14.7s, 171+, 133-]+ save_imputed_dat_mice_CALIBER.mcar.0.3.2.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 14.7s, 171+, 133-]+ obtained_scores_mice_CALIBER.mcar.0.3.2.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 14.7s, 171+, 133-]✔ save_imputed_dat_mice_CALIBER.mcar.0.3.2.choccake completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 14.7s, 171+, 133-]✔ obtained_scores_mice_CALIBER.mar.0.1.2.german completed [709ms, 267 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 14.7s, 171+, 133-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 18s, 177+, 137-]
+✔ obtained_scores_mice_CALIBER.mcar.0.3.2.choccake completed [34ms, 270 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 18s, 177+, 137-]+ obtained_scores_mice_CALIBER.mcar.0.2.2.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 18s, 177+, 137-]+ save_imputed_dat_mice_CALIBER.mcar.0.2.2.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 18s, 177+, 137-]✔ obtained_scores_mice_CALIBER.mcar.0.2.2.choccake completed [32ms, 270 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 18s, 177+, 137-]✔ save_imputed_dat_mice_CALIBER.mcar.0.2.2.choccake completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 18s, 177+, 137-]+ obtained_scores_mice_CALIBER.mar.0.2.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 18s, 177+, 137-]+ save_imputed_dat_mice_CALIBER.mar.0.2.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 18s, 177+, 137-]+ save_imputed_dat_mice_CALIBER.mar.0.3.1.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 18s, 177+, 137-]✔ obtained_scores_mice_CALIBER.mar.0.2.2.PimaIndiansDiabetes completed [83ms, 279 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 18s, 177+, 137-]+ obtained_scores_mice_CALIBER.mar.0.3.1.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■             [12m 18s, 177+, 137-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 21.2s, 181+, 140-]
+✔ save_imputed_dat_mice_CALIBER.mar.0.2.2.PimaIndiansDiabetes completed [4ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 21.2s, 181+, 140-]+ obtained_scores_mice_CALIBER.mar.0.2.1.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 21.2s, 181+, 140-]✔ save_imputed_dat_mice_CALIBER.mar.0.3.1.nels88 completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 21.2s, 181+, 140-]+ save_imputed_dat_mice_CALIBER.mar.0.2.1.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 21.2s, 181+, 140-]✔ obtained_scores_mice_CALIBER.mar.0.3.1.nels88 completed [31ms, 269 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 21.2s, 181+, 140-]+ obtained_scores_mice_CALIBER.mcar.0.1.1.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 21.2s, 181+, 140-]✔ obtained_scores_mice_CALIBER.mar.0.2.1.nels88 completed [33ms, 268 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 21.2s, 181+, 140-]+ save_imputed_dat_mice_CALIBER.mcar.0.1.1.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 21.2s, 181+, 140-]✔ save_imputed_dat_mice_CALIBER.mar.0.2.1.nels88 completed [3ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 21.2s, 181+, 140-]✔ obtained_scores_mice_CALIBER.mcar.0.1.1.german completed [732ms, 268 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 21.2s, 181+, 140-]✔ save_imputed_dat_mice_CALIBER.mcar.0.1.1.german completed [28ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 21.2s, 181+, 140-]+ save_imputed_dat_mice_CALIBER.mcar.0.1.1.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 21.2s, 181+, 140-]+ obtained_scores_mice_CALIBER.mcar.0.1.1.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 21.2s, 181+, 140-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 24.5s, 187+, 143-]
+✔ save_imputed_dat_mice_CALIBER.mcar.0.1.1.choccake completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 24.5s, 187+, 143-]✔ obtained_scores_mice_CALIBER.mcar.0.1.1.choccake completed [32ms, 269 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 24.5s, 187+, 143-]+ save_imputed_dat_mice_CALIBER.mcar.0.3.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 24.5s, 187+, 143-]+ obtained_scores_mice_CALIBER.mcar.0.3.2.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 24.5s, 187+, 143-]+ obtained_scores_mice_CALIBER.mar.0.3.2.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 24.5s, 187+, 143-]✔ save_imputed_dat_mice_CALIBER.mcar.0.3.2.PimaIndiansDiabetes completed [5ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 24.5s, 187+, 143-]+ save_imputed_dat_mice_CALIBER.mar.0.3.2.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■            [12m 24.5s, 187+, 143-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 26.7s, 191+, 144-]
+✔ obtained_scores_mice_CALIBER.mcar.0.3.2.PimaIndiansDiabetes completed [71ms, 282 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 26.7s, 191+, 144-]✔ save_imputed_dat_mice_CALIBER.mar.0.3.2.eye_movement completed [78ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 26.7s, 191+, 144-]+ save_imputed_dat_mice_CALIBER.mcar.0.3.1.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 26.7s, 191+, 144-]+ obtained_scores_mice_CALIBER.mcar.0.3.1.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 26.7s, 191+, 144-]✔ save_imputed_dat_mice_CALIBER.mcar.0.3.1.choccake completed [1ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 26.7s, 191+, 144-]+ obtained_scores_mice_CALIBER.mcar.0.3.1.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 26.7s, 191+, 144-]✔ obtained_scores_mice_CALIBER.mcar.0.3.1.choccake completed [32ms, 272 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 26.7s, 191+, 144-]+ save_imputed_dat_mice_CALIBER.mcar.0.3.1.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 26.7s, 191+, 144-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 29.8s, 195+, 145-]
+✔ save_imputed_dat_mice_CALIBER.mcar.0.3.1.eye_movement completed [73ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 29.8s, 195+, 145-]+ save_imputed_dat_mice_CALIBER.mcar.0.2.2.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 29.8s, 195+, 145-]✔ save_imputed_dat_mice_CALIBER.mcar.0.2.2.worldcup completed [3ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 29.8s, 195+, 145-]+ obtained_scores_mice_CALIBER.mcar.0.2.2.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 29.8s, 195+, 145-]✔ obtained_scores_mice_CALIBER.mcar.0.2.2.worldcup completed [136ms, 270 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 29.8s, 195+, 145-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 33.1s, 198+, 146-]
+✔ obtained_scores_mice_CALIBER.mar.0.3.1.eye_movement completed [20s, 275 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 33.1s, 198+, 146-]+ obtained_scores_mice_CALIBER.mar.0.2.2.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 33.1s, 198+, 146-]+ save_imputed_dat_mice_CALIBER.mar.0.2.2.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 33.1s, 198+, 146-]✔ obtained_scores_mice_CALIBER.mar.0.2.2.choccake completed [32ms, 269 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 33.1s, 198+, 146-]✔ save_imputed_dat_mice_CALIBER.mar.0.2.2.choccake completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■           [12m 33.1s, 198+, 146-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 36.3s, 200+, 150-]
++ save_imputed_dat_mice_CALIBER.mar.0.2.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 36.3s, 200+, 150-]+ obtained_scores_mice_CALIBER.mar.0.2.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 36.3s, 200+, 150-]✔ save_imputed_dat_mice_CALIBER.mar.0.2.1.PimaIndiansDiabetes completed [4ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 36.3s, 200+, 150-]✔ obtained_scores_mice_CALIBER.mar.0.2.1.PimaIndiansDiabetes completed [86ms, 281 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 36.3s, 200+, 150-]+ obtained_scores_mice_CALIBER.mar.0.1.1.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 36.3s, 200+, 150-]+ save_imputed_dat_mice_CALIBER.mar.0.1.1.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 36.3s, 200+, 150-]✔ obtained_scores_mice_CALIBER.mar.0.1.1.worldcup completed [119ms, 269 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 36.3s, 200+, 150-]+ obtained_scores_mice_CALIBER.mcar.0.1.1.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 36.3s, 200+, 150-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 39.3s, 204+, 151-]
+✔ save_imputed_dat_mice_CALIBER.mar.0.1.1.worldcup completed [3ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 39.3s, 204+, 151-]+ save_imputed_dat_mice_CALIBER.mcar.0.1.1.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 39.3s, 204+, 151-]✔ save_imputed_dat_mice_CALIBER.mcar.0.1.1.electricity completed [112ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 39.3s, 204+, 151-]+ obtained_scores_mice_CALIBER.mcar.0.3.1.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 39.3s, 204+, 151-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 42.3s, 206+, 151-]
+✔ obtained_scores_mice_CALIBER.mcar.0.3.1.german completed [707ms, 270 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 42.3s, 206+, 151-]+ save_imputed_dat_mice_CALIBER.mcar.0.3.1.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 42.3s, 206+, 151-]✔ save_imputed_dat_mice_CALIBER.mcar.0.3.1.german completed [7ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 42.3s, 206+, 151-]+ obtained_scores_mice_CALIBER.mcar.0.1.1.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 42.3s, 206+, 151-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 46.7s, 208+, 152-]
+✔ obtained_scores_mice_CALIBER.mar.0.3.2.eye_movement completed [19.7s, 275 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 46.7s, 208+, 152-]+ save_imputed_dat_mice_CALIBER.mcar.0.1.1.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 46.7s, 208+, 152-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 47.9s, 209+, 152-]
+✔ save_imputed_dat_mice_CALIBER.mcar.0.1.1.eye_movement completed [52ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 47.9s, 209+, 152-]✔ obtained_scores_mice_CALIBER.mcar.0.3.1.eye_movement completed [19.9s, 276 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 47.9s, 209+, 152-]+ save_imputed_dat_mice_CALIBER.mar.0.3.2.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 47.9s, 209+, 152-]+ obtained_scores_mice_CALIBER.mar.0.3.2.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 47.9s, 209+, 152-]✔ save_imputed_dat_mice_CALIBER.mar.0.3.2.choccake completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 47.9s, 209+, 152-]+ obtained_scores_mice_CALIBER.mar.0.3.1.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■          [12m 47.9s, 209+, 152-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 51s, 212+, 154-]
+✔ obtained_scores_mice_CALIBER.mar.0.3.2.choccake completed [32ms, 270 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 51s, 212+, 154-]+ save_imputed_dat_mice_CALIBER.mar.0.3.1.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 51s, 212+, 154-]✔ obtained_scores_mice_CALIBER.mar.0.3.1.worldcup completed [123ms, 270 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 51s, 212+, 154-]✔ save_imputed_dat_mice_CALIBER.mar.0.3.1.worldcup completed [4ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 51s, 212+, 154-]+ obtained_scores_mice_CALIBER.mcar.0.3.1.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 51s, 212+, 154-]+ save_imputed_dat_mice_CALIBER.mcar.0.3.1.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 51s, 212+, 154-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 54.1s, 215+, 155-]
+✔ save_imputed_dat_mice_CALIBER.mcar.0.3.1.electricity completed [129ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 54.1s, 215+, 155-]+ save_imputed_dat_mice_CALIBER.mcar.0.2.1.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 54.1s, 215+, 155-]✔ save_imputed_dat_mice_CALIBER.mcar.0.2.1.worldcup completed [4ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 54.1s, 215+, 155-]+ obtained_scores_mice_CALIBER.mcar.0.2.1.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 54.1s, 215+, 155-]✔ obtained_scores_mice_CALIBER.mcar.0.2.1.worldcup completed [138ms, 270 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 54.1s, 215+, 155-]+ obtained_scores_mice_CALIBER.mar.0.2.1.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 54.1s, 215+, 155-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 57.6s, 218+, 155-]
+✔ obtained_scores_mice_CALIBER.mar.0.2.1.choccake completed [34ms, 269 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 57.6s, 218+, 155-]+ save_imputed_dat_mice_CALIBER.mar.0.2.1.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 57.6s, 218+, 155-]✔ save_imputed_dat_mice_CALIBER.mar.0.2.1.choccake completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 57.6s, 218+, 155-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 60s, 219+, 156-]
++ save_imputed_dat_mice_CALIBER.mar.0.1.2.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 60s, 219+, 156-]✔ save_imputed_dat_mice_CALIBER.mar.0.1.2.choccake completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 60s, 219+, 156-]+ obtained_scores_mice_CALIBER.mar.0.1.2.choccake dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 60s, 219+, 156-]✔ obtained_scores_mice_CALIBER.mar.0.1.2.choccake completed [33ms, 270 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 60s, 219+, 156-]+ obtained_scores_mice_CALIBER.mar.0.1.2.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [12m 60s, 219+, 156-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [13m 3.3s, 222+, 156-]
+✔ obtained_scores_mice_CALIBER.mar.0.1.2.electricity completed [14ms, 300 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [13m 3.3s, 222+, 156-]+ save_imputed_dat_mice_CALIBER.mar.0.1.2.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [13m 3.3s, 222+, 156-]✔ obtained_scores_mice_CALIBER.mcar.0.1.1.eye_movement completed [18.8s, 273 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [13m 3.3s, 222+, 156-]✔ save_imputed_dat_mice_CALIBER.mar.0.1.2.electricity completed [2ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [13m 3.3s, 222+, 156-]+ obtained_scores_mice_CALIBER.mcar.0.2.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■         [13m 3.3s, 222+, 156-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [13m 6.2s, 224+, 158-]
++ save_imputed_dat_mice_CALIBER.mcar.0.2.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [13m 6.2s, 224+, 158-]✔ obtained_scores_mice_CALIBER.mcar.0.2.1.PimaIndiansDiabetes completed [77ms, 282 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [13m 6.2s, 224+, 158-]✔ save_imputed_dat_mice_CALIBER.mcar.0.2.1.PimaIndiansDiabetes completed [4ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [13m 6.2s, 224+, 158-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [13m 8.8s, 226+, 162-]
++ obtained_scores_mice_CALIBER.mar.0.3.2.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [13m 8.8s, 226+, 162-]+ save_imputed_dat_mice_CALIBER.mar.0.3.2.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [13m 8.8s, 226+, 162-]✔ obtained_scores_mice_CALIBER.mar.0.3.2.worldcup completed [128ms, 271 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [13m 8.8s, 226+, 162-]✔ save_imputed_dat_mice_CALIBER.mar.0.3.2.worldcup completed [4ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [13m 8.8s, 226+, 162-]+ obtained_scores_mice_CALIBER.mcar.0.3.2.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [13m 8.8s, 226+, 162-]+ save_imputed_dat_mice_CALIBER.mcar.0.3.2.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [13m 8.8s, 226+, 162-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [13m 12.8s, 229+, 163-]
+✔ save_imputed_dat_mice_CALIBER.mcar.0.3.2.electricity completed [125ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [13m 12.8s, 229+, 163-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■        [13m 15.3s, 229+, 166-]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [13m 17.7s, 229+, 168-]
++ obtained_scores_mice_CALIBER.mar.0.1.2.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [13m 17.7s, 229+, 168-]✔ obtained_scores_mice_CALIBER.mar.0.1.2.worldcup completed [114ms, 271 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [13m 17.7s, 229+, 168-]+ save_imputed_dat_mice_CALIBER.mar.0.1.2.worldcup dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [13m 17.7s, 229+, 168-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [13m 21s, 231+, 168-]
+✔ save_imputed_dat_mice_CALIBER.mar.0.1.2.worldcup completed [4ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [13m 21s, 231+, 168-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [13m 24.4s, 231+, 171-]
++ obtained_scores_mice_CALIBER.mcar.0.2.2.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [13m 24.4s, 231+, 171-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [16m 17.9s, 232+, 171-]
+✔ imputed_dat_mice_CALIBER.mar.0.2.1.diamond completed [14m 52.6s, 1.22 MB]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [16m 17.9s, 232+, 171-]+ save_imputed_dat_mice_CALIBER.mcar.0.2.2.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [16m 17.9s, 232+, 171-]✔ save_imputed_dat_mice_CALIBER.mcar.0.2.2.electricity completed [119ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [16m 17.9s, 232+, 171-]+ obtained_scores_mice_CALIBER.mcar.0.1.2.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [16m 17.9s, 232+, 171-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [16m 21.8s, 234+, 172-]
+✔ obtained_scores_mice_CALIBER.mcar.0.1.2.nels88 completed [123ms, 267 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [16m 21.8s, 234+, 172-]+ save_imputed_dat_mice_CALIBER.mcar.0.1.2.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [16m 21.8s, 234+, 172-]✔ save_imputed_dat_mice_CALIBER.mcar.0.1.2.nels88 completed [3ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [16m 21.8s, 234+, 172-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [16m 24.1s, 235+, 174-]
++ obtained_scores_mice_CALIBER.mcar.0.2.2.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [16m 24.1s, 235+, 174-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [16m 46.9s, 236+, 175-]
+✔ obtained_scores_mice_CALIBER.mcar.0.2.2.eye_movement completed [19.2s, 273 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [16m 46.9s, 236+, 175-]+ save_imputed_dat_mice_CALIBER.mcar.0.2.2.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [16m 46.9s, 236+, 175-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [16m 48.1s, 237+, 175-]
+✔ save_imputed_dat_mice_CALIBER.mcar.0.2.2.eye_movement completed [65ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■       [16m 48.1s, 237+, 175-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [16m 51.4s, 237+, 179-]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [16m 54.5s, 237+, 182-]
++ save_imputed_dat_mice_CALIBER.mcar.0.1.2.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [16m 54.5s, 237+, 182-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [16m 56.7s, 238+, 182-]
+✔ save_imputed_dat_mice_CALIBER.mcar.0.1.2.electricity completed [106ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [16m 56.7s, 238+, 182-]+ obtained_scores_mice_CALIBER.mcar.0.1.2.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [16m 56.7s, 238+, 182-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [18m 0.1s, 239+, 182-]
+✔ imputed_dat_mice_CALIBER.mar.0.3.1.diamond completed [12m 49.1s, 1.45 MB]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [18m 0.1s, 239+, 182-]+ obtained_scores_mice_CALIBER.mcar.0.3.2.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [18m 0.1s, 239+, 182-]✔ obtained_scores_mice_CALIBER.mcar.0.3.2.nels88 completed [124ms, 269 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [18m 0.1s, 239+, 182-]+ save_imputed_dat_mice_CALIBER.mcar.0.3.2.nels88 dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [18m 0.1s, 239+, 182-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [18m 3.4s, 241+, 183-]
+✔ save_imputed_dat_mice_CALIBER.mcar.0.3.2.nels88 completed [3ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [18m 3.4s, 241+, 183-]✔ imputed_dat_mice_CALIBER.mar.0.3.2.diamond completed [12m 42.2s, 1.45 MB]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [18m 3.4s, 241+, 183-]+ obtained_scores_mice_CALIBER.mcar.0.2.1.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [18m 3.4s, 241+, 183-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [18m 5.6s, 242+, 185-]
++ save_imputed_dat_mice_CALIBER.mcar.0.2.1.german dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [18m 5.6s, 242+, 185-]✔ save_imputed_dat_mice_CALIBER.mcar.0.2.1.german completed [6ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [18m 5.6s, 242+, 185-]✔ obtained_scores_mice_CALIBER.mcar.0.2.1.german completed [849ms, 270 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■      [18m 5.6s, 242+, 185-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 8.9s, 244+, 189-]
++ save_imputed_dat_mice_CALIBER.mcar.0.3.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 8.9s, 244+, 189-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 12.1s, 244+, 193-]
++ obtained_scores_mice_CALIBER.mcar.0.3.1.PimaIndiansDiabetes dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 12.1s, 244+, 193-]✔ save_imputed_dat_mice_CALIBER.mcar.0.3.1.PimaIndiansDiabetes completed [6ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 12.1s, 244+, 193-]+ obtained_scores_mice_CALIBER.mcar.0.2.1.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 12.1s, 244+, 193-]✔ obtained_scores_mice_CALIBER.mcar.0.3.1.PimaIndiansDiabetes completed [97ms, 282 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 12.1s, 244+, 193-]+ save_imputed_dat_mice_CALIBER.mcar.0.2.1.eye_movement dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 12.1s, 244+, 193-]✔ save_imputed_dat_mice_CALIBER.mcar.0.2.1.eye_movement completed [59ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 12.1s, 244+, 193-]+ save_imputed_dat_mice_CALIBER.mcar.0.2.1.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 12.1s, 244+, 193-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 15.5s, 248+, 193-]
+✔ save_imputed_dat_mice_CALIBER.mcar.0.2.1.electricity completed [105ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 15.5s, 248+, 193-]+ obtained_scores_mice_CALIBER.mcar.0.2.1.electricity dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 15.5s, 248+, 193-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 24.8s, 249+, 193-]
+✔ imputed_dat_mice_CALIBER.mcar.0.1.1.diamond completed [16m 55.9s, 982.33 kB]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 24.8s, 249+, 193-]+ save_imputed_dat_mice_CALIBER.mar.0.2.1.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 24.8s, 249+, 193-]✔ save_imputed_dat_mice_CALIBER.mar.0.2.1.diamond completed [230ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 24.8s, 249+, 193-]+ obtained_scores_mice_CALIBER.mar.0.2.1.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 24.8s, 249+, 193-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 33.7s, 251+, 193-]
+✔ obtained_scores_mice_CALIBER.mcar.0.2.1.eye_movement completed [19.8s, 276 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 33.7s, 251+, 193-]+ save_imputed_dat_mice_CALIBER.mar.0.3.1.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 33.7s, 251+, 193-]✔ save_imputed_dat_mice_CALIBER.mar.0.3.1.diamond completed [219ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 33.7s, 251+, 193-]+ obtained_scores_mice_CALIBER.mar.0.3.1.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■     [18m 33.7s, 251+, 193-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [18m 49.3s, 253+, 193-]
+✔ obtained_scores_mice_CALIBER.mcar.0.1.1.electricity completed [6m 9.3s, 275 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [18m 49.3s, 253+, 193-]+ save_imputed_dat_mice_CALIBER.mar.0.3.2.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [18m 49.3s, 253+, 193-]✔ save_imputed_dat_mice_CALIBER.mar.0.3.2.diamond completed [232ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [18m 49.3s, 253+, 193-]+ obtained_scores_mice_CALIBER.mar.0.3.2.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [18m 49.3s, 253+, 193-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 3.7s, 255+, 193-]
+✔ obtained_scores_mice_CALIBER.mcar.0.3.2.electricity completed [5m 51.6s, 275 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 3.7s, 255+, 193-]+ amputation_summary dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 3.7s, 255+, 193-]✔ imputed_dat_mice_CALIBER.mcar.0.3.2.diamond completed [12m 47.2s, 1.49 MB]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 3.7s, 255+, 193-]+ save_imputed_dat_mice_CALIBER.mcar.0.1.1.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 3.7s, 255+, 193-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 5.7s, 257+, 193-]
+✔ save_imputed_dat_mice_CALIBER.mcar.0.1.1.diamond completed [198ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 5.7s, 257+, 193-]+ obtained_scores_mice_CALIBER.mcar.0.1.1.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 5.7s, 257+, 193-]✔ amputation_summary completed [1.2s, 1.43 kB]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 5.7s, 257+, 193-]+ obtained_scores_mice_CALIBER.mcar.0.3.2.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 5.7s, 257+, 193-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 11s, 259+, 193-]
+✔ obtained_scores_mice_CALIBER.mcar.0.3.1.electricity completed [6m 17.6s, 273 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 11s, 259+, 193-]+ save_imputed_dat_mice_CALIBER.mcar.0.3.2.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 11s, 259+, 193-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 12.5s, 260+, 193-]
+✔ save_imputed_dat_mice_CALIBER.mcar.0.3.2.diamond completed [232ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 12.5s, 260+, 193-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 30.5s, 261+, 194-]
+✔ obtained_scores_mice_CALIBER.mcar.0.2.2.electricity completed [6m 4.5s, 273 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 30.5s, 261+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 48s, 262+, 194-]
+✔ imputed_dat_mice_CALIBER.mcar.0.3.1.diamond completed [12m 49s, 1.48 MB]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 48s, 262+, 194-]+ save_imputed_dat_mice_CALIBER.mcar.0.3.1.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 48s, 262+, 194-]+ obtained_scores_mice_CALIBER.mcar.0.3.1.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 48s, 262+, 194-]✔ save_imputed_dat_mice_CALIBER.mcar.0.3.1.diamond completed [259ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 48s, 262+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 51s, 264+, 194-]
+✔ imputed_dat_mice_CALIBER.mcar.0.1.2.diamond completed [17m 3.2s, 978.83 kB]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 51s, 264+, 194-]+ save_imputed_dat_mice_CALIBER.mcar.0.1.2.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 51s, 264+, 194-]+ obtained_scores_mice_CALIBER.mcar.0.1.2.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 51s, 264+, 194-]✔ save_imputed_dat_mice_CALIBER.mcar.0.1.2.diamond completed [208ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [19m 51s, 264+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [21m 39.3s, 266+, 194-]
+✔ imputed_dat_mice_CALIBER.mar.0.2.2.diamond completed [14m 34.7s, 1.22 MB]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [21m 39.3s, 266+, 194-]+ save_imputed_dat_mice_CALIBER.mar.0.2.2.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [21m 39.3s, 266+, 194-]+ obtained_scores_mice_CALIBER.mar.0.2.2.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [21m 39.3s, 266+, 194-]✔ save_imputed_dat_mice_CALIBER.mar.0.2.2.diamond completed [228ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■    [21m 39.3s, 266+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [22m 20.6s, 268+, 194-]
+✔ imputed_dat_mice_CALIBER.mar.0.1.2.diamond completed [17m 14.7s, 977.08 kB]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [22m 20.6s, 268+, 194-]+ obtained_scores_mice_CALIBER.mar.0.1.2.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [22m 20.6s, 268+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [22m 21.2s, 268+, 194-]
++ save_imputed_dat_mice_CALIBER.mar.0.1.2.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [22m 21.2s, 268+, 194-]✔ save_imputed_dat_mice_CALIBER.mar.0.1.2.diamond completed [226ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [22m 21.2s, 268+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [23m 30.4s, 270+, 194-]
+✔ obtained_scores_mice_CALIBER.mcar.0.1.2.electricity completed [6m 32.1s, 277 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [23m 30.4s, 270+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [23m 36.6s, 271+, 194-]
+✔ imputed_dat_mice_CALIBER.mar.0.1.1.diamond completed [16m 50.3s, 980.34 kB]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [23m 36.6s, 271+, 194-]+ obtained_scores_mice_CALIBER.mar.0.1.1.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [23m 36.6s, 271+, 194-]+ save_imputed_dat_mice_CALIBER.mar.0.1.1.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [23m 36.6s, 271+, 194-]✔ save_imputed_dat_mice_CALIBER.mar.0.1.1.diamond completed [192ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [23m 36.6s, 271+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [25m 3.9s, 273+, 194-]
+✔ imputed_dat_mice_CALIBER.mcar.0.2.2.diamond completed [14m 51.9s, 1.24 MB]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [25m 3.9s, 273+, 194-]+ obtained_scores_mice_CALIBER.mcar.0.2.2.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [25m 3.9s, 273+, 194-]✔ imputed_dat_mice_CALIBER.mcar.0.2.1.diamond completed [14m 56.1s, 1.23 MB]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [25m 3.9s, 273+, 194-]+ save_imputed_dat_mice_CALIBER.mcar.0.2.2.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [25m 3.9s, 273+, 194-]+ save_imputed_dat_mice_CALIBER.mcar.0.2.1.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [25m 3.9s, 273+, 194-]+ obtained_scores_mice_CALIBER.mcar.0.2.1.diamond dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [25m 3.9s, 273+, 194-]✔ obtained_scores_mice_CALIBER.mcar.0.2.1.electricity completed [6m 48.4s, 276 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [25m 3.9s, 273+, 194-]✔ save_imputed_dat_mice_CALIBER.mcar.0.2.1.diamond completed [214ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [25m 3.9s, 273+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [25m 6s, 277+, 194-]
+✔ save_imputed_dat_mice_CALIBER.mcar.0.2.2.diamond completed [230ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [25m 6s, 277+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [41m 1s, 278+, 194-]
+✔ obtained_scores_mice_CALIBER.mar.0.2.1.diamond completed [22m 33s, 271 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [41m 1s, 278+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [41m 9.2s, 279+, 194-]
+✔ obtained_scores_mice_CALIBER.mar.0.3.1.diamond completed [22m 32.6s, 270 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [41m 9.2s, 279+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [41m 43.1s, 280+, 194-]
+✔ obtained_scores_mice_CALIBER.mcar.0.3.1.diamond completed [21m 53.3s, 271 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [41m 43.1s, 280+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [42m 37.4s, 281+, 194-]
+✔ obtained_scores_mice_CALIBER.mar.0.3.2.diamond completed [23m 45s, 271 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [42m 37.4s, 281+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [42m 45.4s, 282+, 194-]
+✔ obtained_scores_mice_CALIBER.mcar.0.3.2.diamond completed [23m 37s, 272 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [42m 45.4s, 282+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [43m 15s, 283+, 194-]
+✔ obtained_scores_mice_CALIBER.mcar.0.1.1.diamond completed [24m 7.7s, 271 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [43m 15s, 283+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [44m 20.6s, 284+, 194-]
+✔ obtained_scores_mice_CALIBER.mcar.0.1.2.diamond completed [24m 27.4s, 272 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [44m 20.6s, 284+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [44m 58.1s, 285+, 194-]
+✔ obtained_scores_mice_CALIBER.mar.0.2.2.diamond completed [23m 16.7s, 269 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [44m 58.1s, 285+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [45m 53.2s, 286+, 194-]
+✔ obtained_scores_mice_CALIBER.mar.0.1.2.diamond completed [23m 30.9s, 270 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [45m 53.2s, 286+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [47m 35.4s, 287+, 194-]
+✔ obtained_scores_mice_CALIBER.mar.0.1.1.diamond completed [23m 57.1s, 270 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [47m 35.4s, 287+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [48m 1.2s, 288+, 194-]
+✔ obtained_scores_mice_CALIBER.mcar.0.2.2.diamond completed [22m 55.1s, 270 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [48m 1.2s, 288+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [48m 49.1s, 289+, 194-]
+✔ obtained_scores_mice_CALIBER.mcar.0.2.1.diamond completed [23m 42.4s, 272 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [48m 49.1s, 289+, 194-]+ all_scores dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [48m 49.1s, 289+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [48m 51s, 290+, 194-]
+✔ all_scores completed [3ms, 2.93 kB]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [48m 51s, 290+, 194-]+ imputation_summary dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [48m 51s, 290+, 194-]✔ imputation_summary completed [22ms, 3.03 kB]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [48m 51s, 290+, 194-]+ save_imputation_summary dispatched
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [48m 51s, 290+, 194-]✔ save_imputation_summary completed [18ms, 44 B]
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [48m 51s, 290+, 194-]Master: [48.9 mins 0.9% CPU]; Worker: [avg 62.8% CPU, max 1.3 Gb]
+→ de-duplicating _targets/meta/meta
+→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [48m 51s, 290+, 194-]→ 486 targets ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■  [48m 54.3s, 292+, 194-]
+✔ ended pipeline [49m 7.7s, 292 completed, 194 skipped]
+Warning messages:
+1: replacing previous import ‘S4Arrays::makeNindexFromArrayViewport’ by ‘DelayedArray::makeNindexFromArrayViewport’ when loading ‘SummarizedExperiment’ 
+2: 16 targets produced warnings. Run targets::tar_meta(fields = warnings, complete_only = TRUE) for the messages. 
+[1] "2025-09-23 17:47:50 CEST"
