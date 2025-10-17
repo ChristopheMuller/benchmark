@@ -52,21 +52,29 @@ plot_small_errors <- function(imputation_summary) {
     filter(!is.na(measure)) %>% 
     select(-measure, -score) %>% 
     unique() %>% 
-    group_by(method) %>% 
-    mutate(n_attempts = n()) %>% 
     mutate(error = ifelse(is.na(error), "none", error)) %>% 
-    group_by(set_id, error) %>% 
-    reframe(n = (n() / nrow(.) )* 100) %>% 
+    group_by(case) %>% 
+    mutate(n_attempts = n()) %>% 
     filter(error != "none") %>% 
-    group_by(set_id) %>%
-    mutate(n_total = sum(n) * 100) %>%
+    group_by(set_id, error, case) %>% 
+    reframe(n = (n()/n_attempts) * 100) %>% 
+    unique() %>% 
+    mutate(case = ifelse(case == "incomplete", "incomplete_categorical", case)) %>% 
+    mutate(case = ifelse(case == "complete", "Complete and Numeric", case),
+           case = ifelse(case == "categorical", "Complete and Mixed", case),
+           case = ifelse(case == "incomplete_categorical", "Incomplete", case)) %>% 
+    group_by(set_id, case) %>% 
+    mutate(n_total = sum(n)) %>% 
     ggplot() +
     geom_col(aes(x = reorder(set_id, n_total), y = n, fill = error), width = 0.7) +
     xlab("Dataset") +
     ylab("Errors [%]") +
     scale_fill_manual(name = "Type of error", values = get_colors_errors()) +
     coord_flip() +
-    theme_minimal()
+    theme_minimal(base_size = 15) +
+    facet_wrap(~case, scales = "free_y") +
+    theme(legend.position = "bottom") +
+    scale_fill_manual(name = "Type of error", values = get_colors_errors(), labels = get_labels_errors())
 }
 
 
@@ -221,41 +229,41 @@ plot_errors_mechanism <- function(imputation_summary) {
 }
 
 
-shreks_plot <- function(imputation_summary ) {
-  
-  n_methods <- length(unique(pull(imputation_summary, method)))
-  
-  imputation_summary %>%
-    filter(!is.na(measure)) %>% 
-    select(-imputation_fun) %>% 
-    filter(measure == "energy_std") %>% 
-    unique() %>% 
-    group_by(method, set_id, mechanism, ratio) %>% 
-    reframe(score = mean(score, na.rm = TRUE)) %>% 
-    mutate(case_id = paste0(set_id, mechanism, ratio)) %>% 
-    mutate(score = ifelse(is.nan(score), NA, score)) %>% 
-    group_by(set_id, mechanism, ratio) %>% 
-    mutate(ranking =  {
-      ranking <- rep(NA, length(score))
-      ranking[!is.na(score)] <- rank(score[!is.na(score)])
-      ranking[is.na(ranking)] <- n_methods
-      ranking
-    }) %>% 
-    ungroup() %>% 
-    group_by(method) %>% 
-    mutate(mean_ranking = mean(ranking, na.rm = TRUE)) %>% 
-    ungroup() %>% 
-    arrange(mean_ranking) %>% 
-    mutate(method = factor(method, levels = unique(method))) %>% 
-    ggplot() +
-    geom_tile(aes(x = case_id, y = method, fill = ranking), colour = "black") +
-    theme(axis.text.x = element_text(angle = 90)) +
-    geom_text(aes(x = case_id, y = method, label = ranking), size = 2.5)+
-    scale_fill_continuous() +
-    guides(fill = guide_colourbar(barwidth = 0.5, barheight = 40)) +
-    scale_fill_gradient(low = "darkgreen", high = "white") 
-  
-}
+# shreks_plot <- function(imputation_summary ) {
+#   
+#   n_methods <- length(unique(pull(imputation_summary, method)))
+#   
+#   imputation_summary %>%
+#     filter(!is.na(measure)) %>% 
+#     select(-imputation_fun) %>% 
+#     filter(measure == "energy_std") %>% 
+#     unique() %>% 
+#     group_by(method, set_id, mechanism, ratio) %>% 
+#     reframe(score = mean(score, na.rm = TRUE)) %>% 
+#     mutate(case_id = paste0(set_id, mechanism, ratio)) %>% 
+#     mutate(score = ifelse(is.nan(score), NA, score)) %>% 
+#     group_by(set_id, mechanism, ratio) %>% 
+#     mutate(ranking =  {
+#       ranking <- rep(NA, length(score))
+#       ranking[!is.na(score)] <- rank(score[!is.na(score)])
+#       ranking[is.na(ranking)] <- n_methods
+#       ranking
+#     }) %>% 
+#     ungroup() %>% 
+#     group_by(method) %>% 
+#     mutate(mean_ranking = mean(ranking, na.rm = TRUE)) %>% 
+#     ungroup() %>% 
+#     arrange(mean_ranking) %>% 
+#     mutate(method = factor(method, levels = unique(method))) %>% 
+#     ggplot() +
+#     geom_tile(aes(x = case_id, y = method, fill = ranking), colour = "black") +
+#     theme(axis.text.x = element_text(angle = 90)) +
+#     geom_text(aes(x = case_id, y = method, label = ranking), size = 2.5)+
+#     scale_fill_continuous() +
+#     guides(fill = guide_colourbar(barwidth = 0.5, barheight = 30)) +
+#     scale_fill_gradient(low = "darkgreen", high = "white") 
+#   
+# }
 
 
 shreks_plot_with_rep <- function(imputation_summary) {
@@ -1015,7 +1023,7 @@ plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40
 
 plot_ranking_boxplots <- function(imputation_summary, breaks = c(0, 1, 40, 80, 99, 100)) {
   
-  score_name = "IScore_cat"
+  score_name = "energy_std"
   
   n_methods <- length(unique(pull(imputation_summary, method)))
   
@@ -1059,7 +1067,7 @@ plot_ranking_boxplots <- function(imputation_summary, breaks = c(0, 1, 40, 80, 9
     mutate(method = factor(method, levels = unique(method)))
   
   dat_plt <- dat_plt %>% 
-    arrange(mean_ranking) %>% 
+    arrange(median_ranking) %>% 
     mutate(method = factor(method, levels = unique(method)))
   
   min_time <- min(dat_plt$time) * 1000
@@ -1081,7 +1089,7 @@ plot_ranking_boxplots <- function(imputation_summary, breaks = c(0, 1, 40, 80, 9
     coord_flip() +
     scale_y_continuous("Time", trans = c("log10", "reverse"),
                        breaks = c(min_time/1000, 1, 60, 600, 1800, 1800*2, 1800*4, 1800*6) * 1000, 
-                       labels = c("116ms", "1s", "1min", "10min", "30min", "1h", "2h", "3h")) +
+                       labels = c(paste0(round(min_time, 0), "ms"), "1s", "1min", "10min", "30min", "1h", "2h", "3h")) +
     theme(panel.grid.minor.x = element_blank(),
           panel.grid.major.x = element_line(color = "black", linetype = "dashed"),
           axis.text.x = element_text(angle = 0))
@@ -1089,9 +1097,9 @@ plot_ranking_boxplots <- function(imputation_summary, breaks = c(0, 1, 40, 80, 9
   
   p2 <- dat_plt %>% 
     ungroup() %>% 
-    ggplot(aes(x = reorder(method, mean_ranking), y = ranking)) +
+    ggplot(aes(x = reorder(method, median_ranking), y = ranking)) +
     geom_boxplot(fill = "gray90") +
-    geom_point(aes(x = reorder(method, mean_ranking), y = mean_ranking, col = "a"), size = 2) +
+    geom_point(aes(x = reorder(method, median_ranking), y = median_ranking, col = "a"), size = 2) +
     scale_fill_manual(name = "success [%]", 
                       values = get_colors_fractions()) +
     scale_color_manual(
@@ -1240,19 +1248,23 @@ shreks_plot <- function(imputation_summary ) {
   imputation_summary %>%
     filter(!is.na(measure)) %>% 
     select(-imputation_fun) %>% 
-    filter(measure == "IScore_cat") %>% 
+    filter(measure == "energy_std") %>% 
     unique() %>% 
     group_by(method, set_id, mechanism, ratio) %>% 
     reframe(score = mean(score, na.rm = TRUE)) %>% 
     mutate(case_id = paste0(set_id, mechanism, ratio)) %>% 
     mutate(score = ifelse(is.nan(score), NA, score)) %>% 
     group_by(set_id, mechanism, ratio) %>% 
-    mutate(ranking =  {
-      ranking <- rep(NA, length(score))
-      ranking[!is.na(score)] <- rank(score[!is.na(score)])
-      ranking[is.na(ranking)] <- max(ranking, na.rm = TRUE)
-      ranking
-    }) %>% 
+    mutate(
+      n_successful = sum(!is.na(score)),  # count non-NA scores
+      ranking = {
+        ranking <- rep(NA, length(score))
+        valid_idx <- !is.na(score)
+        ranking[valid_idx] <- rank(score[valid_idx])
+        ranking[!valid_idx] <- n_successful[!valid_idx] + 1  # set to max + 1
+        floor(ranking)
+      }
+    ) %>% 
     ungroup() %>% 
     group_by(method) %>% 
     mutate(mean_ranking = mean(ranking, na.rm = TRUE)) %>% 
@@ -1264,7 +1276,7 @@ shreks_plot <- function(imputation_summary ) {
     theme(axis.text.x = element_text(angle = 90)) +
     geom_text(aes(x = case_id, y = method, label = ranking)) +
     scale_fill_continuous() +
-    guides(fill = guide_colourbar(barwidth = 0.5, barheight = 40)) +
+    guides(fill = guide_colourbar(barwidth = 0.5, barheight = 30)) +
     scale_fill_gradient(low = "darkgreen", high = "white") 
   
 }

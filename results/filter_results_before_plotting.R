@@ -11,6 +11,15 @@ imputation_summary <- readRDS("./results/imputation_summary_M13.RDS") %>%
   merge(methods) %>% 
   mutate(method = elegant_name)
 
+imputation_summary_categorical <- readRDS("./results/imputation_summary_complete_categorical.RDS") %>%
+  merge(methods) %>%
+  mutate(method = elegant_name)
+
+# remove old categorical results and replace with new one
+imputation_summary <- imputation_summary %>%
+  filter(case != "categorical") %>%
+  rbind(imputation_summary_categorical)
+
 imputation_summary <- imputation_summary %>% 
   filter(!(method %in% c("mice_cart50", "mice_cart100", "superimputer", 
                          "supersuperimputer", "engression", "missmda_em"))) %>% 
@@ -35,7 +44,7 @@ small_sets <- c("cheddar", "chicago", "divusa", "eco", "exa", "fpe", "leafburn",
                 "chredlin", "hayes_roth", "hips",
                 
                 "airquality", "Animals_na", "employee", "mammalsleep"
-                )
+)
 
 
 imputation_summary <- imputation_summary %>% 
@@ -78,11 +87,45 @@ imputation_summary <- imputation_summary %>%
 
 ### Case 6 : ALL + Incomplete
 
+numerical_incomplete <- readRDS("./results/imputation_summary_incomplete_categorical.RDS") %>% 
+  merge(methods) %>% 
+  mutate(method = elegant_name)
+
+imputation_summary_incomplete <- rbind(numerical_incomplete,
+                                       readRDS("./results/imputation_summary_incomplete_numerical.RDS"))
+
+
 methods_cat <- unique((imputation_summary %>% filter(case == "categorical"))$method)
 
-imputation_summary <- imputation_summary %>% 
+imputation_summary <- imputation_summary_incomplete %>% 
   filter(case %in% c("incomplete", "incomplete_categorical")) %>% 
   filter(method %in% methods_cat) %>% 
-  mutate(measure = ifelse(measure == "IScore_cat", "IScore", measure))
+  mutate(measure = ifelse(measure == "IScore_cat", "IScore", measure)) %>% 
+  filter(measure == "IScore")
 
+### Case 5 : ALL
+
+methods_cat <- unique((imputation_summary %>% filter(case == "categorical"))$method)
+
+imputation_summary_complete <- imputation_summary %>%
+  filter(case %in% c("complete", "categorical")) 
+
+
+numerical_incomplete <- readRDS("./results/imputation_summary_incomplete_categorical.RDS") %>% 
+  merge(methods) %>% 
+  mutate(method = elegant_name)
+
+imputation_summary_incomplete <- rbind(numerical_incomplete,
+                                       readRDS("./results/imputation_summary_incomplete_numerical.RDS"))
+
+
+methods_cat <- unique((imputation_summary %>% filter(case == "categorical"))$method)
+
+imputation_summary_incomplete <- imputation_summary_incomplete %>% 
+  filter(case %in% c("incomplete", "incomplete_categorical")) %>% 
+  filter(method %in% methods_cat) %>% 
+  mutate(measure = ifelse(measure == "IScore_cat", "IScore", measure)) %>% 
+  filter(measure == "IScore")
+
+imputation_summary <- rbind(imputation_summary_incomplete, imputation_summary_complete)
 

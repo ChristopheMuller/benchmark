@@ -31,7 +31,7 @@ imputation_summary %>%
   group_by(method) %>% 
   mutate(n_attempts = n()) %>% 
   mutate(error = ifelse(is.na(error), "none", error)) %>% 
-  filter(attempts == 2, error == "none") %>% nrow() 
+  filter(attempts == 2, error == "none") %>% 
   pull(method) %>%  unique()
 
 
