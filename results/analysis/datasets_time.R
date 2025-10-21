@@ -45,7 +45,8 @@ p2 <- imputation_summary %>%
         legend.position = "bottom",
         axis.title.y = element_blank(),
         axis.text.y = element_blank()) +
-  scale_fill_manual("Mechanism", values = c("mar" = "slateblue3", "mcar" = "orange1"))
+  scale_fill_manual("Mechanism", values = c("mar" = "slateblue3", "mcar" = "orange1"),
+                    labels = c("mar" = "MAR", "mcar" = "MCAR"))
 
 (p1 | p2) + plot_annotation(tag_levels = 'A')
 
