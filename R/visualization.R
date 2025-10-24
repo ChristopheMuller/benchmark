@@ -53,18 +53,23 @@ plot_small_errors <- function(imputation_summary) {
     select(-measure, -score) %>% 
     unique() %>% 
     mutate(error = ifelse(is.na(error), "none", error)) %>% 
-    group_by(case) %>% 
+    group_by(case) %>%  
     mutate(n_attempts = n()) %>% 
-    filter(error != "none") %>% 
-    group_by(set_id, error, case) %>% 
-    reframe(n = (n()/n_attempts) * 100) %>% 
     unique() %>% 
+    filter(error != "none") %>% filter(set_id == "choccake")
+    group_by(set_id, error, case) %>% 
+    reframe(n = (n()/n_attempts) * 100) %>% filter(set_id == "choccake")
+    mutate(error = ifelse(n == 100 & error == "none", "tmp", error)) %>% 
+    mutate(n = ifelse(n == 100 & error == "tmp", 0, n)) %>% 
+    mutate(error = ifelse(error == "tmp", "computational", error)) %>% 
+    filter(error != "none") %>%
+    unique() %>%  
     mutate(case = ifelse(case == "incomplete", "incomplete_categorical", case)) %>% 
     mutate(case = ifelse(case == "complete", "Complete and Numeric", case),
            case = ifelse(case == "categorical", "Complete and Mixed", case),
            case = ifelse(case == "incomplete_categorical", "Incomplete", case)) %>% 
     group_by(set_id, case) %>% 
-    mutate(n_total = sum(n)) %>% 
+    mutate(n_total = sum(n)) %>%
     ggplot() +
     geom_col(aes(x = reorder(set_id, n_total), y = n, fill = error), width = 0.7) +
     xlab("Dataset") +
@@ -1023,12 +1028,13 @@ plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40
 
 plot_ranking_boxplots <- function(imputation_summary, breaks = c(0, 1, 40, 80, 99, 100)) {
   
-  score_name = "energy_std"
+  score_name = "IScore"
   
   n_methods <- length(unique(pull(imputation_summary, method)))
   
   dat_plt <- imputation_summary %>% 
     filter(!is.na(measure)) %>% 
+    filter(!(is.na(score) & is.na(error))) %>% 
     select(-imputation_fun, -attempts) %>% 
     filter(measure == score_name) %>%
     unique() %>% 
@@ -1067,7 +1073,7 @@ plot_ranking_boxplots <- function(imputation_summary, breaks = c(0, 1, 40, 80, 9
     mutate(method = factor(method, levels = unique(method)))
   
   dat_plt <- dat_plt %>% 
-    arrange(median_ranking) %>% 
+    arrange(mean_ranking, method) %>% 
     mutate(method = factor(method, levels = unique(method)))
   
   min_time <- min(dat_plt$time) * 1000
@@ -1097,9 +1103,9 @@ plot_ranking_boxplots <- function(imputation_summary, breaks = c(0, 1, 40, 80, 9
   
   p2 <- dat_plt %>% 
     ungroup() %>% 
-    ggplot(aes(x = reorder(method, median_ranking), y = ranking)) +
+    ggplot(aes(x = reorder(method, mean_ranking), y = ranking)) +
     geom_boxplot(fill = "gray90") +
-    geom_point(aes(x = reorder(method, median_ranking), y = median_ranking, col = "a"), size = 2) +
+    geom_point(aes(x = reorder(method, mean_ranking), y = mean_ranking, col = "a"), size = 2) +
     scale_fill_manual(name = "success [%]", 
                       values = get_colors_fractions()) +
     scale_color_manual(
@@ -1247,8 +1253,9 @@ shreks_plot <- function(imputation_summary ) {
   
   imputation_summary %>%
     filter(!is.na(measure)) %>% 
+    filter(!(is.na(score) & is.na(error))) %>% 
     select(-imputation_fun) %>% 
-    filter(measure == "energy_std") %>% 
+    filter(measure == "energy_std") %>%
     unique() %>% 
     group_by(method, set_id, mechanism, ratio) %>% 
     reframe(score = mean(score, na.rm = TRUE)) %>% 
@@ -1272,12 +1279,15 @@ shreks_plot <- function(imputation_summary ) {
     arrange(mean_ranking) %>% 
     mutate(method = factor(method, levels = unique(method))) %>% 
     ggplot() +
+    theme_minimal() +
     geom_tile(aes(x = case_id, y = method, fill = ranking), colour = "black") +
     theme(axis.text.x = element_text(angle = 90)) +
     geom_text(aes(x = case_id, y = method, label = ranking)) +
     scale_fill_continuous() +
-    guides(fill = guide_colourbar(barwidth = 0.5, barheight = 30)) +
-    scale_fill_gradient(low = "darkgreen", high = "white") 
+    guides(fill = guide_colourbar(barwidth = 0.5, barheight = 20)) +
+    scale_fill_gradient(low = "darkgreen", high = "white") +
+    xlab("Simulation case") +
+    ylab("Imputation method") 
   
 }
 

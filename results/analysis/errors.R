@@ -36,7 +36,7 @@ imputation_summary %>%
 
 
 imputation_summary %>% 
-  filter(case == "complete") %>% 
+  # filter(case == "complete") %>% 
   filter(!(method %in% c("mice_default", "gbmImpute", 
                          "missmda_MIFAMD_reg", "missmda_MIFAMD_em",
                          "SVTImpute"))) %>% 

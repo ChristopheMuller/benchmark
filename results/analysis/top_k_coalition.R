@@ -2,7 +2,7 @@
 
 library(dplyr)
 
-score_tmp <- "energy_std"
+score_tmp <- "IScore"
 
 n_methods <- length(unique(imputation_summary$method))
 
@@ -35,7 +35,7 @@ t <- imputation_summary %>%
 total_methods <- unique(imputation_summary$method)
 
 # Define the k values to test
-k_values <- 1:5
+k_values <- 1:4
 
 # Maximum group size to test
 max_group_size <- 10  # Adjust as needed

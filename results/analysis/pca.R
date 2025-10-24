@@ -503,7 +503,7 @@ p3 <- df_ind %>%
   guides(color = guide_colourbar(barwidth = 9, barheight = 0.5)) +
   scale_color_gradient("Rank\ndifference") +
   theme(legend.position = "inside",
-        legend.position.inside = c(0.2, 0.9),
+        legend.position.inside = c(0.2, 0.1),
         legend.direction = "horizontal")
 
 p2 <- df_ind %>% 
@@ -523,7 +523,7 @@ p2 <- df_ind %>%
   theme(axis.title.x = element_blank(),
         axis.text.x = element_blank(),
         legend.position = "inside",
-        legend.position.inside = c(0.2, 0.9),
+        legend.position.inside = c(0.2, 0.1),
         legend.direction = "horizontal") +
   guides(color = guide_colourbar(barwidth = 9, barheight = 0.5)) 
 
