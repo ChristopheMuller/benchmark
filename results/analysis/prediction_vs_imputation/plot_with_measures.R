@@ -2,6 +2,7 @@
 library(dplyr)
 library(ggplot2)
 library(patchwork)
+library(miceDRF)
 
 draw_one_plot <- function(imputed, miss_col, title, observed) {
   
