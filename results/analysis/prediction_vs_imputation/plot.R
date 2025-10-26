@@ -73,4 +73,15 @@ p3 <- ggplot(dat_full, aes(x = X1, y = X2, col = missing)) +
   theme(plot.tag = element_text(size = 20, face = "bold"))
 
 
+###################################
+
+
+coef(lm(X1 ~ X2, data = dat_imp_norm.predict))
+coef(lm(X2 ~ X1, data = dat_imp_norm.predict))
+
+coef(lm(X1 ~ X2, data = dat_imp_norm))
+coef(lm(X2 ~ X1, data = dat_imp_norm))
+
+
+
 
