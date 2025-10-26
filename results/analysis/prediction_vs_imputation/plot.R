@@ -5,11 +5,11 @@ library(patchwork)
 
 set.seed(10)
 
-dat <- MASS::mvrnorm(1000, mu = c(0, 0), Sigma = diag(2, 2) + 5)
-colnames(dat) <- c("X1", "X2")
+dat <- MASS::mvrnorm(5000, mu = c(0, 0), Sigma = matrix(c(3,1,1,1), ncol=2, byrow = T))
+colnames(dat) <- c("X2", "X1")
 dat_full <- dat
 
-dat[runif(1000) > 0.5, 2] <- NA 
+dat[runif(5000) > 0.5, 2] <- NA 
 
 dat_imp_norm <- mice::mice(dat, m = 1, method = "norm")
 dat_imp_norm <- mice::complete(dat_imp_norm) %>% 
@@ -22,6 +22,23 @@ dat_imp_norm.predict <- mice::complete(dat_imp_norm.predict) %>%
 dat_full <- dat_full %>% 
   as.data.frame() %>% 
   mutate(missing = is.na(dat[, 2]))
+
+
+###################################
+
+
+coef(lm(X1 ~ X2, data = dat_imp_norm.predict))
+coef(lm(X2 ~ X1, data = dat_imp_norm.predict))
+
+coef(lm(X1 ~ X2, data = dat_imp_norm))
+coef(lm(X2 ~ X1, data = dat_imp_norm))
+
+
+coef(lm(X1 ~ X2, data = dat_full))
+coef(lm(X2 ~ X1, data = dat_full))
+
+
+#############################
 
 p1 <- ggplot(dat_imp_norm.predict, aes(x = X1, y = X2, col = missing)) +
   geom_point() +
@@ -68,19 +85,10 @@ p3 <- ggplot(dat_full, aes(x = X1, y = X2, col = missing)) +
   theme(legend.position = "none")
 
 ((p3 + p1 + p2 + plot_layout(guides = "collect")) & 
-  guides(color = guide_legend(override.aes = list(size = 5)))) +
+    guides(color = guide_legend(override.aes = list(size = 5)))) +
   plot_annotation(tag_levels = 'A') &
   theme(plot.tag = element_text(size = 20, face = "bold"))
 
-
-###################################
-
-
-coef(lm(X1 ~ X2, data = dat_imp_norm.predict))
-coef(lm(X2 ~ X1, data = dat_imp_norm.predict))
-
-coef(lm(X1 ~ X2, data = dat_imp_norm))
-coef(lm(X2 ~ X1, data = dat_imp_norm))
 
 
 
