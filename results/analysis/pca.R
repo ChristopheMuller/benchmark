@@ -60,6 +60,25 @@ imputation_summary <- imputation_summary %>%
   select(-elegant_name)
 
 
+imputation_summary <- imputation_summary %>% 
+  filter(case == "complete") %>% 
+  filter(!(method %in% c("mice_default", "gbmImpute", 
+                         "missmda_mifamd_reg", "missmda_mifamd_em",
+                         "SVTImpute"))) 
+
+error_summary <- readRDS("./results/comp_errors_num.RDS") %>% 
+  filter(!is.na(measure), !is.na(score)) %>% 
+  merge(methods) %>% 
+  mutate(method = elegant_name) %>% 
+  select(-elegant_name)
+
+
+imputation_summary <- rbind(imputation_summary, error_summary) %>%  
+  group_by(method, set_id, mechanism, ratio, rep, measure) %>% 
+  filter(if (n() > 1) !is.na(score) else TRUE) %>% 
+  filter(measure != "IScore")
+
+
 pca_dat <- imputation_summary %>%
   filter(set_id != "meatspec") %>% 
   filter(!is.na(measure)) %>% 
@@ -339,7 +358,18 @@ methods_cat <- unique((imputation_summary %>% filter(case == "categorical"))$met
 imputation_summary <- imputation_summary %>%
   filter(case %in% c("complete", "categorical")) %>% 
   filter(method %in% methods_cat) %>% 
-  filter(!(set_id %in% small_sets))
+  filter(!(set_id %in% small_sets)) %>% 
+  merge(methods) %>% 
+  mutate(method = elegant_name) %>% 
+  select(-elegant_name)
+
+imputation_summary <- rbind(imputation_summary, error_summary) %>%  
+  group_by(method, set_id, mechanism, ratio, rep, measure) %>% 
+  filter(if (n() > 1) !is.na(score) else TRUE) %>% 
+  filter(measure != "IScore") %>% 
+  filter(method %in% methods_cat) %>% 
+  filter(!(method %in% c("gbmImpute", "missmda_mifamd_reg", "missmda_mifamd_em",
+                         "SVTImpute", "missmda_famd_em", "missmda_famd_reg"))) 
 
 pca_dat <- imputation_summary %>%
   filter(set_id != "meatspec") %>% 
@@ -490,7 +520,7 @@ perf_on_large_vs_mixed <- performance_on_all %>%
 p3 <- df_ind %>% 
   merge(perf_on_large_vs_mixed) %>% 
   ggplot() +
-  geom_text_repel(aes(x = Dim.1, y = Dim.2, label = method, colour = rank_diff), size = 4,
+  geom_text_repel(aes(x = Dim.1, y = Dim.2, label = method, colour = rank_diff), size = 6,
                   max.overlaps = 100) +
   geom_point(aes(x = Dim.1, y = Dim.2, colour = rank_diff)) +
   # xlim(-11, 13) +
@@ -509,7 +539,7 @@ p3 <- df_ind %>%
 p2 <- df_ind %>% 
   merge(performance_on_all) %>% 
   ggplot() +
-  geom_text_repel(aes(x = Dim.1, y = Dim.2, label = method, colour = mean_ranking), size = 4,
+  geom_text_repel(aes(x = Dim.1, y = Dim.2, label = method, colour = mean_ranking), size = 6,
                   max.overlaps = 100) +
   geom_point(aes(x = Dim.1, y = Dim.2, colour = mean_ranking)) +
   # xlim(-11, 13) +
