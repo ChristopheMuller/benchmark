@@ -71,7 +71,17 @@ imputation_summary <- imputation_summary %>%
   filter(case == "complete") %>% 
   filter(!(method %in% c("mice_default", "gbmImpute", 
                          "missmda_mifamd_reg", "missmda_mifamd_em",
-                         "SVTImpute")))
+                         "SVTImpute"))) 
+
+error_summary <- readRDS("./results/comp_errors_num.RDS") %>% 
+  filter(!is.na(measure), !is.na(score)) %>% 
+  merge(methods) %>% 
+  mutate(method = elegant_name)
+
+
+imputation_summary <- rbind(imputation_summary, error_summary) %>%  
+  group_by(method, set_id, mechanism, ratio, rep) %>% 
+  filter(if (n() > 1) !is.na(score) else TRUE)
 
 imputation_summary_numerical <- imputation_summary
 
