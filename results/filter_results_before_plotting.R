@@ -80,8 +80,9 @@ error_summary <- readRDS("./results/comp_errors_num.RDS") %>%
 
 
 imputation_summary <- rbind(imputation_summary, error_summary) %>%  
-  group_by(method, set_id, mechanism, ratio, rep) %>% 
-  filter(if (n() > 1) !is.na(score) else TRUE)
+  group_by(method, set_id, mechanism, ratio, rep, measure) %>% 
+  filter(if (n() > 1) !is.na(score) else TRUE) %>% 
+  filter(measure != "IScore")
 
 imputation_summary_numerical <- imputation_summary
 
@@ -122,6 +123,17 @@ imputation_summary <- imputation_summary %>%
   filter(!(method %in% c("gbmImpute", "missmda_mifamd_reg", "missmda_mifamd_em",
                          "SVTImpute", "missmda_famd_em", "missmda_famd_reg"))) %>% 
   filter(measure == "energy_std")
+
+error_summary <- readRDS("./results/comp_errors_num.RDS") %>% 
+  filter(!is.na(measure), !is.na(score)) %>% 
+  merge(methods) %>% 
+  mutate(method = elegant_name) %>% 
+  filter(method %in% methods_cat)
+
+imputation_summary <- rbind(imputation_summary, error_summary) %>%  
+  group_by(method, set_id, mechanism, ratio, rep, measure) %>% 
+  filter(if (n() > 1) !is.na(score) else TRUE) %>% 
+  filter(measure != "IScore")
 
 
 ### Case 6 : ALL + Incomplete
