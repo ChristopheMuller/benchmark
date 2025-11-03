@@ -56,9 +56,9 @@ plot_small_errors <- function(imputation_summary) {
     group_by(case) %>%  
     mutate(n_attempts = n()) %>% 
     unique() %>% 
-    filter(error != "none") %>% filter(set_id == "choccake")
+    filter(error != "none") %>% 
     group_by(set_id, error, case) %>% 
-    reframe(n = (n()/n_attempts) * 100) %>% filter(set_id == "choccake")
+    reframe(n = (n()/n_attempts) * 100) %>% 
     mutate(error = ifelse(n == 100 & error == "none", "tmp", error)) %>% 
     mutate(n = ifelse(n == 100 & error == "tmp", 0, n)) %>% 
     mutate(error = ifelse(error == "tmp", "computational", error)) %>% 
@@ -110,7 +110,7 @@ plot_errors <- function(imputation_summary) {
     scale_fill_manual(name = "Type of error", values = get_colors_errors()) +
     scale_alpha_manual(values = c("computational" = 1, "modification" = 1, 
                                   "timeout" = 1, "missings" = 1, "none" = 0.8)) +
-    theme_minimal(base_size = 13)  +
+    theme_minimal(base_size = 16)  +
     theme(axis.text.x = element_text(angle = 90),
           legend.position = "top")
   
@@ -1028,7 +1028,7 @@ plot_energy_time_ranking <- function(arrange_success = TRUE, breaks = c(0, 1, 40
 
 plot_ranking_boxplots <- function(imputation_summary, breaks = c(0, 1, 40, 80, 99, 100)) {
   
-  score_name = "IScore"
+  score_name = "energy_std"
   
   n_methods <- length(unique(pull(imputation_summary, method)))
   
@@ -1087,7 +1087,7 @@ plot_ranking_boxplots <- function(imputation_summary, breaks = c(0, 1, 40, 80, 9
                   fill = `success [%]`)) +
     scale_fill_manual(name = "success [%]", values = get_colors_fractions()) +
     labs(x = "Methods", y = "Average Time") +
-    theme_bw(base_size = 15) +
+    theme_bw(base_size = 16) +
     theme(axis.text.y = element_blank(),
           axis.title.y = element_blank(),
           legend.position = "none") +
@@ -1114,7 +1114,7 @@ plot_ranking_boxplots <- function(imputation_summary, breaks = c(0, 1, 40, 80, 9
       labels = c("a" = "Averaged rank")
     ) +
     labs(x = "Methods", y = "Mean Energy") +
-    theme_bw(base_size = 15) +
+    theme_bw(base_size = 16) +
     theme(axis.text.y = element_text(hjust = 0.5),
           axis.title.y = element_blank(),
           legend.position = "bottom") +
@@ -1395,15 +1395,6 @@ plot_ranking_boxplots_measures <- function(imputation_summary, breaks = c(0, 1, 
     p2 + plot_layout(guides = "collect") & theme(legend.position = 'none') # 16 x 14
   # save as pdf
   # ggsave("~/INRIA/R_scripts/benchmark/latex/energy_time_ranking_cat_num.pdf", width = 12, height = 15, units="cm")
-  
-    dat_plt %>%  
-      select(-time, -ranking, -median_ranking, -`success [%]`, -mean_score) %>% 
-      unique() %>% 
-      tidyr::pivot_wider(names_from = measure, values_from =  mean_ranking) %>% 
-      select(-method, -sliced_wasserstein) %>% 
-      as.matrix() %>% 
-      cor() %>% 
-      ggcorrplot::ggcorrplot()
     
     
     
