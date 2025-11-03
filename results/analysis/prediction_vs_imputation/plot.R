@@ -51,8 +51,8 @@ p1 <- ggplot(dat_imp_norm.predict, aes(x = X1, y = X2, col = missing)) +
                                 "TRUE" = "imputed", 
                                 "new_category" = "true (missing)"),
                      breaks = c("FALSE", "TRUE", "new_category")) +
-  theme_minimal(base_size = 14) +
-  ggtitle("Missing data imputed by Regression Imputation") +
+  theme_minimal(base_size = 16) +
+  ggtitle("Missing data imputed by\nRegression Imputation") +
   xlim(min(dat_imp_norm.predict$X1), max(dat_imp_norm.predict$X1)) +
   ylim(min(dat_imp_norm.predict$X2), max(dat_imp_norm.predict$X2)) +
   theme(axis.title.y = element_blank(),
@@ -60,8 +60,8 @@ p1 <- ggplot(dat_imp_norm.predict, aes(x = X1, y = X2, col = missing)) +
 
 p2 <- ggplot(dat_imp_norm, aes(x = X1, y = X2, col = missing)) +
   geom_point() +
-  theme_minimal(base_size = 14) +
-  ggtitle("Missing data imputed by Gaussian Imputation") +
+  theme_minimal(base_size = 16) +
+  ggtitle("Missing data imputed by\nGaussian Imputation") +
   geom_point(aes(x = 30, y = 30, color = "new_category"), size = 5, show.legend = TRUE) +
   scale_color_manual(name = "", 
                      values = c("FALSE" = "#0D3B66", 
@@ -80,7 +80,7 @@ p3 <- ggplot(dat_full, aes(x = X1, y = X2, col = missing)) +
   geom_point() +
   scale_color_manual(values = c("#0D3B66", "springgreen3"),
                      name = "", labels = c("observed", "missing")) +
-  theme_minimal(base_size = 14) +
+  theme_minimal(base_size = 16) +
   ggtitle("True data") +
   theme(legend.position = "none")
 
