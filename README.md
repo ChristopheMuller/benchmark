@@ -53,6 +53,5 @@ renv::restore()
 
 If you use this code or findings in your own work, please cite:
 
-....
-
+Grzesiak, K., Muller, C., Josse, J., & Näf, J. (2025). Do we Need Dozens of Methods for Real World Missing Value Imputation?. arXiv preprint arXiv:2511.04833.
 
