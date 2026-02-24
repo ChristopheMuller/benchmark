@@ -8,5 +8,5 @@
 # targets::tar_make()
 # !!!! python is not working for this plan
 print(Sys.time())
-targets::tar_make_clustermq(workers = 7)
+targets::tar_make_clustermq(workers = 10)
 print(Sys.time())

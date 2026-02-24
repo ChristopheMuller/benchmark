@@ -1,17 +1,4 @@
 
-load_imputations_env <- function() {
-  library(imputomics)
-  library(miceDRF)
-  library(ImputeRobust)
-  library(mice)
-  library(glmnet)
-  library(CALIBERrfimpute)
-  
-  source("python/python_imputation_functions.R")
-  
-  targets::tar_source()
-}
-
 
 check_time_error <- function(imputed) {
   grepl("timeout_threshError", imputed[[1]]) |
@@ -40,7 +27,7 @@ safe_impute <- function(missing_data_set,
     imputed <- try({ 
       callr::r(
         function(data, func, load_imputations_env) {
-          load_imputations_env()
+          load_imputations_env
           
           start_time <- Sys.time()
           
@@ -78,16 +65,16 @@ safe_impute <- function(missing_data_set,
 
 
 impute <- function(dataset_id, missing_data_set, imputing_function, 
-                   timeout_thresh = 600, n_attempts = 3, var_type, case) {
+                   timeout_thresh = 600, n_attempts = 3, case, 
+                   load_imputations_env) {
   
-  load_imputations_env()
+  load_imputations_env
   
   if(case %in% c("categorical", "incomplete_categorical")) {
     cat_columns <- which(sapply(missing_data_set, is.factor))
     unique_categoricals <- lapply(cat_columns, function(i) {
       as.numeric(attr(factor(as.numeric(missing_data_set[, i])), "levels"))
     })
-    missing_data_set <- pre_process(missing_data_set, imputing_function, var_type)
   }
   
   imputing_function <- get(imputing_function)
@@ -165,44 +152,7 @@ validate_imputation <- function(imputed, missing_data_set) {
 
 
 
-pre_process <- function(missing_data_set, imputing_function, var_type) {
-  
-  factor_cols <- sapply(missing_data_set, is.factor)
-  
-  if (var_type == "Numeric") {
-    missing_data_set[factor_cols] <- lapply(missing_data_set[factor_cols], as.numeric)
-    
-    missing_data_set[, !sapply(missing_data_set, is.numeric)] <- as.numeric(missing_data_set[, !sapply(missing_data_set, is.numeric)])
-  } else {
-    # converts into numeric to ensure the same levels after imputation
-    missing_data_set[factor_cols] <- lapply(missing_data_set[factor_cols], factor_to_numeric_to_factor)
-  }
-  
-  missing_data_set
-}
-
-
 post_process <- function(imputed) {
   imputed
 }
-
-
-to_numeric <- function(x) {
-  if(is.factor(x)) {
-    factor_to_numeric(x)
-  } else {
-    as.numeric(x)
-  }
-}
-
-
-factor_to_numeric <- function(x) {
-  as.numeric(levels(x))[x]
-}
-
-factor_to_numeric_to_factor <- function(x) {
-  as.factor(as.numeric(x))
-}
-
-
 

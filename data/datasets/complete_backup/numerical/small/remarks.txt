@@ -1,3 +1,0 @@
-datasets that are complete-numerical, but
-* less than 200 rows, or 
-* less than 4 columns

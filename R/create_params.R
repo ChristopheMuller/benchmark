@@ -2,30 +2,28 @@
 library(dplyr)
 library(tools)
 
-create_params <- function(path_to_complete_datasets,
-                          path_to_incomplete_datasets,
-                          path_to_categorical_datasets,
-                          path_to_incomplete_categorical_datasets,
+create_params <- function(complete_numerical,
+                          complete_categorical,
+                          incomplete_numerical,
+                          incomplete_categorical,
                           path_to_amputed,
                           path_to_imputed,
                           amputation_mechanisms,
                           amputation_reps,
                           missing_ratios,
-                          imputation_methods,
-                          imputation_categorical) {
-
+                          imputation_methods) {
+  
   # completed
-  c_datasets <- list.files(path_to_complete_datasets, full.names = TRUE)
+  c_datasets <- complete_numerical
+
+  # categorical
+  cat_datasets <- complete_categorical
   
   # incompleted
-  inc_datasets <- list.files(path_to_incomplete_datasets, full.names = TRUE)
-  
-  # categorical
-  cat_datasets <- list.files(path_to_categorical_datasets, full.names = TRUE)
+  inc_datasets <- incomplete_numerical
   
   # incompleted categorical
-  inc_cat_datasets <- list.files(path_to_incomplete_categorical_datasets, 
-                                 full.names = TRUE)
+  inc_cat_datasets <- incomplete_categorical
   
   # create grids of amputation parameters
   params_complete <- expand.grid(mechanism = amputation_mechanisms, 
@@ -61,11 +59,7 @@ create_params <- function(path_to_complete_datasets,
     cross_join(imputation_methods) %>% 
     mutate(imputed_id = paste0(method, ".", amputed_id)) %>% 
     mutate(filepath_imputed = paste0(path_to_imputed, imputed_id, ".RDS")) %>% 
-    select(set_id, mechanism, case, method, imputation_fun, amputed_id, imputed_id, everything()) %>% 
-    filter(case == "categorical" & imputation_fun %in% pull(imputation_categorical, imputation_fun) |
-             case == "incomplete_categorical" & imputation_fun %in% pull(imputation_categorical, imputation_fun) |
-             !(case %in% c("categorical", "incomplete_categorical"))) %>% 
-    left_join(imputation_categorical, by="imputation_fun") 
+    select(set_id, mechanism, case, method, imputation_fun, amputed_id, imputed_id, everything())
 }
 
 
