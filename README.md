@@ -1,57 +1,135 @@
 
 # Benchmarking Missing Data Imputation Methods
 
-This repository contains the full pipeline for benchmarking a wide range of missing data imputation methods on both numerical and mixed-type datasets, as presented in our study.
 
-### Repository Structure
+## Overview
 
-``` graphql
-.
-├── data/                   # Raw and preprocessed datasets & simulation parameters
-├── R/                      # Core R scripts for simulation, evaluation and imputation
-├── python/                 # Core python scripts for imputation
-├── renv/                   # R environment snapshot (created with renv)
-├── results/                # Summary files, additional analysis
-├── output/                 # Timings, logs
-├── figures/                # Final figures used in the manuscript
-├── README.md               # This file
-└── renv.lock               # Exact package versions used
+This repository contains code for the research project accompanying the article:
 
-```
+> Grzesiak, K., Muller, C., Josse, J., & Näf, J. (2025).  
+> "Do we Need Dozens of Methods for Real World Missing Value Imputation?"  
+> *arXiv preprint arXiv:2511.04833*
 
 
-### Overview
+This repository contains the full pipeline for benchmarking a wide range of missing data imputation methods on both numerical and mixed-type datasets, as presented in our study. If you use this code for benchmarking, comparison, or as part of published research, please cite the above paper.
 
-We evaluate 74 imputation methods under various missingness mechanisms (MCAR, MAR, MNAR), missingness ratios, and data types. The pipeline is modular, reproducible, and includes:
+The code runs a full benchmark pipeline for missing value imputation on multiple datasets, including:
 
-- Support for numerical and mixed-type datasets,
+- Amputation (artificial missingness),
+- Imputation using custom R or Python functions,
+- Evaluation of imputation performance.
 
-- Evaluation using multiple metrics (e.g., standardized Energy distance),
 
-- Recording of runtime and stability (success/failure),
+## 1. Prerequisites
 
-- Aggregation and visualization of results.
+### 1.1 R Environment
 
-### Installation
-
-1. Clone the repository:
-
-``` bash
-git clone https://github.com/ChristopheMuller/benchmark
-cd benchmark
-```
-
-2. Open R and restore the environment using `renv`:
+We recommend using **renv** for reproducibility:
 
 ```r
-install.packages("renv")
+# Restore the environment (installs packages specified in renv.lock)
 renv::restore()
 ```
-3, ...
 
-### Citation
 
-If you use this code or findings in your own work, please cite:
+###  1.2 Optional Python Integration
 
-Grzesiak, K., Muller, C., Josse, J., & Näf, J. (2025). Do we Need Dozens of Methods for Real World Missing Value Imputation?. arXiv preprint arXiv:2511.04833.
+If you don’t want to use Python, you can skip this section. If you want to use Python-based imputation methods:
+
+1. Create a virtual environment in ./.venv using the provided scripts:
+
+```r
+# Windows
+system("./python/windows_setup.sh")  
+
+# Linux/macOS
+system("./python/linux_setup.sh")
+```
+
+2. Activate the environment in R:
+
+```r
+reticulate::use_virtualenv("./.venv", required = TRUE)
+```
+3. Python functions can be loaded with:
+
+```r
+source("python/python_imputation_functions.R")
+```
+
+## 2. Preparing Custom Imputation Methods
+
+1. Place each custom method in a separate file inside ./my_methods/.
+
+- The file name should match the method name.
+
+- The imputation function must start with `impute_`. Example: **Method name:** `nice_imputation`, **File:** `nice_imputation.R`, **Function:** `impute_nice_imputation()`.
+
+2. Files may contain additional helper functions.
+Only the `impute_` function will be used as the imputation method.
+
+3. Validate methods:
+
+```r
+validate_my_methods()          # checks naming and presence of impute_ functions
+collect_my_methods()           # lists all methods found
+```
+
+## 3. Dataset Structure
+
+Datasets are organized as:
+
+- `data/datasets/complete/` — complete numerical datasets
+
+- `data/datasets/categorical/` — complete categorical datasets
+
+- `data/datasets/incomplete/` — incomplete numerical datasets
+
+- `data/datasets/incomplete_categorical/` — incomplete categorical datasets
+
+You can inspect dataset properties with:
+
+```r
+readRDS("./data/datasets/sets_dim.RDS")
+```
+
+#### Note on Categorical Data
+
+- If your method does not support categorical variables, remove such datasets before running the benchmark.
+
+- If your method requires additional preprocessing of categorical columns (e.g., one-hot encoding, ordinal encoding), handle it inside the imputation function.
+
+## 4. Benchmark Parameters
+
+1. Amputation:
+
+- Mechanisms
+- Missing ratios
+- Replicates
+
+2. Imputation:
+
+- Timeout [in seconds],
+- Max attempts on failure,
+
+Parameters are saved in data/params.RDS.
+
+## 5. Running the Benchmark
+
+Edit the file `run.R` according to your needs before running the benchmark. 
+Then run 
+
+```sh
+Rscript run.R
+```
+
+
+## 6. Output
+
+- Amputed datasets: `./results/amputed/`,
+- Imputed datasets: `./results/imputed/`,
+- Summary files: `./results/amputation_summary.RDS` and `./results/imputation_summary.RDS`.
+
+
+
 
