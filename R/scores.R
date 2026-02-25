@@ -1,35 +1,116 @@
 
+# ------------------------------------------------------------- IMPLEMENTATIONS
+
+mae <- function(original_data, imputed_data, amputed_data) {
+  observed <- original_data[is.na(amputed_data)]
+  imputed <- imputed_data[is.na(amputed_data)]
+  mean(abs(observed - imputed))
+}
+
+rmse <- function(original_data, imputed_data, amputed_data) {
+  observed <- X_observed[is.na(amputed_data)]
+  imputed <- imputed_data[is.na(amputed_data)]
+  sqrt(mean((observed - imputed)^2))
+}
+
+nrmse <- function(original_data, imputed_data, amputed_data) {
+  observed <- X_observed[is.na(amputed_data)]
+  imputed <- imputed_data[is.na(amputed_data)]
+  sqrt(mean((observed - imputed)^2) / var(observed))
+}
+
+energy <- function(original_data, imputed_data, ...) {
+  safe_score(
+    miceDRF::energy_dist(X = original_data, X_imp = imputed_data),
+    original_data,
+    imputed_data
+  )  
+}
+
+energy_std <- function(original_data, imputed_data, ...) {
+  safe_score({
+    scaled_original <- scale(original_data)
+    
+    scaled_imputed <- sapply(1:ncol(imputed_data), function(i) {
+      (imputed_data[, i] - attr(scaled_original, "scaled:center")[i])/ 
+        attr(scaled_original, "scaled:scale")[i]
+    })
+    
+    miceDRF::energy_dist(X = scaled_original, X_imp = scaled_imputed)
+  }, original_data, imputed_data)
+}
+
+feature_wise_wasserstein <- function(original_data, imputed_data, ...) {
+  safe_score({
+    mean(sapply(1:ncol(original_data), function(ith_col) 
+      transport::wasserstein1d(as.matrix(original_data)[, ith_col], 
+                               as.matrix(imputed_data)[, ith_col])), na.rm = TRUE)
+  }, original_data, imputed_data)
+}
+
+KLD <- function(original_data, imputed_data, ...) {
+  safe_score({ 
+    median(FNN::KL.dist(as.matrix(original_data), 
+                        as.matrix(imputed_data), 
+                        floor(sqrt(nrow(original_data)))), na.rm = TRUE)
+  }, original_data, imputed_data)
+}
+
+entropic_wasserstein <- function(original_data, imputed_data, ...) {
+  safe_score({ 
+    T4transport::sinkhorn(as.matrix(original_data), 
+                          as.matrix(imputed_data), 
+                          lambda = 1)$distance
+  }, original_data, imputed_data)
+}
+
+
+sliced_wasserstein <- function(original_data, imputed_data, ...) {
+  safe_score({ 
+    T4transport::swdist(as.matrix(original_data), 
+                        as.matrix(imputed_data))$distance
+  }, original_data, imputed_data)
+}
+
+# ------------------------------------------------------------- CALCULATE SCORES
+
+
 calculate_scores <- function(imputed, amputed, imputation_fun, multiple, 
                              imputed_id, timeout_thresh, filepath_original, 
-                             case, var_type = NULL) {
+                             case, var_type = NULL, scores = NULL) {
   
   imputed_data <- imputed[["imputed"]]
   res <- imputed[["res"]]
   
   if(!is.na(res[["error"]])) {
-    return(cross_join(res, data.frame(measure = c("mae", "rmse", "nrmse", 
-                                                  "rsq", "ccc", "energy", 
-                                                  "energy_std", "IScore", 
-                                                  "IScore_cat"),
-                                      score = NA)))
+    error_measures <- switch (case, 
+                              complete = scores,
+                              categorical = c("energy", "energy_std"),
+                              incomplete = c("IScore", "IScore_scaled"),
+                              incomplete_categorical = "IScore_cat")
+    
+    return(cross_join(res, data.frame(measure = error_measures, score = NA)))
   }
   
   original_data <- readRDS(filepath_original)
   
-  scores <- switch(
+  scores_res <- switch(
     case,
+    # complete:
     complete = scores_for_complete(original_data = original_data, 
                                    amputed_data = amputed, 
                                    imputed_data = imputed_data,
-                                   imputation_fun = imputation_fun),
+                                   imputation_fun = imputation_fun,
+                                   scores = scores),
+    categorical = scores_for_categorical(original_data = original_data, 
+                                         imputed_data = imputed_data),
+    # incomplete:
     incomplete = scores_for_incomplete(original_data = original_data, 
                                        imputed_data = imputed_data, 
                                        imputation_fun = imputation_fun,
                                        multiple = multiple,
                                        timeout_thresh = timeout_thresh,
                                        case=case, var_type = var_type),
-    categorical = scores_for_categorical(original_data = original_data, 
-                                         imputed_data = imputed_data),
     incomplete_categorical = scores_for_incomplete(original_data = original_data, 
                                                    imputed_data = imputed_data, 
                                                    imputation_fun = imputation_fun,
@@ -39,17 +120,7 @@ calculate_scores <- function(imputed, amputed, imputation_fun, multiple,
   )
   
   res %>% 
-    cross_join(scores)
-}
-
-
-
-summarize_imputations <- function(all_scores, params) {
-  
-  params %>% 
-    left_join(all_scores, by = "imputed_id") %>% 
-    dplyr::select(set_id, mechanism, ratio, rep, case, method, imputation_fun, 
-                  time, attempts, error, measure, score)
+    cross_join(scores_res)
 }
 
 
@@ -75,104 +146,33 @@ scores_for_categorical <- function(original_data, imputed_data) {
   # original_data <- one_hot_encoding(original_data)
   # imputed_data <- one_hot_encoding(imputed_data)
   
-  energy <- as.numeric(miceDRF::energy_dist(X = original_data, 
-                                            X_imp = imputed_data))
-  scaled_original <- scale(original_data)
+  energy_val <- energy(original_data, imputed_data)
   
-  scaled_imputed <- sapply(1:ncol(imputed_data), function(i) {
-    (imputed_data[, i] - attr(scaled_original, "scaled:center")[i])/ 
-      attr(scaled_original, "scaled:scale")[i]
-  })
+  energy_std_val <- energy_std(original_data, imputed_data)
   
-  energy_std <- as.numeric(miceDRF::energy_dist(X = scaled_original, 
-                                                X_imp = scaled_imputed))
-  
-  data.frame(measure = c("energy", "energy_std"), score = c(energy, energy_std))
+  data.frame(measure = c("energy", "energy_std"), 
+             score = c(energy_val, energy_std_val))
   
 }
 
 
-one_hot_encoding <- function(dat) {
-  data.frame(mltools::one_hot(data.table::as.data.table(dat)))
-}
-
-
-
-
-scores_for_complete <- function(original_data, amputed_data, 
-                                imputed_data, imputation_fun) {
+scores_for_complete <- function(original_data, amputed_data, imputed_data, 
+                                imputation_fun, scores) {
   
-  imputomics_measures <- imputomics:::calculate_measures(
-    original_data, 
-    amputed_data, 
-    imputed_data,
-    measures = c("mae", "rmse", "nrmse", "rsq", "ccc")
-  ) %>% 
-    rename(score = "value")
-  
-  energy <- safe_score(
-    miceDRF::energy_dist(X = original_data, X_imp = imputed_data),
-    original_data,
-    imputed_data
-  )  
-  
-  energy_std <- safe_score({
-    scaled_original <- scale(original_data)
+  lapply(scores, function(ith_score) {
+    value <- get(ith_score)(original_data, imputed_data, amputed_data)
+    name <- ith_score
     
-    scaled_imputed <- sapply(1:ncol(imputed_data), function(i) {
-      (imputed_data[, i] - attr(scaled_original, "scaled:center")[i])/ 
-        attr(scaled_original, "scaled:scale")[i]
-    })
+    data.frame(measure = name,
+               score = value)
     
-    miceDRF::energy_dist(X = scaled_original, X_imp = scaled_imputed)
-  }, original_data, imputed_data)
+  }) %>%  bind_rows()
   
-  feature_wise_wasserstein <- safe_score({
-    mean(sapply(1:ncol(original_data), function(ith_col) 
-      transport::wasserstein1d(as.matrix(original_data)[, ith_col], 
-                               as.matrix(imputed_data)[, ith_col])), na.rm = TRUE)
-  }, original_data, imputed_data)
-  
-  
-  KLD  <- safe_score({ 
-    median(FNN::KL.dist(as.matrix(original_data), 
-                        as.matrix(imputed_data), 
-                        floor(sqrt(nrow(original_data)))), na.rm = TRUE)
-  }, original_data, imputed_data)
-  
-  entropic_wasserstein <- safe_score({ 
-    T4transport::sinkhorn(as.matrix(original_data), 
-                          as.matrix(imputed_data), 
-                          lambda = 1)$distance
-  }, original_data, imputed_data)
-  
-  sliced_wasserstein <- safe_score({ 
-    T4transport::swdist(as.matrix(original_data), 
-                        as.matrix(imputed_data))$distance
-  }, original_data, imputed_data)
-  
-  
-  rbind(imputomics_measures,
-        data.frame(measure = c("energy", "energy_std", "feature_wise_wasserstein", 
-                               "KLD", "entropic_wasserstein", "sliced_wasserstein"), 
-                   score = c(energy, energy_std, feature_wise_wasserstein, 
-                             KLD, entropic_wasserstein, sliced_wasserstein)))
 }
-
-
-
-stop_on_timeout <- function(missing_data_set, imputing_function, timeout_thresh = 600) {
-  R.utils::withTimeout(imputing_function(missing_data_set), 
-                       timeout = timeout_thresh, onTimeout = "error")
-}
-
-
 
 
 scores_for_incomplete <- function(original_data, imputed_data, imputation_fun,
                                   multiple, timeout_thresh, case, var_type) {
-  
-  #calculate IScore here
   
   if(case == "incomplete_categorical") {
     
@@ -181,8 +181,7 @@ scores_for_incomplete <- function(original_data, imputed_data, imputation_fun,
     
     ImpScore <- try({
       miceDRF::Iscore_cat(X = original_data, X_imp = imputed_data, N = 20,
-                          imputation_func = imputation_fun, 
-                          factor_vars = var_type != "Numeric", 
+                          imputation_func = imputation_fun, factor_vars = FALSE, 
                           multiple = multiple)
     })
     score_name <- "IScore_cat"
@@ -214,10 +213,35 @@ scores_for_incomplete <- function(original_data, imputed_data, imputation_fun,
 }
 
 
+# ---------------------------------------------------------------  HELPERS -----
+
+
+summarize_imputations <- function(all_scores, params) {
+  
+  params %>% 
+    left_join(all_scores, by = "imputed_id") %>% 
+    dplyr::select(set_id, mechanism, ratio, rep, case, method, imputation_fun, 
+                  time, attempts, error, measure, score)
+}
+
 safe_score <- function(expr, original_data, imputed_data) {
   score <- try({
     expr
   })
   score <- ifelse(inherits(score, "try-error"), NA, as.numeric(score))
   score
+}
+
+
+stop_on_timeout <- function(missing_data_set, 
+                            imputing_function, 
+                            timeout_thresh = 600) {
+  R.utils::withTimeout(imputing_function(missing_data_set), 
+                       timeout = timeout_thresh, 
+                       onTimeout = "error")
+}
+
+
+one_hot_encoding <- function(dat) {
+  data.frame(mltools::one_hot(data.table::as.data.table(dat)))
 }
