@@ -17,3 +17,5 @@ cache
 figures/
 *.tex
 *.pdf
+results/amputed/*
+results/imputed/*

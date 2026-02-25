@@ -116,7 +116,7 @@
     },
     "Matrix": {
       "Package": "Matrix",
-      "Version": "1.7-3",
+      "Version": "1.7-4",
       "Source": "Repository",
       "VersionNote": "do also bump src/version.h, inst/include/Matrix/version.h",
       "Date": "2025-03-05",
@@ -1025,7 +1025,7 @@
     },
     "data.table": {
       "Package": "data.table",
-      "Version": "1.17.6",
+      "Version": "1.18.2.1",
       "Source": "Repository",
       "Title": "Extension of `data.frame`",
       "Depends": [
@@ -1702,7 +1702,7 @@
     },
     "gsl": {
       "Package": "gsl",
-      "Version": "2.1-8",
+      "Version": "2.1-9",
       "Source": "Repository",
       "Depends": [
         "R (>= 4.0.0)"
@@ -2206,7 +2206,7 @@
     },
     "lattice": {
       "Package": "lattice",
-      "Version": "0.22-6",
+      "Version": "0.22-9",
       "Source": "Repository",
       "Date": "2024-03-20",
       "Priority": "recommended",
@@ -2381,7 +2381,7 @@
     },
     "mgcv": {
       "Package": "mgcv",
-      "Version": "1.9-1",
+      "Version": "1.9-4",
       "Source": "Repository",
       "Author": "Simon Wood <simon.wood@r-project.org>",
       "Maintainer": "Simon Wood <simon.wood@r-project.org>",
