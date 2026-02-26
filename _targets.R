@@ -258,14 +258,17 @@ if(!exists("complete_categorical")) complete_categorical <- character(0)
 if(!exists("incomplete_numerical")) incomplete_numerical <- character(0) 
 if(!exists("incomplete_categorical")) incomplete_categorical <- character(0) 
 
-complete_numerical <- paste0("./data/datasets/complete/", 
-                             complete_numerical)
-complete_categorical <- paste0("./data/datasets/categorical/", 
-                               complete_categorical)
-incomplete_numerical <- paste0("./data/datasets/incomplete/", 
-                               incomplete_numerical)
-incomplete_categorical <- paste0("./data/datasets/incomplete_categorical/", 
-                                 incomplete_categorical)
+if(length(complete_numerical) > 0)
+  complete_numerical <- paste0("./data/datasets/complete/", complete_numerical)
+
+if(length(complete_categorical) > 0)
+  complete_categorical <- paste0("./data/datasets/categorical/", complete_categorical)
+
+if(length(incomplete_numerical) > 0)
+  incomplete_numerical <- paste0("./data/datasets/incomplete/", incomplete_numerical)
+
+if(length(incomplete_categorical) > 0)
+  incomplete_categorical <- paste0("./data/datasets/incomplete_categorical/", incomplete_categorical)
 
 # CHECK SCORES -----------------------------------------------------------------
 
@@ -297,6 +300,8 @@ imputation_methods <- collect_my_methods()
 
 if(length(c(incomplete_numerical, incomplete_categorical)) > 0) {
   imputation_methods <- check_mi(imputation_methods)
+} else {
+  imputation_methods <- imputation_methods %>% mutate(MI = NA)
 }
 
 # PREPARE PARAMETERS -----------------------------------------------------------

@@ -59,7 +59,7 @@ create_params <- function(complete_numerical,
     cross_join(imputation_methods) %>% 
     mutate(imputed_id = paste0(method, ".", amputed_id)) %>% 
     mutate(filepath_imputed = paste0(path_to_imputed, imputed_id, ".RDS")) %>% 
-    select(set_id, mechanism, case, method, imputation_fun, amputed_id, imputed_id, everything())
+    select(set_id, mechanism, case, method, imputation_fun, MI, amputed_id, imputed_id, everything())
 }
 
 
