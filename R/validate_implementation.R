@@ -90,6 +90,37 @@ collect_my_methods <- function(path = "./my_methods") {
   do.call(rbind, results)
 }
 
+collect_python_methods <- function(file = "./python/python_imputation_functions.R") {
+  
+  if (!file.exists(file)) {
+    stop(sprintf("File '%s' does not exist.", file))
+  }
+  
+  # load into temporary environment
+  env <- new.env()
+  source(file, local = env)
+  
+  # find functions starting with "impute_"
+  fun_names <- ls(env)
+  impute_funs <- fun_names[
+    sapply(fun_names, function(x) {
+      is.function(get(x, envir = env)) && grepl("^impute_", x)
+    })
+  ]
+  
+  if (length(impute_funs) == 0) {
+    message("No imputation functions found in python_imputation_functions.R.")
+    return(data.frame())
+  }
+  
+  data.frame(
+    method = sub("^impute_", "", impute_funs),
+    imputation_fun = impute_funs,
+    stringsAsFactors = FALSE
+  )
+}
+
+
 source_my_methods <- function(path = "./my_methods", envir = .GlobalEnv) {
   
   if (!dir.exists(path)) {
@@ -108,9 +139,31 @@ source_my_methods <- function(path = "./my_methods", envir = .GlobalEnv) {
     source(file, local = envir)
   }
   
-  message("All method files sourced successfully.")
+  message("All R methods files sourced successfully.")
   invisible(NULL)
 }
+
+
+source_python_methods <- function(file = "./python/python_imputation_functions.R",
+                                  envir = .GlobalEnv) {
+  
+  if (!file.exists(file)) {
+    stop(sprintf("File '%s' does not exist.", file))
+  }
+  
+  message(sprintf("Sourcing: %s", basename(file)))
+  source(file, local = envir)
+  
+  message("Python imputation functions sourced successfully.")
+  invisible(NULL)
+}
+
+
+
+
+
+
+
 
 
 

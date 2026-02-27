@@ -28,6 +28,17 @@ library(parallel)
 library(ggplot2)
 library(patchwork)
 
+################################################## Your first steps? ###########
+
+# If you're just starting, please, run the line below to install all the 
+# dependencies of the benchmark.
+#
+# renv::restore()
+#
+# Note: It's just some packages installation - you don't have to do this step 
+# every time.
+
+
 ################################################################################
 ################################## BENCHMARK FUNCTIONS - DO NOT CHANGE  ########
 ################################################################################
@@ -50,7 +61,16 @@ tar_source() # loading source functions for benchmark
 #   system("./python/linux_setup.sh")    # on Linux/macOS
 #
 # After setting up the virtual environment, activate it with:
-#   reticulate::use_virtualenv("./.venv", required = TRUE)
+# reticulate::use_virtualenv("./venv", required = TRUE)
+#
+# reticulate::py_config() # check if python path is correct
+#
+# Check here if pip works for venv. Run the following lines
+# reticulate::py_run_string("import sys; print(sys.executable)")
+# reticulate::py_run_string("import pip; print(pip.__version__)")
+
+# To check project environment run:
+# check_project_environment()
 
 
 # ------------------------------------------------------------ ENVIRONMENT -----
@@ -62,12 +82,13 @@ tar_source() # loading source functions for benchmark
 # 
 # Example: loading the 'mice' package
 
-load_imputations_env <- {
+load_imputations_env <- function() {
   
   library(mice)  # example
   
-  # If you want to use Python-based imputation functions, run the following line:
-  # source("python/python_imputation_functions.R")
+  # If you want to use Python-based imputation functions, uncomment the following lines:
+  reticulate::use_virtualenv("./venv", required = TRUE)
+  source("python/python_imputation_functions.R")
   
 }
 
@@ -87,13 +108,29 @@ load_imputations_env <- {
 # However, only the function whose name starts with "impute_" will be used 
 # as the imputation method.
 #
-#
 # To validate custom imputation methods in ./my_methods/. please run:
 validate_my_methods()
 #
 # Methods found :
 collect_my_methods() # check if all the methods you'd like to run are here
 
+
+# ============ PYTHON (OPTIONAL) ===============================================
+
+# If you're using python, place the imputation functions in the files:
+#
+# - python_imputation_functions.R  # R wrapper (following the guidline above)
+# - python_imputation_functions.py # python imputation
+
+# Place all functions in these two files. Make sure that the R wrappers 
+# containing the imputation methods follow the specified conventions (as shown 
+# in the examples) and that their names start with "impute_".
+
+# If everything is correct, you should see all the python methods after running:
+# collect_python_methods()
+
+# If everything is correct, change the object below to TRUE :)
+use_python_imputations <- TRUE
 
 ################################################################################
 #################################################  PARAMETERS  #################
@@ -238,6 +275,11 @@ incomplete_categorical <- c("boys.RDS")
 # Any required data transformations should be handled internally by the
 # method implementation.
 
+#======================= That's it! Enjoy your imputation! =====================
+
+# To run the benchmark you can run the ---run.R--- script. Don't hesitate to 
+# change the number of workers depending on your machine!
+
 ################################################################################
 ######################## SIMULATION STARTS HERE ################################
 ##################### DO NOT CHANGE THE CODE BELOW ############################# 
@@ -259,16 +301,20 @@ if(!exists("incomplete_numerical")) incomplete_numerical <- character(0)
 if(!exists("incomplete_categorical")) incomplete_categorical <- character(0) 
 
 if(length(complete_numerical) > 0)
-  complete_numerical <- paste0("./data/datasets/complete/", complete_numerical)
+  complete_numerical <- paste0("./data/datasets/complete/", 
+                               complete_numerical)
 
 if(length(complete_categorical) > 0)
-  complete_categorical <- paste0("./data/datasets/categorical/", complete_categorical)
+  complete_categorical <- paste0("./data/datasets/categorical/", 
+                                 complete_categorical)
 
 if(length(incomplete_numerical) > 0)
-  incomplete_numerical <- paste0("./data/datasets/incomplete/", incomplete_numerical)
+  incomplete_numerical <- paste0("./data/datasets/incomplete/", 
+                                 incomplete_numerical)
 
 if(length(incomplete_categorical) > 0)
-  incomplete_categorical <- paste0("./data/datasets/incomplete_categorical/", incomplete_categorical)
+  incomplete_categorical <- paste0("./data/datasets/incomplete_categorical/", 
+                                   incomplete_categorical)
 
 # CHECK SCORES -----------------------------------------------------------------
 
@@ -298,11 +344,21 @@ source_my_methods()
 # collect custom imputation methods
 imputation_methods <- collect_my_methods()
 
+# check python methods:
+if(use_python_imputations) {
+  source_python_methods()
+  imputation_methods <- rbind(imputation_methods, collect_python_methods())
+} else {
+  message("No python usage in this benchmark!")
+}
+
+
 if(length(c(incomplete_numerical, incomplete_categorical)) > 0) {
   imputation_methods <- check_mi(imputation_methods)
 } else {
   imputation_methods <- imputation_methods %>% mutate(MI = NA)
 }
+
 
 # PREPARE PARAMETERS -----------------------------------------------------------
 
@@ -360,7 +416,7 @@ imputed_datasets <- tar_map(
         timeout_thresh = timeout_thresh,
         n_attempts = n_attempts,
         case = case,
-        load_imputations_env = load_imputations_env
+        load_imputations_env = load_imputations_env()
       )
     }
   ),

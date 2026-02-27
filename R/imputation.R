@@ -27,7 +27,7 @@ safe_impute <- function(missing_data_set,
     imputed <- try({ 
       callr::r(
         function(data, func, load_imputations_env) {
-          load_imputations_env
+          load_imputations_env()
           
           start_time <- Sys.time()
           
