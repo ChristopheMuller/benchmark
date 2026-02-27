@@ -130,7 +130,7 @@ collect_my_methods() # check if all the methods you'd like to run are here
 # collect_python_methods()
 
 # If everything is correct, change the object below to TRUE :)
-use_python_imputations <- TRUE
+use_python_imputations <- FALSE
 
 ################################################################################
 #################################################  PARAMETERS  #################
