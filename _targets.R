@@ -62,6 +62,7 @@ tar_source() # loading source functions for benchmark
 #
 # After setting up the virtual environment, activate it with:
 # reticulate::use_virtualenv("./venv", required = TRUE)
+# reticulate::use_python()
 #
 # reticulate::py_config() # check if python path is correct
 #
