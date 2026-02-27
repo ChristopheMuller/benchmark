@@ -1,3 +1,6 @@
+# put all the dependencies here:
+
+library(mice) # example
 
 # this is an example
 # the name of the imputing functioin or it's wrapper should start wth "impute_"

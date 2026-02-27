@@ -62,7 +62,7 @@ tar_source() # loading source functions for benchmark
 #
 # After setting up the virtual environment, activate it with:
 # reticulate::use_virtualenv("./venv", required = TRUE)
-# reticulate::use_python()
+# reticulate::use_
 #
 # reticulate::py_config() # check if python path is correct
 #
@@ -72,27 +72,6 @@ tar_source() # loading source functions for benchmark
 
 # To check project environment run:
 # check_project_environment()
-
-
-# ------------------------------------------------------------ ENVIRONMENT -----
-
-# Set up the environment for imputation
-#
-# Load required R packages and any other dependencies needed for your imputation 
-# methods as an expression named "load_imputations_env".
-# 
-# Example: loading the 'mice' package
-
-load_imputations_env <- function() {
-  
-  library(mice)  # example
-  
-  # If you want to use Python-based imputation functions, uncomment the following lines:
-  reticulate::use_virtualenv("./venv", required = TRUE)
-  source("python/python_imputation_functions.R")
-  
-}
-
 
 # ------------------------------------------------------------- IMPUTATION -----
 # 
@@ -115,6 +94,23 @@ validate_my_methods()
 # Methods found :
 collect_my_methods() # check if all the methods you'd like to run are here
 
+
+# PREPARE ENVIRONMENT ----------------------------------------------------------
+
+# The following function will source all the imputation dependencies in a separate
+# R session for stability. Do not change it unless you're using python
+
+load_imputations_env <- function() {
+  
+  # source benchmark functions
+  targets::tar_source()
+  # source R methods
+  source_my_methods()
+  
+  # source python methods
+  # source("python/python_imputation_functions.R") # uncomment for python
+  
+}
 
 # ============ PYTHON (OPTIONAL) ===============================================
 
@@ -329,9 +325,9 @@ invalid_scores <- setdiff(scores, allowed_scores)
 valid_scores <- setdiff(scores, invalid_scores)
 
 if (length(invalid_scores) > 0)  {
-    warning(sprintf("Invalid score(s): %s\nAllowed scores are: %s",
-               paste(invalid_scores, collapse = ", "),
-               paste(allowed_scores, collapse = ", ")), call. = FALSE)
+  warning(sprintf("Invalid score(s): %s\nAllowed scores are: %s",
+                  paste(invalid_scores, collapse = ", "),
+                  paste(allowed_scores, collapse = ", ")), call. = FALSE)
 }
 
 if(length(valid_scores) == 0) scores <- "energy"
