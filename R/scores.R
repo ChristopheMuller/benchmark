@@ -8,13 +8,13 @@ mae <- function(original_data, imputed_data, amputed_data) {
 }
 
 rmse <- function(original_data, imputed_data, amputed_data) {
-  observed <- X_observed[is.na(amputed_data)]
+  observed <- original_data[is.na(amputed_data)]
   imputed <- imputed_data[is.na(amputed_data)]
   sqrt(mean((observed - imputed)^2))
 }
 
 nrmse <- function(original_data, imputed_data, amputed_data) {
-  observed <- X_observed[is.na(amputed_data)]
+  observed <- original_data[is.na(amputed_data)]
   imputed <- imputed_data[is.na(amputed_data)]
   sqrt(mean((observed - imputed)^2) / var(observed))
 }
