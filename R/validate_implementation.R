@@ -1,7 +1,7 @@
 validate_my_methods <- function(path = "./my_methods") {
   
   if (!dir.exists(path)) {
-    stop("Directory ./my_methods/ does not exist.")
+    stop(sprintf("Directory %s does not exist.", path))
   }
   
   files <- list.files(path, pattern = "\\.[Rr]$", full.names = TRUE)
@@ -43,7 +43,7 @@ validate_my_methods <- function(path = "./my_methods") {
 collect_my_methods <- function(path = "./my_methods") {
   
   if (!dir.exists(path)) {
-    stop("Directory ./my_methods/ does not exist.")
+    stop(sprintf("Directory %s does not exist.", path))
   }
   
   files <- list.files(path, pattern = "\\.[Rr]$", full.names = TRUE)
@@ -124,7 +124,7 @@ collect_python_methods <- function(file = "./python/python_imputation_functions.
 source_my_methods <- function(path = "./my_methods", envir = .GlobalEnv) {
   
   if (!dir.exists(path)) {
-    stop("Directory ./my_methods/ does not exist.")
+    stop(sprintf("Directory %s does not exist.", path))
   }
   
   files <- list.files(path, pattern = "\\.[Rr]$", full.names = TRUE)
