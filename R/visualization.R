@@ -98,23 +98,36 @@ plot_energy_time_ranking <- function(data, measure_to_plot, success_breaks) {
   
   dat_plt <- data %>% 
     filter(measure == measure_to_plot, !is.na(measure)) %>% 
+    
+    # Calculate global success rate per method
     group_by(method, new) %>% 
     mutate(`success [%]` = mean(is.na(error)) * 100) %>% 
+    
+    # 1. Average score and time per case (set_id x mechanism x ratio)
     group_by(method, new, set_id, mechanism, ratio) %>% 
-    mutate(score = mean(score, na.rm = TRUE), time = mean(time, na.rm = TRUE)) %>% 
-    ungroup() %>% 
+    summarise(
+      score_mean = mean(score, na.rm = TRUE), 
+      time = mean(time, na.rm = TRUE),
+      `success [%]` = first(`success [%]`),
+      .groups = "drop"
+    ) %>% 
+    mutate(score_mean = ifelse(is.nan(score_mean), NA, score_mean)) %>% 
+    
+    # 2. Rank methods within each case based on the mean score
     group_by(set_id, mechanism, ratio) %>% 
     mutate(
-      n_successful = sum(!is.na(score)),
+      n_successful = sum(!is.na(score_mean)),
       ranking = {
-        r <- rep(NA, length(score))
-        v <- !is.na(score)
-        r[v] <- rank(score[v])
+        r <- rep(NA, length(score_mean))
+        v <- !is.na(score_mean)
+        r[v] <- rank(score_mean[v])
         r[!v] <- n_successful[!v] + 1
         r
       }
     ) %>% 
     ungroup() %>% 
+    
+    # 3. Aggregate for the final plot
     group_by(method, new) %>% 
     reframe(
       mean_ranking = mean(ranking, na.rm = TRUE),
@@ -164,4 +177,61 @@ plot_energy_time_ranking <- function(data, measure_to_plot, success_breaks) {
   p_final <- p_time + p_box + patchwork::plot_layout(guides = "collect", widths = c(1, 1.5)) & theme(legend.position = 'bottom')
   
   return(p_final)
+}
+
+#' Plot Aggregated Ranking Heatmap
+#' @param data The combined imputation summary dataframe
+#' @param case_to_plot The specific case string (e.g., "complete")
+#' @param measure_to_plot The specific measure string (e.g., "energy")
+plot_ranking_heatmap <- function(data, case_to_plot, measure_to_plot) {
+  n_methods <- length(unique(data$method))
+  
+  p_heatmap <- data %>% 
+    filter(case == case_to_plot, measure == measure_to_plot) %>%
+    select(-c(time, attempts, error, imputation_fun)) %>% 
+    unique() %>%
+    mutate(score = ifelse(is.nan(score), NA, score)) %>%
+    
+    # 1. Calculate the mean score across reps for each specific case and method
+    group_by(set_id, mechanism, ratio, method, new) %>%
+    summarise(score_mean = mean(score, na.rm = TRUE), .groups = "drop") %>%
+    mutate(score_mean = ifelse(is.nan(score_mean), NA, score_mean)) %>% 
+    
+    # 2. Rank methods within each case (set_id x mechanism x ratio) based on the mean score
+    group_by(set_id, mechanism, ratio) %>%
+    mutate(ranking = {
+      r <- rep(NA, length(score_mean))
+      valid <- !is.na(score_mean)
+      r[valid] <- rank(score_mean[valid])
+      r[is.na(r)] <- n_methods
+      r
+    }) %>%
+    ungroup() %>%
+    
+    # 3. Create the distinct column ID for every combination
+    mutate(case_id = paste(set_id, mechanism, ratio, sep = "_")) %>%
+    
+    # 4. Calculate overall mean ranking to sort the y-axis
+    group_by(method, new) %>%
+    mutate(mean_ranking = mean(ranking, na.rm = TRUE)) %>%
+    ungroup() %>%
+    arrange(desc(new), mean_ranking) %>%
+    mutate(method = factor(method, levels = rev(unique(method)))) %>%
+    
+    # 5. Generate the heatmap
+    ggplot() +
+    geom_tile(aes(x = case_id, y = method, fill = ranking), colour = "black") +
+    geom_text(aes(x = case_id, y = method, label = round(ranking, 1), 
+                  fontface = ifelse(new, "bold", "plain")), size = 3) +
+    facet_grid(ifelse(new, "New", "Benchmark") ~ ., scales = "free_y", space = "free_y") +
+    scale_fill_gradient(low = "darkgreen", high = "white", name = "Rank") +
+    labs(title = paste("Ranking Heatmap:", case_to_plot, "-", measure_to_plot)) +
+    theme_minimal() +
+    theme(
+      axis.text.x = element_text(angle = 90, size = 8, hjust = 1, vjust = 0.5),
+      strip.text.y = element_text(face = "bold", size = 10, angle = 0),
+      strip.background = element_rect(fill = "grey95", color = "black")
+    )
+  
+  return(p_heatmap)
 }

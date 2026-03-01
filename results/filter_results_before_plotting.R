@@ -62,6 +62,11 @@ get_raw_imp_summary <- function() {
 
 
 
+url <- "https://docs.google.com/spreadsheets/d/1rFnJkfpF-YfK04uGa-IzjzZYy-czLQZEiiLOF4hr3_w/edit?gid=448271747#gid=448271747"
+df_methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>%  
+  filter(benchmark) %>%  
+  select(Method, imputation_function) %>%  
+  rename("elegant_name" = "Method", "imputation_fun" = "imputation_function")
 
 ### Case 1 : NUM + COMPLETE
 
@@ -73,9 +78,10 @@ imputation_summary <- imputation_summary %>%
                          "missmda_mifamd_reg", "missmda_mifamd_em",
                          "SVTImpute"))) 
 
-error_summary <- readRDS("./results/comp_errors_num.RDS") %>% 
-  filter(!is.na(measure), !is.na(score)) %>% 
-  merge(methods) %>% 
+
+error_summary <- readRDS("./results/comp_errors_num.RDS") %>%  
+  filter(!is.na(measure), !is.na(score)) %>%  
+  merge(df_methods) %>% 
   mutate(method = elegant_name)
 
 
@@ -126,7 +132,7 @@ imputation_summary <- imputation_summary %>%
 
 error_summary <- readRDS("./results/comp_errors_num.RDS") %>% 
   filter(!is.na(measure), !is.na(score)) %>% 
-  merge(methods) %>% 
+  merge(df_methods) %>% 
   mutate(method = elegant_name) %>% 
   filter(method %in% methods_cat)
 
@@ -141,7 +147,7 @@ imputation_summary <- get_raw_imp_summary()
 
 
 numerical_incomplete <- readRDS("./results/imputation_summary_incomplete_categorical.RDS") %>% 
-  merge(methods) %>% 
+  merge(df_methods) %>% 
   mutate(method = elegant_name)
 
 imputation_summary_incomplete <- rbind(numerical_incomplete,
