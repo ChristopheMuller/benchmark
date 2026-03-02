@@ -1,4 +1,6 @@
 #   THIS IS AN EXAMPLE!
+# Make sure all your python dependencies are installed and imported in the file.
+# To install python package run, for instance: py_install("pandas").
 #
 # import all the dependencies below:
 import pandas as pd

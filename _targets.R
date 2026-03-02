@@ -55,10 +55,15 @@ tar_source() # loading source functions for benchmark
 #
 # If you don't want to use Python, you can ignore this section.
 #
-# To use Python functions, first set up a virtual environment in "./.venv".
-# Depending on your system, run:
+# To use python first link the project to python directory. You can do it simply
+# by running:
+# renv::use_python()  # select the path to python you're going to use!
+#
+# If you don't have any python, please, set up a virtual environment in "./.venv".
+# To do so, depending on your system, run:
 #   system("./python/windows_setup.sh")  # on Windows
 #   system("./python/linux_setup.sh")    # on Linux/macOS
+#   
 #
 # After setting up the virtual environment, activate it with:
 # reticulate::use_virtualenv("./venv", required = TRUE)
@@ -122,7 +127,10 @@ load_imputations_env <- function() {
 # Place all functions in these two files. Make sure that the R wrappers 
 # containing the imputation methods follow the specified conventions (as shown 
 # in the examples) and that their names start with "impute_".
-
+#
+# Make sure all your python dependencies are installed and imported in the file.
+# To install python package run, for instance: py_install("pandas").
+#
 # If everything is correct, you should see all the python methods after running:
 # collect_python_methods()
 
@@ -210,7 +218,7 @@ scores <- c("mae", "energy")
 # - yeast.RDS
 #
 # Example selection:
-complete_numerical <- c("airfoil_self_noise.RDS", "fat.RDS")
+complete_numerical <- c("fat.RDS")
 
 # ---------------------------------
 
@@ -225,7 +233,7 @@ complete_numerical <- c("airfoil_self_noise.RDS", "fat.RDS")
 # - worldcup.RDS
 #
 # Example selection:
-complete_categorical <- c("choccake.RDS", "german.RDS")
+complete_categorical <- c("choccake.RDS")
 
 # -------------------------------
 
@@ -237,7 +245,7 @@ complete_categorical <- c("choccake.RDS", "german.RDS")
 # - pulplignin.RDS
 #
 # Example selection:
-incomplete_numerical <- c("diabetes.RDS", "popmis.RDS")
+incomplete_numerical <- c("diabetes.RDS")
 
 # ----------------------------
 
@@ -353,7 +361,7 @@ if(use_python_imputations) {
 if(length(c(incomplete_numerical, incomplete_categorical)) > 0) {
   imputation_methods <- check_mi(imputation_methods)
 } else {
-  imputation_methods <- imputation_methods %>% mutate(MI = NA)
+  imputation_methods <- mutate(imputation_methods, MI = NA)
 }
 
 
