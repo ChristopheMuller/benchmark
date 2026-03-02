@@ -160,6 +160,14 @@ n_attempts <- 2                             # number of attempts in a single run
 
 # -------------------------------------------------------------- EVALUATION ----
 
+# We provide multiple checks to assess the quality of imputation. However, we 
+# recognize that some methods may modify observed data. To allow this behavior 
+# (and avoid treating it as an error), set the following value to TRUE.
+
+allow_modification <- FALSE
+
+# -------------------------------------------------------------- DATASETS ------
+
 # COMPLETE NUMERICAL DATASETS
 # 
 # Available scores:
@@ -421,7 +429,8 @@ imputed_datasets <- tar_map(
         timeout_thresh = timeout_thresh,
         n_attempts = n_attempts,
         case = case,
-        load_imputations_env = load_imputations_env()
+        load_imputations_env = load_imputations_env,
+        allow_modification = allow_modification
       )
     }
   ),

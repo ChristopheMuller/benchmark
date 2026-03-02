@@ -66,9 +66,9 @@ safe_impute <- function(missing_data_set,
 
 impute <- function(dataset_id, missing_data_set, imputing_function, 
                    timeout_thresh = 600, n_attempts = 3, case, 
-                   load_imputations_env) {
+                   load_imputations_env, allow_modification = FALSE) {
   
-  load_imputations_env
+  load_imputations_env()
   
   if(case %in% c("categorical", "incomplete_categorical")) {
     cat_columns <- which(sapply(missing_data_set, is.factor))
@@ -97,6 +97,8 @@ impute <- function(dataset_id, missing_data_set, imputing_function,
                                  mutate_all(missing_data_set, as.numeric))
     imputed <- post_process(imputed)
     colnames(imputed) <- col_names
+    
+    if(allow_modification & error == "modification") error <- NA
     
     if(case %in% c("categorical", "incomplete_categorical")) {
       error_categorical <- validate_categorical(imputed, unique_categoricals)
