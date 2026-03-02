@@ -20,8 +20,6 @@ impute_my_python_method <- function(missdf, ...) {
 }
 
 
-
-
 # ***************************** small helper ***********************************
 
 # Helper function converting integer columns to double. This is required before 
