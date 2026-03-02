@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.5.0",
+    "Version": "4.5.2",
     "Repositories": [
       {
         "Name": "BioCsoft",
@@ -28,11 +28,8 @@
       }
     ]
   },
-  "Bioconductor": {
-    "Version": "3.22"
-  },
   "Python": {
-    "Version": "3.12.12",
+    "Version": "3.12.11",
     "Type": "virtualenv",
     "Name": "./venv"
   },
@@ -187,8 +184,7 @@
       "URL": "https://github.com/HenrikBengtsson/R.methodsS3",
       "BugReports": "https://github.com/HenrikBengtsson/R.methodsS3/issues",
       "NeedsCompilation": "no",
-      "Repository": "https://packagemanager.posit.co/cran/latest",
-      "Encoding": "UTF-8"
+      "Repository": "CRAN"
     },
     "R.oo": {
       "Package": "R.oo",
@@ -215,8 +211,7 @@
       "URL": "https://henrikbengtsson.github.io/R.oo/, https://github.com/HenrikBengtsson/R.oo",
       "BugReports": "https://github.com/HenrikBengtsson/R.oo/issues",
       "NeedsCompilation": "no",
-      "Repository": "https://packagemanager.posit.co/cran/latest",
-      "Encoding": "UTF-8"
+      "Repository": "CRAN"
     },
     "R.utils": {
       "Package": "R.utils",
@@ -246,8 +241,7 @@
       "URL": "https://henrikbengtsson.github.io/R.utils/, https://github.com/HenrikBengtsson/R.utils",
       "BugReports": "https://github.com/HenrikBengtsson/R.utils/issues",
       "NeedsCompilation": "no",
-      "Repository": "https://packagemanager.posit.co/cran/latest",
-      "Encoding": "UTF-8"
+      "Repository": "CRAN"
     },
     "R6": {
       "Package": "R6",
@@ -2490,7 +2484,6 @@
       "Description": "This package contains miceDRF imputation method and tools for  measuring imputation performance.",
       "License": "GPL-3",
       "Encoding": "UTF-8",
-      "LazyData": "true",
       "URL": "https://github.com/KrystynaGrzesiak/miceDRF, https://krystynagrzesiak.github.io/miceDRF/",
       "BugReports": "https://github.com/KrystynaGrzesiak/miceDRF/issues",
       "Imports": [
@@ -2511,14 +2504,19 @@
       "Language": "en-US",
       "Config/testthat/edition": "3",
       "VignetteBuilder": "knitr",
-      "Author": "Krystyna Grzesiak [aut, ctb] (ORCID: <https://orcid.org/0000-0003-2581-7722>), Jeffrey Näf [aut, cre] (ORCID: ...)",
-      "Maintainer": "Jeffrey Näf <jeffrey@my-sh.ch>",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "miceDRF",
       "RemoteUsername": "KrystynaGrzesiak",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "4db1fcac0b97e09694b3d716a2d96ed01f47abca"
+      "RemotePkgRef": "KrystynaGrzesiak/miceDRF@4db1fcac0b97e09694b3d716a2d96ed01f47abca",
+      "RemoteRef": "4db1fcac0b97e09694b3d716a2d96ed01f47abca",
+      "RemoteSha": "4db1fcac0b97e09694b3d716a2d96ed01f47abca",
+      "NeedsCompilation": "no",
+      "Author": "Krystyna Grzesiak [aut, ctb] (ORCID: <https://orcid.org/0000-0003-2581-7722>), Jeffrey Näf [aut, cre] (ORCID: ...)",
+      "Maintainer": "Jeffrey Näf <jeffrey@my-sh.ch>",
+      "Depends": [
+        "R (>= 4.2.0)"
+      ]
     },
     "minqa": {
       "Package": "minqa",
@@ -2769,7 +2767,10 @@
       "Description": "It provides functions and examples for maximum likelihood estimation for generalized linear mixed models and Gibbs sampler for multivariate linear mixed models with incomplete data, as described in Schafer JL (1997) \"Imputation of missing covariates under a multivariate linear mixed model\". Technical report 97-04, Dept. of Statistics, The Pennsylvania State University.",
       "License": "GPL-3",
       "NeedsCompilation": "yes",
-      "Repository": "CRAN"
+      "Repository": "CRAN",
+      "Depends": [
+        "R (>= 2.10)"
+      ]
     },
     "patchwork": {
       "Package": "patchwork",
@@ -3268,7 +3269,7 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "1.1.5",
+      "Version": "1.1.7",
       "Source": "Repository",
       "Type": "Package",
       "Title": "Project Environments",
@@ -3286,6 +3287,7 @@
         "compiler",
         "covr",
         "cpp11",
+        "curl",
         "devtools",
         "generics",
         "gitcreds",
@@ -3309,7 +3311,7 @@
         "webfakes"
       ],
       "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.2",
+      "RoxygenNote": "7.3.3",
       "VignetteBuilder": "knitr",
       "Config/Needs/website": "tidyverse/tidytemplate",
       "Config/testthat/edition": "3",
