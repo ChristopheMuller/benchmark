@@ -100,23 +100,6 @@ validate_my_methods()
 collect_my_methods() # check if all the methods you'd like to run are here
 
 
-# PREPARE ENVIRONMENT ----------------------------------------------------------
-
-# The following function will source all the imputation dependencies in a separate
-# R session for stability. Do not change it unless you're using python
-
-load_imputations_env <- function() {
-  
-  # source benchmark functions
-  targets::tar_source()
-  # source R methods
-  source_my_methods()
-  
-  # source python methods
-  # source("python/python_imputation_functions.R") # uncomment for python
-  
-}
-
 # ============ PYTHON (OPTIONAL) ===============================================
 
 # If you're using python, place the imputation functions in the files:
@@ -371,6 +354,26 @@ if(length(c(incomplete_numerical, incomplete_categorical)) > 0) {
 } else {
   imputation_methods <- mutate(imputation_methods, MI = NA)
 }
+
+# PREPARE ENVIRONMENT ----------------------------------------------------------
+
+create_environment_setup <- function(use_python_imputations) {
+  use_python_imputations <- isTRUE(use_python_imputations)
+  
+  function(x = NULL) {
+    
+    targets::tar_source() # source benchmark functions
+    
+    source_my_methods()  # source R methods
+    
+    if (use_python_imputations) {
+      source("python/python_imputation_functions.R") # source python methods
+    }
+    invisible(NULL)
+  }
+}
+
+load_imputations_env <- create_environment_setup(use_python_imputations)
 
 
 # PREPARE PARAMETERS -----------------------------------------------------------
