@@ -94,10 +94,10 @@ plot_error_analysis <- function(data) {
 #' @param data The combined imputation summary dataframe
 #' @param measure_to_plot The specific measure string (e.g., "energy")
 #' @param success_breaks Numeric vector of breaks for success percentages
-plot_energy_time_ranking <- function(data, measure_to_plot, success_breaks) {
+plot_energy_time_ranking <- function(data, success_breaks) {
   
   dat_plt <- data %>% 
-    filter(measure == measure_to_plot, !is.na(measure)) %>% 
+    filter(!is.na(measure)) %>% 
     
     # Calculate global success rate per method
     group_by(method, new) %>% 
@@ -183,11 +183,9 @@ plot_energy_time_ranking <- function(data, measure_to_plot, success_breaks) {
 #' @param data The combined imputation summary dataframe
 #' @param case_to_plot The specific case string (e.g., "complete")
 #' @param measure_to_plot The specific measure string (e.g., "energy")
-plot_ranking_heatmap <- function(data, case_to_plot, measure_to_plot) {
-  n_methods <- length(unique(data$method))
+plot_ranking_heatmap <- function(data) {
   
   p_heatmap <- data %>% 
-    filter(case == case_to_plot, measure == measure_to_plot) %>%
     select(-c(time, attempts, error, imputation_fun)) %>% 
     unique() %>%
     mutate(score = ifelse(is.nan(score), NA, score)) %>%
@@ -199,13 +197,16 @@ plot_ranking_heatmap <- function(data, case_to_plot, measure_to_plot) {
     
     # 2. Rank methods within each case (set_id x mechanism x ratio) based on the mean score
     group_by(set_id, mechanism, ratio) %>%
-    mutate(ranking = {
-      r <- rep(NA, length(score_mean))
-      valid <- !is.na(score_mean)
-      r[valid] <- rank(score_mean[valid])
-      r[is.na(r)] <- n_methods
-      r
-    }) %>%
+    mutate(
+      n_successful = sum(!is.na(score_mean)),  # count non-NA mean scores
+      ranking = {
+        r <- rep(NA, length(score_mean))
+        valid <- !is.na(score_mean)
+        r[valid] <- rank(score_mean[valid])
+        r[!valid] <- n_successful[!valid] + 1  # set to last working method + 1
+        r
+      }
+    ) %>%
     ungroup() %>%
     
     # 3. Create the distinct column ID for every combination
@@ -225,7 +226,7 @@ plot_ranking_heatmap <- function(data, case_to_plot, measure_to_plot) {
                   fontface = ifelse(new, "bold", "plain")), size = 3) +
     facet_grid(ifelse(new, "New", "Benchmark") ~ ., scales = "free_y", space = "free_y") +
     scale_fill_gradient(low = "darkgreen", high = "white", name = "Rank") +
-    labs(title = paste("Ranking Heatmap:", case_to_plot, "-", measure_to_plot)) +
+    labs(title = paste("Ranking Heatmap")) +
     theme_minimal() +
     theme(
       axis.text.x = element_text(angle = 90, size = 8, hjust = 1, vjust = 0.5),
