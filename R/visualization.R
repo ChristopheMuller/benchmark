@@ -141,22 +141,32 @@ plot_energy_time_ranking <- function(data, success_breaks) {
   # Extract labels for text formatting
   m_labels <- dat_plt %>% select(method, new) %>% unique() %>% arrange(method)
   
+  # Calculate min time in ms dynamically for the axis break and label
+  min_time_ms <- min(dat_plt$time, na.rm = TRUE) * 1000
+  
   # Time Plot (P1) - LEFT (No y-axis text)
   p_time <- dat_plt %>% 
     group_by(method, new, `success [%]`) %>% 
     summarise(time = mean(time), .groups="drop") %>%
     ggplot(aes(x = method, y = time * 1000, fill = `success [%]`)) +
     geom_col(aes(color = new), width = 0.8, size = 0.6) +
-    scale_color_manual(values = c("TRUE" = "black", "FALSE" = NA), guide = "none") +
+    scale_color_manual(values = c("TRUE" = "blue", "FALSE" = NA), guide = "none") +
     scale_fill_manual(values = get_colors_fractions()) +
-    scale_y_continuous("Time", trans = c("log10", "reverse"), labels = scales::label_log()) +
+    scale_y_continuous(
+      "Time", 
+      trans = c("log10", "reverse"),
+      breaks = c(min_time_ms / 1000, 1, 10, 60, 600, 1800, 3600, 10800) * 1000, 
+      labels = c(paste0(round(min_time_ms), "ms"), "1s", "10s", "1min", "10min", "30min", "1h", "3h")
+    ) +
     coord_flip() + 
     theme_bw() + 
     theme(
       axis.title.y = element_blank(), 
       axis.text.y = element_blank(),  # Hide y-axis text on the far left
       axis.ticks.y = element_blank(), # Hide ticks for a cleaner edge
-      legend.position = "none"
+      legend.position = "none",
+      panel.grid.minor.x = element_blank(),
+      panel.grid.major.x = element_line(color = "black", linetype = "dashed")
     )
 
   # Boxplot (P2) - RIGHT (Y-axis text acts as the middle spine)

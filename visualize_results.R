@@ -3,7 +3,7 @@
 # ==============================================================================
 PATH_FIGURES    <- "./figures/"       
 CASE_TO_PLOT    <- "complete"         
-MEASURE_TO_PLOT <- "energy"            
+MEASURE_TO_PLOT <- "energy_std"            
 
 if (!dir.exists(PATH_FIGURES)) dir.create(PATH_FIGURES, recursive = TRUE)
 
