@@ -14,15 +14,15 @@ get_colors_errors <- function() {
   c("computational" = "#7A4E7E", "modification" = "#A3A725", 
     "timeout" = "#1E9CC2", "missings" = "#3D6649", 
     "modification+wrong_levels" = "orangered3", "wrong_levels" = "gold",
-    "none" = "#EDF2EF", "missings+wrong_levels" = "#FFB6C1"
-  )
+    "none" = "#EDF2EF", "missings+wrong_levels" = "#FFB6C1")
 }
 
 get_labels_errors <- function() {
   c("computational" = "computational", "modification" = "modification", 
     "timeout" = "timeout", "missings" = "missings",     
     "modification+wrong_levels" = "wrong levels & modification", 
-    "wrong_levels" = "wrong levels", "none" = "none" )
+    "wrong_levels" = "wrong levels", "none" = "none" ,
+    "missings+wrong_levels" = "wrong levels & missings")
 }
 
 get_colors_ranks <- function() {
@@ -60,8 +60,8 @@ plot_error_analysis <- function(data) {
     mutate(
       n_attempts = n(),
       error = ifelse(is.na(error), "none", error),
-      error = factor(error, levels = c("computational", "modification", "timeout", "missings", "none"))
-    ) %>% 
+      error = factor(error, levels = c("computational", "modification", "timeout", "missings", "modification+wrong_levels", "missings+wrong_levels", "wrong_levels", "none"))
+      ) %>% 
     rename(`Type of error` = "error") %>% 
     group_by(method, new, `Type of error`) %>% 
     reframe(error_frac = 100 * n() / n_attempts) %>% 
@@ -75,8 +75,14 @@ plot_error_analysis <- function(data) {
     geom_col(aes(x = method_ordered, y = error_frac, fill = `Type of error`, alpha = `Type of error`)) +
     tidytext::scale_x_reordered() +
     facet_grid(~ ifelse(new, "New", "Benchmark"), scales = "free_x", space = "free_x") +
-    scale_fill_manual(name = "Type of error", values = get_colors_errors()) +
-    scale_alpha_manual(values = c("computational" = 1, "modification" = 1, "timeout" = 1, "missings" = 1, "none" = 0.8)) +
+    scale_fill_manual(name = "Type of error", values = get_colors_errors(), labels=get_labels_errors()) +
+    scale_alpha_manual(
+      name = "Type of error", # Must match scale_fill_manual
+      labels = get_labels_errors(), # Must match scale_fill_manual
+      values = c("computational" = 1, "modification" = 1, "timeout" = 1, 
+                 "missings" = 1, "wrong_levels" = 1, "modification+wrong_levels" = 1, 
+                 "missings+wrong_levels" = 1, "none" = 0.8)
+    ) +
     labs(y = "Imputations [%]", x = "Method", title = "Error Frequency Analysis") +
     theme_minimal(base_size = 14) +
     theme(
@@ -141,7 +147,7 @@ plot_energy_time_ranking <- function(data, success_breaks) {
   # Extract labels for text formatting
   m_labels <- dat_plt %>% select(method, new) %>% unique() %>% arrange(method)
   
-  # Calculate min time in ms dynamically for the axis break and label
+  # Calculate min time in ms dynamically for the axis break, label, and limit
   min_time_ms <- min(dat_plt$time, na.rm = TRUE) * 1000
   
   # Time Plot (P1) - LEFT (No y-axis text)
