@@ -5,4 +5,4 @@
 # See https://books.ropensci.org/targets/hpc.html
 # to learn about your options.
 
-targets::tar_make_clustermq(workers = 10)
+targets::tar_make_clustermq(workers = 6)

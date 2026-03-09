@@ -6,7 +6,7 @@ MEASURE_COMPLETE       <- "energy_std"
 MEASURE_INCOMPLETE_NUM <- "IScore"
 MEASURE_INCOMPLETE_CAT <- "IScore_cat"
 
-DATA_TYPE       <- "ALL" # Options: "num", "mixed", "ALL"
+DATA_TYPE       <- "num" # Options: "num", "mixed", "ALL"
 DATA_STATUS     <- "ALL" # Options: "complete", "incomplete", "ALL"
 
 if (!dir.exists(PATH_FIGURES)) dir.create(PATH_FIGURES, recursive = TRUE)
@@ -98,6 +98,17 @@ if (any(c("categorical", "incomplete_categorical") %in% cases_to_plot)) {
     
   imputation_summary <- imputation_summary %>%
     filter(method %in% methods_work_with_cat)
+}
+
+if (any(c("complete", "incomplete") %in% cases_to_plot)) {
+  
+  methods_work_with_num <- imputation_summary %>% 
+    filter(case %in% c("complete", "incomplete")) %>% 
+    pull(method) %>% 
+    unique()
+  
+  imputation_summary <- imputation_summary %>%
+    filter(method %in% methods_work_with_num)
 }
 
 # Raise error if no data to plot
