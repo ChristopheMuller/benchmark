@@ -149,11 +149,11 @@ imputation_summary <- rbind(imputation_summary, error_summary) %>%
 imputation_summary <- get_raw_imp_summary()
 
 
-numerical_incomplete <- readRDS("./results/imputation_summary_incomplete_categorical.RDS") %>% 
+mixed_incomplete <- readRDS("./results/imputation_summary_incomplete_categorical.RDS") %>% 
   merge(methods_df) %>% 
   mutate(method = elegant_name)
 
-imputation_summary_incomplete <- rbind(numerical_incomplete,
+imputation_summary_incomplete <- rbind(mixed_incomplete,
                                        readRDS("./results/imputation_summary_incomplete_numerical.RDS"))
 
 
