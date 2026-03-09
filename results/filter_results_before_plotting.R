@@ -7,18 +7,18 @@ get_raw_imp_summary <- function() {
   
   url <- "https://docs.google.com/spreadsheets/d/1rFnJkfpF-YfK04uGa-IzjzZYy-czLQZEiiLOF4hr3_w/edit?gid=448271747#gid=448271747"
   
-  methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>% 
+  methods_df <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>% 
     filter(benchmark) %>% 
     select(Method, imputation_function) %>% 
     rename("elegant_name" = "Method",
            "imputation_fun" = "imputation_function")
   
   imputation_summary <- readRDS("./results/imputation_summary_M13.RDS") %>% 
-    merge(methods) %>% 
+    merge(methods_df) %>% 
     mutate(method = elegant_name)
   
   imputation_summary_categorical <- readRDS("./results/imputation_summary_complete_categorical.RDS") %>%
-    merge(methods) %>%
+    merge(methods_df) %>%
     mutate(method = elegant_name)
   
   # remove old categorical results and replace with new one
@@ -62,6 +62,15 @@ get_raw_imp_summary <- function() {
 
 
 
+url <- "https://docs.google.com/spreadsheets/d/1rFnJkfpF-YfK04uGa-IzjzZYy-czLQZEiiLOF4hr3_w/edit?gid=448271747#gid=448271747"
+
+methods_df <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>% 
+  filter(benchmark) %>% 
+  select(Method, imputation_function) %>% 
+  rename("elegant_name" = "Method",
+         "imputation_fun" = "imputation_function")
+
+
 
 ### Case 1 : NUM + COMPLETE
 
@@ -75,7 +84,7 @@ imputation_summary <- imputation_summary %>%
 
 error_summary <- readRDS("./results/comp_errors_num.RDS") %>% 
   filter(!is.na(measure), !is.na(score)) %>% 
-  merge(methods) %>% 
+  merge(methods_df) %>% 
   mutate(method = elegant_name)
 
 
@@ -126,7 +135,7 @@ imputation_summary <- imputation_summary %>%
 
 error_summary <- readRDS("./results/comp_errors_num.RDS") %>% 
   filter(!is.na(measure), !is.na(score)) %>% 
-  merge(methods) %>% 
+  merge(methods_df) %>% 
   mutate(method = elegant_name) %>% 
   filter(method %in% methods_cat)
 
@@ -141,7 +150,7 @@ imputation_summary <- get_raw_imp_summary()
 
 
 numerical_incomplete <- readRDS("./results/imputation_summary_incomplete_categorical.RDS") %>% 
-  merge(methods) %>% 
+  merge(methods_df) %>% 
   mutate(method = elegant_name)
 
 imputation_summary_incomplete <- rbind(numerical_incomplete,
