@@ -169,8 +169,6 @@ imputation_summary <- rbind(imputation_summary_incomplete) %>%
   mutate(set_id = ifelse(set_id == "colic_again", "colic", set_id)) %>% 
   filter(case %in%  c("incomplete", "incomplete_categorical")) 
 
-imputation_summary %>%  filter(set_id %in% c("colic", "colic_again"))
-
 # adds missing results
 
 imputation_summary_raw <- get_raw_imp_summary() %>% 
