@@ -98,18 +98,16 @@ plot_error_analysis <- function(data) {
 
 #' Plot Energy vs Time Ranking (Boxplots)
 #' @param data The combined imputation summary dataframe
-#' @param measure_to_plot The specific measure string (e.g., "energy")
 #' @param success_breaks Numeric vector of breaks for success percentages
-plot_energy_time_ranking <- function(data, success_breaks) {
+#' @param base_height Fixed base height for the plot margins/legends
+#' @param row_height Height multiplier per method (the beta)
+#' @param fixed_width Fixed total width for the plot
+plot_energy_time_ranking <- function(data, success_breaks, base_height = 2, row_height = 0.4, fixed_width = 10) {
   
   dat_plt <- data %>% 
     filter(!is.na(measure)) %>% 
-    
-    # Calculate global success rate per method
     group_by(method, new) %>% 
     mutate(`success [%]` = mean(is.na(error)) * 100) %>% 
-    
-    # 1. Average score and time per case (set_id x mechanism x ratio)
     group_by(method, new, set_id, mechanism, ratio) %>% 
     summarise(
       score_mean = mean(score, na.rm = TRUE), 
@@ -118,8 +116,6 @@ plot_energy_time_ranking <- function(data, success_breaks) {
       .groups = "drop"
     ) %>% 
     mutate(score_mean = ifelse(is.nan(score_mean), NA, score_mean)) %>% 
-    
-    # 2. Rank methods within each case based on the mean score
     group_by(set_id, mechanism, ratio) %>% 
     mutate(
       n_successful = sum(!is.na(score_mean)),
@@ -132,8 +128,6 @@ plot_energy_time_ranking <- function(data, success_breaks) {
       }
     ) %>% 
     ungroup() %>% 
-    
-    # 3. Aggregate for the final plot
     group_by(method, new) %>% 
     reframe(
       mean_ranking = mean(ranking, na.rm = TRUE),
@@ -143,14 +137,16 @@ plot_energy_time_ranking <- function(data, success_breaks) {
     ) %>% 
     arrange(mean_ranking) %>% 
     mutate(method = factor(method, levels = unique(method)))
-
+  
+  # --- DYNAMIC SIZE CALCULATION ---
+  n_methods <- length(unique(dat_plt$method))
+  calc_height <- base_height + (row_height * n_methods)
+  
   # Extract labels for text formatting
   m_labels <- dat_plt %>% select(method, new) %>% unique() %>% arrange(method)
   
-  # Calculate min time in ms dynamically for the axis break, label, and limit
   min_time_ms <- min(dat_plt$time, na.rm = TRUE) * 1000
   
-  # Time Plot (P1) - LEFT (No y-axis text)
   p_time <- dat_plt %>% 
     group_by(method, new, `success [%]`) %>% 
     summarise(time = mean(time), .groups="drop") %>%
@@ -168,14 +164,13 @@ plot_energy_time_ranking <- function(data, success_breaks) {
     theme_bw() + 
     theme(
       axis.title.y = element_blank(), 
-      axis.text.y = element_blank(),  # Hide y-axis text on the far left
-      axis.ticks.y = element_blank(), # Hide ticks for a cleaner edge
+      axis.text.y = element_blank(),  
+      axis.ticks.y = element_blank(), 
       legend.position = "none",
       panel.grid.minor.x = element_blank(),
       panel.grid.major.x = element_line(color = "black", linetype = "dashed")
     )
-
-  # Boxplot (P2) - RIGHT (Y-axis text acts as the middle spine)
+  
   p_box <- dat_plt %>% 
     ggplot(aes(x = method, y = ranking)) +
     geom_boxplot(aes(fill = new), alpha = 0.7) +
@@ -186,56 +181,61 @@ plot_energy_time_ranking <- function(data, success_breaks) {
     theme_bw() + 
     theme(
       axis.title.y = element_blank(),
-      axis.text.y = element_text(face = ifelse(m_labels$new, "bold", "plain")) # Keep labels here
+      axis.text.y = element_text(face = ifelse(m_labels$new, "bold", "plain"))
     )
-
-  # Combine using patchwork
+  
   p_final <- p_time + p_box + patchwork::plot_layout(guides = "collect", widths = c(1, 1.5)) & theme(legend.position = 'bottom')
   
-  return(p_final)
+  # Return as a list
+  return(list(
+    plot = p_final,
+    width = fixed_width,
+    height = calc_height
+  ))
 }
 
 #' Plot Aggregated Ranking Heatmap
 #' @param data The combined imputation summary dataframe
-#' @param case_to_plot The specific case string (e.g., "complete")
-#' @param measure_to_plot The specific measure string (e.g., "energy")
-plot_ranking_heatmap <- function(data) {
+#' @param base_width Fixed base width for margins/y-axis text
+#' @param col_width Width multiplier per column (case_id)
+#' @param base_height Fixed base height for margins/legends
+#' @param row_height Height multiplier per row (method)
+plot_ranking_heatmap <- function(data, base_width = 3, col_width = 0.5, base_height = 2, row_height = 0.4) {
   
-  p_heatmap <- data %>% 
-    select(-c(time, attempts, error, imputation_fun)) %>% 
+  dat_prepared <- data %>% 
+    select(-any_of(c("time", "attempts", "error", "imputation_fun"))) %>% 
     unique() %>%
     mutate(score = ifelse(is.nan(score), NA, score)) %>%
-    
-    # 1. Calculate the mean score across reps for each specific case and method
     group_by(set_id, mechanism, ratio, method, new) %>%
     summarise(score_mean = mean(score, na.rm = TRUE), .groups = "drop") %>%
     mutate(score_mean = ifelse(is.nan(score_mean), NA, score_mean)) %>% 
-    
-    # 2. Rank methods within each case (set_id x mechanism x ratio) based on the mean score
     group_by(set_id, mechanism, ratio) %>%
     mutate(
-      n_successful = sum(!is.na(score_mean)),  # count non-NA mean scores
+      n_successful = sum(!is.na(score_mean)), 
       ranking = {
         r <- rep(NA, length(score_mean))
         valid <- !is.na(score_mean)
         r[valid] <- rank(score_mean[valid])
-        r[!valid] <- n_successful[!valid] + 1  # set to last working method + 1
+        r[!valid] <- n_successful[!valid] + 1 
         r
       }
     ) %>%
     ungroup() %>%
-    
-    # 3. Create the distinct column ID for every combination
     mutate(case_id = paste(set_id, mechanism, ratio, sep = "_")) %>%
-    
-    # 4. Calculate overall mean ranking to sort the y-axis
     group_by(method, new) %>%
     mutate(mean_ranking = mean(ranking, na.rm = TRUE)) %>%
     ungroup() %>%
     arrange(desc(new), mean_ranking) %>%
-    mutate(method = factor(method, levels = rev(unique(method)))) %>%
-    
-    # 5. Generate the heatmap
+    mutate(method = factor(method, levels = rev(unique(method))))
+  
+  # --- DYNAMIC SIZE CALCULATION ---
+  n_cols <- length(unique(dat_prepared$case_id))
+  n_rows <- length(unique(dat_prepared$method))
+  
+  calc_width <- base_width + (col_width * n_cols)
+  calc_height <- base_height + (row_height * n_rows)
+  
+  p_heatmap <- dat_prepared %>%
     ggplot() +
     geom_tile(aes(x = case_id, y = method, fill = ranking), colour = "black") +
     geom_text(aes(x = case_id, y = method, label = round(ranking, 1), 
@@ -250,5 +250,10 @@ plot_ranking_heatmap <- function(data) {
       strip.background = element_rect(fill = "grey95", color = "black")
     )
   
-  return(p_heatmap)
+  # Return as a list
+  return(list(
+    plot = p_heatmap,
+    width = calc_width,
+    height = calc_height
+  ))
 }

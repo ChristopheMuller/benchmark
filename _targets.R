@@ -130,7 +130,7 @@ use_python_imputations <- FALSE
 
 amputation_mechanisms <- c("mcar", "mar")   # missingness mechanisms
 
-missing_ratios <- c(0.1, 0.3)          # proportion of values to ampute
+missing_ratios <- c(0.1, 0.2, 0.3)          # proportion of values to ampute
 
 amputation_reps <- 1                        # replicates for amputation
 
@@ -210,7 +210,7 @@ scores <- c("mae", "energy", "energy_std")
 #
 # Example selection:
 complete_numerical <- c("airfoil_self_noise.RDS", "allergens.RDS", "concrete.RDS", "enb.RDS",
-                        "fat.RDS", "windspeed.RDS", "yeast.RDS")
+                        "fat.RDS", "windspeed.RDS", "yeast.RDS", "scm1d.RDS", "scm20d.RDS")
 
 # ---------------------------------
 

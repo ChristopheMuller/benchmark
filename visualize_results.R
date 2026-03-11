@@ -7,7 +7,7 @@ MEASURE_INCOMPLETE_NUM <- "IScore"
 MEASURE_INCOMPLETE_CAT <- "IScore_cat"
 
 DATA_TYPE       <- "num" # Options: "num", "mixed", "ALL"
-DATA_STATUS     <- "ALL" # Options: "complete", "incomplete", "ALL"
+DATA_STATUS     <- "complete" # Options: "complete", "incomplete", "ALL"
 
 if (!dir.exists(PATH_FIGURES)) dir.create(PATH_FIGURES, recursive = TRUE)
 
@@ -125,12 +125,24 @@ p_errors <- plot_error_analysis(imputation_summary)
 ggsave(paste0(PATH_FIGURES, "error_analysis.pdf"), p_errors, width = 12, height = 8)
 
 # 2. Shrek's Heatmap (Aggregated Ranking)
-p_heatmap <- plot_ranking_heatmap(imputation_summary)
-ggsave(paste0(PATH_FIGURES, "heatmap_ranking.pdf"), p_heatmap, width = 10, height = 12)
+p_heatmap <- plot_ranking_heatmap(imputation_summary, col_width=0.4)
+ggsave(
+  filename = paste0(PATH_FIGURES, "heatmap_ranking.pdf"), 
+  plot = p_heatmap$plot,
+  width = p_heatmap$width,
+  height = p_heatmap$height,
+  limitsize = FALSE
+)
 
 # 3. Energy vs Time Ranking (Boxplots)
-p_final <- plot_energy_time_ranking(imputation_summary, c(0, 1, 40, 80, 99, 100))
-ggsave(paste0(PATH_FIGURES, "energy_time_ranking.pdf"), p_final, width = 14, height = 10)
+p_final <- plot_energy_time_ranking(imputation_summary, c(0, 1, 40, 80, 99, 100), fixed_width=15, row_height=0.2, base_height=1)
+ggsave(
+  filename = paste0(PATH_FIGURES, "energy_time_ranking.pdf"), 
+  plot = p_final$plot,
+  width = p_final$width,
+  height = p_final$height,
+  limitsize = FALSE
+)
 
 # ==============================================================================
 cat("Done! Figures saved in:", PATH_FIGURES, "\n")
