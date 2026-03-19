@@ -68,8 +68,7 @@ amputation_reps <- 2
 # imputation methods
 imputation_methods <- readRDS(path_to_methods) %>% 
   rename(imputation_fun = `Function name`) %>% 
-  mutate(method = str_remove(imputation_fun, "impute_")) %>%
-  filter(! (method %in% c("mice_cart50", "mice_cart100", "supersuperimputer", "superimputer", "engressimpute", "engression")))
+  mutate(method = str_remove(imputation_fun, "impute_"))
 
 imputation_categorical <- readRDS(path_to_cat_methods) 
 
@@ -96,7 +95,7 @@ print(table(params$rep))
 print(table(params$ratio))
 print(table(params$method))
 
-print("ATTENTION: ALWAYS SCORE, NEVER IMPUTE !!!")
+
 
 # saveRDS(params, "./data/params.RDS")
 
@@ -130,10 +129,9 @@ imputed_datasets <- tar_map(
   names = any_of("imputed_id"),
   tar_target(
     imputed_dat, {
-    missing_data <- readRDS(filepath_amputed)
       impute(
         dataset_id = imputed_id,
-        missing_data_set = missing_data,
+        missing_data_set = amputed_all[[paste0("amputed_dat_", amputed_id)]], 
         imputing_function = imputation_fun,
         timeout_thresh = timeout_thresh,
         n_attempts = n_attempts,
@@ -142,16 +140,15 @@ imputed_datasets <- tar_map(
       )
     },
     # cue = tar_cue(depend = FALSE),
-    cue = tar_cue(mode = "never")
+    # cue = tar_cue(mode = "always")
   ),
   tar_target(save_imputed_dat,
              saveRDS(imputed_dat[["imputed"]], filepath_imputed)
   ),
   tar_target(
     obtained_scores, {
-      missing_data <- readRDS(filepath_amputed)
       calculate_scores(imputed = imputed_dat, 
-                       amputed = missing_data,
+                       amputed = amputed_all[[paste0("amputed_dat_", amputed_id)]],
                        imputation_fun = get(imputation_fun),
                        multiple = MI,
                        imputed_id = imputed_id, 
@@ -160,7 +157,7 @@ imputed_datasets <- tar_map(
                        case = case, var_type = var_type)
     },
     # cue = tar_cue(depend = FALSE),
-    cue = tar_cue(mode = "always"),
+    # cue = tar_cue(mode = "always"),
   )
 )
 
