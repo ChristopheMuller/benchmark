@@ -6,12 +6,20 @@ calculate_scores <- function(imputed, amputed, imputation_fun, multiple,
   imputed_data <- imputed[["imputed"]]
   res <- imputed[["res"]]
   
+  expected_measures <- switch(
+    case,
+    complete = c("mae", "rmse", "nrmse", "rsq", "ccc", "energy", 
+                "energy_std", "feature_wise_wasserstein", "KLD", 
+                "entropic_wasserstein", "sliced_wasserstein"),
+    incomplete = c("IScore", "IScore_scaled"),
+    categorical = c("energy", "energy_std"),
+    incomplete_categorical = c("IScore_cat"),
+    character(0)
+  )
+  
   if(!is.na(res[["error"]])) {
-    return(cross_join(res, data.frame(measure = c("mae", "rmse", "nrmse", 
-                                                  "rsq", "ccc", "energy", 
-                                                  "energy_std", "IScore", 
-                                                  "IScore_cat"),
-                                      score = NA)))
+    return(cross_join(res, data.frame(measure = expected_measures,
+                                      score = NA_real_)))
   }
   
   original_data <- readRDS(filepath_original)
