@@ -21,7 +21,6 @@ library(mice)
 library(glmnet)
 library(missForest)
 library(MetabImpute)
-library(SuperImputer)
 
 # for vis
 library(ggplot2)
