@@ -8,7 +8,8 @@ save_params <- function() {
 
   imputation_methods <- readRDS(path_to_methods) %>%
     rename(imputation_fun = `Function name`) %>%
-    mutate(method = str_remove(imputation_fun, "impute_"))
+    mutate(method = str_remove(imputation_fun, "impute_")) %>%
+    filter(method == "mean")
 
   imputation_categorical <- readRDS(path_to_cat_methods)
 
@@ -19,9 +20,9 @@ save_params <- function() {
     path_to_incomplete_categorical_datasets  = "./data/datasets/incomplete_categorical/",
     path_to_amputed                          = "./results/amputed/",
     path_to_imputed                          = "./results/imputed/",
-    amputation_mechanisms                    = c("mcar", "mar"),
+    amputation_mechanisms                    = c("mcar"),
     amputation_reps                          = 2,
-    missing_ratios                           = c(0.1, 0.2, 0.3),
+    missing_ratios                           = c(0.1),
     imputation_methods                       = imputation_methods,
     imputation_categorical                   = imputation_categorical
   )
