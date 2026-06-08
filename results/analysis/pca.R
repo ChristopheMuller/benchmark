@@ -25,6 +25,9 @@ methods <- read_sheet(url, sheet = "Cleaned Methods - ALL") %>%
   select(Method, imputation_function) %>% 
   rename("elegant_name" = "Method",
          "imputation_fun" = "imputation_function") %>% 
+  filter(!(elegant_name %in% c("gbmImpute", 
+                         "missmda_mifamd_reg", "missmda_mifamd_em",
+                         "mice_default"))) %>% 
   arrange(tolower(elegant_name)) %>% 
   mutate(nb = 1:n())
 
