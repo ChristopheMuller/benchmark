@@ -2546,33 +2546,6 @@
       "Author": "Martin Morgan [aut], Valerie Obenchain [aut], Jim Hester [aut], Hervé Pagès [aut, cre]",
       "Maintainer": "Hervé Pagès <hpages.on.github@gmail.com>"
     },
-    "SuperImputer": {
-      "Package": "SuperImputer",
-      "Version": "0.0.0.9000",
-      "Source": "GitHub",
-      "Title": "What the Package Does (One Line, Title Case)",
-      "Authors@R": "person(\"First\", \"Last\", , \"first.last@example.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"YOUR-ORCID-ID\"))",
-      "Description": "What the package does (one paragraph).",
-      "License": "`use_mit_license()`, `use_gpl3_license()` or friends to pick a license",
-      "Encoding": "UTF-8",
-      "Roxygen": "list(markdown = TRUE)",
-      "RoxygenNote": "7.3.2",
-      "Imports": [
-        "miceDRF"
-      ],
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "SuperImputer",
-      "RemoteUsername": "KrystynaGrzesiak",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "22aba19213e0f510ec03ed60696d9b2f1118585f",
-      "NeedsCompilation": "no",
-      "Author": "First Last [aut, cre] (YOUR-ORCID-ID)",
-      "Maintainer": "First Last <first.last@example.com>",
-      "Depends": [
-        "R (>= 3.5.0)"
-      ]
-    },
     "T4transport": {
       "Package": "T4transport",
       "Version": "0.1.3",
