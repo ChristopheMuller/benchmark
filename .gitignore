@@ -19,3 +19,4 @@ cache
 figures/
 *.tex
 *.pdf
+.DS_Store
