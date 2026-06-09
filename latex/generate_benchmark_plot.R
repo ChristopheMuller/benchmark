@@ -101,9 +101,10 @@ ggplot(dat_long) +
   ylab(NULL) +
   theme_minimal() +
   theme(
-    axis.text.x = element_text(angle = 90, hjust = 1),
+    axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
     legend.position = "top"
   ) +
-  coord_flip() +
-  ggsave("~/INRIA/R_scripts/benchmark/latex/benchmarks.pdf", width = 15, height = 6, units = "in")
+  coord_flip()
+
+ggsave("benchmarks.pdf", width = 15, height = 6, units = "in")
 
